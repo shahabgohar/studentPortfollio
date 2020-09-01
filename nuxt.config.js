@@ -22,14 +22,16 @@ export default {
       { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css' }
     ]
   },
   /*
   ** Global CSS
   */
   css: [
-    '~/assets/css/default/default.css'
+    '~/assets/css/default/default.css',
+
   ],
   /*
   ** Plugins to load before mounting the App
