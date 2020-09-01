@@ -1,7 +1,8 @@
 <template>
-    <div class="parent-hello">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 100" preserveAspectRatio="xMinYMax meet" ><defs><style>  .welcome{font-size:72px;font-family:Hack-Regular, Hack;}</style></defs><title>  welcome</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_2-2" data-name="Layer 2"><text class="welcome" transform="translate(0 62.24)">  HELLO!</text></g></g></svg>
-    </div>
+  <div class="wrap">
+      <h1 class="greet animate-welcome" >Hello! </h1>
+    <h1 class="greet" id="hand">👋</h1>
+  </div>
 </template>
 
 <script>
@@ -12,20 +13,97 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-.parent-hello{
-  width: 80%;
-  height: 50%;
+.wrap{
+  animation: animate-hello;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+}
+@keyframes animate-hello{
+  0%{
+    transform: translateX(-100vw);
+  }
+  28%{
+    transform: translateX(-80vw);
+  }
+  57%{
+    transform:  translateX(-50vw);
+  }
+  78%{
+    transform:  translateX(-30vw);
+  }
+  99%{
+    transform:  translateX(0vw);
+  }
 }
 
-
-@media screen and (max-width: 725px) {
-.parent-hello{
-  width: 90%;
-  height: 10%;
-
+#hand{
+  animation: shake-hand 0.8s infinite 0s linear;
 }
+
+@keyframes shake-hand{
+  0%{
+    transform: rotate(0deg);
+  }
+  50%{
+    transform: rotate(20deg);
+  }
+  100%{
+    transform: rotate(0deg);
+  }
+}
+.wrap{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.greet{
+  font-family: Hack-Regular, Hack;
+  font-size: 200px;
+}
+
+@media screen and (max-width: 725px) and (min-width: 680px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 100px;
+  }
+}
+@media screen and (max-width: 680px) and (min-width: 550px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 80px;
+  }
+}
+@media screen and (max-width: 550px) and (min-width: 400px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 65px;
+  }
+}
+@media screen and (max-width: 400px) and (min-width: 200px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 50px;
+  }
+}
+@media screen and (max-width: 300px) and (min-width: 100px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 40px;
+  }
+}
+@media screen and (min-width: 1022px ) and (max-width: 1200px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 180px;
+  }
+}
+@media screen and (min-width: 725px ) and (max-width: 1022px) {
+  .greet{
+    font-family: Hack-Regular, Hack;
+    font-size: 120px;
+  }
 }
 
 </style>

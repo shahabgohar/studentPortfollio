@@ -3,6 +3,7 @@
 ## Build Setup
 
 ```bash
+this is still the basic version of my portfollio more changes are comming soon
 # install dependencies
 $ npm install
 

@@ -44,13 +44,33 @@ export default {
 
 <style scoped lang="scss">
 
+
 .parent-description{
   width: 90%;
   height: 6vh;
-  background-color: #F7F8FB;
   overflow: hidden;
   padding-top: 1vh;
   padding-bottom: 1vh;
+  animation: animate-description;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+@keyframes animate-description{
+  0%{
+    transform: translateY(100vh);
+  }
+  28%{
+    transform: translateY(80vh);
+  }
+  57%{
+    transform:  translateY(50vh);
+  }
+  78%{
+    transform:  translateY(30vh);
+  }
+  99%{
+    transform:  translateY(0vh);
+  }
 }
 p{
   display: inline;
@@ -59,23 +79,7 @@ p{
   display: inline;
 
 }
-#hand{
 
-  animation: hand-animate 3s infinite 0s linear;
-}
-p:hover{
-  cursor: context-menu;
-}
-@keyframes hand-animate {
-  0%{
-  }
-  33%{
-    transform: skewX(55deg);
-  }
-  67%{
-    transform: skewX(0deg);
-  }
-}
 
 
 @media screen and (max-width: 725px) and (max-width: 1200px){

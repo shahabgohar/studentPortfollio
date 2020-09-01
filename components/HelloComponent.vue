@@ -22,7 +22,6 @@ export default {
 .home-parent{
   width: 100%;
   height: 100%;
-  background-color: brown;
   display: flex;
   flex-direction: column;
   align-items: center;
