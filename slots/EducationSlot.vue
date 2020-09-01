@@ -1,15 +1,11 @@
 <template>
   <div class="slot-parent">
     <div class="universityEducation">
-
       <img v-bind:src="name" alt="University Logo" class="uni-logo">
       <div class="logo-divider"></div>
       <div class="uni-details">
         <p class="uni-name">{{instName}}</p>
         <slot name="instDetails"></slot>
-<!--        <p><b>Status: </b></p>-->
-<!--        <p><b>Semester: </b>6</p>-->
-<!--        <p><b>CGPA: </b>3.34/4</p>-->
       </div>
     </div>
   </div>
@@ -23,6 +19,7 @@ export default {
 </script>
 
 <style lang="scss" >
+
 .slot-parent{
   width: 60%;
   height: 28%;
@@ -35,7 +32,8 @@ export default {
 .universityEducation{
   width: 100%;
   height: 100%;
-  background-color: blue;
+  background-color: white;
+  filter: drop-shadow(5px 5px 2px #bfbfbf);
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -19,6 +19,7 @@ export default {
         this.isFirst = false
 
         this.handlerRef = setInterval(() => {
+
           if (this.height <= 80) {
             if(this.height === 0){
               this.$refs['hover'].style.display="flex"

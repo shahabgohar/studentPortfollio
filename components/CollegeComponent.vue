@@ -1,5 +1,5 @@
 <template>
-<education-slot v-bind:name="logo" v-bind:inst-name="name">
+<education-slot v-bind:name="logo" v-bind:inst-name="name" class="anim">
   <div slot="instDetails">
           <p><b>Subject: </b> Fsc Pre-Medical</p>
           <p><b>Status: </b> Passed</p>
@@ -22,4 +22,19 @@ name: "CollegeComponent",
   }
 }
 </script>
+<style lang="scss" scoped>
+.anim{
+  animation: animate-slot;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+@keyframes animate-slot{
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform:translateX(0%);
+  }
+}
+</style>
 

@@ -1,5 +1,5 @@
 <template>
-  <education-slot v-bind:name="image" v-bind:inst-name="name">
+  <education-slot v-bind:name="image" v-bind:inst-name="name" class="anim">
     <div slot="instDetails">
       <p><b>Status: </b>Currently enrolled</p>
       <p><b>Semester: </b>6</p>
@@ -23,5 +23,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.anim{
+  animation: animate-slot;
+  animation-iteration-count: 1;
+  animation-duration: 1s;
+}
+@keyframes animate-slot{
+  0%{
+    transform: translateX(-100%);
+  }
+  100%{
+    transform:translateX(0%);
+  }
+}
 </style>

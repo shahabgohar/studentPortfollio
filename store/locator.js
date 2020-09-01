@@ -22,7 +22,7 @@ export const state = ()=>(
         color:"black",
         clicked: false
       }
-    ]
+    ],
   }
 )
 export const mutations ={
