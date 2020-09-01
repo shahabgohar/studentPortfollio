@@ -1,8 +1,8 @@
 <template>
-  <div class="parent" @mouseover="displayHoverElement" @mouseleave="removeHoverElement">
+  <div ref="parent" class="parent" @mouseover="displayHoverElement" @mouseleave="removeHoverElement">
     <img src="~/assets/svgs/SVG/gmail.svg" class="img-gmail" alt="">
     <div class="hover-element" ref="hover" style="display: none">
-    <button ref="append-child" @click="copyEmailtToClipBoard($event)">Copy Email</button>
+      <img src="~/assets/svgs/SVG/copy_1.svg" ref="append-child" @click="copyEmailtToClipBoard($event)" class="img-gmail" alt="">
     </div>
   </div>
 </template>
@@ -13,7 +13,17 @@ import shareGlobalMixin from "~/Mixins/shareGlobalMixin";
 export default {
   name: "gmailComponent",
   mixins:[shareGlobalMixin],
+  data(){
+    return {
+      borderColor:"red",
+      animateHandle:null
+    }
+  },
+  mounted() {
+    this.animate(1000)
+  },
   methods:{
+
     copyEmailtToClipBoard(event){
       event.preventDefault()
       navigator.clipboard.writeText("imshahabgohar1230@gmail.com").then(()=>{
@@ -26,18 +36,46 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.img-gmail{
-  width: 100%;
+.email-button{
+  width: 50%;
   height: 100%;
+  border: 5px solid ;
+
+}
+@keyframes animate-fb{
+  0%{
+    transform:  translateY(100%);
+  }
+  30%{
+    transform:  translateY(0%);
+  }
+  68%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform:translateY(0%);
+  }
+}
+.animate-comp{
+  animation: animate-fb;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+}
+.img-gmail{
+  width: 90%;
+  height: 90%;
 }
 .parent{
   position: relative;
-  width: 20%;
-  height: 10%;
+  width: 30%;
+  height: 30%;
   background-color: white;
   border: 5px solid #D44B3D;
   border-radius: 20px;
-
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 .parent:hover{
   cursor: pointer;

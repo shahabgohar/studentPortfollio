@@ -1,5 +1,5 @@
 <template>
-<div class="parent-facebook" @mouseover="displayHoverElement" @mouseleave="removeHoverElement">
+<div  ref="parent" class="parent-facebook"@mouseover="displayHoverElement" @mouseleave="removeHoverElement">
   <img class="img-fb" src="~/assets/svgs/SVG/facebook_svg.svg" alt="">
 <div class="hover-element-fb" ref="hover" style="display: none">
 <a href="https://www.fb.com/shahab.gohar/" target="_blank" ref="append-child" style="display: none">fb.com/shahab.gohar/</a>
@@ -13,6 +13,14 @@ import shareGlobalMixin from "~/Mixins/shareGlobalMixin";
 export default {
 name: "MailComponent",
   mixins:[shareGlobalMixin],
+  data(){
+    return {
+      borderColor:"#1877F2"
+    }
+  },
+  mounted() {
+  this.animate(0)
+  },
   methods:{
   displayMethodForhoverElement(){
     return "block";
@@ -22,18 +30,25 @@ name: "MailComponent",
 </script>
 
 <style lang="scss" scoped>
+
 .img-fb{
   width: 100%;
   height: 100%;
 }
 .parent-facebook{
   position: relative;
-  width: 20%;
-  height: 10%;
+  width: 30%;
+  height: 30%;
   background-color: white;
   border: 5px solid #1877F2;
   border-radius: 20px;
 
+}
+.animate-comp{
+  animation:animate-fb;
+  animation-delay: 0s;
+  animation-duration: 0.7s;
+  animation-iteration-count: 1;
 }
 .parent-facebook:hover{
   cursor: pointer;
@@ -60,6 +75,20 @@ name: "MailComponent",
     cursor: pointer;
   }
 
+}
+@keyframes animate-fb{
+  0%{
+    transform:  translateY(100%);
+  }
+  30%{
+    transform:  translateY(0%);
+  }
+  68%{
+    transform: translateY(-100%);
+  }
+  100%{
+    transform:translateY(0%);
+  }
 }
 @media screen and (max-width: 725px) and (max-width: 1200px){
   .parent-facebook{

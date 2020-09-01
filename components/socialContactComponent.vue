@@ -1,8 +1,10 @@
 <template>
 <div class="pare">
+  <div class="bound">
   <mail-component></mail-component>
   <gmail-component></gmail-component>
   <github-component></github-component>
+  </div>
 </div>
 </template>
 
@@ -21,21 +23,27 @@ name: "socialContactComponent",
 .pare{
   width: 100%;
   height: 100%;
-  background-color: #F7F8FB;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
+}
+.bound{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 @media screen and (max-width: 725px) and (max-width: 1200px) {
-  .pare{
+  .bound{
     width: 100%;
     height: 100%;
-    background-color: #F7F8FB;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-around;
+    align-items: center;
   }
 }
 </style>
