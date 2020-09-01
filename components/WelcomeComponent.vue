@@ -1,12 +1,6 @@
 <template>
-    <div class="parent">
-<!--  <div class="home-parent-welcome">-->
-<!--  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 90" preserveAspectRatio="xMinYMax meet" style="background-color: orangered"><defs><style>  .welcome{font-size:72px;font-family:Hack-Regular, Hack;}</style></defs><title>  welcome</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_2-2" data-name="Layer 2"><text class="welcome" transform="translate(0 62.24)">  HELLO!</text></g></g></svg>-->
-<!--  </div>-->
-<!--  <div class="home-parent-description">-->
-<!--    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 90" preserveAspectRatio="xMinYMax meet" style="background-color: green"><defs><style>  .description{font-size:72px;font-family:Hack-Regular, Hack;}</style></defs><title> Descripiton</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_2-2" data-name="Layer 2"><text class="description" transform="translate(0 62.24)">  HELLO!</text></g></g></svg>-->
-
-<!--  </div>-->
+    <div class="parent-hello">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 100" preserveAspectRatio="xMinYMax meet" ><defs><style>  .welcome{font-size:72px;font-family:Hack-Regular, Hack;}</style></defs><title>  welcome</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_2-2" data-name="Layer 2"><text class="welcome" transform="translate(0 62.24)">  HELLO!</text></g></g></svg>
     </div>
 </template>
 
@@ -17,23 +11,21 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.welcome{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
+<style lang="scss" scoped>
 
-.parent{
+
+.parent-hello{
   width: 80%;
-  height: 70%;
-  background-color: orange;
+  height: 50%;
 }
 
 
-@media screen and (max-width: 995px) {
+@media screen and (max-width: 725px) {
+.parent-hello{
+  width: 90%;
+  height: 10%;
 
+}
 }
 
 </style>
