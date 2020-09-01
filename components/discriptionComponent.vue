@@ -52,21 +52,23 @@ export default {
   padding-top: 1vh;
   padding-bottom: 1vh;
   animation: animate-description;
-  animation-duration: 1s;
+  animation-duration: 2s;
   animation-iteration-count: 1;
 }
 @keyframes animate-description{
   0%{
-    transform: translateY(100vh);
+    transform: translateY(12vh);
+    height: 0vh;
   }
   28%{
-    transform: translateY(80vh);
+    transform: translateY(10vh);
+    height: 6vh;
   }
   57%{
-    transform:  translateY(50vh);
+    transform:  translateY(10vh);
   }
   78%{
-    transform:  translateY(30vh);
+    transform:  translateY(5vh);
   }
   99%{
     transform:  translateY(0vh);
