@@ -15,6 +15,7 @@ export default {
       }, time)
     },
     displayHoverElement() {
+      console.log("hover called")
       if (this.isFirst) {
         this.isFirst = false
 
@@ -36,7 +37,7 @@ export default {
       }
     },
     removeHoverElement(){
-      console.log("leave")
+      console.log("leave called")
       this.isLeft = false
       this.isFirst = true
       this.$refs['hover'].style.display="none"
