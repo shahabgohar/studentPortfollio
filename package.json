@@ -4,12 +4,13 @@
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build && nuxt generate" ,
+    "build": "nuxt build && nuxt generate",
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.0",
+    "nuxt-compress": "^3.0.0"
   },
   "devDependencies": {
     "@nuxtjs/svg": "^0.1.12",

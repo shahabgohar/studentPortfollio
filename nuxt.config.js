@@ -53,7 +53,17 @@ export default {
   /*
   ** Nuxt.js modules
   */
-  modules: [
+  modules: [[
+   "nuxt-compress",
+    {
+      gzip: {
+        cache: true
+      },
+      brotli: {
+        threshold: 10240
+      }
+    }
+    ]
   ],
   /*
   ** Build configuration
