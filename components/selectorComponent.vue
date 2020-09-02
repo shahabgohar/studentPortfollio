@@ -19,7 +19,7 @@ export default {
 
 <style lang="scss" scoped>
 .selector{
-  background-color: orangered;
+  background-color: rgba(141,136,135,0.48);
   width: 10%;
   height: 90vh;
   float: right;
@@ -30,7 +30,7 @@ export default {
 
 @media screen and (max-width: 725px)  and (max-width: 1200px) {
   .selector{
-    background-color: orangered;
+    background-color: black;
     width: 20%;
     height: 90vh;
     float: right;

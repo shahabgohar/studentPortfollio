@@ -69,7 +69,6 @@ export default {
   position: relative;
   width: 100%;
   height: 10%;
-  background-color: #1877F2;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,12 +81,13 @@ selector-parent:hover{
 .bars{
   width: 100%;
   height: 10%;
-  background-color: #D44B3D;
+  background-color: black;
   border-radius:20px;
 }
 p.text{
   font-family: Hack-Regular, Hack;
   font-size: 20px;
+
 
 }
 p.text:hover{
