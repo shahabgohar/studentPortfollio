@@ -59,9 +59,6 @@ export default {
       gzip: {
         cache: true
       },
-      brotli: {
-        threshold: 10240
-      }
     }
     ]
   ],

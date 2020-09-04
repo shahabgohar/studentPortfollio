@@ -1,5 +1,6 @@
 <template>
-  <div class="home-parent">
+<div class="">
+  <div class="home-parent" v-if="!this.$store.state.splash.isSplash">
     <Nuxt />
   <hello-component v-if="this.$store.state.locator.path === 'Home'"></hello-component>
     <technology-component v-if="this.$store.state.locator.path === 'Expertise'"></technology-component>
@@ -7,6 +8,8 @@
    <education-component v-if="this.$store.state.locator.path === 'Education'"></education-component>
 
   </div>
+<splash-screen  v-if="this.$store.state.splash.isSplash"></splash-screen>
+</div>
 </template>
 
 <script>
@@ -18,10 +21,11 @@ import SocialContactComponent from "@/components/socialContactComponent";
 import EducationComponent from "@/components/EducationComponent";
 import {mapGetters} from 'vuex';
 import {mapState} from 'vuex';
+import SplashScreen from "@/components/SplashScreen";
 export default {
-  components:{EducationComponent, SocialContactComponent, TechnologyComponent, HelloComponent},
+  components:{SplashScreen, EducationComponent, SocialContactComponent, TechnologyComponent, HelloComponent},
   mounted() {
-    console.log(this.path)
+    console.log(this.$store.state.splash.isSplash)
   } ,
 
  ...mapState(

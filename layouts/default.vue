@@ -1,8 +1,7 @@
 <template>
   <div>
-
-    <navbar-component></navbar-component>
-    <selector-component></selector-component>
+    <navbar-component v-if="!this.$store.state.splash.isSplash"></navbar-component>
+    <selector-component v-if="!this.$store.state.splash.isSplash"></selector-component>
     <Nuxt />
   </div>
 </template>
@@ -16,7 +15,11 @@ export default {
 <script>
 import NavbarComponent from "~/components/navbarComponent";
 import SelectorComponent from "~/components/selectorComponent";
+import SplashScreen from "@/components/SplashScreen";
 export default {
-  components: {SelectorComponent, NavbarComponent}
+  components: {SplashScreen, SelectorComponent, NavbarComponent},
+  mounted() {
+    console.log(this.$store.state.splash.isSplash)
+  }
 }
 </script>
