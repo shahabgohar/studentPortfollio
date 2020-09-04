@@ -17,7 +17,7 @@ name: "SplashScreen",
   data(){
   return{
     refHolder:null,
-    path:"https://"+window.location.hostname+"svgs/logo.svg",
+    path:"http://"+window.location.hostname+"svgs/logo.svg",
     val:0
   }
   },
