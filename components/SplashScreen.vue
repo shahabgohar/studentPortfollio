@@ -1,7 +1,7 @@
 <template>
 <div class="size">
   <div class="anima">
-  <img src='http://localhost:3000/svgs/logo.svg'>
+  <img v-bind:src='path'>
   </div>
   <div class="parent-progress">
   <div ref="load" class="real-progress">
@@ -17,6 +17,7 @@ name: "SplashScreen",
   data(){
   return{
     refHolder:null,
+    path:"https://"+window.location.hostname+"svgs/logo.svg",
     val:0
   }
   },
