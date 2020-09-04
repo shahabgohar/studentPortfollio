@@ -1,9 +1,10 @@
 # portfollio
-##Important Info
-
-
-```bash
-this project is in its initial phase 
+## See the demo
+[watch the preview !](https://boring-kalam-ba1478.netlify.app/)
+## Purpose
+```
+this project was initially taken by me to improve my front end skills
+so no css framework is used
 ```
 ## Build Setup
 
