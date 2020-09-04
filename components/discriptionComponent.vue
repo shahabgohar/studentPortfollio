@@ -9,7 +9,7 @@ export default {
   name: "discriptionComponent",
   data() {
     return {
-      description: " My Name is Muhammad Shahab UD Din Gohar and I am looking for internship or a project",
+      description: " My Name is Shahab UD Din Gohar and I am a web developer",
       counter: 1,
       resas :1,
       backup: null,
@@ -88,7 +88,6 @@ p{
   .parent-description{
     width: 95%;
     height: 3vh;
-    background-color: #F7F8FB;
     overflow: hidden;
     padding-top: 1vh;
     padding-bottom: 1vh;

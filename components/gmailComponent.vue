@@ -27,7 +27,7 @@ export default {
     copyEmailtToClipBoard(event){
       event.preventDefault()
       navigator.clipboard.writeText("imshahabgohar1230@gmail.com").then(()=>{
-        alert('success')
+        alert('mail address copied to clipboard')
       })
     }
 

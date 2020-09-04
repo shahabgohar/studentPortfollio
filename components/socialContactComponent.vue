@@ -1,7 +1,7 @@
 <template>
 <div class="pare">
   <div class="bound">
-  <mail-component></mail-component>
+<!-- <mail-component></mail-component>-->
   <gmail-component></gmail-component>
   <github-component></github-component>
   </div>

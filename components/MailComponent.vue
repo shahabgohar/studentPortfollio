@@ -2,7 +2,7 @@
 <div  ref="parent" class="parent-facebook"@mouseover="displayHoverElement" @mouseleave="removeHoverElement">
   <img class="img-fb" src="~/assets/svgs/SVG/facebook_svg.svg" alt="">
 <div class="hover-element-fb" ref="hover" style="display: none">
-<a href="https://www.fb.com/shahab.gohar/" target="_blank" ref="append-child" style="display: none">fb.com/shahab.gohar/</a>
+<a href="" target="_blank" ref="append-child" style="display: none">fb.com/shahab.gohar/</a>
 </div>
 </div>
 </template>
