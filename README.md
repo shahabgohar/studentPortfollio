@@ -6,6 +6,11 @@
 this project was initially taken by me to improve my front end skills
 so no css framework is used
 ```
+## preview
+### splash screen
+![Splash screen](https://drive.google.com/file/d/1XacyV0TcJ1wVCxuU5BlgwVKPm5G3Ez_K/view?usp=sharing)
+### main
+![main](https://drive.google.com/file/d/1qt_cA-sSGRy30htFRBQt9kmEYr0EuoWX/view?usp=sharing)
 ## Build Setup
 
 ```bash
