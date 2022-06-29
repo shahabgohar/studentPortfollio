@@ -1,71 +1,72 @@
+import colors from 'vuetify/es5/util/colors'
 
 export default {
-  /*
-  ** Nuxt rendering mode
-  ** See https://nuxtjs.org/api/configuration-mode
-  */
-  mode: 'spa',
-  /*
-  ** Nuxt target
-  ** See https://nuxtjs.org/api/configuration-target
-  */
+  // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  /*
-  ** Headers of the page
-  ** See https://nuxtjs.org/api/configuration-head
-  */
+
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: process.env.npm_package_name || '',
+    titleTemplate: '%s - portfolio',
+    title: 'portfolio',
+    htmlAttrs: {
+      lang: 'en'
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/logo.ico' },
-      { rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.css' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-  /*
-  ** Global CSS
-  */
-  css: [
-    '~/assets/css/default/default.css',
 
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    '@/assets/css/main.scss'
   ],
-  /*
-  ** Plugins to load before mounting the App
-  ** https://nuxtjs.org/guide/plugins
-  */
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
-  /*
-  ** Auto import components
-  ** See https://nuxtjs.org/api/configuration-components
-  */
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
-  /*
-  ** Nuxt.js dev-modules
-  */
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    "@nuxtjs/svg"
+    // https://go.nuxtjs.dev/vuetify
+    '@nuxtjs/vuetify',
   ],
-  /*
-  ** Nuxt.js modules
-  */
-  modules: [[
-   "nuxt-compress",
-    {
-      gzip: {
-        cache: true
-      },
+
+  // Modules: https://go.nuxtjs.dev/config-modules
+  modules: [
+  ],
+
+  // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    icons: {
+      iconfont: 'mdi', // default - only for display purposes
+    },
+    theme: {
+      dark: true,
+      themes: {
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
     }
-    ]
-  ],
-  /*
-  ** Build configuration
-  ** See https://nuxtjs.org/api/configuration-build/
-  */
+  },
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
 }

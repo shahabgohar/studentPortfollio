@@ -1,25 +1,35 @@
 <template>
-  <div>
-    <navbar-component v-if="!this.$store.state.splash.isSplash"></navbar-component>
-    <selector-component v-if="!this.$store.state.splash.isSplash"></selector-component>
-    <Nuxt />
-  </div>
+  <v-app dark>
+    <v-app-bar
+      :clipped-left="clipped"
+      fixed
+      app
+    >
+    </v-app-bar>
+    <v-main class="d-flex align-center justify-center">
+        <Nuxt />
+    </v-main>
+    <v-footer
+      :absolute="!fixed"
+      app
+    >
+      <span>&copy; {{ new Date().getFullYear() }}</span>
+    </v-footer>
+  </v-app>
 </template>
-<scrip>
-export default {
-
-
-}
-</scrip>
 
 <script>
-import NavbarComponent from "~/components/navbarComponent";
-import SelectorComponent from "~/components/selectorComponent";
-import SplashScreen from "@/components/SplashScreen";
 export default {
-  components: {SplashScreen, SelectorComponent, NavbarComponent},
-  mounted() {
-    console.log(this.$store.state.splash.isSplash)
+  name: 'DefaultLayout',
+  data () {
+    return {
+      clipped: false,
+      fixed: false,
+      miniVariant: false,
+      right: false,
+      rightDrawer: false,
+      title: ''
+    }
   }
 }
 </script>
