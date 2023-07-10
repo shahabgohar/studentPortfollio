@@ -1,0 +1,18 @@
+
+import type { Config } from 'tailwindcss'
+import defaultTheme from 'tailwindcss/defaultTheme'
+
+export default <Partial<Config>>{
+    theme: {
+      fontFamily: {
+        sans: ['Roboto Mono', 'monospace', 'system-ui', 'sans-serif'],
+      },
+      extend: {
+        colors: {
+          'grey': '#D9D9D9',
+          'silver': '#C2C2C2',
+          'blue': '#565BCF'
+        }
+      }
+  }
+}

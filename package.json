@@ -14,5 +14,9 @@
     "@types/node": "^18",
     "nuxt": "^3.6.1",
     "volar-service-vetur": "latest"
+  },
+  "dependencies": {
+    "@nuxtjs/google-fonts": "^3.0.1",
+    "nuxt-icon": "^0.4.2"
   }
 }
