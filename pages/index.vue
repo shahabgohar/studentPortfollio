@@ -234,8 +234,7 @@ onMounted(main)
         With a strong focus on user experience, 
         I am passionate about creating engaging and intuitive interfaces. 
         My proactive and detail-oriented approach, along with excellent communication skills, 
-        allows me to deliver high-quality work that exceeds client expectations. Currently pursuing a B.S. in Software Engineering,
-        I am dedicated to continuous learning and growth in the ever-evolving field of web development.
+        allows me to deliver high-quality work that exceeds client expectations.
       </div>
       <div class="">
         <img src="/static/img/about.png"/>
