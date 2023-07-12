@@ -5,7 +5,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <section class="w-full border-black text-4xl border-b-8">
+    <section :id="title" class="w-full font-bold border-black text-4xl border-b-8">
         {{ title }}
     </section>
 </template>

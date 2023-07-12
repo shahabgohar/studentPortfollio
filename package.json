@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.1",
-    "nuxt-icon": "^0.4.2"
+    "nuxt-icon": "^0.4.2",
+    "vue3-popper": "^1.5.0"
   }
 }
