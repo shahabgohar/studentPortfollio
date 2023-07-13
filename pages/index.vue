@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
   import {ref} from 'vue'
-  import {Experience} from '../types'
+  import {Experience, Skill} from '../types'
   import helper from '../utils/helper'
 
   const router = useRouter()
@@ -77,6 +77,22 @@
     }
   ]
 
+  const skills:Ref<Array<Skill>> = ref([
+    {
+      firstName: 'Frontend',
+      lastName: 'Development',
+      description: 'Constantly staying updated with the latest trends and best practices in frontend development, I strive to deliver intuitive and user-friendly interfaces that leave a lasting impact.'
+    },
+    {
+      firstName: 'Backend',
+      lastName: 'Development',
+      description: `
+      Backed by extensive experience and a deep understanding of backend development, I am skilled in designing and building robust and scalable server-side applications.
+              Leveraging my problem-solving abilities and attention to detail, I thrive in delivering innovative solutions that meet the unique requirements of each project.
+      `
+    }
+  ])
+
   const showFloatBtnFlg:any = ref(false)
   function main() {
     documentScroll()
@@ -119,11 +135,11 @@
 
 <template>
   
-    <div class="w-full flex flex-col max-sm:px-2 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10" >
-      <div  v-if="showFloatBtnFlg" class="fixed right-6 bottom-6 w-16 h-16 border-2 rounded-full flex items-center justify-center cursor-pointer" @click="scrollToTop">
-        <Icon name="mdi:arrow-up"></Icon>
+    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10" >
+      <div  v-if="showFloatBtnFlg" class=" max-sm:w-12 max-sm:h-12 animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2 rounded-full flex bg-white drop-shadow-sm items-center justify-center cursor-pointer" @click="scrollToTop">
+        <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10" name="mdi:arrow-up"></Icon>
     </div>
-      <div class="relative " id="parent" style="height: 800px;">
+      <div class="relative h-screen" id="parent">
         <div class="w-full h-full top-0 left-0 flex items-center justify-center absolute">
           <!-- navbar -->
           <nav class="max-md:hidden w-full absolute top-8 left-0 flex items-center justify-end">
@@ -144,7 +160,7 @@
           <div class="flex flex-col gap-y-9">
             <div class="flex flex-col gap-2.5">
               <div class="max-lg:text-2xl text-3xl font-ibmMono capitalize font-thin">I'm</div>
-              <div class="max-lg:text-7xl text-8xl capitalize font-normal leading-11" style="word-spacing: -1rem;">Shahab Gohar</div>
+              <div class="max-sm:text-5xl max-lg:text-7xl text-8xl capitalize font-normal leading-11" style="word-spacing: -1rem;">Shahab Gohar</div>
             </div>
           <div class="w-full flex items-center justify-center">
             <ui-button :title="'Download Resume'" @click="downloadResume" :icon-name="'download'"></ui-button>
@@ -159,39 +175,30 @@
 
       <!-- skills section -->
       <page-section title="Skills"></page-section>
-      <div class="w-full grid grid-cols-2 grid-rows-1 gap-x-32">
+      <div class="max-md:grid-cols-1 max-md:gap-y-10 max-md:gap-x-0 max-lg:gap-x-24 w-full grid grid-cols-2 auto-rows-auto gap-x-32 h-fit ">
         <!-- topics -->
-        <div class="flex flex-col self-start h-full justify-between">
-          <div class="flex flex-col gap-y-2.5">
-            <div class="text-3xl font-bold">Frontend<br>Development</div>
-            <div class="max-w-lg text-base font-normal leading-5">
-              Constantly staying updated with the latest trends and best practices in frontend development, I strive to deliver intuitive and user-friendly interfaces that leave a lasting impact.
-            </div>
-            <div class="border border-black"></div>
-          </div>
-          <div class="flex flex-col gap-y-2.5">
-            <div class="text-3xl font-bold">Backend<br>Development</div>
-            <div class="max-w-lg text-base font-normal leading-5">
-              Backed by extensive experience and a deep understanding of backend development, I am skilled in designing and building robust and scalable server-side applications.
-              Leveraging my problem-solving abilities and attention to detail, I thrive in delivering innovative solutions that meet the unique requirements of each project.
-            </div>
-            <div class="border border-black"></div>
-          </div>
+        <div class="max-md:justify-center max-md:gap-10 flex flex-col justify-between">
+          <skill-entry 
+          v-for="(skill,index) in skills" 
+          :key="index" 
+          :skill="skill" 
+          :is-last="index + 1 === skills.length">
+          </skill-entry>
         </div>
         <!-- tech stack -->
-        <div class="w-full flex justify-end">
-          <div class="border-2 border-black flex self-end flex-col max-w-lg px-12 py-4">
-            <div class="flex flex-col gap-6">
-            <div class="flex flex-col gap-6">
-              <div class="text-3xl font-bold">Programming Languages</div>
-              <div class="flex gap-12">
-                <svg-javascript></svg-javascript>
+        <div class="max-md:justify-start w-full flex justify-end h-fit">
+          <div class="max-md:px-6 max-md:py-2 w-full border-2 border-black flex self-end flex-col px-12 py-4">
+            <div class="max-md:gap-3 flex flex-col gap-6">
+            <div class="max-md:gap-3 flex flex-col gap-6">
+              <div class="max-md:text-2xl text-3xl font-bold">Programming Languages</div>
+              <div class="max-md:gap-6 flex gap-12">
+                <svg-javascript class=""></svg-javascript>
                 <svg-php></svg-php>
               </div>
             </div>
-            <div class="flex flex-col gap-6">
-              <div class="text-3xl font-bold">Frameworks</div>
-              <div class="flex flex-wrap gap-12">
+            <div class="max-md:gap-3 flex flex-col gap-6">
+              <div class="max-md:text-2xl text-3xl font-bold">Frameworks</div>
+              <div class="max-md:gap-6 flex flex-wrap gap-12">
                 <svg-vue></svg-vue>
                 <svg-nuxt></svg-nuxt>
                 <svg-laravel></svg-laravel>
@@ -206,7 +213,7 @@
       </div>
       <!-- Experience -->
       <page-section title="Experience"></page-section>
-      <div class="w-full flex flex-col gap-10">
+      <div class="max-lg:gap-5 w-full flex flex-col gap-10">
         <experience-entry 
         v-for="(experience, index) in experiences" 
         :key="index" 
@@ -222,16 +229,22 @@
         <div class="flex gap-1 flex-col">
           <div class="uppercase">University of engineering and Technology, Taxila</div>
           <div class="uppercase">Software Engineering <span class="ml-5"><i>(2017-2021)</i></span></div>
+          <div class="mt-3">Apart from achademics, I also performed well in other areas:</div>
+          <ul class="list-disc ml-6">
+            <li>With bunch of friends, we won Hackathon in 2019 hosted at Air University, Islamabad</li>
+            <li>Joined Softdesk Society for extra currical activities</li>
+            <li>Contributed for hosting many events and workshops, and acquired the position of Head of Graphics</li>
+          </ul>
         </div>
-        <div class="">
+        <div class="hidden">
           <img src="/img/education.svg">
         </div>
       </div>
 
       <!-- About -->
       <page-section title="About"></page-section>
-      <div class="flex justify-between items-start">
-        <div class="max-w-lg text-base font-normal leading-5">
+      <div class="flex justify-between items-center gap-8">
+        <div class="max-md:w-full max-w-2xl text-base font-normal leading-5">
           I am a highly skilled Full Stack Web Developer with expertise in Vue.js, 
           Laravel, and building interactive web applications. 
           With a strong focus on user experience, 
@@ -239,8 +252,8 @@
           My proactive and detail-oriented approach, along with excellent communication skills, 
           allows me to deliver high-quality work that exceeds client expectations.
         </div>
-        <div class="">
-          <img src="/img/about.png"/>
+        <div class="max-md:hidden">
+          <img class="max-w-max max-h-max" src="/img/about.png"/>
         </div>
       </div>
       <div class="flex w-full justify-center items-center"> 

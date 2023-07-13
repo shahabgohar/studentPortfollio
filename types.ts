@@ -5,3 +5,9 @@ export type Experience = {
     designation: string;
     roleSummary: string;
 }
+
+export type Skill = {
+    firstName: string;
+    lastName: string;
+    description: string;
+}
