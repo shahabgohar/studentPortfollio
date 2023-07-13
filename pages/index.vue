@@ -172,7 +172,8 @@
           <div class="flex flex-col gap-y-2.5">
             <div class="text-3xl font-bold">Backend<br>Development</div>
             <div class="max-w-lg text-base font-normal leading-5">
-              Constantly staying updated with the latest trends and best practices in frontend development, I strive to deliver intuitive and user-friendly interfaces that leave a lasting impact.
+              Backed by extensive experience and a deep understanding of backend development, I am skilled in designing and building robust and scalable server-side applications.
+              Leveraging my problem-solving abilities and attention to detail, I thrive in delivering innovative solutions that meet the unique requirements of each project.
             </div>
             <div class="border border-black"></div>
           </div>
