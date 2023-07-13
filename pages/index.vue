@@ -63,17 +63,17 @@
     {
       title: 'Skype',
       link: 'https://join.skype.com/invite/ve8oN0kKdvXQ',
-      icon: `/static/img/skype.svg`,
+      icon: `/img/skype.svg`,
     },
     {
       title: 'LinkedIn',
       link: 'https://www.linkedin.com/in/shahabgohar/',
-      icon: `/static/img/linkedin.svg`
+      icon: `/img/linkedin.svg`
     },
     {
       title: 'Mail',
       link: 'https://mail.google.com/mail/?view=cm&source=mailto&to=shahab.developer.work@gmail.com',
-      icon: `/static/img/mail.svg`
+      icon: `/img/mail.svg`
     }
   ]
 
@@ -223,7 +223,7 @@
           <div class="uppercase">Software Engineering <span class="ml-5"><i>(2017-2021)</i></span></div>
         </div>
         <div class="">
-          <img src="/static/img/education.svg">
+          <img src="/img/education.svg">
         </div>
       </div>
 
@@ -239,7 +239,7 @@
           allows me to deliver high-quality work that exceeds client expectations.
         </div>
         <div class="">
-          <img src="/static/img/about.png"/>
+          <img src="/img/about.png"/>
         </div>
       </div>
       <div class="flex w-full justify-center items-center"> 

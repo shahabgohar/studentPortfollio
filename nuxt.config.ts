@@ -1,10 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  vite: {
-    optimizeDeps: {
-      exclude: ['class-validator']
-    }
-  },
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/tailwindcss',
