@@ -39,8 +39,8 @@
           team also helped me to improve alot.`
     },
     {
-      startDate: 'Nov2021',
-      endDate: 'May2023',
+      startDate: '2020',
+      endDate: 'Present',
       companyName: 'Freelancer on Fiverr',
       designation: 'Full Stack Web Developer',
       roleSummary: `I happened to come across with some amazing personalities on Fiverr, 
@@ -49,8 +49,8 @@
       hybrid applications for mobiles for them `
     },
     {
-      startDate: 'Nov2021',
-      endDate: 'May2023',
+      startDate: 'July2019',
+      endDate: 'Aug2019',
       companyName: 'Fatima Sugar Mills',
       designation: 'Database Developer Internee',
       roleSummary: `I had the opportunity to work with Oracle tools such as Oracle Report builder,
