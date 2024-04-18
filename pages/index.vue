@@ -1,30 +1,20 @@
 <script setup lang="ts">
-
   import {ref} from 'vue'
-  import {Experience, Skill} from '../types'
+  import {type Experience, type Skill} from '../types'
   import helper from '../utils/helper'
+  import {definePageMeta} from "#imports";
+  import Navbar from "~/components/Navbar.vue";
+  import {useMetaTags} from "~/composeables/useMetaTags";
+  import LinkedIn from "~/components/svg/LinkedIn.vue";
+  import Skype from "~/components/svg/Skype.vue";
+  import Mail from "~/components/svg/Mail.vue";
 
+  definePageMeta({
+    title: 'Portfolio'
+  })
+  useMetaTags()
   const router = useRouter()
   const {scrollToTop} = helper
-
-  const navItems = ref([
-    {
-      name: 'About'
-    },
-    {
-      name: 'Skills'
-    },
-    {
-      name: 'Education'
-    },
-    {
-      name: 'Experience'
-    },
-    {
-      name: 'Blogs',
-      icon: 'mdi:arrow-top-right-bold-box-outline'
-    }
-  ])
 
   const experiences:Ref<Array<Experience>> = ref([
     {
@@ -63,17 +53,17 @@
     {
       title: 'Skype',
       link: 'https://join.skype.com/invite/ve8oN0kKdvXQ',
-      icon: `/img/skype.svg`,
+      icon: Skype,
     },
     {
       title: 'LinkedIn',
       link: 'https://www.linkedin.com/in/shahabgohar/',
-      icon: `/img/linkedin.svg`
+      icon: LinkedIn
     },
     {
       title: 'Mail',
       link: 'https://mail.google.com/mail/?view=cm&source=mailto&to=shahab.developer.work@gmail.com',
-      icon: `/img/mail.svg`
+      icon: Mail
     }
   ]
 
@@ -118,13 +108,7 @@
     }, 500)
   }
 
-  function scrollToElement(elementId: string) {
-    document.getElementById(elementId)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'nearest'
-    })
-  }
+
 
   function downloadResume() {
     window.location.href = 'https://drive.google.com/uc?export=download&id=1NxtqACaPE9odrxxxYvrmsbMWKkXbMjjq'
@@ -134,28 +118,15 @@
 </script>
 
 <template>
-  
-    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10" >
-      <div  v-if="showFloatBtnFlg" class=" max-sm:w-12 max-sm:h-12 animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2 rounded-full flex bg-white drop-shadow-sm items-center justify-center cursor-pointer" @click="scrollToTop">
-        <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10" name="mdi:arrow-up"></Icon>
+
+    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10 bg-secondary text-primary" >
+      <div  v-if="showFloatBtnFlg" class=" max-sm:w-12 max-sm:h-12 bg-secondary animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2  rounded-full flex drop-shadow-sm items-center justify-center cursor-pointer" @click="scrollToTop">
+        <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10 bg-secondary" color="text-primary" name="mdi:arrow-up"></Icon>
     </div>
-      <div class="relative h-screen" id="parent">
+      <div class="relative h-screen  relative" id="parent">
         <div class="w-full h-full top-0 left-0 flex items-center justify-center absolute">
           <!-- navbar -->
-          <nav class="max-md:hidden w-full absolute top-8 left-0 flex items-center justify-end">
-            <ul class="flex space-x-12 items-center justify-end">
-              <li v-for="(item, index) in navItems" :key="index" class="flex items-center justify-center">
-                <a v-if="item.name === 'Blogs'" class="cursor-pointer"  @click.prevent="router.push('/blogs')">{{item.name }}</a>
-                <a v-else class="cursor-pointer"  @click.prevent="scrollToElement(item.name)">{{item.name }}</a>
-                <Icon v-if="item.icon" size="1.2em" :name="item.icon"></Icon>
-              </li>
-            </ul>
-          </nav>
-          <nav class="max-md:flex hidden h-10 w-full absolute top-4 left-0 items-center justify-end">
-            <button class="">
-              <Icon name="mdi:format-list-bulleted"></Icon>
-            </button>
-          </nav>
+          <Navbar></Navbar>
           <!-- hero section -->
           <div class="flex flex-col gap-y-9">
             <div class="flex flex-col gap-2.5">
@@ -169,7 +140,9 @@
             <link-button v-for="(contactOption, index) in contactOptions" :key="index" v-bind="contactOption"></link-button>
           </div>
           </div>
-        
+          <div class="w-full absolute bottom-5  flex items-center justify-center flex-col mt-3">
+            <Icon name="solar:double-alt-arrow-down-line-duotone" class="animate-bounce" size="60px"></Icon>
+          </div>
         </div>
       </div>
 
@@ -187,7 +160,7 @@
         </div>
         <!-- tech stack -->
         <div class="max-md:justify-start w-full flex justify-end h-fit">
-          <div class="max-md:px-6 max-md:py-2 w-full border-2 border-black flex self-end flex-col px-12 py-4">
+          <div class="max-md:px-6 max-md:py-2 w-full border-2 border-primary flex self-end flex-col px-12 py-4">
             <div class="max-md:gap-3 flex flex-col gap-6">
             <div class="max-md:gap-3 flex flex-col gap-6">
               <div class="max-md:text-2xl text-3xl font-bold">Programming Languages</div>
@@ -259,6 +232,6 @@
       <div class="flex w-full justify-center items-center"> 
           <ui-button @click="scrollToTop" :title="'Connect'" :icon-name="'mdi:arrow-up'"></ui-button>
     </div>
-    
+
   </div>
 </template>

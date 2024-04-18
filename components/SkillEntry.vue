@@ -1,9 +1,12 @@
 <script lang="ts" setup>
-import { PropType } from 'vue'
-import {Skill} from '../types'
-const props = defineProps({
-    skill: Object as PropType<Skill>,
-    isLast: Boolean
+import {type Skill} from '../types'
+interface Props {
+  skill?: Skill
+  isLast: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  skill: null,
+  isLast: false
 })
 </script>
 
@@ -13,6 +16,6 @@ const props = defineProps({
             <div class="max-w-lg text-base font-normal leading-5">
               {{ skill?.description }}
             </div>
-            <div v-if="!isLast" class="border border-black"></div>
+            <div v-if="!isLast" class="border border-primary"></div>
           </div>
 </template>

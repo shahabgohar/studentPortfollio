@@ -1,16 +1,12 @@
 <script lang="ts" setup>
-import { Experience } from '../types';
-import {PropType} from 'vue'
-
-const props = defineProps({
-    experience: {
-        type: Object as PropType<Experience>,
-        default: null
-    },
-    isLast: {
-        type: Boolean,
-        default: false
-    }
+import {type Experience } from '../types';
+interface Props {
+  experience?: Experience
+  isLast: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  experience: null,
+  isLast: false
 })
 </script>
 
@@ -22,7 +18,7 @@ const props = defineProps({
         <!-- company & designation -->
         <div class="flex flex-col">
             <div class="font-bold text-2xl">{{experience?.companyName}}</div>
-            <div class="text-blue">{{experience?.designation}}</div>
+            <div class="text-info">{{experience?.designation}}</div>
         </div>
         <!-- Role Summary -->
         <div class="text-base font-normal leading-5">{{experience?.roleSummary }}</div>
@@ -31,11 +27,11 @@ const props = defineProps({
         <div class="max-lg:flex flex-col gap-4 hidden">
             <div class="">
                 <div class="font-bold text-xl">{{experience?.companyName}}</div>
-                <div class="text-blue">{{experience?.designation}}</div>
+                <div class="text-info">{{experience?.designation}}</div>
                 <div class="text-silver font-bold">{{experience?.startDate}}-{{ experience?.endDate }}</div>
             </div>
             <div class="text-base font-normal leading-5">{{experience?.roleSummary }}</div>
         </div>
-        <div v-if="!isLast" class="border border-black border-1"></div>
+        <div v-if="!isLast" class="border border-primary border-1"></div>
     </div>
 </template>
