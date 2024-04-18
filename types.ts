@@ -11,3 +11,10 @@ export type Skill = {
     lastName: string;
     description: string;
 }
+
+export enum Theme {
+    DARK= 'myDark',
+    LIGHT = 'myLight'
+}
+
+export const INJECT_THEME_KEY = 'theme'

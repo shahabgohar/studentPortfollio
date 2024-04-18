@@ -14,6 +14,7 @@
     "@types/node": "^18",
     "daisyui": "^4.10.2",
     "nuxt": "^3.11.2",
+    "sass": "^1.75.0",
     "volar-service-vetur": "latest"
   },
   "dependencies": {

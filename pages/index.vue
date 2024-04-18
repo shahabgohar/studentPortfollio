@@ -5,6 +5,9 @@
   import {definePageMeta} from "#imports";
   import Navbar from "~/components/Navbar.vue";
   import {useMetaTags} from "~/composeables/useMetaTags";
+  import LinkedIn from "~/components/svg/LinkedIn.vue";
+  import Skype from "~/components/svg/Skype.vue";
+  import Mail from "~/components/svg/Mail.vue";
 
   definePageMeta({
     title: 'Portfolio'
@@ -50,17 +53,17 @@
     {
       title: 'Skype',
       link: 'https://join.skype.com/invite/ve8oN0kKdvXQ',
-      icon: `/img/skype.svg`,
+      icon: Skype,
     },
     {
       title: 'LinkedIn',
       link: 'https://www.linkedin.com/in/shahabgohar/',
-      icon: `/img/linkedin.svg`
+      icon: LinkedIn
     },
     {
       title: 'Mail',
       link: 'https://mail.google.com/mail/?view=cm&source=mailto&to=shahab.developer.work@gmail.com',
-      icon: `/img/mail.svg`
+      icon: Mail
     }
   ]
 
@@ -115,12 +118,12 @@
 </script>
 
 <template>
-  
-    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10" >
-      <div  v-if="showFloatBtnFlg" class=" max-sm:w-12 max-sm:h-12 animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2 rounded-full flex bg-white drop-shadow-sm items-center justify-center cursor-pointer" @click="scrollToTop">
-        <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10" name="mdi:arrow-up"></Icon>
+
+    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10 bg-secondary text-primary" >
+      <div  v-if="showFloatBtnFlg" class=" max-sm:w-12 max-sm:h-12 bg-secondary animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2  rounded-full flex drop-shadow-sm items-center justify-center cursor-pointer" @click="scrollToTop">
+        <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10 bg-secondary" color="text-primary" name="mdi:arrow-up"></Icon>
     </div>
-      <div class="relative h-screen" id="parent">
+      <div class="relative h-screen  relative" id="parent">
         <div class="w-full h-full top-0 left-0 flex items-center justify-center absolute">
           <!-- navbar -->
           <Navbar></Navbar>
@@ -137,7 +140,9 @@
             <link-button v-for="(contactOption, index) in contactOptions" :key="index" v-bind="contactOption"></link-button>
           </div>
           </div>
-        
+          <div class="w-full absolute bottom-5  flex items-center justify-center flex-col mt-3">
+            <Icon name="solar:double-alt-arrow-down-line-duotone" class="animate-bounce" size="60px"></Icon>
+          </div>
         </div>
       </div>
 
@@ -155,7 +160,7 @@
         </div>
         <!-- tech stack -->
         <div class="max-md:justify-start w-full flex justify-end h-fit">
-          <div class="max-md:px-6 max-md:py-2 w-full border-2 border-black flex self-end flex-col px-12 py-4">
+          <div class="max-md:px-6 max-md:py-2 w-full border-2 border-primary flex self-end flex-col px-12 py-4">
             <div class="max-md:gap-3 flex flex-col gap-6">
             <div class="max-md:gap-3 flex flex-col gap-6">
               <div class="max-md:text-2xl text-3xl font-bold">Programming Languages</div>
@@ -227,6 +232,6 @@
       <div class="flex w-full justify-center items-center"> 
           <ui-button @click="scrollToTop" :title="'Connect'" :icon-name="'mdi:arrow-up'"></ui-button>
     </div>
-    
+
   </div>
 </template>

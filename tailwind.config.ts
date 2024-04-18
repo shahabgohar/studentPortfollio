@@ -13,14 +13,40 @@ export default <Partial<Config>>{
           '11': '5.437rem',
         },
         colors: {
-          'grey': '#D9D9D9',
-          'silver': '#C2C2C2',
-          'blue': '#565BCF'
+          // 'grey': '#D9D9D9',
+          // 'silver': '#C2C2C2',
+          // 'blue': '#565BCF'
         }
       }
   },
   daisyui: {
-      themes: []
+      darkTheme: 'myDark',
+    base: false,
+    themes: [
+      {
+        myLight: {
+
+          'primary': '#000',
+          'secondary': '#fff',
+          'grey': '#D9D9D9',
+          'silver': '#C2C2C2',
+          'info': '#565BCF',
+          '--primary': '#000',
+          '--secondary': '#fff'
+        }
+      },
+      {
+        myDark: {
+          'primary': '#fff',
+          'secondary': '#000',
+          'grey': '#D9D9D9',
+          'silver': '#C2C2C2',
+          'info': 'rgba(111,114,227,0.9)',
+          '--primary': '#fff',
+          '--secondary': '#000'
+        }
+      }
+    ]
   },
   plugins: [require("daisyui")],
 }

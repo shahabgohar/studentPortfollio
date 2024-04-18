@@ -6,6 +6,9 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxtjs/google-fonts'
   ],
+  css: [
+    '@/assets/main.css'
+  ],
   googleFonts: {
     families: {
       'Roboto Mono': true,

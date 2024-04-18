@@ -16,6 +16,6 @@ const props = withDefaults(defineProps<Props>(), {
             <div class="max-w-lg text-base font-normal leading-5">
               {{ skill?.description }}
             </div>
-            <div v-if="!isLast" class="border border-black"></div>
+            <div v-if="!isLast" class="border border-primary"></div>
           </div>
 </template>
