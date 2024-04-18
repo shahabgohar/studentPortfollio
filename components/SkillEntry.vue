@@ -1,8 +1,7 @@
 <script lang="ts" setup>
-import { PropType } from 'vue'
 import {Skill} from '../types'
 const props = defineProps({
-    skill: Object as PropType<Skill>,
+    skill: Object as Skill,
     isLast: Boolean
 })
 </script>

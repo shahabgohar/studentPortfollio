@@ -12,7 +12,7 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18",
-    "nuxt": "^3.6.1",
+    "nuxt": "^3.11.2",
     "volar-service-vetur": "latest"
   },
   "dependencies": {

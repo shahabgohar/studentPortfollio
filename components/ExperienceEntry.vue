@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { Experience } from '../types';
-import {PropType} from 'vue'
 
 const props = defineProps({
     experience: {
-        type: Object as PropType<Experience>,
+        type: Object as Experience,
         default: null
     },
     isLast: {
