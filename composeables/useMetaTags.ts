@@ -11,6 +11,9 @@ export const useMetaTags = () => {
 
     useHead({
         titleTemplate: (chunk) => getTitle(chunk),
+        htmlAttrs: {
+          lang: 'en'
+        },
         meta: [
             { name: 'description', content: 'Shahab' },
             { property: 'og:title', content: getTitle() },

@@ -51,9 +51,9 @@ function scrollToElement(elementId: string) {
     <ul class="flex space-x-12 items-center justify-end">
 
       <li v-for="(item, index) in navItems" :key="index" class="flex items-center justify-center">
-        <a v-if="item.name === 'Blogs'" class="cursor-pointer"  @click.prevent="router.push('/blogs')">{{item.name }}</a>
+        <router-link v-if="item.name === 'Blogs'" to="/blogs" class="cursor-pointer">{{item.name}}</router-link>
         <a v-else class="cursor-pointer"  @click.prevent="scrollToElement(item.name)">{{item.name }}</a>
-        <Icon v-if="item.icon" size="1.2em" :name="item.icon"></Icon>
+        <Icon v-if="item?.icon" size="1.2em" :name="item?.icon"></Icon>
       </li>
       <li class="flex items-center justify-center">
         <label class="swap swap-rotate">
