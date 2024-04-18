@@ -1,15 +1,12 @@
 <script lang="ts" setup>
-import { Experience } from '../types';
-
-const props = defineProps({
-    experience: {
-        type: Object as Experience,
-        default: null
-    },
-    isLast: {
-        type: Boolean,
-        default: false
-    }
+import {type Experience } from '../types';
+interface Props {
+  experience?: Experience
+  isLast: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  experience: null,
+  isLast: false
 })
 </script>
 

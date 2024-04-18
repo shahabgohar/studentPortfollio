@@ -1,8 +1,12 @@
 <script lang="ts" setup>
-import {Skill} from '../types'
-const props = defineProps({
-    skill: Object as Skill,
-    isLast: Boolean
+import {type Skill} from '../types'
+interface Props {
+  skill?: Skill
+  isLast: boolean
+}
+const props = withDefaults(defineProps<Props>(), {
+  skill: null,
+  isLast: false
 })
 </script>
 

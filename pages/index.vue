@@ -1,30 +1,17 @@
 <script setup lang="ts">
-
   import {ref} from 'vue'
-  import {Experience, Skill} from '../types'
+  import {type Experience, type Skill} from '../types'
   import helper from '../utils/helper'
+  import {definePageMeta} from "#imports";
+  import Navbar from "~/components/Navbar.vue";
+  import {useMetaTags} from "~/composeables/useMetaTags";
 
+  definePageMeta({
+    title: 'Portfolio'
+  })
+  useMetaTags()
   const router = useRouter()
   const {scrollToTop} = helper
-
-  const navItems = ref([
-    {
-      name: 'About'
-    },
-    {
-      name: 'Skills'
-    },
-    {
-      name: 'Education'
-    },
-    {
-      name: 'Experience'
-    },
-    {
-      name: 'Blogs',
-      icon: 'mdi:arrow-top-right-bold-box-outline'
-    }
-  ])
 
   const experiences:Ref<Array<Experience>> = ref([
     {
@@ -118,13 +105,7 @@
     }, 500)
   }
 
-  function scrollToElement(elementId: string) {
-    document.getElementById(elementId)?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-      inline: 'nearest'
-    })
-  }
+
 
   function downloadResume() {
     window.location.href = 'https://drive.google.com/uc?export=download&id=1NxtqACaPE9odrxxxYvrmsbMWKkXbMjjq'
@@ -142,20 +123,7 @@
       <div class="relative h-screen" id="parent">
         <div class="w-full h-full top-0 left-0 flex items-center justify-center absolute">
           <!-- navbar -->
-          <nav class="max-md:hidden w-full absolute top-8 left-0 flex items-center justify-end">
-            <ul class="flex space-x-12 items-center justify-end">
-              <li v-for="(item, index) in navItems" :key="index" class="flex items-center justify-center">
-                <a v-if="item.name === 'Blogs'" class="cursor-pointer"  @click.prevent="router.push('/blogs')">{{item.name }}</a>
-                <a v-else class="cursor-pointer"  @click.prevent="scrollToElement(item.name)">{{item.name }}</a>
-                <Icon v-if="item.icon" size="1.2em" :name="item.icon"></Icon>
-              </li>
-            </ul>
-          </nav>
-          <nav class="max-md:flex hidden h-10 w-full absolute top-4 left-0 items-center justify-end">
-            <button class="">
-              <Icon name="mdi:format-list-bulleted"></Icon>
-            </button>
-          </nav>
+          <Navbar></Navbar>
           <!-- hero section -->
           <div class="flex flex-col gap-y-9">
             <div class="flex flex-col gap-2.5">

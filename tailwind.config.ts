@@ -18,5 +18,9 @@ export default <Partial<Config>>{
           'blue': '#565BCF'
         }
       }
-  }
+  },
+  daisyui: {
+      themes: []
+  },
+  plugins: [require("daisyui")],
 }
