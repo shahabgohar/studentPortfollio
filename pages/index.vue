@@ -210,7 +210,7 @@
           </ul>
         </div>
         <div class="hidden">
-          <img src="/img/education.svg">
+          <img alt="studying" src="/img/education.svg">
         </div>
       </div>
 
