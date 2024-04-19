@@ -12,6 +12,13 @@
   definePageMeta({
     title: 'Portfolio'
   })
+  const { gtag } = useGtag()
+
+  // SSR-ready
+  gtag('event', 'screen_view', {
+    app_name: 'Shahab Portfolio',
+    screen_name: 'Home'
+  })
   useMetaTags()
   const router = useRouter()
   const {scrollToTop} = helper

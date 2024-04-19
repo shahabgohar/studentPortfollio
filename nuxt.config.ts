@@ -4,11 +4,18 @@ export default defineNuxtConfig({
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    'nuxt-gtag'
   ],
   css: [
     '@/assets/main.css'
   ],
+  gtag: {
+    id: process.env?.GOOGLE_TAG_MANAGER_ID || '',
+    config: {
+
+    }
+  },
   googleFonts: {
     families: {
       'Roboto Mono': true,
