@@ -126,7 +126,7 @@
 
 <template>
 
-    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10 bg-secondary text-primary" >
+    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10 bg-secondary text-primary max-w-[1440px] mx-auto" >
       <div  v-if="showFloatBtnFlg" class=" max-sm:w-12 max-sm:h-12 bg-secondary animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2  rounded-full flex drop-shadow-sm items-center justify-center cursor-pointer" @click="scrollToTop">
         <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10 bg-secondary" color="text-primary" name="mdi:arrow-up"></Icon>
     </div>
