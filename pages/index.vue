@@ -185,6 +185,7 @@
                 <svg-sql></svg-sql>
                 <svg-vuetify></svg-vuetify>
                 <svg-quasar></svg-quasar>
+                <svg-tailwind></svg-tailwind>
               </div>
             </div>
           </div>

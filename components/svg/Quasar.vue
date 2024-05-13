@@ -6,6 +6,7 @@ const theme:Ref<Theme> = inject(INJECT_THEME_KEY)
 </script>
 
 <template>
+   <div class="tooltip cursor-pointer" data-tip="Quasar">
     <svg xmlns="http://www.w3.org/2000/svg" width="60" height="61" viewBox="0 0 60 61" fill="none">
   <g clip-path="url(#clip0_15_249)">
     <template v-if="theme === Theme.LIGHT">
@@ -34,5 +35,6 @@ const theme:Ref<Theme> = inject(INJECT_THEME_KEY)
       <rect width="60" height="60" fill="white" transform="translate(0 0.5)"/>
     </clipPath>
   </defs>
-</svg>
+    </svg>
+  </div>
 </template>
