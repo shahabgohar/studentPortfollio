@@ -25,6 +25,20 @@
 
   const experiences:Ref<Array<Experience>> = ref([
     {
+      startDate: 'Jul2024',
+      endDate: 'Present',
+      companyName: 'Esper Solutions',
+      designation: 'Software Engineer',
+      roleSummary: `Working on customising open-source packages according to client needs. Developed Gen AI products for my company.`
+    },
+    {
+      startDate: 'May2023',
+      endDate: 'Feb2024',
+      companyName: 'CTO Gmbh',
+      designation: 'Freelance frontend Developer',
+      roleSummary: `Worked on 2 web projects and 1 hybrid mobile App. I worked on nuxt, tailwindcss, typescript and ionic`
+    },
+    {
       startDate: 'Nov2021',
       endDate: 'May2023',
       companyName: 'Motocle',
@@ -118,7 +132,7 @@
 
 
   function downloadResume() {
-    window.location.href = 'https://drive.google.com/uc?export=download&id=1NxtqACaPE9odrxxxYvrmsbMWKkXbMjjq'
+    window.location.href = 'https://drive.google.com/uc?export=download&id=1pUIfIs_9DQdnjHNHx6SplDCkdvGT8jo9'
   }
 
   onMounted(main)
@@ -174,18 +188,22 @@
               <div class="max-md:gap-6 flex gap-12">
                 <svg-javascript class=""></svg-javascript>
                 <svg-php></svg-php>
+                <svg-sql></svg-sql>
               </div>
             </div>
             <div class="max-md:gap-3 flex flex-col gap-6">
               <div class="max-md:text-2xl text-3xl font-bold">Frameworks</div>
               <div class="max-md:gap-6 flex flex-wrap gap-12">
                 <svg-vue></svg-vue>
+                <svg-react></svg-react>
+                <svg-alpine></svg-alpine>
                 <svg-nuxt></svg-nuxt>
                 <svg-laravel></svg-laravel>
-                <svg-sql></svg-sql>
+                <svg-code-ignitor></svg-code-ignitor>
                 <svg-vuetify></svg-vuetify>
                 <svg-quasar></svg-quasar>
                 <svg-tailwind></svg-tailwind>
+                <svg-bootstrap></svg-bootstrap>
               </div>
             </div>
           </div>
