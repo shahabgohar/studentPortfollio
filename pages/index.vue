@@ -72,14 +72,14 @@ onMounted(main)
 </script>
 
 <template>
-    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10 bg-secondary text-primary max-w-[1440px] mx-auto">
+    <div class="w-full flex flex-col max-sm:px-5 max-md:px-7 max-lg:px-12 px-28 pb-20 gap-y-10 text-primary max-w-[1440px] mx-auto relative z-10">
         <!-- Floating scroll to top button -->
         <div
             v-if="showFloatBtnFlg"
-            class="max-sm:w-12 max-sm:h-12 bg-secondary animate-bounce fixed right-6 bottom-6 w-16 h-16 border-2 rounded-full flex drop-shadow-sm items-center justify-center cursor-pointer z-50"
+            class="max-sm:w-12 max-sm:h-12 cosmic-border-glow animate-bounce fixed right-6 bottom-6 w-16 h-16 rounded-full flex items-center justify-center cursor-pointer z-50 cosmic-glow-hover transition-all duration-300"
             @click="scrollToTop"
         >
-            <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10 bg-secondary" color="text-primary" name="mdi:arrow-up" />
+            <Icon class="max-sm:w-7 max-sm:h-7 w-10 h-10 text-nebula-pink" name="mdi:rocket-launch" />
         </div>
 
         <!-- Hero Section -->
@@ -88,11 +88,11 @@ onMounted(main)
                 <Navbar />
                 <div class="flex flex-col gap-y-9">
                     <div class="flex flex-col gap-2.5">
-                        <div class="max-lg:text-2xl text-3xl font-ibmMono capitalize font-thin">I'm</div>
-                        <div class="max-sm:text-5xl max-lg:text-7xl text-8xl capitalize font-normal leading-11" style="word-spacing: -1rem;">
+                        <div class="max-lg:text-2xl text-3xl font-ibmMono capitalize font-thin text-cosmic-cyan animate-float">I'm</div>
+                        <div class="max-sm:text-5xl max-lg:text-7xl text-8xl capitalize font-normal leading-11 cosmic-text-glow" style="word-spacing: -1rem;">
                             Shahab Gohar
                         </div>
-                        <div class="max-lg:text-lg text-xl font-ibmMono text-info mt-2">
+                        <div class="max-lg:text-lg text-xl font-ibmMono text-nebula-pink mt-2">
                             Full Stack Developer
                         </div>
                     </div>
@@ -108,7 +108,7 @@ onMounted(main)
                     </div>
                 </div>
                 <div class="w-full absolute bottom-5 flex items-center justify-center flex-col mt-3">
-                    <Icon name="solar:double-alt-arrow-down-line-duotone" class="animate-bounce" size="60px" />
+                    <Icon name="solar:double-alt-arrow-down-line-duotone" class="animate-bounce text-nebula-pink" size="60px" />
                 </div>
             </div>
         </div>
@@ -127,29 +127,29 @@ onMounted(main)
             </div>
             <!-- Tech Stack -->
             <div class="max-md:justify-start w-full flex justify-end h-fit">
-                <div class="max-md:px-6 max-md:py-2 w-full border-2 border-primary flex self-end flex-col px-12 py-4">
+                <div class="max-md:px-6 max-md:py-2 w-full cosmic-border-glow rounded-lg flex self-end flex-col px-12 py-4 cosmic-glass">
                     <div class="max-md:gap-3 flex flex-col gap-6">
                         <div class="max-md:gap-3 flex flex-col gap-6">
-                            <div class="max-md:text-2xl text-3xl font-bold">Programming Languages</div>
+                            <div class="max-md:text-2xl text-3xl font-bold cosmic-text-glow">Programming Languages</div>
                             <div class="max-md:gap-6 flex gap-12">
-                                <svg-javascript />
-                                <svg-php />
-                                <svg-sql />
+                                <svg-javascript class="hover:animate-float transition-transform" />
+                                <svg-php class="hover:animate-float transition-transform" />
+                                <svg-sql class="hover:animate-float transition-transform" />
                             </div>
                         </div>
                         <div class="max-md:gap-3 flex flex-col gap-6">
-                            <div class="max-md:text-2xl text-3xl font-bold">Frameworks</div>
+                            <div class="max-md:text-2xl text-3xl font-bold cosmic-text-glow">Frameworks</div>
                             <div class="max-md:gap-6 flex flex-wrap gap-12">
-                                <svg-vue />
-                                <svg-react />
-                                <svg-alpine />
-                                <svg-nuxt />
-                                <svg-laravel />
-                                <svg-code-ignitor />
-                                <svg-vuetify />
-                                <svg-quasar />
-                                <svg-tailwind />
-                                <svg-bootstrap />
+                                <svg-vue class="hover:animate-float transition-transform" />
+                                <svg-react class="hover:animate-float transition-transform" />
+                                <svg-alpine class="hover:animate-float transition-transform" />
+                                <svg-nuxt class="hover:animate-float transition-transform" />
+                                <svg-laravel class="hover:animate-float transition-transform" />
+                                <svg-code-ignitor class="hover:animate-float transition-transform" />
+                                <svg-vuetify class="hover:animate-float transition-transform" />
+                                <svg-quasar class="hover:animate-float transition-transform" />
+                                <svg-tailwind class="hover:animate-float transition-transform" />
+                                <svg-bootstrap class="hover:animate-float transition-transform" />
                             </div>
                         </div>
                     </div>
@@ -195,10 +195,10 @@ onMounted(main)
 
         <!-- About Section -->
         <page-section title="About" />
-        <div class="flex justify-between items-start gap-8">
+        <div class="flex justify-between items-start gap-8 cosmic-glass p-6 rounded-lg">
             <div class="max-md:w-full flex flex-col gap-4">
-                <h3 class="text-xl font-bold text-info">{{ aboutContent.headline }}</h3>
-                <p class="max-w-2xl text-base font-normal leading-6 whitespace-pre-line">
+                <h3 class="text-xl font-bold text-cosmic-cyan cosmic-text-glow">{{ aboutContent.headline }}</h3>
+                <p class="max-w-2xl text-base font-normal leading-6 whitespace-pre-line opacity-90">
                     {{ aboutContent.bio }}
                 </p>
                 <ul class="list-none mt-4 space-y-2">
@@ -207,19 +207,19 @@ onMounted(main)
                         :key="index"
                         class="flex items-center gap-2"
                     >
-                        <Icon name="mdi:check-circle" class="text-info" size="20" />
+                        <Icon name="mdi:star-four-points" class="text-nebula-pink" size="20" />
                         <span>{{ highlight }}</span>
                     </li>
                 </ul>
             </div>
             <div class="max-md:hidden">
-                <img class="max-w-max max-h-max" src="/img/about.png" alt="About Shahab Gohar" />
+                <img class="max-w-max max-h-max rounded-lg cosmic-glow" src="/img/about.png" alt="About Shahab Gohar" />
             </div>
         </div>
 
         <!-- Connect CTA -->
         <div class="flex w-full justify-center items-center mt-10">
-            <ui-button @click="scrollToTop" title="Connect" icon-name="mdi:arrow-up" />
+            <ui-button @click="scrollToTop" title="Connect" icon-name="mdi:rocket-launch" />
         </div>
     </div>
 </template>
