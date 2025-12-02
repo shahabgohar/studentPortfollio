@@ -1,11 +1,141 @@
 :root {
-    --theme: 'light'
+    --theme: 'cosmos';
+    --space-deep: #0c0c1d;
+    --space-purple: #2d1b4e;
+    --space-blue: #1a237e;
+    --nebula-pink: #e91e63;
+    --nebula-purple: #9c27b0;
+    --star-white: #ffffff;
+    --cosmic-cyan: #00bcd4;
 }
 
-@media (prefers-color-scheme: light){
-    --theme: 'light'
+/* Cosmic glow effects */
+.cosmic-glow {
+    box-shadow: 0 0 15px rgba(233, 30, 99, 0.4), 0 0 30px rgba(156, 39, 176, 0.2);
 }
 
-@media (prefers-color-scheme: dark){
-    --theme: 'dark'
+.cosmic-glow-hover:hover {
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.6), 0 0 40px rgba(156, 39, 176, 0.3);
+    transition: box-shadow 0.3s ease;
+}
+
+.cosmic-text-glow {
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5), 0 0 20px rgba(156, 39, 176, 0.3);
+}
+
+/* Cosmic border effects */
+.cosmic-border {
+    border: 1px solid rgba(156, 39, 176, 0.5);
+    background: linear-gradient(135deg, rgba(45, 27, 78, 0.3) 0%, rgba(12, 12, 29, 0.5) 100%);
+}
+
+.cosmic-border-glow {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(135deg, rgba(45, 27, 78, 0.4) 0%, rgba(12, 12, 29, 0.6) 100%) padding-box,
+        linear-gradient(135deg, rgba(233, 30, 99, 0.5), rgba(156, 39, 176, 0.5), rgba(0, 188, 212, 0.5)) border-box;
+}
+
+/* Glass morphism for cosmic theme */
+.cosmic-glass {
+    background: rgba(12, 12, 29, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(156, 39, 176, 0.2);
+}
+
+/* Nebula gradient backgrounds */
+.nebula-bg {
+    background: linear-gradient(135deg,
+        rgba(12, 12, 29, 0.95) 0%,
+        rgba(45, 27, 78, 0.9) 25%,
+        rgba(26, 35, 126, 0.85) 50%,
+        rgba(45, 27, 78, 0.9) 75%,
+        rgba(12, 12, 29, 0.95) 100%);
+    background-size: 200% 200%;
+}
+
+/* Cosmic button styles */
+.cosmic-btn {
+    background: linear-gradient(135deg, rgba(233, 30, 99, 0.2) 0%, rgba(156, 39, 176, 0.2) 100%);
+    border: 1px solid rgba(233, 30, 99, 0.5);
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.cosmic-btn:hover {
+    background: linear-gradient(135deg, rgba(233, 30, 99, 0.4) 0%, rgba(156, 39, 176, 0.4) 100%);
+    box-shadow: 0 0 20px rgba(233, 30, 99, 0.5), 0 0 40px rgba(156, 39, 176, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Cosmic divider */
+.cosmic-divider {
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(233, 30, 99, 0.5) 20%,
+        rgba(156, 39, 176, 0.8) 50%,
+        rgba(0, 188, 212, 0.5) 80%,
+        transparent 100%);
+}
+
+/* Particle container for additional effects */
+.cosmic-particles {
+    position: relative;
+}
+
+.cosmic-particles::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, white, transparent),
+        radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 50px 160px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(1px 1px at 90px 40px, white, transparent),
+        radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.7), transparent);
+    background-size: 200px 200px;
+    animation: cosmic-particles-move 60s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes cosmic-particles-move {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-200px);
+    }
+}
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Selection color for cosmic theme */
+::selection {
+    background: rgba(233, 30, 99, 0.4);
+    color: #ffffff;
+}
+
+/* Custom scrollbar for cosmic theme */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0c0c1d;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #9c27b0 0%, #e91e63 100%);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e91e63 0%, #9c27b0 100%);
 }

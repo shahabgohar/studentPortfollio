@@ -26,10 +26,10 @@ const filteredProjects = computed(() => {
                 v-for="filter in filters"
                 :key="filter"
                 :class="[
-                    'px-4 py-2 text-sm uppercase tracking-wider border-2 border-primary transition-all duration-200',
+                    'px-4 py-2 text-sm uppercase tracking-wider rounded-full transition-all duration-300',
                     activeFilter === filter
-                        ? 'bg-primary text-secondary'
-                        : 'hover:bg-primary/10'
+                        ? 'bg-gradient-to-r from-nebula-pink to-nebula-purple text-white cosmic-glow'
+                        : 'cosmic-border-glow hover:scale-105'
                 ]"
                 @click="activeFilter = filter"
             >
@@ -49,10 +49,10 @@ const filteredProjects = computed(() => {
         <!-- Empty State -->
         <div
             v-if="filteredProjects.length === 0"
-            class="text-center py-12 text-gray-500"
+            class="text-center py-12 text-nebula-purple"
         >
-            <Icon name="mdi:folder-open-outline" size="48" class="mb-4 opacity-50" />
-            <p>No projects found in this category.</p>
+            <Icon name="mdi:planet" size="48" class="mb-4 opacity-50 animate-orbit" />
+            <p class="cosmic-text-glow">No projects found in this category.</p>
         </div>
     </div>
 </template>

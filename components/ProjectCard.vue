@@ -9,19 +9,19 @@ defineProps<Props>()
 </script>
 
 <template>
-    <article class="group relative overflow-hidden border-2 border-primary bg-secondary transition-all duration-300 hover:shadow-lg">
+    <article class="group relative overflow-hidden cosmic-border-glow rounded-lg transition-all duration-300 hover:scale-[1.02] cosmic-glow-hover">
         <!-- Project Image -->
-        <div class="aspect-video overflow-hidden bg-gray-100">
-            <div class="h-full w-full flex items-center justify-center bg-gradient-to-br from-gray-200 to-gray-300">
-                <Icon name="mdi:image-outline" size="48" class="text-gray-400" />
+        <div class="aspect-video overflow-hidden">
+            <div class="h-full w-full flex items-center justify-center bg-gradient-to-br from-space-purple/50 to-space-blue/50">
+                <Icon name="mdi:rocket-launch" size="48" class="text-nebula-pink opacity-60" />
             </div>
         </div>
 
         <!-- Content -->
-        <div class="p-6">
+        <div class="p-6 cosmic-glass">
             <div class="flex items-start justify-between mb-3 gap-2">
-                <h3 class="text-xl font-bold leading-tight">{{ project.title }}</h3>
-                <span class="text-xs uppercase tracking-wider text-info px-2 py-1 border border-info shrink-0">
+                <h3 class="text-xl font-bold leading-tight cosmic-text-glow">{{ project.title }}</h3>
+                <span class="text-xs uppercase tracking-wider text-cosmic-cyan px-2 py-1 border border-cosmic-cyan/50 shrink-0 rounded">
                     {{ project.category }}
                 </span>
             </div>
@@ -35,26 +35,26 @@ defineProps<Props>()
                 <span
                     v-for="tech in project.technologies.slice(0, 4)"
                     :key="tech"
-                    class="px-2 py-1 text-xs border border-primary/50 bg-primary/5"
+                    class="px-2 py-1 text-xs border border-nebula-purple/50 bg-nebula-purple/10 rounded"
                 >
                     {{ tech }}
                 </span>
                 <span
                     v-if="project.technologies.length > 4"
-                    class="px-2 py-1 text-xs border border-primary/50 bg-primary/5"
+                    class="px-2 py-1 text-xs border border-nebula-purple/50 bg-nebula-purple/10 rounded"
                 >
                     +{{ project.technologies.length - 4 }}
                 </span>
             </div>
 
             <!-- Links -->
-            <div class="flex gap-4 pt-2 border-t border-primary/20">
+            <div class="flex gap-4 pt-2 border-t border-nebula-purple/30">
                 <a
                     v-if="project.liveUrl"
                     :href="project.liveUrl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex items-center gap-1.5 text-sm hover:text-info transition-colors"
+                    class="flex items-center gap-1.5 text-sm hover:text-nebula-pink transition-colors"
                 >
                     <Icon name="mdi:open-in-new" size="16" />
                     Live Demo
@@ -64,7 +64,7 @@ defineProps<Props>()
                     :href="project.githubUrl"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="flex items-center gap-1.5 text-sm hover:text-info transition-colors"
+                    class="flex items-center gap-1.5 text-sm hover:text-nebula-pink transition-colors"
                 >
                     <Icon name="mdi:github" size="16" />
                     Source
@@ -75,7 +75,7 @@ defineProps<Props>()
         <!-- Featured Badge -->
         <div
             v-if="project.featured"
-            class="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase bg-info text-white"
+            class="absolute top-3 left-3 px-2 py-1 text-xs font-bold uppercase bg-gradient-to-r from-nebula-pink to-nebula-purple text-white rounded animate-pulse-glow"
         >
             Featured
         </div>
