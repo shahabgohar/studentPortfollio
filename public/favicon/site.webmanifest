@@ -1,19 +1,23 @@
 {
-    "name": "",
-    "short_name": "",
+    "name": "Shahab Gohar - Full Stack Developer",
+    "short_name": "Shahab Portfolio",
+    "description": "Portfolio of Shahab Gohar, Full Stack Web Developer specializing in Vue.js, Nuxt, and Laravel",
+    "start_url": "/",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png?v=0.0.2",
+            "src": "/favicon/android-chrome-192x192.png?v=0.0.2",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "/android-chrome-256x256.png?v=0.0.2",
+            "src": "/favicon/android-chrome-256x256.png?v=0.0.2",
             "sizes": "256x256",
             "type": "image/png"
         }
     ],
-    "theme_color": "#ffffff",
+    "theme_color": "#000000",
     "background_color": "#ffffff",
-    "display": "standalone"
+    "display": "standalone",
+    "orientation": "portrait",
+    "categories": ["portfolio", "developer", "technology"]
 }
