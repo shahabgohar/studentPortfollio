@@ -1,0 +1,6 @@
+# Robots.txt for Shahab Gohar Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://shahabgohar.com/sitemap.xml
