@@ -43,8 +43,7 @@ export type AboutContent = {
 
 export enum Theme {
     DARK = 'myDark',
-    LIGHT = 'myLight',
-    COSMOS = 'myCosmos'
+    LIGHT = 'myLight'
 }
 
 export const INJECT_THEME_KEY = 'theme'

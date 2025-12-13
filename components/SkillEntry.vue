@@ -12,10 +12,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
           <div class="flex flex-col gap-y-2.5">
-            <div class="max-lg:text-xl text-3xl font-bold cosmic-text-glow">{{ skill?.firstName }}<br>{{ skill?.lastName }}</div>
-            <div class="max-w-lg text-base font-normal leading-5 opacity-90">
+            <div class="max-lg:text-xl text-3xl font-bold">{{ skill?.firstName }}<br>{{ skill?.lastName }}</div>
+            <div class="max-w-lg text-base font-normal leading-5">
               {{ skill?.description }}
             </div>
-            <div v-if="!isLast" class="cosmic-divider"></div>
+            <div v-if="!isLast" class="border border-primary"></div>
           </div>
 </template>

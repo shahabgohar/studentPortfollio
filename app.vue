@@ -1,15 +1,14 @@
 <script lang="ts" setup>
 import {INJECT_THEME_KEY, Theme} from "~/types";
-import StarfieldBackground from "~/components/StarfieldBackground.vue";
-import CosmicParticles from "~/components/CosmicParticles.vue";
 
-// Set cosmic theme as default for immersive space experience
-const defaultTheme = ref(Theme.COSMOS)
+const defaultTheme = ref(Theme.LIGHT)
 provide(INJECT_THEME_KEY, defaultTheme)
-
 const main = () => {
-  // Always use cosmos theme for authentic space feel
-  defaultTheme.value = Theme.COSMOS
+  const watchMedia = window.matchMedia("(prefers-color-scheme: dark)")
+  if(watchMedia.matches) {
+    defaultTheme.value = Theme.DARK
+  }
+  watchMedia.addEventListener('change',themeEventHandler)
 }
 
 watch(defaultTheme, (val: Theme) => {
@@ -18,18 +17,25 @@ watch(defaultTheme, (val: Theme) => {
   immediate: true
 })
 
+const themeEventHandler = (e:MediaQueryListEvent) => {
+  if(e.currentTarget?.matches) {
+    defaultTheme.value = Theme.DARK
+
+  } else {
+    defaultTheme.value = Theme.LIGHT
+  }
+}
+
 onMounted(main)
 </script>
 
 <template>
-  <StarfieldBackground />
-  <CosmicParticles />
-  <NuxtPage />
-</template>
 
+  <NuxtPage />
+
+</template>
 <style lang="css">
 body {
   background-color: var(--secondary);
-  min-height: 100vh;
 }
 </style>
