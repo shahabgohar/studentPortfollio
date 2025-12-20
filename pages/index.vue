@@ -132,7 +132,7 @@
 
 
   function downloadResume() {
-    window.location.href = 'https://drive.google.com/uc?export=download&id=1pUIfIs_9DQdnjHNHx6SplDCkdvGT8jo9'
+    window.location.href = 'https://drive.google.com/uc?export=download&id=1opWa3so3SMCEhrpaf1toeKijugCIYlpY'
   }
 
   onMounted(main)
