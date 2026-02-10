@@ -110,7 +110,8 @@
   // Hero animation refs
   const heroGreeting = ref<HTMLElement | null>(null)
   const heroName = ref<HTMLElement | null>(null)
-  const heroButton = ref<HTMLElement | null>(null)
+  const heroTagline = ref<HTMLElement | null>(null)
+  const heroButtons = ref<HTMLElement | null>(null)
   const heroSocials = ref<HTMLElement | null>(null)
   const heroScrollArrow = ref<HTMLElement | null>(null)
 
@@ -124,10 +125,16 @@
   useHeroAnimation({
     greeting: heroGreeting,
     name: heroName,
-    button: heroButton,
+    tagline: heroTagline,
+    buttons: heroButtons,
     socials: heroSocials,
     scrollArrow: heroScrollArrow
   })
+
+  function scrollToSection(id: string) {
+    const el = document.getElementById(id)
+    el?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const showFloatBtnFlg:any = ref(false)
   function main() {
@@ -205,24 +212,65 @@
       <!-- Hero section with Matrix Rain -->
       <div class="relative h-screen" id="parent">
         <MatrixRain />
-        <div class="w-full h-full top-0 left-0 flex items-center justify-center absolute">
+        <div class="w-full h-full top-0 left-0 absolute flex flex-col">
           <!-- navbar -->
           <Navbar></Navbar>
-          <!-- hero section -->
-          <div class="flex flex-col gap-y-9">
-            <div class="flex flex-col gap-2.5">
-              <div ref="heroGreeting" class="max-lg:text-2xl text-3xl font-ibmMono capitalize font-thin">I'm</div>
-              <div ref="heroName" class="max-sm:text-5xl max-lg:text-7xl text-8xl capitalize font-normal leading-11" style="word-spacing: -1rem;">Shahab Gohar</div>
+          <!-- hero content: split layout -->
+          <div class="flex-1 flex items-center max-md:justify-center">
+            <div class="max-md:flex-col max-md:items-center max-md:text-center flex items-center justify-between w-full gap-8">
+              <!-- Left side: text content -->
+              <div class="max-md:items-center flex flex-col gap-y-6">
+                <div class="flex flex-col gap-1">
+                  <div ref="heroGreeting" class="max-lg:text-xl text-2xl font-ibmMono font-thin text-silver">Hello, I'm</div>
+                  <div ref="heroName" class="max-sm:text-5xl max-lg:text-7xl text-8xl capitalize font-bold leading-11" style="word-spacing: -1rem;">Shahab Gohar</div>
+                  <div ref="heroTagline" class="max-lg:text-lg text-xl font-ibmMono text-info mt-2">Software Engineer</div>
+                </div>
+                <div ref="heroButtons">
+                  <ui-button :title="'Download Resume'" @click="downloadResume" :icon-name="'download'"></ui-button>
+                </div>
+                <!-- Social links -->
+                <div ref="heroSocials" class="flex space-x-6 items-center">
+                  <link-button v-for="(contactOption, index) in contactOptions" :key="index" v-bind="contactOption"></link-button>
+                </div>
+              </div>
+              <!-- Right side: visual area for Matrix Rain emphasis -->
+              <div class="max-md:hidden w-1/3 flex items-center justify-center">
+                <div class="text-primary font-mono text-xs leading-tight opacity-30 whitespace-pre select-none" style="font-size: 10px; line-height: 12px;">{{ `
+  ╔══════════════════════╗
+  ║  > shahab.dev        ║
+  ║                      ║
+  ║  const skills = {    ║
+  ║    languages: [      ║
+  ║      'JavaScript',   ║
+  ║      'Python',       ║
+  ║      'PHP', 'SQL'    ║
+  ║    ],                ║
+  ║    frameworks: [     ║
+  ║      'Vue', 'Nuxt',  ║
+  ║      'React',        ║
+  ║      'Laravel'       ║
+  ║    ],                ║
+  ║    automation: [     ║
+  ║      'CI/CD',        ║
+  ║      'Scripting',    ║
+  ║      'Testing'       ║
+  ║    ],                ║
+  ║    passion:          ║
+  ║      'building       ║
+  ║       things that    ║
+  ║       matter'        ║
+  ║  }                   ║
+  ║                      ║
+  ║  > _                 ║
+  ╚══════════════════════╝
+`.trim() }}</div>
+              </div>
             </div>
-          <div ref="heroButton" class="w-full flex items-center justify-center">
-            <ui-button :title="'Download Resume'" @click="downloadResume" :icon-name="'download'"></ui-button>
           </div>
-          <div ref="heroSocials" class="flex w-full space-x-9 justify-center items-center">
-            <link-button v-for="(contactOption, index) in contactOptions" :key="index" v-bind="contactOption"></link-button>
-          </div>
-          </div>
-          <div ref="heroScrollArrow" class="w-full absolute bottom-5  flex items-center justify-center flex-col mt-3">
-            <Icon name="solar:double-alt-arrow-down-line-duotone" size="60px"></Icon>
+          <!-- Scroll indicator -->
+          <div ref="heroScrollArrow" class="w-full flex items-center justify-center flex-col pb-6">
+            <span class="text-xs text-silver font-ibmMono mb-1">Scroll to explore</span>
+            <Icon name="solar:double-alt-arrow-down-line-duotone" size="40px"></Icon>
           </div>
         </div>
       </div>
@@ -247,6 +295,7 @@
               <div class="max-md:text-2xl text-3xl font-bold">Programming Languages</div>
               <div class="max-md:gap-6 flex gap-12">
                 <div class="skill-icon"><svg-javascript></svg-javascript></div>
+                <div class="skill-icon"><svg-python></svg-python></div>
                 <div class="skill-icon"><svg-php></svg-php></div>
                 <div class="skill-icon"><svg-sql></svg-sql></div>
               </div>
@@ -264,6 +313,7 @@
                 <div class="skill-icon"><svg-quasar></svg-quasar></div>
                 <div class="skill-icon"><svg-tailwind></svg-tailwind></div>
                 <div class="skill-icon"><svg-bootstrap></svg-bootstrap></div>
+                <div class="skill-icon"><svg-automation></svg-automation></div>
               </div>
             </div>
           </div>

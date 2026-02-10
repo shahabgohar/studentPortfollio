@@ -4,7 +4,8 @@ import type { Ref } from 'vue'
 export interface HeroRefs {
   greeting: Ref<HTMLElement | null>
   name: Ref<HTMLElement | null>
-  button: Ref<HTMLElement | null>
+  tagline: Ref<HTMLElement | null>
+  buttons: Ref<HTMLElement | null>
   socials: Ref<HTMLElement | null>
   scrollArrow: Ref<HTMLElement | null>
 }
@@ -25,9 +26,21 @@ export function useHeroAnimation(refs: HeroRefs) {
       timeline.to(refs.name.value, { opacity: 1, y: 0, duration: 0.8 }, '-=0.2')
     }
 
-    if (refs.button.value) {
-      gsap.set(refs.button.value, { opacity: 0, y: 20 })
-      timeline.to(refs.button.value, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+    if (refs.tagline.value) {
+      gsap.set(refs.tagline.value, { opacity: 0, y: 15 })
+      timeline.to(refs.tagline.value, { opacity: 1, y: 0, duration: 0.5 }, '-=0.3')
+    }
+
+    if (refs.buttons.value) {
+      const btns = refs.buttons.value.children
+      gsap.set(btns, { opacity: 0, y: 20 })
+      timeline.to(btns, {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.12,
+        ease: 'power2.out'
+      }, '-=0.2')
     }
 
     if (refs.socials.value) {
@@ -45,7 +58,6 @@ export function useHeroAnimation(refs: HeroRefs) {
     if (refs.scrollArrow.value) {
       gsap.set(refs.scrollArrow.value, { opacity: 0 })
       timeline.to(refs.scrollArrow.value, { opacity: 1, duration: 0.5 }, '-=0.1')
-      // Add a continuous bounce after the entrance
       timeline.to(refs.scrollArrow.value, {
         y: -10,
         repeat: -1,
