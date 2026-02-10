@@ -9,3 +9,13 @@
 @media (prefers-color-scheme: dark){
     --theme: 'dark'
 }
+
+.skill-icon {
+  transition: transform 0.3s ease, filter 0.3s ease;
+  cursor: pointer;
+}
+
+.skill-icon:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 8px rgba(86, 91, 207, 0.6));
+}
