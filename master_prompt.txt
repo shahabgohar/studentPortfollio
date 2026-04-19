@@ -1,0 +1,22 @@
+System Input: "Act as an elite Creative Developer and Anime Otaku. Architect a single-page portfolio for a high-end Software Engineer inspired by the aesthetics of Dragon Ball Z and 90s Shonen anime.
+
+Tech Stack Allowed: React (or vanilla JS if preferred), Tailwind CSS, GSAP (with ScrollTrigger), and Studio Freight's Lenis (for buttery smooth scrolling).
+
+1. Core Concept & Aesthetic (The Scouter HUD):
+The website must feel like looking through a Saiyan Scouter or a high-tech mecha targeting system. The main background of the entire site is a fixed <video> element (which will later hold an AI-generated anime sequence). Overlaid on this video is a UI featuring targeting reticles, grid lines, flashing red/green 'recording' dots, and a 'Power Level' counter that dynamically increases as the user scrolls down the page.
+
+2. The Scroll-Bound Video Mechanic (Crucial):
+Write the specific GSAP ScrollTrigger logic to bind the background <video> playback to the user's scroll position. As the user scrolls down, the video scrubs forward; as they scroll up, the video scrubs backward. Use a smoothing function so the video scrubbing feels cinematic and doesn't stutter.
+
+3. Typography & UI Design:
+Use aggressive, italicized, bold typography for main headers (e.g., 'Tungsten' or 'Oswald') to mimic anime episode title cards. Use crisp, green or amber monospaced fonts (e.g., 'VT323' or 'Fira Code') for the technical HUD micro-copy. Box shadows should not be soft; they should be harsh, neon-glowing 'Auras' (Super Saiyan Gold, UI Silver, or Kaioken Red). Include CSS animations for fast-moving 'speed lines' on the edges of the screen during fast scrolling.
+
+4. DBZ-Themed Section Breakdown:
+
+Hero (The Arrival): Massive title card: 'SHAHAB GOHAR // S-RANK SOFTWARE ENGINEER'. A typing effect in the corner reads: 'Scanning target... Tech level: UNMEASURABLE'.
+
+Tech Stack (Transformations/Power-Ups): Do not list skills normally. Present them as transformations. 'Base Form' (HTML/JS/SQL), 'Super Saiyan' (React/Vue/Laravel), and 'Ultra Instinct' (Gen AI Products/Complex System Architecture). As they scroll into view, trigger a GSAP screen-shake effect and a bright aura flash around the text.
+
+Experience (The Sagas/Battles Fought): Present work history (Esper Solutions, CTO Gmbh) like Anime story arcs (e.g., 'The Gen-AI Architecture Saga'). Use angled, skewed geometric cards with glassmorphism to let the background video show through.
+
+Output: Provide the html css js file structure, the GSAP ScrollTrigger code for the video scrubbing, and the CSS for the Scouter HUD overlay and aura glows. Ensure the code is production-ready, heavily commented, and visually explosive."

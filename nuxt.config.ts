@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  components: [
+    {
+      path: '~/components',
+      pathPrefix: false,
+    }
+  ],
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
@@ -20,7 +26,9 @@ export default defineNuxtConfig({
     families: {
       'Roboto Mono': true,
       'monospace': true,
-      'IBM Plex Mono': true
+      'IBM Plex Mono': true,
+      'Oswald': [400, 700, 800, 900],
+      'VT323': true
     },
   }
 })

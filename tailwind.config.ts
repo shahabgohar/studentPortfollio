@@ -6,7 +6,9 @@ export default <Partial<Config>>{
     theme: {
       fontFamily: {
         sans: ['Roboto Mono', 'monospace', 'system-ui', 'sans-serif'],
-        ibmMono: ['IBM Plex Mono', 'monospace', 'system-ui', 'sans-serif']
+        ibmMono: ['IBM Plex Mono', 'monospace', 'system-ui', 'sans-serif'],
+        oswald: ['Oswald', 'Impact', 'sans-serif'],
+        vt323: ['VT323', 'monospace']
       },
       extend: {
         lineHeight: {

@@ -1,0 +1,8 @@
+- generic [ref=e4]:
+  - button "Toggle Nuxt DevTools" [ref=e5] [cursor=pointer]:
+    - img [ref=e6]
+  - generic "Page load time" [ref=e9]:
+    - generic [ref=e10]: "5"
+    - generic [ref=e11]: ms
+  - button "Toggle Component Inspector" [ref=e13] [cursor=pointer]:
+    - img [ref=e14]

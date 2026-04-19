@@ -1,0 +1,252 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]: EPISODE 01
+      - generic [ref=e10]: 戦士
+      - heading "SHAHAB GOHAR" [level=1] [ref=e12]
+      - generic [ref=e13]: _
+      - emphasis [ref=e16]: "\"The Developer Who Surpassed His Limits\""
+      - generic [ref=e18]:
+        - link "LI LinkedIn" [ref=e19] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/shahabgohar/
+          - generic [ref=e20]: LI
+          - generic [ref=e21]: LinkedIn
+        - link "SK Skype" [ref=e22] [cursor=pointer]:
+          - /url: https://join.skype.com/invite/ve8oN0kKdvXQ
+          - generic [ref=e23]: SK
+          - generic [ref=e24]: Skype
+        - link "EM Email" [ref=e25] [cursor=pointer]:
+          - /url: https://mail.google.com/mail/?view=cm&source=mailto&to=shahab.developer.work@gmail.com
+          - generic [ref=e26]: EM
+          - generic [ref=e27]: Email
+    - generic [ref=e30]:
+      - generic [ref=e31]: EPISODE 02
+      - generic [ref=e36]: POWER-UP SEQUENCE
+    - generic [ref=e37]:
+      - generic [ref=e40]: POWER
+      - generic [ref=e41]:
+        - generic [ref=e42]:
+          - generic [ref=e43]:
+            - generic [ref=e44]: STAGE 1
+            - heading "BASE FORM" [level=3] [ref=e45]
+          - generic [ref=e47]:
+            - generic [ref=e48]: HTML
+            - generic [ref=e49]: CSS
+            - generic [ref=e50]: JavaScript
+            - generic [ref=e51]: SQL
+            - generic [ref=e52]: PHP
+            - generic [ref=e53]: Python
+        - generic [ref=e54]:
+          - generic [ref=e55]:
+            - generic [ref=e56]: STAGE 2
+            - heading "SUPER SAIYAN" [level=3] [ref=e57]
+          - generic [ref=e60]:
+            - generic [ref=e61]: Vue
+            - generic [ref=e62]: React
+            - generic [ref=e63]: Nuxt
+            - generic [ref=e64]: Laravel
+            - generic [ref=e65]: Tailwind
+            - generic [ref=e66]: Alpine.js
+            - generic [ref=e67]: Bootstrap
+        - generic [ref=e68]:
+          - generic [ref=e69]:
+            - generic [ref=e70]: STAGE 3
+            - heading "ULTRA INSTINCT" [level=3] [ref=e71]
+          - generic [ref=e73]:
+            - generic [ref=e74]: Gen AI Products
+            - generic [ref=e75]: System Architecture
+            - generic [ref=e76]: Cloud
+            - generic [ref=e77]: Automation
+    - generic [ref=e80]:
+      - generic [ref=e81]: EPISODE 03
+      - generic [ref=e86]: THE BATTLES FOUGHT
+    - generic [ref=e88]:
+      - generic [ref=e92]:
+        - generic [ref=e93]: ARC 05
+        - heading "THE GEN-AI ARCHITECTURE SAGA" [level=3] [ref=e94]
+        - generic [ref=e95]:
+          - generic [ref=e96]: Esper Solutions
+          - generic [ref=e97]: //
+          - generic [ref=e98]: Senior Software Engineer
+        - generic [ref=e99]: 2023 - Present
+        - paragraph [ref=e100]: Architecting Gen AI products, customizing open-source systems, and building AI-powered solutions at enterprise scale.
+        - generic [ref=e101]:
+          - generic [ref=e102]: "POWER GAINED:"
+          - generic [ref=e103]: Gen AI & System Architecture
+      - generic [ref=e106]:
+        - generic [ref=e107]: ARC 04
+        - heading "THE ENTERPRISE SYSTEMS ARC" [level=3] [ref=e108]
+        - generic [ref=e109]:
+          - generic [ref=e110]: CTO GmbH
+          - generic [ref=e111]: //
+          - generic [ref=e112]: Software Engineer
+        - generic [ref=e113]: 2022 - 2023
+        - paragraph [ref=e114]: Built enterprise web projects and hybrid mobile applications using Nuxt, Tailwind, TypeScript, and Ionic.
+        - generic [ref=e115]:
+          - generic [ref=e116]: "POWER GAINED:"
+          - generic [ref=e117]: Enterprise & Mobile Development
+      - generic [ref=e120]:
+        - generic [ref=e121]: ARC 03
+        - heading "THE FULL-STACK TRAINING ARC" [level=3] [ref=e122]
+        - generic [ref=e123]:
+          - generic [ref=e124]: Motocle
+          - generic [ref=e125]: //
+          - generic [ref=e126]: Full Stack Developer
+        - generic [ref=e127]: 2021 - 2022
+        - paragraph [ref=e128]: Frontend development, Laravel API architecture, API integration, and delivering creative solutions to client problems.
+        - generic [ref=e129]:
+          - generic [ref=e130]: "POWER GAINED:"
+          - generic [ref=e131]: Full-Stack Mastery
+      - generic [ref=e134]:
+        - generic [ref=e135]: ARC 02
+        - heading "THE FREELANCE WARRIOR SAGA" [level=3] [ref=e136]
+        - generic [ref=e137]:
+          - generic [ref=e138]: Fiverr
+          - generic [ref=e139]: //
+          - generic [ref=e140]: Freelancer
+        - generic [ref=e141]: 2020 - 2021
+        - paragraph [ref=e142]: Took on diverse client projects, building frontends with Vue.js and hybrid mobile apps with Capacitor.
+        - generic [ref=e143]:
+          - generic [ref=e144]: "POWER GAINED:"
+          - generic [ref=e145]: Client Management & Versatility
+      - generic [ref=e148]:
+        - generic [ref=e149]: ARC 01
+        - heading "THE ORIGIN STORY" [level=3] [ref=e150]
+        - generic [ref=e151]:
+          - generic [ref=e152]: Fatima Sugar Mills
+          - generic [ref=e153]: //
+          - generic [ref=e154]: IT Support
+        - generic [ref=e155]: 2019 - 2020
+        - paragraph [ref=e156]: Learned Oracle tools, SQL, PL/SQL. The spark that ignited the journey into software engineering.
+        - generic [ref=e157]:
+          - generic [ref=e158]: "POWER GAINED:"
+          - generic [ref=e159]: Database & SQL Foundations
+    - generic [ref=e162]:
+      - generic [ref=e163]: EPISODE 04
+      - generic [ref=e168]: THE TRAINING ARC
+    - generic [ref=e170]:
+      - generic [ref=e171]:
+        - generic [ref=e172]:
+          - generic [ref=e173]: TRAINING GROUNDS
+          - heading "COMSATS UNIVERSITY" [level=3] [ref=e174]
+          - generic [ref=e175]: BS Computer Science
+          - generic [ref=e176]: 2017 - 2021
+          - generic [ref=e177]:
+            - paragraph [ref=e178]: Intensive four-year training arc at one of Pakistan's premier technical institutions.
+            - list [ref=e179]:
+              - listitem [ref=e180]: ▸ Won Hackathon 2019 at Air University, Islamabad
+              - listitem [ref=e181]: ▸ Head of Graphics — Softdesk Society
+              - listitem [ref=e182]: ▸ Organized workshops and technical events
+        - generic [ref=e183]:
+          - generic [ref=e184]: SKILLS UNLOCKED
+          - generic [ref=e185]:
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Data Structures & Algorithms
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Object-Oriented Programming
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Database Management (SQL)
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Web Development Fundamentals
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Software Engineering Principles
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Team Collaboration
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Problem Solving
+            - generic:
+              - generic:
+                - generic: ✦
+                - generic: Hackathon Champion (2019)
+      - generic [ref=e188]: "TRAINING COMPLETE. POWER LEVEL: MAXIMUM."
+    - generic [ref=e192]:
+      - generic [ref=e193]: FINAL EPISODE
+      - generic [ref=e198]: THE WARRIOR'S PATH
+    - generic [ref=e200]:
+      - generic [ref=e201]:
+        - generic [ref=e202]:
+          - generic [ref=e204]: CHARACTER PROFILE
+          - generic [ref=e205]:
+            - generic [ref=e206]:
+              - generic [ref=e207]: NAME
+              - generic [ref=e208]: SHAHAB GOHAR
+            - generic [ref=e209]:
+              - generic [ref=e210]: CLASS
+              - generic [ref=e211]: SOFTWARE ENGINEER
+            - generic [ref=e212]:
+              - generic [ref=e213]: ORIGIN
+              - generic [ref=e214]: PAKISTAN
+            - generic [ref=e215]:
+              - generic [ref=e216]: SPECIALIZATION
+              - generic [ref=e217]: FULL-STACK & GEN AI
+            - generic [ref=e218]:
+              - generic [ref=e219]: STATUS
+              - generic [ref=e220]: ACTIVE
+            - generic [ref=e221]: A highly skilled Full Stack Web Developer with expertise in Vue.js, Laravel, and building interactive web applications. Passionate about creating engaging interfaces and delivering high-quality solutions that exceed expectations.
+        - generic [ref=e222]:
+          - generic [ref=e223]: POWER ANALYSIS
+          - generic [ref=e224]:
+            - generic [ref=e225]:
+              - generic [ref=e226]: Frontend
+              - generic [ref=e228]: "95"
+            - generic [ref=e229]:
+              - generic [ref=e230]: Backend
+              - generic [ref=e232]: "85"
+            - generic [ref=e233]:
+              - generic [ref=e234]: AI / ML
+              - generic [ref=e236]: "80"
+            - generic [ref=e237]:
+              - generic [ref=e238]: Architecture
+              - generic [ref=e240]: "85"
+            - generic [ref=e241]:
+              - generic [ref=e242]: DevOps
+              - generic [ref=e244]: "70"
+            - generic [ref=e245]:
+              - generic [ref=e246]: Communication
+              - generic [ref=e248]: "90"
+      - generic [ref=e249]:
+        - generic [ref=e250]: "NEXT SEASON PREVIEW:"
+        - generic [ref=e251]:
+          - link "LinkedIn ▶" [ref=e252] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/shahabgohar/
+            - generic [ref=e253]: LinkedIn
+            - generic [ref=e254]: ▶
+          - link "Skype ▶" [ref=e255] [cursor=pointer]:
+            - /url: https://join.skype.com/invite/ve8oN0kKdvXQ
+            - generic [ref=e256]: Skype
+            - generic [ref=e257]: ▶
+          - link "Email ▶" [ref=e258] [cursor=pointer]:
+            - /url: https://mail.google.com/mail/?view=cm&source=mailto&to=shahab.developer.work@gmail.com
+            - generic [ref=e259]: Email
+            - generic [ref=e260]: ▶
+      - generic [ref=e262]:
+        - generic [ref=e263]: DIRECTED BY — SHAHAB GOHAR
+        - generic [ref=e264]: WRITTEN BY — SHAHAB GOHAR
+        - generic [ref=e265]: PRODUCED BY — YEARS OF HARD WORK
+        - generic [ref=e266]: SPECIAL THANKS — FAMILY, MENTORS, OPEN SOURCE
+        - generic [ref=e267]: TECH STACK — NUXT 3 / VUE 3 / TAILWIND / GSAP
+      - generic [ref=e268]:
+        - generic [ref=e269]: TO BE CONTINUED...
+        - generic [ref=e270]: ▶
+  - generic [ref=e271]:
+    - button "Toggle Nuxt DevTools" [ref=e272] [cursor=pointer]:
+      - img [ref=e273]
+    - generic "Page load time" [ref=e276]:
+      - generic [ref=e277]: "22"
+      - generic [ref=e278]: ms
+    - button "Toggle Component Inspector" [ref=e280] [cursor=pointer]:
+      - img [ref=e281]
