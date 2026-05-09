@@ -21,3 +21,9 @@ logs
 .env
 .env.*
 !.env.example
+
+# Playwright MCP
+.playwright-mcp
+
+# Temp files
+new_prompt.txt

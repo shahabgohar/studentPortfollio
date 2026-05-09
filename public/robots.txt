@@ -1,0 +1,6 @@
+# https://shahabgohar.dev
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://shahabgohar.dev/sitemap.xml

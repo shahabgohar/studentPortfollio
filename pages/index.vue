@@ -7,6 +7,7 @@
   import { definePageMeta } from "#imports"
   import Navbar from "~/components/Navbar.vue"
   import { useMetaTags } from "~/composeables/useMetaTags"
+  import { useJsonLd } from "~/composeables/useJsonLd"
   import { useHeroAnimation } from "~/composeables/useHeroAnimation"
   import LinkedIn from "~/components/svg/LinkedIn.vue"
   import Skype from "~/components/svg/Skype.vue"
@@ -23,6 +24,7 @@
     screen_name: 'Home'
   })
   useMetaTags()
+  useJsonLd()
   const router = useRouter()
   const {scrollToTop} = helper
 
@@ -86,7 +88,7 @@
     },
     {
       title: 'Mail',
-      link: 'https://mail.google.com/mail/?view=cm&source=mailto&to=shahab.developer.work@gmail.com',
+      link: 'mailto:shahab.developer.work@gmail.com',
       icon: Mail
     }
   ]
@@ -275,51 +277,6 @@
         </div>
       </div>
 
-      <!-- skills section -->
-      <page-section title="Skills"></page-section>
-      <div class="max-md:grid-cols-1 max-md:gap-y-10 max-md:gap-x-0 max-lg:gap-x-24 w-full grid grid-cols-2 auto-rows-auto gap-x-32 h-fit ">
-        <!-- topics -->
-        <div ref="skillsGrid" class="max-md:justify-center max-md:gap-10 flex flex-col justify-between">
-          <skill-entry
-          v-for="(skill,index) in skills"
-          :key="index"
-          :skill="skill"
-          :is-last="index + 1 === skills.length">
-          </skill-entry>
-        </div>
-        <!-- tech stack -->
-        <div ref="techStack" class="max-md:justify-start w-full flex justify-end h-fit">
-          <div class="max-md:px-6 max-md:py-2 w-full border-2 border-primary flex self-end flex-col px-12 py-4">
-            <div class="max-md:gap-3 flex flex-col gap-6">
-            <div class="max-md:gap-3 flex flex-col gap-6">
-              <div class="max-md:text-2xl text-3xl font-bold">Programming Languages</div>
-              <div class="max-md:gap-6 flex gap-12">
-                <div class="skill-icon"><svg-javascript></svg-javascript></div>
-                <div class="skill-icon"><svg-python></svg-python></div>
-                <div class="skill-icon"><svg-php></svg-php></div>
-                <div class="skill-icon"><svg-sql></svg-sql></div>
-              </div>
-            </div>
-            <div class="max-md:gap-3 flex flex-col gap-6">
-              <div class="max-md:text-2xl text-3xl font-bold">Frameworks</div>
-              <div class="max-md:gap-6 flex flex-wrap gap-12">
-                <div class="skill-icon"><svg-vue></svg-vue></div>
-                <div class="skill-icon"><svg-react></svg-react></div>
-                <div class="skill-icon"><svg-alpine></svg-alpine></div>
-                <div class="skill-icon"><svg-nuxt></svg-nuxt></div>
-                <div class="skill-icon"><svg-laravel></svg-laravel></div>
-                <div class="skill-icon"><svg-code-ignitor></svg-code-ignitor></div>
-                <div class="skill-icon"><svg-vuetify></svg-vuetify></div>
-                <div class="skill-icon"><svg-quasar></svg-quasar></div>
-                <div class="skill-icon"><svg-tailwind></svg-tailwind></div>
-                <div class="skill-icon"><svg-bootstrap></svg-bootstrap></div>
-                <div class="skill-icon"><svg-automation></svg-automation></div>
-              </div>
-            </div>
-          </div>
-          </div>
-        </div>
-      </div>
       <!-- Experience -->
       <page-section title="Experience"></page-section>
       <div class="max-lg:gap-5 w-full flex flex-col gap-10">

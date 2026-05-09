@@ -9,18 +9,19 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "^1.7.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18",
     "@types/three": "^0.184.0",
     "daisyui": "^4.10.2",
-    "nuxt": "^3.11.2",
-    "nuxt-gtag": "^2.0.5",
+    "nuxt": "^3.21.4",
+    "nuxt-gtag": "^3.0.3",
     "sass": "^1.75.0",
     "volar-service-vetur": "latest"
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.1",
+    "@nuxtjs/sitemap": "^6.1.5",
     "gsap": "^3.14.2",
     "nuxt-icon": "^0.4.2",
     "three": "^0.184.0",

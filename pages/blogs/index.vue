@@ -1,12 +1,14 @@
 <script lang="ts" setup>
 import {definePageMeta} from "#imports";
 import {useMetaTags} from "~/composeables/useMetaTags";
+import {useJsonLd} from "~/composeables/useJsonLd";
 
 definePageMeta({
   title: 'Blogs'
 })
 
 useMetaTags()
+useJsonLd()
 </script>
 
 <template>
