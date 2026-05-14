@@ -28,6 +28,9 @@ export default defineNuxtConfig({
     },
     '/blogs': {
       sitemap: { changefreq: 'weekly', priority: 0.8 }
+    },
+    '/blogs/ai-engineering-revolution': {
+      sitemap: { changefreq: 'monthly', priority: 0.7 }
     }
   },
 
@@ -43,9 +46,7 @@ export default defineNuxtConfig({
         { name: 'geo.region', content: 'PK' },
         { name: 'geo.placename', content: 'Pakistan' },
       ],
-      link: [
-        { rel: 'canonical', href: 'https://shahabgohar.dev' }
-      ]
+      link: []
     }
   },
 

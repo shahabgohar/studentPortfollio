@@ -3,11 +3,15 @@
 }
 
 @media (prefers-color-scheme: light){
-    --theme: 'light'
+    :root {
+        --theme: 'light'
+    }
 }
 
 @media (prefers-color-scheme: dark){
-    --theme: 'dark'
+    :root {
+        --theme: 'dark'
+    }
 }
 
 .skill-icon {
