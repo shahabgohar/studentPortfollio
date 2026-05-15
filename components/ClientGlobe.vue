@@ -5,6 +5,7 @@ import { INJECT_THEME_KEY, Theme } from '~/types'
 const theme = inject<Ref<Theme>>(INJECT_THEME_KEY)
 const containerRef = ref<HTMLElement | null>(null)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
+const isGlobeDragging = ref(false)
 
 const countries = [
   { code: 'USA', label: 'United States', lat: 39, lon: -98 },
@@ -17,6 +18,20 @@ const countries = [
   { code: 'MT', label: 'Malta', lat: 35.9, lon: 14.4 }
 ]
 
+type WorldGeometry =
+  | {
+      type: 'Polygon'
+      coordinates: number[][][]
+    }
+  | {
+      type: 'MultiPolygon'
+      coordinates: number[][][][]
+    }
+
+type WorldOutlinePayload = {
+  geometries: WorldGeometry[]
+}
+
 const isDark = computed(() => theme?.value === Theme.DARK)
 
 let renderer: THREE.WebGLRenderer | null = null
@@ -26,6 +41,8 @@ let globeGroup: THREE.Group | null = null
 let THREE: typeof import('three') | null = null
 let animationFrame = 0
 let resizeObserver: ResizeObserver | null = null
+let lastPointerX = 0
+let lastPointerY = 0
 const markerMeshes: THREE.Mesh[] = []
 
 function latLonToVector3(lat: number, lon: number, radius: number) {
@@ -62,6 +79,12 @@ function updateThemeColors() {
     globe.material.emissiveIntensity = isDark.value ? 0.22 : 0.08
   }
 
+  const worldOutline = globeGroup.getObjectByName('world-outline') as THREE.LineSegments | undefined
+  if (worldOutline?.material instanceof THREE.LineBasicMaterial) {
+    worldOutline.material.color.set(isDark.value ? '#8ea2ff' : '#3f46b5')
+    worldOutline.material.opacity = isDark.value ? 0.72 : 0.5
+  }
+
   markerMeshes.forEach((marker) => {
     if (marker.material instanceof THREE.MeshBasicMaterial) {
       marker.material.color.set('#565BCF')
@@ -69,7 +92,50 @@ function updateThemeColors() {
   })
 }
 
-function setupScene() {
+async function loadWorldOutline() {
+  if (!THREE) return null
+
+  const response = await fetch('/data/world-outline-110m.json')
+  const outline = (await response.json()) as WorldOutlinePayload
+  const vertices: number[] = []
+  const outlineRadius = 2.035
+
+  const addRing = (ring: number[][]) => {
+    for (let index = 0; index < ring.length - 1; index += 1) {
+      const start = ring[index]
+      const end = ring[index + 1]
+      const startPoint = latLonToVector3(start[1], start[0], outlineRadius)
+      const endPoint = latLonToVector3(end[1], end[0], outlineRadius)
+
+      if (!startPoint || !endPoint) continue
+      vertices.push(startPoint.x, startPoint.y, startPoint.z, endPoint.x, endPoint.y, endPoint.z)
+    }
+  }
+
+  outline.geometries.forEach((geometry) => {
+    if (geometry.type === 'Polygon') {
+      geometry.coordinates.forEach(addRing)
+      return
+    }
+
+    geometry.coordinates.forEach((polygon) => polygon.forEach(addRing))
+  })
+
+  const geometry = new THREE.BufferGeometry()
+  geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3))
+
+  const material = new THREE.LineBasicMaterial({
+    color: isDark.value ? '#8ea2ff' : '#3f46b5',
+    transparent: true,
+    opacity: isDark.value ? 0.72 : 0.5
+  })
+
+  const worldOutline = new THREE.LineSegments(geometry, material)
+  worldOutline.name = 'world-outline'
+  return worldOutline
+}
+
+async function setupScene() {
   const canvas = canvasRef.value
   const container = containerRef.value
   if (!THREE || !canvas || !container) return
@@ -86,6 +152,7 @@ function setupScene() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 
   globeGroup = new THREE.Group()
+  globeGroup.rotation.y = -0.75
   scene.add(globeGroup)
 
   const globe = new THREE.Mesh(
@@ -95,16 +162,10 @@ function setupScene() {
   globe.name = 'globe'
   globeGroup.add(globe)
 
-  const wireframe = new THREE.Mesh(
-    new THREE.SphereGeometry(2.012, 36, 18),
-    new THREE.MeshBasicMaterial({
-      color: '#565BCF',
-      wireframe: true,
-      transparent: true,
-      opacity: 0.18
-    })
-  )
-  globeGroup.add(wireframe)
+  const worldOutline = await loadWorldOutline()
+  if (worldOutline) {
+    globeGroup.add(worldOutline)
+  }
 
   const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(2.14, 72, 72),
@@ -117,17 +178,32 @@ function setupScene() {
   )
   globeGroup.add(atmosphere)
 
-  const markerGeometry = new THREE.SphereGeometry(0.055, 16, 16)
+  const markerGeometry = new THREE.SphereGeometry(0.075, 20, 20)
+  const markerRingGeometry = new THREE.TorusGeometry(0.13, 0.012, 8, 28)
+  const markerMaterial = new THREE.MeshBasicMaterial({ color: '#565BCF' })
+  const markerRingMaterial = new THREE.MeshBasicMaterial({
+    color: '#565BCF',
+    transparent: true,
+    opacity: 0.68
+  })
+
   countries.forEach((country) => {
     const position = latLonToVector3(country.lat, country.lon, 2.08)
     if (!position) return
     const marker = new THREE.Mesh(
       markerGeometry,
-      new THREE.MeshBasicMaterial({ color: '#565BCF' })
+      markerMaterial
     )
     marker.position.copy(position)
+
+    const markerRing = new THREE.Mesh(markerRingGeometry, markerRingMaterial)
+    markerRing.position.copy(position)
+    markerRing.lookAt(position.clone().multiplyScalar(2))
+
     markerMeshes.push(marker)
+    markerMeshes.push(markerRing)
     globeGroup?.add(marker)
+    globeGroup?.add(markerRing)
   })
 
   const ambientLight = new THREE.AmbientLight(0xffffff, 1.8)
@@ -158,11 +234,45 @@ function handleResize() {
   camera.updateProjectionMatrix()
 }
 
+function handlePointerDown(event: PointerEvent) {
+  const canvas = canvasRef.value
+  if (!canvas) return
+
+  isGlobeDragging.value = true
+  lastPointerX = event.clientX
+  lastPointerY = event.clientY
+  canvas.setPointerCapture(event.pointerId)
+}
+
+function handlePointerMove(event: PointerEvent) {
+  if (!isGlobeDragging.value || !globeGroup) return
+
+  const deltaX = event.clientX - lastPointerX
+  const deltaY = event.clientY - lastPointerY
+
+  globeGroup.rotation.y += deltaX * 0.006
+  globeGroup.rotation.x += deltaY * 0.006
+
+  lastPointerX = event.clientX
+  lastPointerY = event.clientY
+}
+
+function handlePointerUp(event: PointerEvent) {
+  const canvas = canvasRef.value
+  if (canvas?.hasPointerCapture(event.pointerId)) {
+    canvas.releasePointerCapture(event.pointerId)
+  }
+
+  isGlobeDragging.value = false
+}
+
 function animate() {
   if (!renderer || !scene || !camera || !globeGroup) return
 
-  globeGroup.rotation.y += 0.0035
-  globeGroup.rotation.x = -0.12
+  if (!isGlobeDragging.value) {
+    globeGroup.rotation.y += 0.0035
+  }
+
   renderer.render(scene, camera)
   animationFrame = requestAnimationFrame(animate)
 }
@@ -171,13 +281,25 @@ function cleanup() {
   cancelAnimationFrame(animationFrame)
   resizeObserver?.disconnect()
   renderer?.dispose()
+  const disposedGeometries = new Set<THREE.BufferGeometry>()
+  const disposedMaterials = new Set<THREE.Material>()
+
   scene?.traverse((object) => {
-    if (THREE && object instanceof THREE.Mesh) {
-      object.geometry.dispose()
+    if (THREE && (object instanceof THREE.Mesh || object instanceof THREE.LineSegments)) {
+      if (!disposedGeometries.has(object.geometry)) {
+        object.geometry.dispose()
+        disposedGeometries.add(object.geometry)
+      }
+
       if (Array.isArray(object.material)) {
-        object.material.forEach((material) => material.dispose())
-      } else {
+        object.material.forEach((material) => {
+          if (disposedMaterials.has(material)) return
+          material.dispose()
+          disposedMaterials.add(material)
+        })
+      } else if (!disposedMaterials.has(object.material)) {
         object.material.dispose()
+        disposedMaterials.add(object.material)
       }
     }
   })
@@ -192,14 +314,23 @@ watch(isDark, updateThemeColors)
 
 onMounted(async () => {
   THREE = await import('three')
-  setupScene()
+  await setupScene()
 })
 onBeforeUnmount(cleanup)
 </script>
 
 <template>
   <div ref="containerRef" class="relative h-[300px] w-full overflow-hidden sm:h-[340px]">
-    <canvas ref="canvasRef" class="absolute inset-0 h-full w-full" aria-label="3D globe showing client countries"></canvas>
+    <canvas
+      ref="canvasRef"
+      class="absolute inset-0 h-full w-full touch-none cursor-grab active:cursor-grabbing"
+      aria-label="Interactive 3D globe showing client countries"
+      @pointerdown="handlePointerDown"
+      @pointermove="handlePointerMove"
+      @pointerup="handlePointerUp"
+      @pointercancel="handlePointerUp"
+      @lostpointercapture="isGlobeDragging = false"
+    ></canvas>
 
     <div class="pointer-events-none absolute inset-x-0 bottom-4 flex flex-wrap justify-center gap-2 px-3">
       <span
