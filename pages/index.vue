@@ -3,6 +3,7 @@ import { computed, inject, nextTick, onBeforeUnmount, onMounted, ref, type Ref }
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { definePageMeta } from '#imports'
+import ClientGlobe from '~/components/ClientGlobe.vue'
 import MatrixRain from '~/components/MatrixRain.vue'
 import { useMetaTags } from '~/composeables/useMetaTags'
 import { useJsonLd } from '~/composeables/useJsonLd'
@@ -25,10 +26,90 @@ const cursorRef = ref<HTMLElement | null>(null)
 const isLightTheme = computed(() => theme?.value === Theme.LIGHT)
 
 const metrics = [
-  { value: '5+', label: 'years building web products' },
+  { value: '35+', label: 'freelance client reviews' },
+  { value: '5.0', label: 'average Fiverr rating' },
   { value: 'AI', label: 'features, automation, and workflows' },
-  { value: 'Vue', label: 'Nuxt, React, Laravel, Python' },
-  { value: 'Remote', label: 'available for global teams' }
+  { value: 'Remote', label: 'trusted by global clients' }
+]
+
+const reviewStats = [
+  { value: '35+', label: 'client reviews collected from Fiverr and direct work' },
+  { value: '10', label: 'countries represented across freelance clients' },
+  { value: '5.0', label: 'public Fiverr rating across 34 platform reviews' },
+  { value: '15+', label: 'reviews with delivery speed or communication praise' }
+]
+
+const clientCountries = [
+  'United States',
+  'United Kingdom',
+  'Germany',
+  'Canada',
+  'Spain',
+  'Nigeria',
+  'Belgium',
+  'Malta'
+]
+
+const proofCategories = [
+  {
+    title: 'Clean code',
+    text: 'Clients repeatedly mention clean structure, readable implementation, and bug-free delivery.',
+    icon: 'mdi:code-braces'
+  },
+  {
+    title: 'Fast delivery',
+    text: 'Multiple reviews highlight quick turnaround, responsive communication, and work completed ahead of expectations.',
+    icon: 'mdi:flash-outline'
+  },
+  {
+    title: 'Business workflows',
+    text: 'Custom quote-to-order-to-invoice flows, SuiteCRM fixes, internal tools, and automation-focused delivery.',
+    icon: 'mdi:source-branch-sync'
+  },
+  {
+    title: 'Repeat clients',
+    text: 'Several buyers returned for additional frontend, full-stack, and cross-platform development work.',
+    icon: 'mdi:account-heart-outline'
+  }
+]
+
+const testimonials = [
+  {
+    client: 'devin_lester',
+    country: 'United Kingdom',
+    type: 'Frontend / Full-stack',
+    quote: 'Clean code, strong problem-solving, no bugs, and work that went beyond expectations.'
+  },
+  {
+    client: 'mattjohnsen',
+    country: 'United States',
+    type: 'Vue / JavaScript',
+    quote: 'Clear communication, solid Vue and JavaScript skills, fast delivery, and clean commented code.'
+  },
+  {
+    client: 'user90513046',
+    country: 'Canada',
+    type: 'Responsive web app',
+    quote: 'Knowledgeable, efficient, easy to work with, and delivered clean responsive code.'
+  },
+  {
+    client: 'weissclick',
+    country: 'Germany',
+    type: 'Cross-platform development',
+    quote: 'Fast developer with good code structure and repeat-order quality.'
+  },
+  {
+    client: 'kininvestments',
+    country: 'United States',
+    type: 'SuiteCRM automation',
+    quote: 'Customized quote-to-order-to-invoice flow with product line item change detection and hosting fixes.'
+  },
+  {
+    client: 'espressodaily',
+    country: 'United States',
+    type: 'Full-stack web app',
+    quote: 'Provided a demo before quoting, communicated well, and handled revisions quickly.'
+  }
 ]
 
 const services = [
@@ -239,6 +320,7 @@ onBeforeUnmount(() => {
           </button>
           <div class="hidden items-center gap-6 text-primary/70 md:flex">
             <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
+            <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
             <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
             <button class="transition hover:text-info" @click="scrollToSection('Process')">Process</button>
             <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
@@ -346,6 +428,87 @@ onBeforeUnmount(() => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="Proof" class="border-y border-primary/10 bg-primary/[0.025]">
+      <div class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
+        <div class="portfolio-reveal grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+          <div>
+            <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Client proof</p>
+            <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">
+              Freelance clients already trusted the work.
+            </h2>
+          </div>
+          <p class="text-lg leading-8 text-primary/70">
+            Before a client hires, they want to know three things: Can you communicate clearly, deliver fast, and write code that survives real use? The reviews answer that directly.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div
+            v-for="stat in reviewStats"
+            :key="stat.value + stat.label"
+            class="portfolio-reveal border border-primary/10 bg-secondary p-5"
+          >
+            <p class="font-oswald text-4xl font-black text-info">{{ stat.value }}</p>
+            <p class="mt-2 text-sm leading-6 text-primary/65">{{ stat.label }}</p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
+          <div class="portfolio-reveal overflow-hidden border border-primary/10 bg-secondary p-5">
+            <div class="flex items-center justify-between gap-4">
+              <div>
+                <p class="font-ibmMono text-xs uppercase tracking-[0.2em] text-primary/45">Global clients</p>
+                <p class="mt-2 text-sm leading-6 text-primary/65">Freelance work across North America, Europe, Africa, and Malta.</p>
+              </div>
+              <Icon name="mdi:earth" class="text-info" size="28" />
+            </div>
+
+            <ClientGlobe class="mt-6" />
+
+            <div class="mt-8 flex flex-wrap gap-2">
+              <span
+                v-for="country in clientCountries"
+                :key="country"
+                class="border border-primary/10 px-3 py-2 text-xs text-primary/70"
+              >
+                {{ country }}
+              </span>
+            </div>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-2">
+            <article
+              v-for="category in proofCategories"
+              :key="category.title"
+              class="portfolio-reveal border border-primary/10 bg-secondary p-5"
+            >
+              <Icon :name="category.icon" class="text-info" size="28" />
+              <h3 class="mt-4 text-xl font-bold">{{ category.title }}</h3>
+              <p class="mt-3 text-sm leading-6 text-primary/65">{{ category.text }}</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-4 lg:grid-cols-3">
+          <article
+            v-for="review in testimonials"
+            :key="review.client + review.type"
+            class="portfolio-reveal group border border-primary/10 bg-secondary p-5 transition hover:-translate-y-1 hover:border-info/70 hover:bg-info/5"
+          >
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold">{{ review.client }}</h3>
+                <p class="mt-1 font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">{{ review.country }}</p>
+              </div>
+              <span class="border border-info/40 px-2 py-1 font-ibmMono text-xs text-info">5-star</span>
+            </div>
+            <p class="mt-4 text-sm font-semibold text-info">{{ review.type }}</p>
+            <p class="mt-3 leading-7 text-primary/70">"{{ review.quote }}"</p>
+          </article>
         </div>
       </div>
     </section>
