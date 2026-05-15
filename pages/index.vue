@@ -28,7 +28,8 @@ const isLightTheme = computed(() => theme?.value === Theme.LIGHT)
 const metrics = [
   { value: '35+', label: 'freelance client reviews' },
   { value: '5.0', label: 'average Fiverr rating' },
-  { value: 'AI', label: 'features, automation, and workflows' },
+  { value: 'SuiteCRM', label: 'plugins, CRM flows, and integrations' },
+  { value: 'AI', label: 'automation and applied AI systems' },
   { value: 'Remote', label: 'trusted by global clients' }
 ]
 
@@ -133,6 +134,27 @@ const services = [
     accent: '#f59e0b',
     summary: 'Remove repetitive manual work by connecting data, tools, and workflows into dependable automated systems.',
     points: ['Internal tools', 'Workflow integrations', 'Reporting and process cleanup']
+  }
+]
+
+const suiteCrmProducts = [
+  {
+    title: 'AI Dashlet Generator',
+    label: 'SuiteCRM AI reporting add-on',
+    url: 'https://store.suitecrm.com/addons/ai-dashlet-generator',
+    icon: 'mdi:chart-box-plus-outline',
+    summary:
+      'An AI-powered SuiteCRM module that helps teams auto-generate useful dashboard dashlets, visualize CRM data, and move faster without wrestling with complex reports.',
+    highlights: ['AI-generated dashlets', 'Charts for CRM modules', 'Goals, filters, and dashboard insights']
+  },
+  {
+    title: 'Business Card Reader',
+    label: 'SuiteCRM lead capture add-on',
+    url: 'https://store.suitecrm.com/addons/business-card-reader',
+    icon: 'mdi:card-account-details-outline',
+    summary:
+      'A SuiteCRM plugin for instantly capturing business card data, creating contacts or leads, storing card images, and keeping event/conference follow-up organized.',
+    highlights: ['OCR and QR scanning', 'Lead/contact creation', 'Campaign-aware import flow']
   }
 ]
 
@@ -321,6 +343,7 @@ onBeforeUnmount(() => {
           <div class="hidden items-center gap-6 text-primary/70 md:flex">
             <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
             <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
+            <button class="transition hover:text-info" @click="scrollToSection('Products')">Products</button>
             <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
             <button class="transition hover:text-info" @click="scrollToSection('Process')">Process</button>
             <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
@@ -345,15 +368,15 @@ onBeforeUnmount(() => {
         <div class="grid flex-1 gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
           <div>
             <p class="hero-kicker font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-              AI product engineer / full-stack developer
+              SuiteCRM expert / AI automation / applied AI engineer
             </p>
             <h1 class="mt-5 max-w-5xl font-oswald text-5xl font-black uppercase leading-none sm:text-7xl lg:text-8xl">
               <span class="hero-title-line block">I build </span>
-              <span class="hero-title-line block text-info">client-winning </span>
-              <span class="hero-title-line block">web products.</span>
+              <span class="hero-title-line block text-info">AI-powered </span>
+              <span class="hero-title-line block">CRM systems.</span>
             </h1>
             <p class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl">
-              I help founders and teams turn AI ideas, SaaS workflows, and business automation problems into polished products that feel fast, credible, and ready for real users.
+              I help teams turn SuiteCRM, business automation, and applied AI ideas into polished products: CRM plugins, quote-to-invoice flows, AI dashboards, lead capture tools, and full-stack systems ready for real users.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -395,35 +418,35 @@ onBeforeUnmount(() => {
           <div class="portfolio-reveal relative">
             <div class="border border-primary/10 bg-secondary/80 p-4 shadow-2xl backdrop-blur">
               <div class="flex items-center justify-between border-b border-primary/10 pb-3 font-ibmMono text-xs text-primary/55">
-                <span>project-readiness.ts</span>
+                <span>crm-ai-readiness.ts</span>
                 <span class="text-[#22c55e]">live</span>
               </div>
               <div class="grid gap-4 py-5">
                 <div class="grid grid-cols-[90px_1fr] gap-4">
                   <span class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">Problem</span>
-                  <p class="text-sm leading-6 text-primary/74">A business has a workflow that costs time, loses leads, or slows customer response.</p>
+                  <p class="text-sm leading-6 text-primary/74">A business has CRM data, manual follow-ups, reporting gaps, or sales workflows that cost time.</p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
                   <span class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">Build</span>
-                  <p class="text-sm leading-6 text-primary/74">Nuxt UI, Laravel/Python backend, AI workflow, analytics, and production-ready handoff.</p>
+                  <p class="text-sm leading-6 text-primary/74">SuiteCRM customization, Nuxt UI, Laravel/Python backend, AI workflow, automation, and analytics.</p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
                   <span class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">Result</span>
-                  <p class="text-sm leading-6 text-primary/74">A product clients can understand, trust, and use without needing a technical explanation.</p>
+                  <p class="text-sm leading-6 text-primary/74">A CRM or AI-enabled product clients can understand, trust, and use without technical friction.</p>
                 </div>
               </div>
               <div class="grid grid-cols-3 gap-3 border-t border-primary/10 pt-4">
                 <div class="bg-[#22c55e]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#22c55e]">UX</p>
-                  <p class="text-xs text-primary/55">clear flows</p>
+                  <p class="font-oswald text-2xl font-black text-[#22c55e]">CRM</p>
+                  <p class="text-xs text-primary/55">SuiteCRM flows</p>
                 </div>
                 <div class="bg-[#38bdf8]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#38bdf8]">API</p>
-                  <p class="text-xs text-primary/55">stable logic</p>
+                  <p class="font-oswald text-2xl font-black text-[#38bdf8]">AUTO</p>
+                  <p class="text-xs text-primary/55">less manual work</p>
                 </div>
                 <div class="bg-[#f59e0b]/10 p-3">
                   <p class="font-oswald text-2xl font-black text-[#f59e0b]">AI</p>
-                  <p class="text-xs text-primary/55">useful output</p>
+                  <p class="text-xs text-primary/55">applied systems</p>
                 </div>
               </div>
             </div>
@@ -510,6 +533,70 @@ onBeforeUnmount(() => {
             <p class="mt-3 leading-7 text-primary/70">"{{ review.quote }}"</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section id="Products" class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
+      <div class="portfolio-reveal grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+        <div>
+          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">SuiteCRM products</p>
+          <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">
+            I also build published CRM plugins.
+          </h2>
+        </div>
+        <div class="border-l-2 border-info pl-5">
+          <p class="text-lg leading-8 text-primary/72">
+            If you use SuiteCRM, I can help you get these modules installed, customized, and supported. Ask me directly for a discounted lifetime access rate before purchasing.
+          </p>
+        </div>
+      </div>
+
+      <div class="mt-10 grid gap-5 lg:grid-cols-2">
+        <article
+          v-for="product in suiteCrmProducts"
+          :key="product.title"
+          class="portfolio-reveal group border border-primary/10 bg-primary/[0.03] p-6 transition hover:-translate-y-1 hover:border-info/70 hover:bg-info/5"
+        >
+          <div class="flex items-start justify-between gap-6">
+            <div>
+              <p class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45">{{ product.label }}</p>
+              <h3 class="mt-3 text-3xl font-bold leading-tight">{{ product.title }}</h3>
+            </div>
+            <Icon :name="product.icon" class="text-info" size="36" />
+          </div>
+
+          <p class="mt-5 leading-7 text-primary/70">{{ product.summary }}</p>
+
+          <div class="mt-6 grid gap-3">
+            <div
+              v-for="highlight in product.highlights"
+              :key="highlight"
+              class="flex items-center gap-3 text-sm text-primary/70"
+            >
+              <span class="h-2 w-2 bg-info"></span>
+              {{ highlight }}
+            </div>
+          </div>
+
+          <div class="mt-7 flex flex-wrap gap-3">
+            <a
+              :href="product.url"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center gap-2 border border-info px-4 py-3 font-ibmMono text-sm text-info transition hover:bg-info hover:text-secondary"
+            >
+              View on SuiteCRM Store
+              <Icon name="mdi:arrow-top-right" size="18" />
+            </a>
+            <a
+              href="mailto:shahab.developer.work@gmail.com?subject=SuiteCRM%20plugin%20lifetime%20discount"
+              class="inline-flex items-center gap-2 bg-info px-4 py-3 font-ibmMono text-sm font-bold text-secondary transition hover:opacity-90"
+            >
+              Ask for lifetime discount
+              <Icon name="mdi:tag-outline" size="18" />
+            </a>
+          </div>
+        </article>
       </div>
     </section>
 
