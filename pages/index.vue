@@ -1,276 +1,333 @@
 <script setup lang="ts">
-import { computed, inject, nextTick, onBeforeUnmount, onMounted, ref, type Ref } from 'vue'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { definePageMeta } from '#imports'
-import ClientGlobe from '~/components/ClientGlobe.vue'
-import MatrixRain from '~/components/MatrixRain.vue'
-import { useMetaTags } from '~/composeables/useMetaTags'
-import { useJsonLd } from '~/composeables/useJsonLd'
-import { INJECT_THEME_KEY, Theme } from '~/types'
+import { definePageMeta } from "#imports";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {
+  computed,
+  inject,
+  nextTick,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  type Ref,
+} from "vue";
+import ClientGlobe from "~/components/ClientGlobe.vue";
+import MatrixRain from "~/components/MatrixRain.vue";
+import { useJsonLd } from "~/composeables/useJsonLd";
+import { useMetaTags } from "~/composeables/useMetaTags";
+import { INJECT_THEME_KEY, Theme } from "~/types";
 
 definePageMeta({
-  title: 'Portfolio'
-})
+  title: "Portfolio",
+});
 
-useMetaTags()
-useJsonLd()
+useMetaTags();
+useJsonLd();
 
-const theme = inject<Ref<Theme>>(INJECT_THEME_KEY)
-const showFloatBtnFlg = ref(false)
-const activeService = ref(0)
-const activeCaseStudy = ref(0)
-const heroRef = ref<HTMLElement | null>(null)
-const cursorRef = ref<HTMLElement | null>(null)
+const theme = inject<Ref<Theme>>(INJECT_THEME_KEY);
+const showFloatBtnFlg = ref(false);
+const activeService = ref(0);
+const activeCaseStudy = ref(0);
+const heroRef = ref<HTMLElement | null>(null);
+const cursorRef = ref<HTMLElement | null>(null);
 
-const isLightTheme = computed(() => theme?.value === Theme.LIGHT)
+const isLightTheme = computed(() => theme?.value === Theme.LIGHT);
 
 const metrics = [
-  { value: '35+', label: 'freelance client reviews' },
-  { value: '5.0', label: 'average Fiverr rating' },
-  { value: 'SuiteCRM', label: 'plugins, CRM flows, and integrations' },
-  { value: 'AI', label: 'automation and applied AI systems' },
-  { value: 'Remote', label: 'trusted by global clients' }
-]
+  { value: "35+", label: "freelance client reviews" },
+  { value: "5.0", label: "average Fiverr rating" },
+  { value: "SuiteCRM", label: "plugins, CRM flows, and integrations" },
+  { value: "AI", label: "automation and applied AI systems" },
+  { value: "Remote", label: "trusted by global clients" },
+];
 
 const reviewStats = [
-  { value: '35+', label: 'client reviews collected from Fiverr and direct work' },
-  { value: '10', label: 'countries represented across freelance clients' },
-  { value: '5.0', label: 'public Fiverr rating across 34 platform reviews' },
-  { value: '15+', label: 'reviews with delivery speed or communication praise' }
-]
+  {
+    value: "35+",
+    label: "client reviews collected from Fiverr and direct work",
+  },
+  { value: "10", label: "countries represented across freelance clients" },
+  { value: "5.0", label: "public Fiverr rating across 34 platform reviews" },
+  {
+    value: "15+",
+    label: "reviews with delivery speed or communication praise",
+  },
+];
 
 const clientCountries = [
-  'United States',
-  'United Kingdom',
-  'Germany',
-  'Canada',
-  'Spain',
-  'Nigeria',
-  'Belgium',
-  'Malta'
-]
+  "United States",
+  "United Kingdom",
+  "Germany",
+  "Canada",
+  "Spain",
+  "Nigeria",
+  "Belgium",
+  "Malta",
+];
 
 const proofCategories = [
   {
-    title: 'Clean code',
-    text: 'Clients repeatedly mention clean structure, readable implementation, and bug-free delivery.',
-    icon: 'mdi:code-braces'
+    title: "Clean code",
+    text: "Clients repeatedly mention clean structure, readable implementation, and bug-free delivery.",
+    icon: "mdi:code-braces",
   },
   {
-    title: 'Fast delivery',
-    text: 'Multiple reviews highlight quick turnaround, responsive communication, and work completed ahead of expectations.',
-    icon: 'mdi:flash-outline'
+    title: "Fast delivery",
+    text: "Multiple reviews highlight quick turnaround, responsive communication, and work completed ahead of expectations.",
+    icon: "mdi:flash-outline",
   },
   {
-    title: 'Business workflows',
-    text: 'Custom quote-to-order-to-invoice flows, SuiteCRM fixes, internal tools, and automation-focused delivery.',
-    icon: 'mdi:source-branch-sync'
+    title: "Business workflows",
+    text: "Custom quote-to-order-to-invoice flows, SuiteCRM fixes, internal tools, and automation-focused delivery.",
+    icon: "mdi:source-branch-sync",
   },
   {
-    title: 'Repeat clients',
-    text: 'Several buyers returned for additional frontend, full-stack, and cross-platform development work.',
-    icon: 'mdi:account-heart-outline'
-  }
-]
+    title: "Repeat clients",
+    text: "Several buyers returned for additional frontend, full-stack, and cross-platform development work.",
+    icon: "mdi:account-heart-outline",
+  },
+];
 
 const testimonials = [
   {
-    client: 'devin_lester',
-    country: 'United Kingdom',
-    type: 'Frontend / Full-stack',
-    quote: 'Clean code, strong problem-solving, no bugs, and work that went beyond expectations.'
+    client: "devin_lester",
+    country: "United Kingdom",
+    type: "Frontend / Full-stack",
+    quote:
+      "Clean code, strong problem-solving, no bugs, and work that went beyond expectations.",
   },
   {
-    client: 'mattjohnsen',
-    country: 'United States',
-    type: 'Vue / JavaScript',
-    quote: 'Clear communication, solid Vue and JavaScript skills, fast delivery, and clean commented code.'
+    client: "mattjohnsen",
+    country: "United States",
+    type: "Vue / JavaScript",
+    quote:
+      "Clear communication, solid Vue and JavaScript skills, fast delivery, and clean commented code.",
   },
   {
-    client: 'user90513046',
-    country: 'Canada',
-    type: 'Responsive web app',
-    quote: 'Knowledgeable, efficient, easy to work with, and delivered clean responsive code.'
+    client: "user90513046",
+    country: "Canada",
+    type: "Responsive web app",
+    quote:
+      "Knowledgeable, efficient, easy to work with, and delivered clean responsive code.",
   },
   {
-    client: 'weissclick',
-    country: 'Germany',
-    type: 'Cross-platform development',
-    quote: 'Fast developer with good code structure and repeat-order quality.'
+    client: "weissclick",
+    country: "Germany",
+    type: "Cross-platform development",
+    quote: "Fast developer with good code structure and repeat-order quality.",
   },
   {
-    client: 'kininvestments',
-    country: 'United States',
-    type: 'SuiteCRM automation',
-    quote: 'Customized quote-to-order-to-invoice flow with product line item change detection and hosting fixes.'
+    client: "kininvestments",
+    country: "United States",
+    type: "SuiteCRM automation",
+    quote:
+      "Customized quote-to-order-to-invoice flow with product line item change detection and hosting fixes.",
   },
   {
-    client: 'espressodaily',
-    country: 'United States',
-    type: 'Full-stack web app',
-    quote: 'Provided a demo before quoting, communicated well, and handled revisions quickly.'
-  }
-]
+    client: "espressodaily",
+    country: "United States",
+    type: "Full-stack web app",
+    quote:
+      "Provided a demo before quoting, communicated well, and handled revisions quickly.",
+  },
+];
 
 const services = [
   {
-    title: 'AI Product Engineering',
-    icon: 'mdi:brain',
-    accent: '#22c55e',
-    summary: 'Turn AI ideas into useful product workflows with clean UX, backend logic, guardrails, and measurable outcomes.',
-    points: ['AI assistants and copilots', 'RAG and document workflows', 'Prompt systems and automation']
+    title: "AI Product Engineering",
+    icon: "mdi:brain",
+    accent: "#22c55e",
+    summary:
+      "Turn AI ideas into useful product workflows with clean UX, backend logic, guardrails, and measurable outcomes.",
+    points: [
+      "AI assistants and copilots",
+      "RAG and document workflows",
+      "Prompt systems and automation",
+    ],
   },
   {
-    title: 'Full-Stack Web Apps',
-    icon: 'mdi:application-brackets',
-    accent: '#38bdf8',
-    summary: 'Build polished interfaces and reliable APIs for SaaS, dashboards, portals, and business operations.',
-    points: ['Nuxt and Vue frontends', 'Laravel and API systems', 'Responsive, fast UI delivery']
+    title: "Full-Stack Web Apps",
+    icon: "mdi:application-brackets",
+    accent: "#38bdf8",
+    summary:
+      "Build polished interfaces and reliable APIs for SaaS, dashboards, portals, and business operations.",
+    points: [
+      "Nuxt and Vue frontends",
+      "Laravel and API systems",
+      "Responsive, fast UI delivery",
+    ],
   },
   {
-    title: 'Business Automation',
-    icon: 'mdi:robot-outline',
-    accent: '#f59e0b',
-    summary: 'Remove repetitive manual work by connecting data, tools, and workflows into dependable automated systems.',
-    points: ['Internal tools', 'Workflow integrations', 'Reporting and process cleanup']
-  }
-]
+    title: "Business Automation",
+    icon: "mdi:robot-outline",
+    accent: "#f59e0b",
+    summary:
+      "Remove repetitive manual work by connecting data, tools, and workflows into dependable automated systems.",
+    points: [
+      "Internal tools",
+      "Workflow integrations",
+      "Reporting and process cleanup",
+    ],
+  },
+];
 
 const suiteCrmProducts = [
   {
-    title: 'AI Dashlet Generator',
-    label: 'SuiteCRM AI reporting add-on',
-    url: 'https://store.suitecrm.com/addons/ai-dashlet-generator',
-    icon: 'mdi:chart-box-plus-outline',
+    title: "AI Dashlet Generator",
+    label: "SuiteCRM AI reporting add-on",
+    url: "https://store.suitecrm.com/addons/ai-dashlet-generator",
+    icon: "mdi:chart-box-plus-outline",
     summary:
-      'An AI-powered SuiteCRM module that helps teams auto-generate useful dashboard dashlets, visualize CRM data, and move faster without wrestling with complex reports.',
-    highlights: ['AI-generated dashlets', 'Charts for CRM modules', 'Goals, filters, and dashboard insights']
+      "An AI-powered SuiteCRM module that helps teams auto-generate useful dashboard dashlets, visualize CRM data, and move faster without wrestling with complex reports.",
+    highlights: [
+      "AI-generated dashlets",
+      "Charts for CRM modules",
+      "Goals, filters, and dashboard insights",
+    ],
   },
   {
-    title: 'Business Card Reader',
-    label: 'SuiteCRM lead capture add-on',
-    url: 'https://store.suitecrm.com/addons/business-card-reader',
-    icon: 'mdi:card-account-details-outline',
+    title: "Business Card Reader",
+    label: "SuiteCRM lead capture add-on",
+    url: "https://store.suitecrm.com/addons/business-card-reader",
+    icon: "mdi:card-account-details-outline",
     summary:
-      'A SuiteCRM plugin for instantly capturing business card data, creating contacts or leads, storing card images, and keeping event/conference follow-up organized.',
-    highlights: ['OCR and QR scanning', 'Lead/contact creation', 'Campaign-aware import flow']
-  }
-]
+      "A SuiteCRM plugin for instantly capturing business card data, creating contacts or leads, storing card images, and keeping event/conference follow-up organized.",
+    highlights: [
+      "OCR and QR scanning",
+      "Lead/contact creation",
+      "Campaign-aware import flow",
+    ],
+  },
+];
 
 const caseStudies = [
   {
-    title: 'Generative AI workflows',
-    result: 'Faster internal delivery',
-    text: 'Built AI product flows that help teams move from rough inputs to usable business outputs with reviewable steps.'
+    title: "Generative AI workflows",
+    result: "Faster internal delivery",
+    text: "Built AI product flows that help teams move from rough inputs to usable business outputs with reviewable steps.",
   },
   {
-    title: 'Client-specific package customization',
-    result: 'Less friction, better fit',
-    text: 'Customized open-source packages around real client needs instead of forcing teams to adapt to rigid defaults.'
+    title: "Client-specific package customization",
+    result: "Less friction, better fit",
+    text: "Customized open-source packages around real client needs instead of forcing teams to adapt to rigid defaults.",
   },
   {
-    title: 'Hybrid and web products',
-    result: 'Cross-device experiences',
-    text: 'Delivered Nuxt, Tailwind, TypeScript, and Ionic interfaces for web and mobile use cases.'
-  }
-]
+    title: "Hybrid and web products",
+    result: "Cross-device experiences",
+    text: "Delivered Nuxt, Tailwind, TypeScript, and Ionic interfaces for web and mobile use cases.",
+  },
+];
 
 const processSteps = [
   {
-    step: '01',
-    title: 'Clarify the business outcome',
-    text: 'We define what should improve: revenue speed, support load, delivery time, lead quality, or operational cost.'
+    step: "01",
+    title: "Clarify the business outcome",
+    text: "We define what should improve: revenue speed, support load, delivery time, lead quality, or operational cost.",
   },
   {
-    step: '02',
-    title: 'Prototype the highest-value workflow',
-    text: 'I build the smallest useful version with real data paths, UI states, and enough polish to test with users.'
+    step: "02",
+    title: "Prototype the highest-value workflow",
+    text: "I build the smallest useful version with real data paths, UI states, and enough polish to test with users.",
   },
   {
-    step: '03',
-    title: 'Harden for real usage',
-    text: 'We add edge-case handling, analytics, guardrails, performance work, and production-ready integration.'
-  }
-]
+    step: "03",
+    title: "Harden for real usage",
+    text: "We add edge-case handling, analytics, guardrails, performance work, and production-ready integration.",
+  },
+];
 
 const techStack = [
-  'Vue', 'Nuxt', 'React', 'Tailwind', 'Laravel', 'Python', 'TypeScript', 'SQL', 'GSAP', 'AI APIs'
-]
+  "Vue",
+  "Nuxt",
+  "React",
+  "Tailwind",
+  "Laravel",
+  "Python",
+  "TypeScript",
+  "SQL",
+  "GSAP",
+  "AI APIs",
+];
 
 const contactLinks = [
   {
-    label: 'Email',
-    href: 'mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry',
-    icon: 'mdi:email-outline'
+    label: "Email",
+    href: "mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry",
+    icon: "mdi:email-outline",
   },
   {
-    label: 'LinkedIn',
-    href: 'https://www.linkedin.com/in/shahabgohar/',
-    icon: 'mdi:linkedin'
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/shahabgohar/",
+    icon: "mdi:linkedin",
   },
   {
-    label: 'Skype',
-    href: 'https://join.skype.com/invite/ve8oN0kKdvXQ',
-    icon: 'mdi:skype'
-  }
-]
+    label: "Skype",
+    href: "https://join.skype.com/invite/ve8oN0kKdvXQ",
+    icon: "mdi:skype",
+  },
+];
 
 const experiences = [
   {
-    period: 'Jul 2024 - Present',
-    company: 'Esper Solutions',
-    role: 'Software Engineer',
-    summary: 'Building GenAI products and customizing open-source packages around client needs.'
+    period: "Jul 2024 - Present",
+    company: "Esper Solutions",
+    role: "Software Engineer",
+    summary:
+      "Building GenAI products and customizing open-source packages around client needs.",
   },
   {
-    period: 'May 2023 - Feb 2024',
-    company: 'CTO GmbH',
-    role: 'Freelance Frontend Developer',
-    summary: 'Delivered Nuxt, Tailwind, TypeScript, and Ionic work across web and hybrid mobile products.'
+    period: "May 2023 - Feb 2024",
+    company: "CTO GmbH",
+    role: "Freelance Frontend Developer",
+    summary:
+      "Delivered Nuxt, Tailwind, TypeScript, and Ionic work across web and hybrid mobile products.",
   },
   {
-    period: '2020 - Present',
-    company: 'Freelance',
-    role: 'Full-Stack Web Developer',
-    summary: 'Helping founders and small businesses ship Vue, Laravel, and mobile-friendly product experiences.'
-  }
-]
+    period: "2020 - Present",
+    company: "Freelance",
+    role: "Full-Stack Web Developer",
+    summary:
+      "Helping founders and small businesses ship Vue, Laravel, and mobile-friendly product experiences.",
+  },
+];
 
 function toggleTheme() {
-  if (!theme) return
-  theme.value = theme.value === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+  if (!theme) return;
+  theme.value = theme.value === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
 }
 
 function scrollToSection(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  document
+    .getElementById(id)
+    ?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function scrollToTop() {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function downloadResume() {
-  window.location.href = 'https://drive.google.com/uc?export=download&id=1opWa3so3SMCEhrpaf1toeKijugCIYlpY'
+  window.location.href =
+    "https://drive.google.com/uc?export=download&id=1opWa3so3SMCEhrpaf1toeKijugCIYlpY";
 }
 
 function handleScroll() {
-  showFloatBtnFlg.value = window.scrollY > 680
+  showFloatBtnFlg.value = window.scrollY > 680;
 }
 
 function handleHeroPointer(event: MouseEvent) {
-  const hero = heroRef.value
-  const cursor = cursorRef.value
-  if (!hero || !cursor) return
+  const hero = heroRef.value;
+  const cursor = cursorRef.value;
+  if (!hero || !cursor) return;
 
-  const rect = hero.getBoundingClientRect()
-  const x = event.clientX - rect.left
-  const y = event.clientY - rect.top
-  cursor.style.transform = `translate3d(${x - 120}px, ${y - 120}px, 0)`
+  const rect = hero.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  cursor.style.transform = `translate3d(${x - 120}px, ${y - 120}px, 0)`;
 }
 
 function setupAnimations() {
-  const revealEls = gsap.utils.toArray<HTMLElement>('.portfolio-reveal')
+  const revealEls = gsap.utils.toArray<HTMLElement>(".portfolio-reveal");
   revealEls.forEach((el) => {
     gsap.fromTo(
       el,
@@ -279,41 +336,53 @@ function setupAnimations() {
         opacity: 1,
         y: 0,
         duration: 0.75,
-        ease: 'power3.out',
+        ease: "power3.out",
         scrollTrigger: {
           trigger: el,
-          start: 'top 84%',
-          toggleActions: 'play none none none'
-        }
-      }
-    )
-  })
+          start: "top 84%",
+          toggleActions: "play none none none",
+        },
+      },
+    );
+  });
 
-  const heroTimeline = gsap.timeline({ defaults: { ease: 'power3.out' } })
+  const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
   heroTimeline
-    .from('.hero-kicker', { opacity: 0, y: 18, duration: 0.45 })
-    .from('.hero-title-line', { opacity: 0, y: 46, duration: 0.72, stagger: 0.08 }, '-=0.15')
-    .from('.hero-copy', { opacity: 0, y: 22, duration: 0.55 }, '-=0.25')
-    .from('.hero-action', { opacity: 0, y: 18, duration: 0.45, stagger: 0.08 }, '-=0.2')
-    .from('.hero-proof', { opacity: 0, y: 24, duration: 0.45, stagger: 0.06 }, '-=0.15')
+    .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45 })
+    .from(
+      ".hero-title-line",
+      { opacity: 0, y: 46, duration: 0.72, stagger: 0.08 },
+      "-=0.15",
+    )
+    .from(".hero-copy", { opacity: 0, y: 22, duration: 0.55 }, "-=0.25")
+    .from(
+      ".hero-action",
+      { opacity: 0, y: 18, duration: 0.45, stagger: 0.08 },
+      "-=0.2",
+    )
+    .from(
+      ".hero-proof",
+      { opacity: 0, y: 24, duration: 0.45, stagger: 0.06 },
+      "-=0.15",
+    );
 }
 
 onMounted(() => {
-  const { gtag } = useGtag()
-  gtag('event', 'screen_view', {
-    app_name: 'Shahab Portfolio',
-    screen_name: 'Home'
-  })
+  const { gtag } = useGtag();
+  gtag("event", "screen_view", {
+    app_name: "Shahab Portfolio",
+    screen_name: "Home",
+  });
 
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll()
-  nextTick(setupAnimations)
-})
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  handleScroll();
+  nextTick(setupAnimations);
+});
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
-  ScrollTrigger.getAll().forEach((trigger) => trigger.kill())
-})
+  window.removeEventListener("scroll", handleScroll);
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+});
 </script>
 
 <template>
@@ -333,28 +402,72 @@ onBeforeUnmount(() => {
       @mousemove="handleHeroPointer"
     >
       <MatrixRain />
-      <div ref="cursorRef" class="pointer-events-none absolute left-0 top-0 hidden h-60 w-60 border border-info/20 bg-info/10 blur-2xl lg:block"></div>
+      <div
+        ref="cursorRef"
+        class="pointer-events-none absolute left-0 top-0 hidden h-60 w-60 border border-info/20 bg-info/10 blur-2xl lg:block"
+      ></div>
 
-      <div class="relative z-10 mx-auto flex min-h-screen w-full max-w-[1280px] flex-col">
-        <nav class="flex items-center justify-between border-b border-primary/10 py-5 font-ibmMono text-sm">
-          <button class="text-left font-bold uppercase tracking-[0.18em]" @click="scrollToTop">
+      <div
+        class="relative z-10 mx-auto flex min-h-screen w-full max-w-[1280px] flex-col"
+      >
+        <nav
+          class="flex items-center justify-between border-b border-primary/10 py-5 font-ibmMono text-sm"
+        >
+          <button
+            class="text-left font-bold uppercase tracking-[0.18em]"
+            @click="scrollToTop"
+          >
             Shahab Gohar
           </button>
           <div class="hidden items-center gap-6 text-primary/70 md:flex">
-            <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
-            <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
-            <button class="transition hover:text-info" @click="scrollToSection('Products')">Products</button>
-            <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
-            <button class="transition hover:text-info" @click="scrollToSection('Process')">Process</button>
-            <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
+            <button
+              class="transition hover:text-info"
+              @click="scrollToSection('Services')"
+            >
+              Services
+            </button>
+            <button
+              class="transition hover:text-info"
+              @click="scrollToSection('Proof')"
+            >
+              Proof
+            </button>
+            <button
+              class="transition hover:text-info"
+              @click="scrollToSection('Products')"
+            >
+              Products
+            </button>
+            <button
+              class="transition hover:text-info"
+              @click="scrollToSection('Work')"
+            >
+              Work
+            </button>
+            <button
+              class="transition hover:text-info"
+              @click="scrollToSection('Process')"
+            >
+              Process
+            </button>
+            <NuxtLink to="/blogs" class="transition hover:text-info"
+              >Blog</NuxtLink
+            >
           </div>
           <div class="flex items-center gap-2">
             <button
               class="grid h-10 w-10 place-items-center border border-primary/15 transition hover:border-info hover:text-info"
-              :aria-label="isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'"
+              :aria-label="
+                isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'
+              "
               @click="toggleTheme"
             >
-              <Icon :name="isLightTheme ? 'mdi:weather-night' : 'mdi:white-balance-sunny'" size="20" />
+              <Icon
+                :name="
+                  isLightTheme ? 'mdi:weather-night' : 'mdi:white-balance-sunny'
+                "
+                size="20"
+              />
             </button>
             <a
               href="mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry"
@@ -365,18 +478,28 @@ onBeforeUnmount(() => {
           </div>
         </nav>
 
-        <div class="grid flex-1 gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20">
+        <div
+          class="grid flex-1 gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20"
+        >
           <div>
-            <p class="hero-kicker font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+            <p
+              class="hero-kicker font-ibmMono text-sm uppercase tracking-[0.24em] text-info"
+            >
               SuiteCRM expert / AI automation / applied AI engineer
             </p>
-            <h1 class="mt-5 max-w-5xl font-oswald text-5xl font-black uppercase leading-none sm:text-7xl lg:text-8xl">
+            <h1
+              class="mt-5 max-w-5xl font-oswald text-5xl font-black uppercase leading-none sm:text-7xl lg:text-8xl"
+            >
               <span class="hero-title-line block">I build </span>
               <span class="hero-title-line block text-info">AI-powered </span>
               <span class="hero-title-line block">CRM systems.</span>
             </h1>
-            <p class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl">
-              I help teams turn SuiteCRM, business automation, and applied AI ideas into polished products: CRM plugins, quote-to-invoice flows, AI dashboards, lead capture tools, and full-stack systems ready for real users.
+            <p
+              class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl"
+            >
+              I help teams turn SuiteCRM, business automation, and applied AI
+              ideas into polished products: CRM plugins, Custom AI workflows,
+              lead capture tools, and full-stack systems ready for real users.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -409,43 +532,77 @@ onBeforeUnmount(() => {
                 :key="metric.value"
                 class="hero-proof border border-primary/10 bg-secondary/70 p-4 backdrop-blur"
               >
-                <p class="font-oswald text-3xl font-black text-info">{{ metric.value }}</p>
-                <p class="mt-1 text-sm leading-5 text-primary/65">{{ metric.label }}</p>
+                <p class="font-oswald text-3xl font-black text-info">
+                  {{ metric.value }}
+                </p>
+                <p class="mt-1 text-sm leading-5 text-primary/65">
+                  {{ metric.label }}
+                </p>
               </div>
             </div>
           </div>
 
           <div class="portfolio-reveal relative">
-            <div class="border border-primary/10 bg-secondary/80 p-4 shadow-2xl backdrop-blur">
-              <div class="flex items-center justify-between border-b border-primary/10 pb-3 font-ibmMono text-xs text-primary/55">
+            <div
+              class="border border-primary/10 bg-secondary/80 p-4 shadow-2xl backdrop-blur"
+            >
+              <div
+                class="flex items-center justify-between border-b border-primary/10 pb-3 font-ibmMono text-xs text-primary/55"
+              >
                 <span>crm-ai-readiness.ts</span>
                 <span class="text-[#22c55e]">live</span>
               </div>
               <div class="grid gap-4 py-5">
                 <div class="grid grid-cols-[90px_1fr] gap-4">
-                  <span class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">Problem</span>
-                  <p class="text-sm leading-6 text-primary/74">A business has CRM data, manual follow-ups, reporting gaps, or sales workflows that cost time.</p>
+                  <span
+                    class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
+                    >Problem</span
+                  >
+                  <p class="text-sm leading-6 text-primary/74">
+                    A business has CRM data, manual follow-ups, reporting gaps,
+                    or sales workflows that cost time.
+                  </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
-                  <span class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">Build</span>
-                  <p class="text-sm leading-6 text-primary/74">SuiteCRM customization, Nuxt UI, Laravel/Python backend, AI workflow, automation, and analytics.</p>
+                  <span
+                    class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
+                    >Build</span
+                  >
+                  <p class="text-sm leading-6 text-primary/74">
+                    SuiteCRM customization, Nuxt UI, Laravel/Python backend, AI
+                    workflow, automation, and analytics.
+                  </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
-                  <span class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">Result</span>
-                  <p class="text-sm leading-6 text-primary/74">A CRM or AI-enabled product clients can understand, trust, and use without technical friction.</p>
+                  <span
+                    class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
+                    >Result</span
+                  >
+                  <p class="text-sm leading-6 text-primary/74">
+                    A CRM or AI-enabled product clients can understand, trust,
+                    and use without technical friction.
+                  </p>
                 </div>
               </div>
-              <div class="grid grid-cols-3 gap-3 border-t border-primary/10 pt-4">
+              <div
+                class="grid grid-cols-3 gap-3 border-t border-primary/10 pt-4"
+              >
                 <div class="bg-[#22c55e]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#22c55e]">CRM</p>
+                  <p class="font-oswald text-2xl font-black text-[#22c55e]">
+                    CRM
+                  </p>
                   <p class="text-xs text-primary/55">SuiteCRM flows</p>
                 </div>
                 <div class="bg-[#38bdf8]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#38bdf8]">AUTO</p>
+                  <p class="font-oswald text-2xl font-black text-[#38bdf8]">
+                    AUTO
+                  </p>
                   <p class="text-xs text-primary/55">less manual work</p>
                 </div>
                 <div class="bg-[#f59e0b]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#f59e0b]">AI</p>
+                  <p class="font-oswald text-2xl font-black text-[#f59e0b]">
+                    AI
+                  </p>
                   <p class="text-xs text-primary/55">applied systems</p>
                 </div>
               </div>
@@ -457,15 +614,25 @@ onBeforeUnmount(() => {
 
     <section id="Proof" class="border-y border-primary/10 bg-primary/[0.025]">
       <div class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
-        <div class="portfolio-reveal grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
+        <div
+          class="portfolio-reveal grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end"
+        >
           <div>
-            <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Client proof</p>
-            <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">
+            <p
+              class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info"
+            >
+              Client proof
+            </p>
+            <h2
+              class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+            >
               Freelance clients already trusted the work.
             </h2>
           </div>
           <p class="text-lg leading-8 text-primary/70">
-            Before a client hires, they want to know three things: Can you communicate clearly, deliver fast, and write code that survives real use? The reviews answer that directly.
+            Before a client hires, they want to know three things: Can you
+            communicate clearly, deliver fast, and write code that survives real
+            use? The reviews answer that directly.
           </p>
         </div>
 
@@ -475,17 +642,30 @@ onBeforeUnmount(() => {
             :key="stat.value + stat.label"
             class="portfolio-reveal border border-primary/10 bg-secondary p-5"
           >
-            <p class="font-oswald text-4xl font-black text-info">{{ stat.value }}</p>
-            <p class="mt-2 text-sm leading-6 text-primary/65">{{ stat.label }}</p>
+            <p class="font-oswald text-4xl font-black text-info">
+              {{ stat.value }}
+            </p>
+            <p class="mt-2 text-sm leading-6 text-primary/65">
+              {{ stat.label }}
+            </p>
           </div>
         </div>
 
         <div class="mt-8 grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
-          <div class="portfolio-reveal overflow-hidden border border-primary/10 bg-secondary p-5">
+          <div
+            class="portfolio-reveal overflow-hidden border border-primary/10 bg-secondary p-5"
+          >
             <div class="flex items-center justify-between gap-4">
               <div>
-                <p class="font-ibmMono text-xs uppercase tracking-[0.2em] text-primary/45">Global clients</p>
-                <p class="mt-2 text-sm leading-6 text-primary/65">Freelance work across North America, Europe, Africa, and Malta.</p>
+                <p
+                  class="font-ibmMono text-xs uppercase tracking-[0.2em] text-primary/45"
+                >
+                  Global clients
+                </p>
+                <p class="mt-2 text-sm leading-6 text-primary/65">
+                  Freelance work across North America, Europe, Africa, and
+                  Malta.
+                </p>
               </div>
               <Icon name="mdi:earth" class="text-info" size="28" />
             </div>
@@ -511,7 +691,9 @@ onBeforeUnmount(() => {
             >
               <Icon :name="category.icon" class="text-info" size="28" />
               <h3 class="mt-4 text-xl font-bold">{{ category.title }}</h3>
-              <p class="mt-3 text-sm leading-6 text-primary/65">{{ category.text }}</p>
+              <p class="mt-3 text-sm leading-6 text-primary/65">
+                {{ category.text }}
+              </p>
             </article>
           </div>
         </div>
@@ -525,28 +707,48 @@ onBeforeUnmount(() => {
             <div class="flex items-start justify-between gap-4">
               <div>
                 <h3 class="text-xl font-bold">{{ review.client }}</h3>
-                <p class="mt-1 font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">{{ review.country }}</p>
+                <p
+                  class="mt-1 font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
+                >
+                  {{ review.country }}
+                </p>
               </div>
-              <span class="border border-info/40 px-2 py-1 font-ibmMono text-xs text-info">5-star</span>
+              <span
+                class="border border-info/40 px-2 py-1 font-ibmMono text-xs text-info"
+                >5-star</span
+              >
             </div>
-            <p class="mt-4 text-sm font-semibold text-info">{{ review.type }}</p>
+            <p class="mt-4 text-sm font-semibold text-info">
+              {{ review.type }}
+            </p>
             <p class="mt-3 leading-7 text-primary/70">"{{ review.quote }}"</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="Products" class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
-      <div class="portfolio-reveal grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
+    <section
+      id="Products"
+      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
+    >
+      <div
+        class="portfolio-reveal grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"
+      >
         <div>
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">SuiteCRM products</p>
-          <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">
+          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+            SuiteCRM products
+          </p>
+          <h2
+            class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+          >
             I also build published CRM plugins.
           </h2>
         </div>
         <div class="border-l-2 border-info pl-5">
           <p class="text-lg leading-8 text-primary/72">
-            If you use SuiteCRM, I can help you get these modules installed, customized, and supported. Ask me directly for a discounted lifetime access rate before purchasing.
+            If you use SuiteCRM, I can help you get these modules installed,
+            customized, and supported. Ask me directly for a discounted lifetime
+            access rate before purchasing.
           </p>
         </div>
       </div>
@@ -559,8 +761,14 @@ onBeforeUnmount(() => {
         >
           <div class="flex items-start justify-between gap-6">
             <div>
-              <p class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45">{{ product.label }}</p>
-              <h3 class="mt-3 text-3xl font-bold leading-tight">{{ product.title }}</h3>
+              <p
+                class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45"
+              >
+                {{ product.label }}
+              </p>
+              <h3 class="mt-3 text-3xl font-bold leading-tight">
+                {{ product.title }}
+              </h3>
             </div>
             <Icon :name="product.icon" class="text-info" size="36" />
           </div>
@@ -600,12 +808,23 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <section id="Services" class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
+    <section
+      id="Services"
+      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
+    >
       <div class="portfolio-reveal max-w-3xl">
-        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">What I can build</p>
-        <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">Services that move the business.</h2>
+        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+          What I can build
+        </p>
+        <h2
+          class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+        >
+          Services that move the business.
+        </h2>
         <p class="mt-5 text-lg leading-8 text-primary/70">
-          The portfolio is not just visual polish. It is proof that I can think through the product, ship the interface, connect the backend, and make the technical work legible to clients.
+          The portfolio is not just visual polish. It is proof that I can think
+          through the product, ship the interface, connect the backend, and make
+          the technical work legible to clients.
         </p>
       </div>
 
@@ -619,12 +838,20 @@ onBeforeUnmount(() => {
         >
           <div class="flex items-start justify-between gap-6">
             <Icon :name="service.icon" class="text-[var(--accent)]" size="34" />
-            <span class="font-ibmMono text-sm text-primary/40">0{{ index + 1 }}</span>
+            <span class="font-ibmMono text-sm text-primary/40"
+              >0{{ index + 1 }}</span
+            >
           </div>
-          <h3 class="mt-8 text-2xl font-bold leading-tight">{{ service.title }}</h3>
+          <h3 class="mt-8 text-2xl font-bold leading-tight">
+            {{ service.title }}
+          </h3>
           <p class="mt-4 leading-7 text-primary/68">{{ service.summary }}</p>
           <ul class="mt-6 grid gap-3">
-            <li v-for="point in service.points" :key="point" class="flex items-center gap-3 text-sm text-primary/70">
+            <li
+              v-for="point in service.points"
+              :key="point"
+              class="flex items-center gap-3 text-sm text-primary/70"
+            >
               <span class="h-2 w-2 bg-[var(--accent)]"></span>
               {{ point }}
             </li>
@@ -632,18 +859,31 @@ onBeforeUnmount(() => {
         </article>
       </div>
 
-      <div class="portfolio-reveal mt-6 border border-primary/10 bg-secondary p-5 font-ibmMono text-sm text-primary/65">
-        Current focus: <span class="text-info">{{ services[activeService].title }}</span>
+      <div
+        class="portfolio-reveal mt-6 border border-primary/10 bg-secondary p-5 font-ibmMono text-sm text-primary/65"
+      >
+        Current focus:
+        <span class="text-info">{{ services[activeService].title }}</span>
       </div>
     </section>
 
     <section id="Work" class="border-y border-primary/10 bg-primary/[0.025]">
-      <div class="mx-auto grid w-full max-w-[1280px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-14">
+      <div
+        class="mx-auto grid w-full max-w-[1280px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-14"
+      >
         <div class="portfolio-reveal">
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Selected outcomes</p>
-          <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">Built for clients who need momentum.</h2>
+          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+            Selected outcomes
+          </p>
+          <h2
+            class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+          >
+            Built for clients who need momentum.
+          </h2>
           <p class="mt-5 text-lg leading-8 text-primary/70">
-            I frame work around business movement: faster delivery, smoother operations, clearer products, and interfaces that make the offer easier to trust.
+            I frame work around business movement: faster delivery, smoother
+            operations, clearer products, and interfaces that make the offer
+            easier to trust.
           </p>
         </div>
 
@@ -655,24 +895,43 @@ onBeforeUnmount(() => {
             :class="activeCaseStudy === index ? 'border-info bg-info/5' : ''"
             @mouseenter="activeCaseStudy = index"
           >
-            <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <div
+              class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
+            >
               <div>
-                <p class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45">{{ item.result }}</p>
+                <p
+                  class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45"
+                >
+                  {{ item.result }}
+                </p>
                 <h3 class="mt-2 text-2xl font-bold">{{ item.title }}</h3>
               </div>
               <Icon name="mdi:arrow-top-right" class="text-info" size="24" />
             </div>
-            <p class="mt-4 max-w-2xl leading-7 text-primary/68">{{ item.text }}</p>
+            <p class="mt-4 max-w-2xl leading-7 text-primary/68">
+              {{ item.text }}
+            </p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="Process" class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
-      <div class="portfolio-reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+    <section
+      id="Process"
+      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
+    >
+      <div
+        class="portfolio-reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
+      >
         <div class="max-w-3xl">
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">How we work</p>
-          <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">No vague build. Clear path to value.</h2>
+          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+            How we work
+          </p>
+          <h2
+            class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+          >
+            No vague build. Clear path to value.
+          </h2>
         </div>
         <a
           href="mailto:shahab.developer.work@gmail.com?subject=AI%20or%20web%20product%20project"
@@ -689,19 +948,34 @@ onBeforeUnmount(() => {
           :key="step.step"
           class="portfolio-reveal border border-primary/10 p-6"
         >
-          <p class="font-oswald text-5xl font-black text-info">{{ step.step }}</p>
-          <h3 class="mt-6 text-2xl font-bold leading-tight">{{ step.title }}</h3>
+          <p class="font-oswald text-5xl font-black text-info">
+            {{ step.step }}
+          </p>
+          <h3 class="mt-6 text-2xl font-bold leading-tight">
+            {{ step.title }}
+          </h3>
           <p class="mt-4 leading-7 text-primary/68">{{ step.text }}</p>
         </article>
       </div>
     </section>
 
-    <section id="Stack" class="mx-auto grid w-full max-w-[1280px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1fr] lg:px-14">
+    <section
+      id="Stack"
+      class="mx-auto grid w-full max-w-[1280px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1fr] lg:px-14"
+    >
       <div class="portfolio-reveal">
-        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Technical range</p>
-        <h2 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">Enough stack to own the outcome.</h2>
+        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+          Technical range
+        </p>
+        <h2
+          class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+        >
+          Enough stack to own the outcome.
+        </h2>
         <p class="mt-5 text-lg leading-8 text-primary/70">
-          Clients should not have to coordinate three people to ship one workflow. I can handle the front end, backend integration, automation logic, and AI layer.
+          Clients should not have to coordinate three people to ship one
+          workflow. I can handle the front end, backend integration, automation
+          logic, and AI layer.
         </p>
         <div class="mt-7 flex flex-wrap gap-2">
           <span
@@ -720,8 +994,14 @@ onBeforeUnmount(() => {
           :key="experience.company"
           class="portfolio-reveal border border-primary/10 bg-primary/[0.025] p-5"
         >
-          <p class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45">{{ experience.period }}</p>
-          <div class="mt-3 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+          <p
+            class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
+          >
+            {{ experience.period }}
+          </p>
+          <div
+            class="mt-3 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between"
+          >
             <h3 class="text-2xl font-bold">{{ experience.company }}</h3>
             <p class="text-info">{{ experience.role }}</p>
           </div>
@@ -731,12 +1011,21 @@ onBeforeUnmount(() => {
     </section>
 
     <section class="border-y border-primary/10 bg-primary/[0.025]">
-      <div class="mx-auto grid w-full max-w-[1280px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-14">
+      <div
+        class="mx-auto grid w-full max-w-[1280px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-14"
+      >
         <div class="portfolio-reveal">
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Thinking in public</p>
-          <h2 class="mt-4 font-oswald text-4xl font-black uppercase leading-none sm:text-5xl">Read how I think about AI ROI.</h2>
+          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+            Thinking in public
+          </p>
+          <h2
+            class="mt-4 font-oswald text-4xl font-black uppercase leading-none sm:text-5xl"
+          >
+            Read how I think about AI ROI.
+          </h2>
           <p class="mt-4 max-w-2xl leading-7 text-primary/68">
-            The blog is built to attract founders and CTOs looking for practical AI engineering, not empty hype.
+            The blog is built to attract founders and CTOs looking for practical
+            AI engineering, not empty hype.
           </p>
         </div>
         <NuxtLink
@@ -749,14 +1038,26 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
-    <section id="Contact" class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
-      <div class="portfolio-reveal border border-info/50 bg-info/5 p-6 sm:p-8 lg:p-10">
-        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Available for serious builds</p>
+    <section
+      id="Contact"
+      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
+    >
+      <div
+        class="portfolio-reveal border border-info/50 bg-info/5 p-6 sm:p-8 lg:p-10"
+      >
+        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
+          Available for serious builds
+        </p>
         <div class="mt-4 grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
-            <h2 class="font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">Have an idea that needs to become real?</h2>
+            <h2
+              class="font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
+            >
+              Have an idea that needs to become real?
+            </h2>
             <p class="mt-5 max-w-2xl text-lg leading-8 text-primary/72">
-              Send the workflow, product idea, or broken process. I will help shape the build path and tell you what should be built first.
+              Send the workflow, product idea, or broken process. I will help
+              shape the build path and tell you what should be built first.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 lg:justify-end">
