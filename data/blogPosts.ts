@@ -12,6 +12,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'suitecrm-migration-european-textile-company',
+    title: 'Case Study: Rebuilding SuiteCRM for a European Textile Company',
+    description:
+      'A practical SuiteCRM migration case study covering Docker, Google SSO, calendar sync, OAuth, multilingual CRM fields, permissions, and production-ready CRM infrastructure.',
+    category: 'Case Study',
+    date: 'May 17, 2026',
+    datePublished: '2026-05-17T00:00:00+05:00',
+    dateModified: '2026-05-17T00:00:00+05:00',
+    readingTime: '10 min read',
+    tags: ['SuiteCRM migration', 'Docker', 'Google OAuth', 'CRM modernization', 'PHP']
+  },
+  {
     slug: 'ai-engineering-revolution',
     title: 'The AI Engineering Revolution: How Foundation Models Are Transforming Business',
     description:
