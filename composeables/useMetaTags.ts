@@ -1,6 +1,6 @@
 export const useMetaTags = () => {
     const siteUrl = 'https://shahabgohar.dev'
-    const faviconVersion = '0.0.2'
+    const faviconVersion = '0.0.3'
 
     const route = useRoute()
 
