@@ -5,6 +5,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "generate:sitemap": "node scripts/generate-sitemap.mjs",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
@@ -21,7 +22,6 @@
   },
   "dependencies": {
     "@nuxtjs/google-fonts": "^3.0.1",
-    "@nuxtjs/sitemap": "^6.1.5",
     "gsap": "^3.14.2",
     "nuxt-icon": "^0.4.2",
     "three": "^0.184.0",

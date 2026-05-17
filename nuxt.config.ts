@@ -18,21 +18,8 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-icon',
     '@nuxtjs/google-fonts',
-    'nuxt-gtag',
-    '@nuxtjs/sitemap'
+    'nuxt-gtag'
   ],
-
-  routeRules: {
-    '/': {
-      sitemap: { changefreq: 'weekly', priority: 1.0 }
-    },
-    '/blogs': {
-      sitemap: { changefreq: 'weekly', priority: 0.8 }
-    },
-    '/blogs/ai-engineering-revolution': {
-      sitemap: { changefreq: 'monthly', priority: 0.7 }
-    }
-  },
 
   app: {
     head: {
