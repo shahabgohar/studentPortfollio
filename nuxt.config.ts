@@ -62,7 +62,7 @@ export default defineNuxtConfig({
   ],
 
   gtag: {
-    id: process.env?.GOOGLE_TAG_MANAGER_ID || '',
+    id: process.env?.GOOGLE_ANALYTICS_ID || 'G-KQCTM71LNQ',
     config: {}
   },
 
