@@ -35,7 +35,7 @@ const isLightTheme = computed(() => theme?.value === Theme.LIGHT);
 
 const metrics = [
   { value: "35+", label: "freelance client reviews" },
-  { value: "5.0", label: "average Fiverr rating" },
+  { value: "5.0", label: "average rating" },
   { value: "SuiteCRM", label: "plugins, CRM flows, and integrations" },
   { value: "AI", label: "automation and applied AI systems" },
   { value: "Remote", label: "trusted by global clients" },
@@ -44,10 +44,10 @@ const metrics = [
 const reviewStats = [
   {
     value: "35+",
-    label: "client reviews collected from Fiverr and direct work",
+    label: "client reviews collected from Freelance Platforms and direct work",
   },
   { value: "10", label: "countries represented across freelance clients" },
-  { value: "5.0", label: "public Fiverr rating across 34 platform reviews" },
+  { value: "5.0", label: "public work rating across 34 reviews" },
   {
     value: "15+",
     label: "reviews with delivery speed or communication praise",
@@ -90,6 +90,20 @@ const proofCategories = [
 
 const testimonials = [
   {
+    client: "michaelh622",
+    country: "Germany",
+    type: "SuiteCRM",
+    quote:
+      "proactive, communicative, and deeply committed to achieving the best possible result. If you want a true star who will genuinely fight for your success, here you are.",
+  },
+  {
+    client: "kininvestments",
+    country: "United States",
+    type: "SuiteCRM automation",
+    quote:
+      "Customized quote-to-order-to-invoice flow with product line item change detection and hosting fixes.",
+  },
+  {
     client: "devin_lester",
     country: "United Kingdom",
     type: "Frontend / Full-stack",
@@ -115,20 +129,6 @@ const testimonials = [
     country: "Germany",
     type: "Cross-platform development",
     quote: "Fast developer with good code structure and repeat-order quality.",
-  },
-  {
-    client: "kininvestments",
-    country: "United States",
-    type: "SuiteCRM automation",
-    quote:
-      "Customized quote-to-order-to-invoice flow with product line item change detection and hosting fixes.",
-  },
-  {
-    client: "espressodaily",
-    country: "United States",
-    type: "Full-stack web app",
-    quote:
-      "Provided a demo before quoting, communicated well, and handled revisions quickly.",
   },
 ];
 
