@@ -3,7 +3,7 @@ import {definePageMeta} from "#imports";
 import {blogPosts} from "~/data/blogPosts";
 import {useJsonLd} from "~/composeables/useJsonLd";
 
-const post = blogPosts[0]
+const post = blogPosts.find((item) => item.slug === 'ai-engineering-revolution')!
 const siteUrl = 'https://shahabgohar.dev'
 const articleUrl = `${siteUrl}/blogs/${post.slug}`
 const articleImage = `${siteUrl}/img/og-image.png`
