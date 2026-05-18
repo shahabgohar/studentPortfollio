@@ -238,10 +238,10 @@ const comparisonRows = [
               The original deployment used a pre-built SuiteCRM image. That made the first installation fast, but it created a black box once the system needed real production customization. Application code, runtime files, uploads, cache, sessions, and custom PHP changes were all mixed together.
             </p>
             <p>
-              There was no reliable git history for the CRM customizations. The container had been configured through a UI, which meant key details such as environment variables, mounts, ports, and networking existed only as runtime state. If the container was recreated incorrectly, the team would be forced to reverse-engineer its own production system.
+              Key deployment details such as environment variables, mounts, ports, and networking existed only as runtime state. Recreating the container meant guessing how production had been assembled.
             </p>
             <p>
-              The Google integration had the same issue. OAuth, login redirects, calendar sync, token storage, and user sessions were split across legacy SuiteCRM files and newer Symfony behavior. It worked until it did not. Any SuiteCRM upgrade could break the chain.
+              The goal was to make those decisions explicit in code so the CRM could be rebuilt, reviewed, and upgraded without depending on memory.
             </p>
           </section>
 
