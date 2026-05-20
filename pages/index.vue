@@ -567,7 +567,7 @@ onBeforeUnmount(() => {
                 rel="noreferrer"
                 class="hero-action inline-flex items-center gap-2 bg-info px-5 py-3 font-ibmMono text-sm font-bold text-secondary transition hover:opacity-90"
               >
-                Book a 20-min build call
+                Book a 30-min build call
                 <Icon name="mdi:calendar-arrow-right" size="18" />
               </a>
               <a
