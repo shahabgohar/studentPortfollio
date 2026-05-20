@@ -21,6 +21,11 @@ const navItems = ref([
   {
     name: 'Blogs',
     icon: 'mdi:arrow-top-right-bold-box-outline'
+  },
+  {
+    name: 'Resume',
+    href: '/resume.pdf',
+    icon: 'mdi:download-outline'
   }
 ])
 const myDrawer:Ref<HTMLInputElement | null> = ref<HTMLInputElement | null>(null)
@@ -52,6 +57,7 @@ function scrollToElement(elementId: string) {
 
       <li v-for="(item, index) in navItems" :key="index" class="flex items-center justify-center">
         <router-link v-if="item.name === 'Blogs'" to="/blogs" class="cursor-pointer">{{item.name}}</router-link>
+        <a v-else-if="item.href" :href="item.href" target="_blank" rel="noreferrer" class="cursor-pointer">{{item.name}}</a>
         <a v-else class="cursor-pointer"  @click.prevent="scrollToElement(item.name)">{{item.name }}</a>
         <Icon v-if="item?.icon" size="1.2em" :name="item?.icon"></Icon>
       </li>
@@ -90,6 +96,7 @@ function scrollToElement(elementId: string) {
           <!-- Sidebar content here -->
           <li v-for="(item, index) in navItems" :key="index" class="flex flex-row border-b-2 justify-start py-1">
             <a v-if="item.name === 'Blogs'" class="cursor-pointer"  @click.prevent="() => (myDrawer?.click(),router.push('/blogs'))">{{item.name }}</a>
+            <a v-else-if="item.href" :href="item.href" target="_blank" rel="noreferrer" class="cursor-pointer" @click="myDrawer?.click()">{{item.name }}</a>
             <a v-else class="cursor-pointer"  @click.prevent="() => {myDrawer?.click(),scrollToElement(item.name)}">{{item.name }}</a>
 <!--            <Icon v-if="item.icon" size="1.2em" :name="item.icon"></Icon>-->
           </li>

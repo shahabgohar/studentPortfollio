@@ -14,6 +14,18 @@ const routes = [
     priority: '0.8'
   },
   {
+    path: '/privacy',
+    changefreq: 'yearly',
+    priority: '0.4',
+    lastmod: '2026-05-18'
+  },
+  {
+    path: '/cookies',
+    changefreq: 'yearly',
+    priority: '0.4',
+    lastmod: '2026-05-18'
+  },
+  {
     path: '/blogs/ai-engineering-revolution',
     changefreq: 'monthly',
     priority: '0.7',

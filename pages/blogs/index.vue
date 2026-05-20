@@ -6,7 +6,6 @@ import {blogPosts} from "~/data/blogPosts";
 const siteUrl = 'https://shahabgohar.dev'
 const pageTitle = 'AI Engineering Blog | Shahab Gohar'
 const pageDescription = 'Practical AI engineering articles for founders, CTOs, and teams exploring AI ROI, business automation, foundation models, and product delivery.'
-
 definePageMeta({
   title: 'Blogs'
 })

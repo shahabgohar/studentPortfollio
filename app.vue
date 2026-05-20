@@ -32,6 +32,7 @@ onMounted(main)
 <template>
 
   <NuxtPage />
+  <CookieConsent />
 
 </template>
 <style lang="css">

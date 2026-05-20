@@ -184,6 +184,7 @@ const suiteCrmProducts = [
       "Charts for CRM modules",
       "Goals, filters, and dashboard insights",
     ],
+    screenshot: "/img/products/ai-dashlet-generator.gif",
   },
   {
     title: "Business Card Reader",
@@ -197,24 +198,46 @@ const suiteCrmProducts = [
       "Lead/contact creation",
       "Campaign-aware import flow",
     ],
+    screenshot: "/img/products/business-card-reader.gif",
   },
 ];
 
 const caseStudies = [
   {
-    title: "Generative AI workflows",
-    result: "Faster internal delivery",
-    text: "Built AI product flows that help teams move from rough inputs to usable business outputs with reviewable steps.",
+    title: "European textile manufacturer — SuiteCRM 8 migration",
+    result: "From brittle container to reproducible CRM in 1 command",
+    text: "Migrated a pre-built SuiteCRM container into a versioned SuiteCRM 8.10.1 deployment on Docker Compose. Added Google SSO, auto-provisioned calendar sync, 6-language localization, and Makefile-driven operations. Full case study on the blog.",
+    href: "/blogs/suitecrm-migration-european-textile-company",
   },
   {
-    title: "Client-specific package customization",
-    result: "Less friction, better fit",
-    text: "Customized open-source packages around real client needs instead of forcing teams to adapt to rigid defaults.",
+    title: "US SuiteCRM automation — quote → order → invoice",
+    result: "End-to-end sales flow automated inside SuiteCRM",
+    text: "Customized the SuiteCRM quote-to-invoice pipeline for a US client (kininvestments) so the sales team converts quotes to orders to invoices without leaving the CRM. Client review on Fiverr: 5.0.",
+    href: "",
   },
   {
-    title: "Hybrid and web products",
-    result: "Cross-device experiences",
-    text: "Delivered Nuxt, Tailwind, TypeScript, and Ionic interfaces for web and mobile use cases.",
+    title: "AI Dashlet Generator — productized SuiteCRM add-on",
+    result: "Live on the SuiteCRM Store",
+    text: "Designed, built, and shipped an AI-powered dashlet generator that auto-creates dashboard widgets from natural-language prompts — replacing manual report configuration with a one-prompt workflow.",
+    href: "https://store.suitecrm.com/addons/ai-dashlet-generator",
+  },
+  {
+    title: "US SuiteCRM partner — Mautic → SuiteCRM lead sync",
+    result: "Marketing leads land in sales' inbox the moment they convert",
+    text: "Built an automated sync that pushes new leads and contacts from Mautic (forms, campaigns, landing pages) directly into SuiteCRM the moment they're captured. The partner now resells a white-labelled CRM with native Mautic integration to their downstream customers — no manual list imports, no missed follow-ups.",
+    href: "",
+  },
+  {
+    title: "Mitchelli — legacy JS rewritten as SuiteCRM 8 field actions",
+    result: "Custom business logic preserved through the Angular upgrade",
+    text: "Took the client's existing custom JavaScript logic from the SuiteCRM 7 legacy view and re-implemented it natively as SuiteCRM 8 field actions on the Angular UI — preserving every business rule without losing the upgrade benefits.",
+    href: "",
+  },
+  {
+    title: "Journey CRM — fully white-labelled SuiteCRM product",
+    result: "A sellable, branded CRM product built on SuiteCRM",
+    text: "Heavy frontend customization of SuiteCRM 8 — Angular modern UI, legacy views, detail and edit screens — to deliver a completely re-themed CRM the client now sells under their own brand as a finished product.",
+    href: "",
   },
 ];
 
@@ -246,7 +269,8 @@ const techStack = [
   "TypeScript",
   "SQL",
   "GSAP",
-  "AI APIs",
+  "AI",
+  "SuiteCRM",
 ];
 
 const contactLinks = [
@@ -273,7 +297,7 @@ const experiences = [
     company: "Esper Solutions",
     role: "Software Engineer",
     summary:
-      "Building GenAI products and customizing open-source packages around client needs.",
+      "Building GenAI products and customizing SuiteCRM and Mautic around client needs.",
   },
   {
     period: "May 2023 - Feb 2024",
@@ -288,6 +312,12 @@ const experiences = [
     role: "Full-Stack Web Developer",
     summary:
       "Helping founders and small businesses ship Vue, Laravel, and mobile-friendly product experiences.",
+  },
+  {
+    period: "2021 - 2023",
+    company: "Motocle, Inc Japan",
+    role: "Full-Stack Web Developer",
+    summary: "Fullstack Developer developing projects from the ground up.",
   },
 ];
 
@@ -306,10 +336,7 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function downloadResume() {
-  window.location.href =
-    "https://drive.google.com/uc?export=download&id=1opWa3so3SMCEhrpaf1toeKijugCIYlpY";
-}
+const calBookingUrl = "https://cal.com/shahabgohar/build-discussion";
 
 function handleScroll() {
   showFloatBtnFlg.value = window.scrollY > 680;
@@ -346,33 +373,64 @@ function setupAnimations() {
     );
   });
 
-  const heroTimeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+  const heroTimeline = gsap.timeline({
+    defaults: { ease: "power3.out" },
+  });
   heroTimeline
-    .from(".hero-kicker", { opacity: 0, y: 18, duration: 0.45 })
+    .from(".hero-kicker", {
+      opacity: 0,
+      y: 18,
+      duration: 0.45,
+      clearProps: "opacity,y,transform",
+    })
     .from(
       ".hero-title-line",
-      { opacity: 0, y: 46, duration: 0.72, stagger: 0.08 },
+      {
+        opacity: 0,
+        y: 46,
+        duration: 0.72,
+        stagger: 0.08,
+        clearProps: "opacity,y,transform",
+      },
       "-=0.15",
     )
-    .from(".hero-copy", { opacity: 0, y: 22, duration: 0.55 }, "-=0.25")
+    .from(
+      ".hero-copy",
+      { opacity: 0, y: 22, duration: 0.55, clearProps: "opacity,y,transform" },
+      "-=0.25",
+    )
     .from(
       ".hero-action",
-      { opacity: 0, y: 18, duration: 0.45, stagger: 0.08 },
+      {
+        opacity: 0,
+        y: 18,
+        duration: 0.45,
+        stagger: 0.08,
+        clearProps: "opacity,y,transform",
+      },
       "-=0.2",
     )
     .from(
       ".hero-proof",
-      { opacity: 0, y: 24, duration: 0.45, stagger: 0.06 },
+      {
+        opacity: 0,
+        y: 24,
+        duration: 0.45,
+        stagger: 0.06,
+        clearProps: "opacity,y,transform",
+      },
       "-=0.15",
     );
 }
 
 onMounted(() => {
-  const { gtag } = useGtag();
-  gtag("event", "screen_view", {
-    app_name: "Shahab Portfolio",
-    screen_name: "Home",
-  });
+  if (localStorage.getItem("shahab-analytics-consent") === "granted") {
+    const { gtag } = useGtag();
+    gtag("event", "screen_view", {
+      app_name: "Shahab Portfolio",
+      screen_name: "Home",
+    });
+  }
 
   window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
@@ -386,7 +444,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="min-h-screen overflow-hidden bg-secondary text-primary">
+  <main class="min-h-screen bg-secondary text-primary">
     <button
       v-if="showFloatBtnFlg"
       class="fixed bottom-5 right-5 z-50 grid h-12 w-12 place-items-center border border-primary/20 bg-secondary text-primary shadow-lg transition hover:border-info hover:text-info"
@@ -497,18 +555,27 @@ onBeforeUnmount(() => {
             <p
               class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl"
             >
-              I help teams turn SuiteCRM, business automation, and applied AI
-              ideas into polished products: CRM plugins, Custom AI workflows,
-              lead capture tools, and full-stack systems ready for real users.
+              I build custom SuiteCRM modules, integrations, and AI workflows
+              for B2B teams that want Salesforce-grade results without the
+              Salesforce bill.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
               <a
-                href="mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry"
+                :href="calBookingUrl"
+                target="_blank"
+                rel="noreferrer"
                 class="hero-action inline-flex items-center gap-2 bg-info px-5 py-3 font-ibmMono text-sm font-bold text-secondary transition hover:opacity-90"
               >
-                Start a project
-                <Icon name="mdi:arrow-right" size="18" />
+                Book a 20-min build call
+                <Icon name="mdi:calendar-arrow-right" size="18" />
+              </a>
+              <a
+                href="mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry"
+                class="hero-action inline-flex items-center gap-2 border border-primary/15 px-5 py-3 font-ibmMono text-sm transition hover:border-info hover:text-info"
+              >
+                Or email me
+                <Icon name="mdi:email-outline" size="18" />
               </a>
               <button
                 class="hero-action inline-flex items-center gap-2 border border-primary/15 px-5 py-3 font-ibmMono text-sm transition hover:border-info hover:text-info"
@@ -516,13 +583,6 @@ onBeforeUnmount(() => {
               >
                 See outcomes
                 <Icon name="mdi:chart-line" size="18" />
-              </button>
-              <button
-                class="hero-action inline-flex items-center gap-2 border border-primary/15 px-5 py-3 font-ibmMono text-sm transition hover:border-info hover:text-info"
-                @click="downloadResume"
-              >
-                Resume
-                <Icon name="mdi:download-outline" size="18" />
               </button>
             </div>
 
@@ -570,7 +630,7 @@ onBeforeUnmount(() => {
                   >
                   <p class="text-sm leading-6 text-primary/74">
                     SuiteCRM customization, Nuxt UI, Laravel/Python backend, AI
-                    workflow, automation, and analytics.
+                    workflow, automation, and consent-aware analytics.
                   </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
@@ -775,6 +835,14 @@ onBeforeUnmount(() => {
 
           <p class="mt-5 leading-7 text-primary/70">{{ product.summary }}</p>
 
+          <img
+            v-if="product.screenshot"
+            :src="product.screenshot"
+            :alt="`${product.title} demo`"
+            loading="lazy"
+            class="mt-6 mx-auto block max-h-[520px] w-full object-contain border border-primary/10 bg-secondary"
+          />
+
           <div class="mt-6 grid gap-3">
             <div
               v-for="highlight in product.highlights"
@@ -869,9 +937,9 @@ onBeforeUnmount(() => {
 
     <section id="Work" class="border-y border-primary/10 bg-primary/[0.025]">
       <div
-        class="mx-auto grid w-full max-w-[1280px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-14"
+        class="mx-auto grid w-full max-w-[1280px] items-start gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-14"
       >
-        <div class="portfolio-reveal">
+        <div class="portfolio-reveal lg:sticky lg:top-24 lg:self-start">
           <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
             Selected outcomes
           </p>
@@ -888,11 +956,35 @@ onBeforeUnmount(() => {
         </div>
 
         <div class="grid gap-4">
-          <article
+          <component
+            :is="
+              item.href
+                ? item.href.startsWith('http')
+                  ? 'a'
+                  : 'NuxtLink'
+                : 'article'
+            "
             v-for="(item, index) in caseStudies"
             :key="item.title"
-            class="portfolio-reveal cursor-pointer border border-primary/10 bg-secondary p-5 transition hover:border-info"
-            :class="activeCaseStudy === index ? 'border-info bg-info/5' : ''"
+            :href="
+              item.href && item.href.startsWith('http') ? item.href : undefined
+            "
+            :to="
+              item.href && !item.href.startsWith('http') ? item.href : undefined
+            "
+            :target="
+              item.href && item.href.startsWith('http') ? '_blank' : undefined
+            "
+            :rel="
+              item.href && item.href.startsWith('http')
+                ? 'noreferrer'
+                : undefined
+            "
+            class="portfolio-reveal block border border-primary/10 bg-secondary p-5 transition hover:border-info"
+            :class="[
+              activeCaseStudy === index ? 'border-info bg-info/5' : '',
+              item.href ? 'cursor-pointer' : '',
+            ]"
             @mouseenter="activeCaseStudy = index"
           >
             <div
@@ -906,12 +998,17 @@ onBeforeUnmount(() => {
                 </p>
                 <h3 class="mt-2 text-2xl font-bold">{{ item.title }}</h3>
               </div>
-              <Icon name="mdi:arrow-top-right" class="text-info" size="24" />
+              <Icon
+                v-if="item.href"
+                name="mdi:arrow-top-right"
+                class="text-info"
+                size="24"
+              />
             </div>
             <p class="mt-4 max-w-2xl leading-7 text-primary/68">
               {{ item.text }}
             </p>
-          </article>
+          </component>
         </div>
       </div>
     </section>
@@ -930,11 +1027,13 @@ onBeforeUnmount(() => {
           <h2
             class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
           >
-            No vague build. Clear path to value.
+            Working demo in two weeks. Or you don't pay.
           </h2>
         </div>
         <a
-          href="mailto:shahab.developer.work@gmail.com?subject=AI%20or%20web%20product%20project"
+          :href="calBookingUrl"
+          target="_blank"
+          rel="noreferrer"
           class="inline-flex items-center gap-2 border border-info px-5 py-3 font-ibmMono text-sm text-info transition hover:bg-info hover:text-secondary"
         >
           Book a build discussion
@@ -1053,11 +1152,12 @@ onBeforeUnmount(() => {
             <h2
               class="font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
             >
-              Have an idea that needs to become real?
+              Need SuiteCRM, automation, or AI work shipped properly?
             </h2>
             <p class="mt-5 max-w-2xl text-lg leading-8 text-primary/72">
-              Send the workflow, product idea, or broken process. I will help
-              shape the build path and tell you what should be built first.
+              Send the CRM problem, SuiteCRM migration, plugin idea, workflow,
+              product concept, or broken process. I will help shape the build
+              path and tell you what should be fixed, automated, or built first.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 lg:justify-end">
