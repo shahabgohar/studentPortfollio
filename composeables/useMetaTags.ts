@@ -6,19 +6,15 @@ export const useMetaTags = () => {
 
     const defaultTitle = 'Shahab Gohar — Software Engineer | AI & Full-Stack Developer'
     const defaultDescription =
-      'Shahab Gohar is a Software Engineer specializing in AI engineering, full-stack web development, and scalable business solutions. ' +
-      'Expert in Vue.js, Nuxt, React, Laravel, Python, and generative AI products. ' +
-      'Hire a senior developer for your next project.'
+      'SuiteCRM consultant building custom modules, Mautic integrations & AI workflows for B2B teams — Salesforce-grade results without the Salesforce bill.'
     const defaultKeywords =
+      'SuiteCRM developer, SuiteCRM customization, SuiteCRM plugin, SuiteCRM consultant, ' +
+      'SuiteCRM migration, SuiteCRM 8, Salesforce alternative, open-source CRM, ' +
+      'Mautic integration, Mautic to SuiteCRM, B2B CRM, AI CRM, AI dashlets, ' +
+      'CRM automation, quote to invoice automation, B2B sales automation, ' +
       'Shahab Gohar, software engineer, AI engineer, full-stack developer, ' +
-      'Vue.js developer, Nuxt developer, React developer, Laravel developer, ' +
-      'Python developer, generative AI, AI solutions architect, ' +
-      'web application development, business solutions, SaaS development, ' +
-      'freelance software engineer, hire developer, ' +
-      'frontend developer, backend developer, ' +
-      'JavaScript expert, TypeScript developer, ' +
-      'custom software development, digital transformation, ' +
-      'API development, mobile app developer, ' +
+      'Vue.js developer, Nuxt developer, Laravel developer, Python developer, ' +
+      'API development, custom software development, ' +
       'Pakistan software engineer, remote developer for hire'
 
     const pageTitle = route.meta.title
@@ -48,6 +44,7 @@ export const useMetaTags = () => {
             { property: 'og:url', content: canonicalUrl },
             { property: 'og:locale', content: 'en_US' },
             { property: 'og:image', content: `${siteUrl}/img/og-image.png` },
+            { property: 'og:image:type', content: 'image/png' },
             { property: 'og:image:width', content: '1200' },
             { property: 'og:image:height', content: '630' },
             { property: 'og:image:alt', content: 'Shahab Gohar — Software Engineer & AI Solutions Architect' },
