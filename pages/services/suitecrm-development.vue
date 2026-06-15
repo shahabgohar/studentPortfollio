@@ -88,7 +88,6 @@ const sections = [
     :related="[
       { to: '/services/mautic-suitecrm-integration', label: 'Mautic → SuiteCRM integration' },
       { to: '/services/salesforce-to-suitecrm-migration', label: 'Salesforce to SuiteCRM migration' },
-      { to: '/blogs/suitecrm-quote-order-invoice-detection', label: 'Case study: quote-to-invoice automation in SuiteCRM' },
       { to: '/blogs/suitecrm-migration-european-textile-company', label: 'Case study: rebuilding SuiteCRM for a European company' }
     ]"
   />
