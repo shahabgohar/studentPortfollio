@@ -17,9 +17,9 @@ import { useJsonLd } from "~/composeables/useJsonLd";
 import { useMetaTags } from "~/composeables/useMetaTags";
 import { INJECT_THEME_KEY, Theme } from "~/types";
 
-definePageMeta({
-  title: "Portfolio",
-});
+// No route-level title on the homepage so it uses the keyword-rich
+// default title from useMetaTags (leads with "SuiteCRM Developer").
+definePageMeta({});
 
 useMetaTags();
 useJsonLd();
@@ -203,6 +203,12 @@ const suiteCrmProducts = [
 ];
 
 const caseStudies = [
+  {
+    title: "AI content pipeline — campaign data → expert-reviewed articles",
+    result: "Agents + RAG running safely in production",
+    text: "Built a full-stack AI content pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign-performance data into expert-reviewed, SEO-optimized articles through a multi-step LLM workflow — human approval gates, subject-matter safety auditing, a provider-agnostic engine (Anthropic/Gemini), per-run cost ceilings, and live keyword metrics.",
+    href: "/services/ai-development",
+  },
   {
     title: "European textile manufacturer — SuiteCRM 8 migration",
     result: "From brittle container to reproducible CRM in 1 command",
@@ -550,7 +556,7 @@ onBeforeUnmount(() => {
             >
               <span class="hero-title-line block">I build </span>
               <span class="hero-title-line block text-info">AI-powered </span>
-              <span class="hero-title-line block">CRM systems.</span>
+              <span class="hero-title-line block">SuiteCRM systems.</span>
             </h1>
             <p
               class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl"

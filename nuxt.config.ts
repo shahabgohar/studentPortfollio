@@ -66,12 +66,16 @@ export default defineNuxtConfig({
   },
 
   googleFonts: {
+    // Performance: swap display + only needed weights. Removes the invalid
+    // 'monospace' family and trims weights to cut render-blocking font requests,
+    // improving LCP / Core Web Vitals (a Google ranking factor).
+    display: 'swap',
+    preload: true,
     families: {
-      'Roboto Mono': true,
-      'monospace': true,
-      'IBM Plex Mono': true,
-      'Oswald': [400, 700, 800, 900],
-      'VT323': true
+      'Roboto Mono': [400, 500, 700],
+      'IBM Plex Mono': [400, 500],
+      'Oswald': [400, 600, 700, 800, 900],
+      'VT323': [400]
     },
   }
 })

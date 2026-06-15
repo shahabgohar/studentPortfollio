@@ -4,7 +4,7 @@ export const useMetaTags = () => {
 
     const route = useRoute()
 
-    const defaultTitle = 'Shahab Gohar — Software Engineer | AI & Full-Stack Developer'
+    const defaultTitle = 'SuiteCRM Developer & Consultant — Custom Modules, Mautic & AI | Shahab Gohar'
     const defaultDescription =
       'SuiteCRM consultant building custom modules, Mautic integrations & AI workflows for B2B teams — Salesforce-grade results without the Salesforce bill.'
     const defaultKeywords =

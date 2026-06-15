@@ -6,12 +6,44 @@ const routes = [
   {
     path: '/',
     changefreq: 'weekly',
-    priority: '1.0'
+    priority: '1.0',
+    lastmod: '2026-06-15'
+  },
+  {
+    path: '/services',
+    changefreq: 'monthly',
+    priority: '0.9',
+    lastmod: '2026-06-15'
+  },
+  {
+    path: '/services/ai-development',
+    changefreq: 'monthly',
+    priority: '0.9',
+    lastmod: '2026-06-15'
+  },
+  {
+    path: '/services/suitecrm-development',
+    changefreq: 'monthly',
+    priority: '0.9',
+    lastmod: '2026-06-15'
+  },
+  {
+    path: '/services/mautic-suitecrm-integration',
+    changefreq: 'monthly',
+    priority: '0.8',
+    lastmod: '2026-06-15'
+  },
+  {
+    path: '/services/salesforce-to-suitecrm-migration',
+    changefreq: 'monthly',
+    priority: '0.8',
+    lastmod: '2026-06-15'
   },
   {
     path: '/blogs',
     changefreq: 'weekly',
-    priority: '0.8'
+    priority: '0.8',
+    lastmod: '2026-06-04'
   },
   {
     path: '/privacy',
@@ -36,6 +68,12 @@ const routes = [
     changefreq: 'monthly',
     priority: '0.7',
     lastmod: '2026-05-17'
+  },
+  {
+    path: '/blogs/suitecrm-quote-order-invoice-detection',
+    changefreq: 'monthly',
+    priority: '0.7',
+    lastmod: '2026-06-04'
   }
 ]
 

@@ -5,6 +5,10 @@ import {useRouter} from "#imports";
 const router = useRouter();
 const navItems = ref([
   {
+    name: 'Services',
+    to: '/services'
+  },
+  {
     name: 'About'
   },
   {
@@ -43,6 +47,7 @@ function scrollToElement(elementId: string) {
 
       <li v-for="(item, index) in navItems" :key="index" class="flex items-center justify-center">
         <router-link v-if="item.name === 'Blogs'" to="/blogs" class="cursor-pointer">{{item.name}}</router-link>
+        <router-link v-else-if="item.to" :to="item.to" class="cursor-pointer">{{item.name}}</router-link>
         <a v-else-if="item.href" :href="item.href" target="_blank" rel="noreferrer" class="cursor-pointer">{{item.name}}</a>
         <a v-else class="cursor-pointer"  @click.prevent="scrollToElement(item.name)">{{item.name }}</a>
         <Icon v-if="item?.icon" size="1.2em" :name="item?.icon"></Icon>
@@ -69,6 +74,7 @@ function scrollToElement(elementId: string) {
           <!-- Sidebar content here -->
           <li v-for="(item, index) in navItems" :key="index" class="flex flex-row border-b-2 justify-start py-1">
             <a v-if="item.name === 'Blogs'" class="cursor-pointer"  @click.prevent="() => (myDrawer?.click(),router.push('/blogs'))">{{item.name }}</a>
+            <a v-else-if="item.to" class="cursor-pointer"  @click.prevent="() => (myDrawer?.click(),router.push(item.to))">{{item.name }}</a>
             <a v-else-if="item.href" :href="item.href" target="_blank" rel="noreferrer" class="cursor-pointer" @click="myDrawer?.click()">{{item.name }}</a>
             <a v-else class="cursor-pointer"  @click.prevent="() => {myDrawer?.click(),scrollToElement(item.name)}">{{item.name }}</a>
 <!--            <Icon v-if="item.icon" size="1.2em" :name="item.icon"></Icon>-->
