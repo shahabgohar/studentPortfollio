@@ -549,21 +549,22 @@ onBeforeUnmount(() => {
             <p
               class="hero-kicker font-ibmMono text-sm uppercase tracking-[0.24em] text-info"
             >
-              SuiteCRM expert / AI automation / applied AI engineer
+              AI solution engineer / automation / full-stack product
             </p>
             <h1
               class="mt-5 max-w-5xl font-oswald text-5xl font-black uppercase leading-none sm:text-7xl lg:text-8xl"
             >
-              <span class="hero-title-line block">I build </span>
-              <span class="hero-title-line block text-info">AI-powered </span>
-              <span class="hero-title-line block">SuiteCRM systems.</span>
+              <span class="hero-title-line block">I solve real </span>
+              <span class="hero-title-line block text-info">business problems</span>
+              <span class="hero-title-line block">with software &amp; AI.</span>
             </h1>
             <p
               class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl"
             >
-              I build custom SuiteCRM modules, integrations, and AI workflows
-              for B2B teams that want Salesforce-grade results without the
-              Salesforce bill.
+              I'm a solution engineer for businesses, founders, and creators. I
+              design and ship custom software, automations, and AI workflows
+              that kill manual work and turn ideas into products people actually
+              use.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -615,7 +616,7 @@ onBeforeUnmount(() => {
               <div
                 class="flex items-center justify-between border-b border-primary/10 pb-3 font-ibmMono text-xs text-primary/55"
               >
-                <span>crm-ai-readiness.ts</span>
+                <span>solution-engineering.ts</span>
                 <span class="text-[#22c55e]">live</span>
               </div>
               <div class="grid gap-4 py-5">
@@ -625,8 +626,9 @@ onBeforeUnmount(() => {
                     >Problem</span
                   >
                   <p class="text-sm leading-6 text-primary/74">
-                    A business has CRM data, manual follow-ups, reporting gaps,
-                    or sales workflows that cost time.
+                    A business, founder, or creator is losing time to manual
+                    work, missing software, or an idea with no working product
+                    yet.
                   </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
@@ -635,8 +637,9 @@ onBeforeUnmount(() => {
                     >Build</span
                   >
                   <p class="text-sm leading-6 text-primary/74">
-                    SuiteCRM customization, Nuxt UI, Laravel/Python backend, AI
-                    workflow, automation, and consent-aware analytics.
+                    A custom web app, automation, AI workflow, integration, or
+                    CRM build — frontend, backend, and the AI layer, shipped by
+                    one engineer.
                   </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
@@ -645,8 +648,8 @@ onBeforeUnmount(() => {
                     >Result</span
                   >
                   <p class="text-sm leading-6 text-primary/74">
-                    A CRM or AI-enabled product clients can understand, trust,
-                    and use without technical friction.
+                    A working product or automation the client can understand,
+                    trust, and use — without technical friction.
                   </p>
                 </div>
               </div>
@@ -655,9 +658,9 @@ onBeforeUnmount(() => {
               >
                 <div class="bg-[#22c55e]/10 p-3">
                   <p class="font-oswald text-2xl font-black text-[#22c55e]">
-                    CRM
+                    APPS
                   </p>
-                  <p class="text-xs text-primary/55">SuiteCRM flows</p>
+                  <p class="text-xs text-primary/55">web &amp; product</p>
                 </div>
                 <div class="bg-[#38bdf8]/10 p-3">
                   <p class="font-oswald text-2xl font-black text-[#38bdf8]">
@@ -896,9 +899,10 @@ onBeforeUnmount(() => {
           Services that move the business.
         </h2>
         <p class="mt-5 text-lg leading-8 text-primary/70">
-          The portfolio is not just visual polish. It is proof that I can think
-          through the product, ship the interface, connect the backend, and make
-          the technical work legible to clients.
+          Whether you're a business automating operations, a founder needing a
+          product built, or a creator launching something tech — I think through
+          the problem, ship the interface, connect the backend, and make the
+          technical work legible to you.
         </p>
       </div>
 
@@ -1158,12 +1162,13 @@ onBeforeUnmount(() => {
             <h2
               class="font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
             >
-              Need SuiteCRM, automation, or AI work shipped properly?
+              Need software, automation, or AI work shipped properly?
             </h2>
             <p class="mt-5 max-w-2xl text-lg leading-8 text-primary/72">
-              Send the CRM problem, SuiteCRM migration, plugin idea, workflow,
-              product concept, or broken process. I will help shape the build
-              path and tell you what should be fixed, automated, or built first.
+              Send the problem — a manual process eating your time, a product
+              idea with no build yet, a broken workflow, an automation, or a CRM
+              project. I'll help shape the path and tell you what should be
+              fixed, automated, or built first.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 lg:justify-end">

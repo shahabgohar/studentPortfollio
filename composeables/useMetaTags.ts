@@ -4,18 +4,18 @@ export const useMetaTags = () => {
 
     const route = useRoute()
 
-    const defaultTitle = 'SuiteCRM Developer & Consultant — Custom Modules, Mautic & AI | Shahab Gohar'
+    const defaultTitle = 'AI Solution Engineer — Custom Software, Automation & AI | Shahab Gohar'
     const defaultDescription =
-      'SuiteCRM consultant building custom modules, Mautic integrations & AI workflows for B2B teams — Salesforce-grade results without the Salesforce bill.'
+      'Solution engineer building custom software, business automation & AI workflows for companies, founders & creators — turning manual work and ideas into products that ship. Deep SuiteCRM & Mautic expertise.'
     const defaultKeywords =
-      'SuiteCRM developer, SuiteCRM customization, SuiteCRM plugin, SuiteCRM consultant, ' +
-      'SuiteCRM migration, SuiteCRM 8, Salesforce alternative, open-source CRM, ' +
-      'Mautic integration, Mautic to SuiteCRM, B2B CRM, AI CRM, AI dashlets, ' +
-      'CRM automation, quote to invoice automation, B2B sales automation, ' +
-      'Shahab Gohar, software engineer, AI engineer, full-stack developer, ' +
-      'Vue.js developer, Nuxt developer, Laravel developer, Python developer, ' +
-      'API development, custom software development, ' +
-      'Pakistan software engineer, remote developer for hire'
+      'AI solution engineer, solution engineer, business automation, workflow automation, ' +
+      'custom software development, AI automation, AI workflows, AI integration, ' +
+      'app developer for startups, software for creators, automation consultant, ' +
+      'full-stack developer, Vue.js developer, Nuxt developer, Laravel developer, Python developer, ' +
+      'API development, SaaS development, ' +
+      'SuiteCRM developer, SuiteCRM customization, SuiteCRM plugin, SuiteCRM migration, ' +
+      'Mautic integration, Salesforce alternative, open-source CRM, CRM automation, ' +
+      'Shahab Gohar, software engineer, AI engineer, remote developer for hire'
 
     const pageTitle = route.meta.title
       ? `${route.meta.title} | Shahab Gohar — Software Engineer`

@@ -6,15 +6,21 @@ export const useJsonLd = () => {
     '@type': 'Person',
     name: 'Shahab Gohar',
     url: siteUrl,
-    jobTitle: 'SuiteCRM Developer & AI Engineer',
+    jobTitle: 'AI Solution Engineer & Full-Stack Developer',
     description:
-      'SuiteCRM developer and AI engineer building custom modules, Mautic integrations, and AI workflows for B2B teams as a Salesforce alternative.',
+      'Solution engineer building custom software, business automation, and AI workflows for companies, founders, and creators — with deep SuiteCRM and Mautic expertise.',
     email: 'shahab.developer.work@gmail.com',
     sameAs: [
       'https://www.linkedin.com/in/shahabgohar/',
       'https://github.com/engineershahabgohar'
     ],
     knowsAbout: [
+      'Solution Engineering',
+      'Business Process Automation',
+      'Workflow Automation',
+      'Custom Software Development',
+      'AI Automation',
+      'AI Integration',
       'SuiteCRM',
       'SuiteCRM customization',
       'SuiteCRM 8',
@@ -49,22 +55,22 @@ export const useJsonLd = () => {
     },
     hasOccupation: {
       '@type': 'Occupation',
-      name: 'SuiteCRM Developer & AI Engineer',
+      name: 'AI Solution Engineer & Full-Stack Developer',
       occupationalCategory: '15-1252.00',
       skills:
-        'SuiteCRM, SuiteCRM 8, SuiteCRM customization, Mautic, AI workflows, Vue.js, Nuxt.js, Laravel, Python, JavaScript, TypeScript, API Design, B2B sales automation'
+        'Solution engineering, business automation, AI workflows, custom software, Vue.js, Nuxt.js, Laravel, Python, JavaScript, TypeScript, API Design, SuiteCRM, Mautic'
     }
   }
 
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Shahab Gohar — SuiteCRM Developer & AI Engineer',
+    name: 'Shahab Gohar — AI Solution Engineer & Full-Stack Developer',
     url: siteUrl,
     description:
-      'SuiteCRM consulting for B2B teams — custom modules, Mautic integrations, AI-powered dashlets, and Salesforce-to-SuiteCRM migrations by Shahab Gohar.',
+      'Solution engineering for companies, founders, and creators — custom software, business automation, AI workflows, and CRM builds by Shahab Gohar.',
     keywords:
-      'SuiteCRM, SuiteCRM developer, SuiteCRM customization, SuiteCRM plugin, Salesforce alternative, open-source CRM, Mautic integration, B2B CRM, AI CRM, SuiteCRM 8',
+      'AI solution engineer, business automation, custom software development, AI workflows, full-stack developer, SuiteCRM developer, Mautic integration, workflow automation, app developer for startups',
     author: {
       '@type': 'Person',
       name: 'Shahab Gohar'
@@ -75,10 +81,10 @@ export const useJsonLd = () => {
   const professionalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Shahab Gohar — SuiteCRM Consulting & AI Engineering',
+    name: 'Shahab Gohar — Solution Engineering, Automation & AI',
     url: siteUrl,
     description:
-      'SuiteCRM consulting for B2B teams — custom modules, plugin development, Mautic integrations, AI dashlets, and Salesforce-to-SuiteCRM migrations.',
+      'Solution engineering for companies, founders, and creators — custom software, business automation, AI workflows, integrations, and SuiteCRM/Mautic builds.',
     provider: {
       '@type': 'Person',
       name: 'Shahab Gohar'
@@ -98,16 +104,17 @@ export const useJsonLd = () => {
       { '@type': 'Country', name: 'Germany' }
     ],
     serviceType: [
+      'AI Solution Engineering',
+      'Business Process Automation',
+      'Workflow & Tool Integration',
+      'Custom Software Development',
+      'Full-Stack Web Application Development (Vue.js, Nuxt, Laravel)',
+      'AI Workflows & Applied AI Systems',
       'SuiteCRM Customization & Development',
       'SuiteCRM Plugin Development',
-      'SuiteCRM Migration & Upgrades',
       'Mautic → SuiteCRM Integration',
-      'AI Dashlets & Workflows for SuiteCRM',
-      'B2B Sales Process Automation',
       'Salesforce-to-SuiteCRM Migration',
-      'Quote-to-Invoice Automation',
-      'Custom Software Development',
-      'Full-Stack Web Application Development (Vue.js, Nuxt, Laravel)'
+      'Quote-to-Invoice Automation'
     ]
   }
 
