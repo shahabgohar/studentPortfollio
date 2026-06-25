@@ -11,7 +11,6 @@ import {
   ref,
   type Ref,
 } from "vue";
-import ClientGlobe from "~/components/ClientGlobe.vue";
 import MatrixRain from "~/components/MatrixRain.vue";
 import { useJsonLd } from "~/composeables/useJsonLd";
 import { useMetaTags } from "~/composeables/useMetaTags";
@@ -26,7 +25,6 @@ useJsonLd();
 
 const theme = inject<Ref<Theme>>(INJECT_THEME_KEY);
 const showFloatBtnFlg = ref(false);
-const activeService = ref(0);
 const activeCaseStudy = ref(0);
 const heroRef = ref<HTMLElement | null>(null);
 const cursorRef = ref<HTMLElement | null>(null);
@@ -34,58 +32,9 @@ const cursorRef = ref<HTMLElement | null>(null);
 const isLightTheme = computed(() => theme?.value === Theme.LIGHT);
 
 const metrics = [
-  { value: "35+", label: "freelance client reviews" },
+  { value: "35+", label: "five-star client reviews" },
   { value: "5.0", label: "average rating" },
-  { value: "SuiteCRM", label: "plugins, CRM flows, and integrations" },
-  { value: "AI", label: "automation and applied AI systems" },
-  { value: "Remote", label: "trusted by global clients" },
-];
-
-const reviewStats = [
-  {
-    value: "35+",
-    label: "client reviews collected from Freelance Platforms and direct work",
-  },
-  { value: "10", label: "countries represented across freelance clients" },
-  { value: "5.0", label: "public work rating across 34 reviews" },
-  {
-    value: "15+",
-    label: "reviews with delivery speed or communication praise",
-  },
-];
-
-const clientCountries = [
-  "United States",
-  "United Kingdom",
-  "Germany",
-  "Canada",
-  "Spain",
-  "Nigeria",
-  "Belgium",
-  "Malta",
-];
-
-const proofCategories = [
-  {
-    title: "Clean code",
-    text: "Clients repeatedly mention clean structure, readable implementation, and bug-free delivery.",
-    icon: "mdi:code-braces",
-  },
-  {
-    title: "Fast delivery",
-    text: "Multiple reviews highlight quick turnaround, responsive communication, and work completed ahead of expectations.",
-    icon: "mdi:flash-outline",
-  },
-  {
-    title: "Business workflows",
-    text: "Custom quote-to-order-to-invoice flows, SuiteCRM fixes, internal tools, and automation-focused delivery.",
-    icon: "mdi:source-branch-sync",
-  },
-  {
-    title: "Repeat clients",
-    text: "Several buyers returned for additional frontend, full-stack, and cross-platform development work.",
-    icon: "mdi:account-heart-outline",
-  },
+  { value: "10", label: "countries served, fully remote" },
 ];
 
 const testimonials = [
@@ -94,7 +43,7 @@ const testimonials = [
     country: "Germany",
     type: "SuiteCRM",
     quote:
-      "proactive, communicative, and deeply committed to achieving the best possible result. If you want a true star who will genuinely fight for your success, here you are.",
+      "Proactive, communicative, and deeply committed to the best result. A true star who will fight for your success.",
   },
   {
     client: "kininvestments",
@@ -109,26 +58,6 @@ const testimonials = [
     type: "Frontend / Full-stack",
     quote:
       "Clean code, strong problem-solving, no bugs, and work that went beyond expectations.",
-  },
-  {
-    client: "mattjohnsen",
-    country: "United States",
-    type: "Vue / JavaScript",
-    quote:
-      "Clear communication, solid Vue and JavaScript skills, fast delivery, and clean commented code.",
-  },
-  {
-    client: "user90513046",
-    country: "Canada",
-    type: "Responsive web app",
-    quote:
-      "Knowledgeable, efficient, easy to work with, and delivered clean responsive code.",
-  },
-  {
-    client: "weissclick",
-    country: "Germany",
-    type: "Cross-platform development",
-    quote: "Fast developer with good code structure and repeat-order quality.",
   },
 ];
 
@@ -184,7 +113,6 @@ const suiteCrmProducts = [
       "Charts for CRM modules",
       "Goals, filters, and dashboard insights",
     ],
-    screenshot: "/img/products/ai-dashlet-generator.gif",
   },
   {
     title: "Business Card Reader",
@@ -198,7 +126,6 @@ const suiteCrmProducts = [
       "Lead/contact creation",
       "Campaign-aware import flow",
     ],
-    screenshot: "/img/products/business-card-reader.gif",
   },
 ];
 
@@ -206,77 +133,21 @@ const caseStudies = [
   {
     title: "AI content pipeline — campaign data → expert-reviewed articles",
     result: "Agents + RAG running safely in production",
-    text: "Built a full-stack AI content pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign-performance data into expert-reviewed, SEO-optimized articles through a multi-step LLM workflow — human approval gates, subject-matter safety auditing, a provider-agnostic engine (Anthropic/Gemini), per-run cost ceilings, and live keyword metrics.",
+    text: "A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles — with human approval gates, safety auditing, and per-run cost ceilings.",
     href: "/services/ai-development",
   },
   {
     title: "European textile manufacturer — SuiteCRM 8 migration",
     result: "From brittle container to reproducible CRM in 1 command",
-    text: "Migrated a pre-built SuiteCRM container into a versioned SuiteCRM 8.10.1 deployment on Docker Compose. Added Google SSO, auto-provisioned calendar sync, 6-language localization, and Makefile-driven operations. Full case study on the blog.",
+    text: "Migrated a brittle container into a versioned SuiteCRM 8.10.1 deployment on Docker Compose — Google SSO, calendar sync, 6-language localization, and one-command operations.",
     href: "/blogs/suitecrm-migration-european-textile-company",
   },
   {
     title: "US SuiteCRM automation — quote → order → invoice",
     result: "End-to-end sales flow automated inside SuiteCRM",
-    text: "Customized the SuiteCRM quote-to-invoice pipeline for a US client (kininvestments) so the sales team converts quotes to orders to invoices without leaving the CRM. Client review on Fiverr: 5.0.",
+    text: "Customized the quote-to-invoice pipeline so the sales team converts quotes to orders to invoices without leaving the CRM. Client review: 5.0.",
     href: "",
   },
-  {
-    title: "AI Dashlet Generator — productized SuiteCRM add-on",
-    result: "Live on the SuiteCRM Store",
-    text: "Designed, built, and shipped an AI-powered dashlet generator that auto-creates dashboard widgets from natural-language prompts — replacing manual report configuration with a one-prompt workflow.",
-    href: "https://store.suitecrm.com/addons/ai-dashlet-generator",
-  },
-  {
-    title: "US SuiteCRM partner — Mautic → SuiteCRM lead sync",
-    result: "Marketing leads land in sales' inbox the moment they convert",
-    text: "Built an automated sync that pushes new leads and contacts from Mautic (forms, campaigns, landing pages) directly into SuiteCRM the moment they're captured. The partner now resells a white-labelled CRM with native Mautic integration to their downstream customers — no manual list imports, no missed follow-ups.",
-    href: "",
-  },
-  {
-    title: "Mitchelli — legacy JS rewritten as SuiteCRM 8 field actions",
-    result: "Custom business logic preserved through the Angular upgrade",
-    text: "Took the client's existing custom JavaScript logic from the SuiteCRM 7 legacy view and re-implemented it natively as SuiteCRM 8 field actions on the Angular UI — preserving every business rule without losing the upgrade benefits.",
-    href: "",
-  },
-  {
-    title: "Journey CRM — fully white-labelled SuiteCRM product",
-    result: "A sellable, branded CRM product built on SuiteCRM",
-    text: "Heavy frontend customization of SuiteCRM 8 — Angular modern UI, legacy views, detail and edit screens — to deliver a completely re-themed CRM the client now sells under their own brand as a finished product.",
-    href: "",
-  },
-];
-
-const processSteps = [
-  {
-    step: "01",
-    title: "Clarify the business outcome",
-    text: "We define what should improve: revenue speed, support load, delivery time, lead quality, or operational cost.",
-  },
-  {
-    step: "02",
-    title: "Prototype the highest-value workflow",
-    text: "I build the smallest useful version with real data paths, UI states, and enough polish to test with users.",
-  },
-  {
-    step: "03",
-    title: "Harden for real usage",
-    text: "We add edge-case handling, analytics, guardrails, performance work, and production-ready integration.",
-  },
-];
-
-const techStack = [
-  "Vue",
-  "Nuxt",
-  "React",
-  "Tailwind",
-  "Laravel",
-  "Python",
-  "TypeScript",
-  "SQL",
-  "GSAP",
-  "AI",
-  "SuiteCRM",
 ];
 
 const contactLinks = [
@@ -294,36 +165,6 @@ const contactLinks = [
     label: "Skype",
     href: "https://join.skype.com/invite/ve8oN0kKdvXQ",
     icon: "mdi:skype",
-  },
-];
-
-const experiences = [
-  {
-    period: "Jul 2024 - Present",
-    company: "Esper Solutions",
-    role: "Software Engineer",
-    summary:
-      "Building GenAI products and customizing SuiteCRM and Mautic around client needs.",
-  },
-  {
-    period: "May 2023 - Feb 2024",
-    company: "CTO GmbH",
-    role: "Freelance Frontend Developer",
-    summary:
-      "Delivered Nuxt, Tailwind, TypeScript, and Ionic work across web and hybrid mobile products.",
-  },
-  {
-    period: "2020 - Present",
-    company: "Freelance",
-    role: "Full-Stack Web Developer",
-    summary:
-      "Helping founders and small businesses ship Vue, Laravel, and mobile-friendly product experiences.",
-  },
-  {
-    period: "2021 - 2023",
-    company: "Motocle, Inc Japan",
-    role: "Full-Stack Web Developer",
-    summary: "Fullstack Developer developing projects from the ground up.",
   },
 ];
 
@@ -508,12 +349,6 @@ onBeforeUnmount(() => {
             >
               Work
             </button>
-            <button
-              class="transition hover:text-info"
-              @click="scrollToSection('Process')"
-            >
-              Process
-            </button>
             <NuxtLink to="/blogs" class="transition hover:text-info"
               >Blog</NuxtLink
             >
@@ -561,10 +396,8 @@ onBeforeUnmount(() => {
             <p
               class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl"
             >
-              I'm a solution engineer for businesses, founders, and creators. I
-              design and ship custom software, automations, and AI workflows
-              that kill manual work and turn ideas into products people actually
-              use.
+              I design and ship custom software, automations, and AI workflows
+              that kill manual work and turn ideas into products people use.
             </p>
 
             <div class="mt-8 flex flex-wrap gap-3">
@@ -626,9 +459,8 @@ onBeforeUnmount(() => {
                     >Problem</span
                   >
                   <p class="text-sm leading-6 text-primary/74">
-                    A business, founder, or creator is losing time to manual
-                    work, missing software, or an idea with no working product
-                    yet.
+                    Time lost to manual work, missing software, or an idea with
+                    no working product yet.
                   </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
@@ -637,9 +469,8 @@ onBeforeUnmount(() => {
                     >Build</span
                   >
                   <p class="text-sm leading-6 text-primary/74">
-                    A custom web app, automation, AI workflow, integration, or
-                    CRM build — frontend, backend, and the AI layer, shipped by
-                    one engineer.
+                    A custom web app, automation, AI workflow, or CRM build —
+                    frontend, backend, and AI layer, shipped by one engineer.
                   </p>
                 </div>
                 <div class="grid grid-cols-[90px_1fr] gap-4">
@@ -648,8 +479,8 @@ onBeforeUnmount(() => {
                     >Result</span
                   >
                   <p class="text-sm leading-6 text-primary/74">
-                    A working product or automation the client can understand,
-                    trust, and use — without technical friction.
+                    A working product you can understand, trust, and use —
+                    without technical friction.
                   </p>
                 </div>
               </div>
@@ -699,75 +530,12 @@ onBeforeUnmount(() => {
             </h2>
           </div>
           <p class="text-lg leading-8 text-primary/70">
-            Before a client hires, they want to know three things: Can you
-            communicate clearly, deliver fast, and write code that survives real
-            use? The reviews answer that directly.
+            Clear communication, fast delivery, and code that survives real use
+            — the reviews speak for themselves.
           </p>
         </div>
 
-        <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          <div
-            v-for="stat in reviewStats"
-            :key="stat.value + stat.label"
-            class="portfolio-reveal border border-primary/10 bg-secondary p-5"
-          >
-            <p class="font-oswald text-4xl font-black text-info">
-              {{ stat.value }}
-            </p>
-            <p class="mt-2 text-sm leading-6 text-primary/65">
-              {{ stat.label }}
-            </p>
-          </div>
-        </div>
-
-        <div class="mt-8 grid gap-6 lg:grid-cols-[0.82fr_1.18fr]">
-          <div
-            class="portfolio-reveal overflow-hidden border border-primary/10 bg-secondary p-5"
-          >
-            <div class="flex items-center justify-between gap-4">
-              <div>
-                <p
-                  class="font-ibmMono text-xs uppercase tracking-[0.2em] text-primary/45"
-                >
-                  Global clients
-                </p>
-                <p class="mt-2 text-sm leading-6 text-primary/65">
-                  Freelance work across North America, Europe, Africa, and
-                  Malta.
-                </p>
-              </div>
-              <Icon name="mdi:earth" class="text-info" size="28" />
-            </div>
-
-            <ClientGlobe class="mt-6" />
-
-            <div class="mt-8 flex flex-wrap gap-2">
-              <span
-                v-for="country in clientCountries"
-                :key="country"
-                class="border border-primary/10 px-3 py-2 text-xs text-primary/70"
-              >
-                {{ country }}
-              </span>
-            </div>
-          </div>
-
-          <div class="grid gap-4 sm:grid-cols-2">
-            <article
-              v-for="category in proofCategories"
-              :key="category.title"
-              class="portfolio-reveal border border-primary/10 bg-secondary p-5"
-            >
-              <Icon :name="category.icon" class="text-info" size="28" />
-              <h3 class="mt-4 text-xl font-bold">{{ category.title }}</h3>
-              <p class="mt-3 text-sm leading-6 text-primary/65">
-                {{ category.text }}
-              </p>
-            </article>
-          </div>
-        </div>
-
-        <div class="mt-8 grid gap-4 lg:grid-cols-3">
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
           <article
             v-for="review in testimonials"
             :key="review.client + review.type"
@@ -844,14 +612,6 @@ onBeforeUnmount(() => {
 
           <p class="mt-5 leading-7 text-primary/70">{{ product.summary }}</p>
 
-          <img
-            v-if="product.screenshot"
-            :src="product.screenshot"
-            :alt="`${product.title} demo`"
-            loading="lazy"
-            class="mt-6 mx-auto block max-h-[520px] w-full object-contain border border-primary/10 bg-secondary"
-          />
-
           <div class="mt-6 grid gap-3">
             <div
               v-for="highlight in product.highlights"
@@ -899,10 +659,8 @@ onBeforeUnmount(() => {
           Services that move the business.
         </h2>
         <p class="mt-5 text-lg leading-8 text-primary/70">
-          Whether you're a business automating operations, a founder needing a
-          product built, or a creator launching something tech — I think through
-          the problem, ship the interface, connect the backend, and make the
-          technical work legible to you.
+          I think through the problem, ship the interface, connect the backend,
+          and make the technical work legible to you.
         </p>
       </div>
 
@@ -912,7 +670,6 @@ onBeforeUnmount(() => {
           :key="service.title"
           class="portfolio-reveal group border border-primary/10 bg-primary/[0.03] p-6 transition duration-300 hover:-translate-y-1 hover:border-info/70"
           :style="{ '--accent': service.accent }"
-          @mouseenter="activeService = index"
         >
           <div class="flex items-start justify-between gap-6">
             <Icon :name="service.icon" class="text-[var(--accent)]" size="34" />
@@ -935,13 +692,6 @@ onBeforeUnmount(() => {
             </li>
           </ul>
         </article>
-      </div>
-
-      <div
-        class="portfolio-reveal mt-6 border border-primary/10 bg-secondary p-5 font-ibmMono text-sm text-primary/65"
-      >
-        Current focus:
-        <span class="text-info">{{ services[activeService].title }}</span>
       </div>
     </section>
 
@@ -1032,7 +782,7 @@ onBeforeUnmount(() => {
       >
         <div class="max-w-3xl">
           <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-            How we work
+            The guarantee
           </p>
           <h2
             class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
@@ -1049,101 +799,6 @@ onBeforeUnmount(() => {
           Book a build discussion
           <Icon name="mdi:calendar-arrow-right" size="18" />
         </a>
-      </div>
-
-      <div class="mt-10 grid gap-5 lg:grid-cols-3">
-        <article
-          v-for="step in processSteps"
-          :key="step.step"
-          class="portfolio-reveal border border-primary/10 p-6"
-        >
-          <p class="font-oswald text-5xl font-black text-info">
-            {{ step.step }}
-          </p>
-          <h3 class="mt-6 text-2xl font-bold leading-tight">
-            {{ step.title }}
-          </h3>
-          <p class="mt-4 leading-7 text-primary/68">{{ step.text }}</p>
-        </article>
-      </div>
-    </section>
-
-    <section
-      id="Stack"
-      class="mx-auto grid w-full max-w-[1280px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1fr] lg:px-14"
-    >
-      <div class="portfolio-reveal">
-        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-          Technical range
-        </p>
-        <h2
-          class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-        >
-          Enough stack to own the outcome.
-        </h2>
-        <p class="mt-5 text-lg leading-8 text-primary/70">
-          Clients should not have to coordinate three people to ship one
-          workflow. I can handle the front end, backend integration, automation
-          logic, and AI layer.
-        </p>
-        <div class="mt-7 flex flex-wrap gap-2">
-          <span
-            v-for="tech in techStack"
-            :key="tech"
-            class="border border-primary/10 px-3 py-2 font-ibmMono text-sm text-primary/70"
-          >
-            {{ tech }}
-          </span>
-        </div>
-      </div>
-
-      <div class="grid gap-4">
-        <article
-          v-for="experience in experiences"
-          :key="experience.company"
-          class="portfolio-reveal border border-primary/10 bg-primary/[0.025] p-5"
-        >
-          <p
-            class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
-          >
-            {{ experience.period }}
-          </p>
-          <div
-            class="mt-3 flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between"
-          >
-            <h3 class="text-2xl font-bold">{{ experience.company }}</h3>
-            <p class="text-info">{{ experience.role }}</p>
-          </div>
-          <p class="mt-3 leading-7 text-primary/68">{{ experience.summary }}</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="border-y border-primary/10 bg-primary/[0.025]">
-      <div
-        class="mx-auto grid w-full max-w-[1280px] gap-8 px-5 py-16 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-center lg:px-14"
-      >
-        <div class="portfolio-reveal">
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-            Thinking in public
-          </p>
-          <h2
-            class="mt-4 font-oswald text-4xl font-black uppercase leading-none sm:text-5xl"
-          >
-            Read how I think about AI ROI.
-          </h2>
-          <p class="mt-4 max-w-2xl leading-7 text-primary/68">
-            The blog is built to attract founders and CTOs looking for practical
-            AI engineering, not empty hype.
-          </p>
-        </div>
-        <NuxtLink
-          to="/blogs/ai-engineering-revolution"
-          class="portfolio-reveal inline-flex items-center justify-center gap-2 bg-info px-5 py-3 font-ibmMono text-sm font-bold text-secondary transition hover:opacity-90"
-        >
-          Read the article
-          <Icon name="mdi:arrow-right" size="18" />
-        </NuxtLink>
       </div>
     </section>
 
@@ -1166,9 +821,8 @@ onBeforeUnmount(() => {
             </h2>
             <p class="mt-5 max-w-2xl text-lg leading-8 text-primary/72">
               Send the problem — a manual process eating your time, a product
-              idea with no build yet, a broken workflow, an automation, or a CRM
-              project. I'll help shape the path and tell you what should be
-              fixed, automated, or built first.
+              idea with no build yet, or a CRM project. I'll tell you what to
+              fix, automate, or build first.
             </p>
           </div>
           <div class="flex flex-wrap gap-3 lg:justify-end">
