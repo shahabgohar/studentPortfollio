@@ -11,13 +11,10 @@ import {
   ref,
   type Ref,
 } from "vue";
-import MatrixRain from "~/components/MatrixRain.vue";
 import { useJsonLd } from "~/composeables/useJsonLd";
 import { useMetaTags } from "~/composeables/useMetaTags";
 import { INJECT_THEME_KEY, Theme } from "~/types";
 
-// No route-level title on the homepage so it uses the keyword-rich
-// default title from useMetaTags (leads with "SuiteCRM Developer").
 definePageMeta({});
 
 useMetaTags();
@@ -26,31 +23,66 @@ useJsonLd();
 const theme = inject<Ref<Theme>>(INJECT_THEME_KEY);
 const showFloatBtnFlg = ref(false);
 const activeCaseStudy = ref(0);
-const heroRef = ref<HTMLElement | null>(null);
-const cursorRef = ref<HTMLElement | null>(null);
 
 const isLightTheme = computed(() => theme?.value === Theme.LIGHT);
 
-const metrics = [
-  { value: "35+", label: "five-star client reviews" },
-  { value: "5.0", label: "average rating" },
-  { value: "10", label: "countries served, fully remote" },
+const trust = [
+  { value: "★★★★★", label: "5.0 average rating", stars: true },
+  { value: "35+", label: "five-star reviews" },
+  { value: "10", label: "countries served" },
+  { value: "6+", label: "years building products" },
+];
+
+const services = [
+  {
+    title: "AI development",
+    icon: "mdi:brain",
+    summary:
+      "Assistants, RAG workflows, and automations with guardrails, safety, and measurable outcomes.",
+    points: [
+      "AI assistants & copilots",
+      "RAG & document workflows",
+      "Applied, production-grade AI",
+    ],
+  },
+  {
+    title: "Web, mobile & desktop apps",
+    icon: "mdi:application-brackets",
+    summary:
+      "Polished products across platforms — fast web and SaaS, hybrid mobile, and desktop, end to end.",
+    points: [
+      "Vue / Nuxt / React frontends",
+      "Mobile & desktop apps",
+      "Responsive, fast UI delivery",
+    ],
+  },
+  {
+    title: "Backend & automation",
+    icon: "mdi:server-network",
+    summary:
+      "Reliable APIs, integrations, internal tools, and automation that remove repetitive manual work.",
+    points: [
+      "Laravel / Python / Node APIs",
+      "Integrations & internal tools",
+      "Workflow & process automation",
+    ],
+  },
 ];
 
 const testimonials = [
   {
     client: "michaelh622",
     country: "Germany",
-    type: "SuiteCRM",
+    type: "CRM & automation",
     quote:
       "Proactive, communicative, and deeply committed to the best result. A true star who will fight for your success.",
   },
   {
     client: "kininvestments",
     country: "United States",
-    type: "SuiteCRM automation",
+    type: "Sales automation",
     quote:
-      "Customized quote-to-order-to-invoice flow with product line item change detection and hosting fixes.",
+      "Customized a full quote-to-order-to-invoice flow with change detection and hosting fixes.",
   },
   {
     client: "devin_lester",
@@ -61,71 +93,24 @@ const testimonials = [
   },
 ];
 
-const services = [
-  {
-    title: "AI Product Engineering",
-    icon: "mdi:brain",
-    accent: "#22c55e",
-    summary:
-      "Turn AI ideas into useful product workflows with clean UX, backend logic, guardrails, and measurable outcomes.",
-    points: [
-      "AI assistants and copilots",
-      "RAG and document workflows",
-      "Prompt systems and automation",
-    ],
-  },
-  {
-    title: "Full-Stack Web Apps",
-    icon: "mdi:application-brackets",
-    accent: "#38bdf8",
-    summary:
-      "Build polished interfaces and reliable APIs for SaaS, dashboards, portals, and business operations.",
-    points: [
-      "Nuxt and Vue frontends",
-      "Laravel and API systems",
-      "Responsive, fast UI delivery",
-    ],
-  },
-  {
-    title: "Business Automation",
-    icon: "mdi:robot-outline",
-    accent: "#f59e0b",
-    summary:
-      "Remove repetitive manual work by connecting data, tools, and workflows into dependable automated systems.",
-    points: [
-      "Internal tools",
-      "Workflow integrations",
-      "Reporting and process cleanup",
-    ],
-  },
-];
-
-const suiteCrmProducts = [
+const products = [
   {
     title: "AI Dashlet Generator",
-    label: "SuiteCRM AI reporting add-on",
+    label: "AI reporting add-on",
     url: "https://store.suitecrm.com/addons/ai-dashlet-generator",
     icon: "mdi:chart-box-plus-outline",
     summary:
-      "An AI-powered SuiteCRM module that helps teams auto-generate useful dashboard dashlets, visualize CRM data, and move faster without wrestling with complex reports.",
-    highlights: [
-      "AI-generated dashlets",
-      "Charts for CRM modules",
-      "Goals, filters, and dashboard insights",
-    ],
+      "An AI module that auto-generates dashboard widgets from natural-language prompts — replacing manual report config with one prompt.",
+    highlights: ["AI-generated dashlets", "Charts from plain prompts", "Live on a public marketplace"],
   },
   {
     title: "Business Card Reader",
-    label: "SuiteCRM lead capture add-on",
+    label: "Lead capture add-on",
     url: "https://store.suitecrm.com/addons/business-card-reader",
     icon: "mdi:card-account-details-outline",
     summary:
-      "A SuiteCRM plugin for instantly capturing business card data, creating contacts or leads, storing card images, and keeping event/conference follow-up organized.",
-    highlights: [
-      "OCR and QR scanning",
-      "Lead/contact creation",
-      "Campaign-aware import flow",
-    ],
+      "A lead-capture tool that turns business cards into contacts instantly with OCR and QR scanning, then keeps follow-up organized.",
+    highlights: ["OCR & QR scanning", "Instant contact creation", "Event follow-up flow"],
   },
 ];
 
@@ -137,15 +122,15 @@ const caseStudies = [
     href: "/services/ai-development",
   },
   {
-    title: "European textile manufacturer — SuiteCRM 8 migration",
-    result: "From brittle container to reproducible CRM in 1 command",
-    text: "Migrated a brittle container into a versioned SuiteCRM 8.10.1 deployment on Docker Compose — Google SSO, calendar sync, 6-language localization, and one-command operations.",
+    title: "Enterprise CRM platform — migration & modern UI",
+    result: "From brittle container to reproducible system in 1 command",
+    text: "Migrated a brittle deployment into a versioned, reproducible platform on Docker Compose — SSO, calendar sync, 6-language localization, and one-command operations.",
     href: "/blogs/suitecrm-migration-european-textile-company",
   },
   {
-    title: "US SuiteCRM automation — quote → order → invoice",
-    result: "End-to-end sales flow automated inside SuiteCRM",
-    text: "Customized the quote-to-invoice pipeline so the sales team converts quotes to orders to invoices without leaving the CRM. Client review: 5.0.",
+    title: "Sales workflow automation — quote → order → invoice",
+    result: "End-to-end sales flow automated",
+    text: "Automated a US client's quote-to-invoice pipeline so the sales team converts quotes to orders to invoices without manual re-entry. Client review: 5.0.",
     href: "",
   },
 ];
@@ -168,6 +153,8 @@ const contactLinks = [
   },
 ];
 
+const calBookingUrl = "https://cal.com/shahabgohar/build-discussion";
+
 function toggleTheme() {
   if (!theme) return;
   theme.value = theme.value === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
@@ -183,91 +170,25 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-const calBookingUrl = "https://cal.com/shahabgohar/build-discussion";
-
 function handleScroll() {
   showFloatBtnFlg.value = window.scrollY > 680;
 }
 
-function handleHeroPointer(event: MouseEvent) {
-  const hero = heroRef.value;
-  const cursor = cursorRef.value;
-  if (!hero || !cursor) return;
-
-  const rect = hero.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-  cursor.style.transform = `translate3d(${x - 120}px, ${y - 120}px, 0)`;
-}
-
 function setupAnimations() {
-  const revealEls = gsap.utils.toArray<HTMLElement>(".portfolio-reveal");
+  const revealEls = gsap.utils.toArray<HTMLElement>(".reveal");
   revealEls.forEach((el) => {
     gsap.fromTo(
       el,
-      { opacity: 0, y: 36 },
+      { opacity: 0, y: 28 },
       {
         opacity: 1,
         y: 0,
-        duration: 0.75,
+        duration: 0.6,
         ease: "power3.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 84%",
-          toggleActions: "play none none none",
-        },
+        scrollTrigger: { trigger: el, start: "top 88%", toggleActions: "play none none none" },
       },
     );
   });
-
-  const heroTimeline = gsap.timeline({
-    defaults: { ease: "power3.out" },
-  });
-  heroTimeline
-    .from(".hero-kicker", {
-      opacity: 0,
-      y: 18,
-      duration: 0.45,
-      clearProps: "opacity,y,transform",
-    })
-    .from(
-      ".hero-title-line",
-      {
-        opacity: 0,
-        y: 46,
-        duration: 0.72,
-        stagger: 0.08,
-        clearProps: "opacity,y,transform",
-      },
-      "-=0.15",
-    )
-    .from(
-      ".hero-copy",
-      { opacity: 0, y: 22, duration: 0.55, clearProps: "opacity,y,transform" },
-      "-=0.25",
-    )
-    .from(
-      ".hero-action",
-      {
-        opacity: 0,
-        y: 18,
-        duration: 0.45,
-        stagger: 0.08,
-        clearProps: "opacity,y,transform",
-      },
-      "-=0.2",
-    )
-    .from(
-      ".hero-proof",
-      {
-        opacity: 0,
-        y: 24,
-        duration: 0.45,
-        stagger: 0.06,
-        clearProps: "opacity,y,transform",
-      },
-      "-=0.15",
-    );
 }
 
 onMounted(() => {
@@ -278,7 +199,6 @@ onMounted(() => {
       screen_name: "Home",
     });
   }
-
   window.addEventListener("scroll", handleScroll, { passive: true });
   handleScroll();
   nextTick(setupAnimations);
@@ -291,555 +211,303 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <main class="min-h-screen bg-secondary text-primary">
+  <main class="min-h-screen bg-secondary font-inter text-primary">
     <button
       v-if="showFloatBtnFlg"
-      class="fixed bottom-5 right-5 z-50 grid h-12 w-12 place-items-center border border-primary/20 bg-secondary text-primary shadow-lg transition hover:border-info hover:text-info"
+      class="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center rounded-xl border border-primary/15 bg-secondary text-primary shadow-lg transition hover:border-info hover:text-info"
       aria-label="Scroll to top"
       @click="scrollToTop"
     >
-      <Icon name="mdi:arrow-up" size="22" />
+      <Icon name="mdi:arrow-up" size="20" />
     </button>
 
-    <section
-      ref="heroRef"
-      class="relative min-h-screen overflow-hidden px-5 sm:px-8 lg:px-14"
-      @mousemove="handleHeroPointer"
-    >
-      <MatrixRain />
-      <div
-        ref="cursorRef"
-        class="pointer-events-none absolute left-0 top-0 hidden h-60 w-60 border border-info/20 bg-info/10 blur-2xl lg:block"
-      ></div>
-
-      <div
-        class="relative z-10 mx-auto flex min-h-screen w-full max-w-[1280px] flex-col"
+    <div class="mx-auto w-full max-w-[1120px] px-6 sm:px-8">
+      <!-- NAV -->
+      <nav
+        class="flex items-center justify-between border-b border-primary/10 py-5 text-sm"
       >
-        <nav
-          class="flex items-center justify-between border-b border-primary/10 py-5 font-ibmMono text-sm"
+        <button
+          class="font-grotesk text-lg font-bold tracking-tight"
+          @click="scrollToTop"
         >
+          Shahab<span class="text-info">.</span>dev
+        </button>
+        <div class="hidden items-center gap-7 font-medium text-primary/65 md:flex">
+          <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
+          <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
+          <button class="transition hover:text-info" @click="scrollToSection('Products')">Products</button>
+          <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
+          <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
+        </div>
+        <div class="flex items-center gap-2">
           <button
-            class="text-left font-bold uppercase tracking-[0.18em]"
-            @click="scrollToTop"
+            class="grid h-10 w-10 place-items-center rounded-lg border border-primary/15 transition hover:border-info hover:text-info"
+            :aria-label="isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'"
+            @click="toggleTheme"
           >
-            Shahab Gohar
+            <Icon :name="isLightTheme ? 'mdi:weather-night' : 'mdi:white-balance-sunny'" size="18" />
           </button>
-          <div class="hidden items-center gap-6 text-primary/70 md:flex">
-            <button
-              class="transition hover:text-info"
-              @click="scrollToSection('Services')"
+          <a
+            :href="calBookingUrl"
+            target="_blank"
+            rel="noreferrer"
+            class="hidden rounded-lg border border-info px-4 py-2 font-medium text-info transition hover:bg-info hover:text-secondary sm:inline-flex"
+          >
+            Book a call
+          </a>
+        </div>
+      </nav>
+
+      <!-- HERO -->
+      <header class="grid gap-12 py-16 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:py-24">
+        <div>
+          <span
+            class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/[0.04] px-3.5 py-1.5 text-[13px] font-medium text-info"
+          >
+            <span class="h-2 w-2 rounded-full bg-info"></span>
+            Solutions engineer · AI · web · mobile · backend
+          </span>
+          <h1
+            class="mt-6 font-grotesk text-[2.7rem] font-bold leading-[1.05] tracking-tight sm:text-6xl"
+          >
+            I solve real <span class="text-info">business problems</span> with software.
+          </h1>
+          <p class="mt-6 max-w-xl text-lg leading-8 text-primary/65">
+            I'm Shahab — a solutions engineer. I design and build AI, web, mobile,
+            desktop, and backend systems that cut manual work and turn ideas into
+            products businesses actually use.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a
+              :href="calBookingUrl"
+              target="_blank"
+              rel="noreferrer"
+              class="inline-flex items-center gap-2 rounded-xl bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
             >
-              Services
-            </button>
+              Book a 30-min build call
+              <Icon name="mdi:calendar-arrow-right" size="18" />
+            </a>
             <button
-              class="transition hover:text-info"
-              @click="scrollToSection('Proof')"
-            >
-              Proof
-            </button>
-            <button
-              class="transition hover:text-info"
-              @click="scrollToSection('Products')"
-            >
-              Products
-            </button>
-            <button
-              class="transition hover:text-info"
+              class="inline-flex items-center gap-2 rounded-xl border border-primary/15 px-5 py-3 font-medium transition hover:border-info hover:text-info"
               @click="scrollToSection('Work')"
             >
-              Work
+              See client outcomes
+              <Icon name="mdi:arrow-right" size="18" />
             </button>
-            <NuxtLink to="/blogs" class="transition hover:text-info"
-              >Blog</NuxtLink
-            >
           </div>
-          <div class="flex items-center gap-2">
-            <button
-              class="grid h-10 w-10 place-items-center border border-primary/15 transition hover:border-info hover:text-info"
-              :aria-label="
-                isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'
-              "
-              @click="toggleTheme"
-            >
-              <Icon
-                :name="
-                  isLightTheme ? 'mdi:weather-night' : 'mdi:white-balance-sunny'
-                "
-                size="20"
-              />
-            </button>
-            <a
-              href="mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry"
-              class="hidden border border-info px-4 py-2 text-info transition hover:bg-info hover:text-secondary sm:inline-flex"
-            >
-              Hire me
-            </a>
+          <div class="mt-10 flex flex-wrap gap-x-9 gap-y-5">
+            <div v-for="t in trust" :key="t.label" class="flex flex-col">
+              <span
+                class="font-grotesk text-xl font-bold tracking-tight"
+                :class="t.stars ? 'text-amber-400' : ''"
+              >{{ t.value }}</span>
+              <span class="text-[12.5px] text-primary/55">{{ t.label }}</span>
+            </div>
           </div>
-        </nav>
+        </div>
 
-        <div
-          class="grid flex-1 gap-10 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-20"
-        >
-          <div>
-            <p
-              class="hero-kicker font-ibmMono text-sm uppercase tracking-[0.24em] text-info"
+        <div class="reveal">
+          <div class="rounded-2xl border border-primary/10 bg-primary/[0.03] p-1.5">
+            <div
+              class="flex items-center justify-between border-b border-primary/10 px-4 py-3 font-ibmMono text-xs text-primary/50"
             >
-              AI solution engineer / automation / full-stack product
-            </p>
-            <h1
-              class="mt-5 max-w-5xl font-oswald text-5xl font-black uppercase leading-none sm:text-7xl lg:text-8xl"
-            >
-              <span class="hero-title-line block">I solve real </span>
-              <span class="hero-title-line block text-info">business problems</span>
-              <span class="hero-title-line block">with software &amp; AI.</span>
-            </h1>
-            <p
-              class="hero-copy mt-7 max-w-2xl text-lg leading-8 text-primary/72 sm:text-xl"
-            >
-              I design and ship custom software, automations, and AI workflows
-              that kill manual work and turn ideas into products people use.
-            </p>
+              <span>solution-engineering.ts</span>
+              <span class="flex items-center gap-1.5 text-info"><span class="h-1.5 w-1.5 rounded-full bg-info"></span>live</span>
+            </div>
+            <div class="px-4 py-4">
+              <div class="grid grid-cols-[78px_1fr] gap-3 border-b border-primary/10 py-3">
+                <span class="font-ibmMono text-[11px] uppercase tracking-[0.12em] text-primary/45">Problem</span>
+                <p class="text-sm leading-6 text-primary/70">Manual work, a broken workflow, or an idea with no product yet.</p>
+              </div>
+              <div class="grid grid-cols-[78px_1fr] gap-3 border-b border-primary/10 py-3">
+                <span class="font-ibmMono text-[11px] uppercase tracking-[0.12em] text-primary/45">Build</span>
+                <p class="text-sm leading-6 text-primary/70">An app, automation, AI workflow, or integration — shipped by one engineer.</p>
+              </div>
+              <div class="grid grid-cols-[78px_1fr] gap-3 py-3">
+                <span class="font-ibmMono text-[11px] uppercase tracking-[0.12em] text-primary/45">Result</span>
+                <p class="text-sm leading-6 text-primary/70">A working system your team understands, trusts, and uses.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
 
-            <div class="mt-8 flex flex-wrap gap-3">
+      <!-- SERVICES -->
+      <section id="Services" class="border-t border-primary/10 py-20">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">What I do</p>
+        <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight">
+          One engineer who can own the whole build.
+        </h2>
+        <p class="mt-4 max-w-xl text-lg leading-8 text-primary/60">
+          AI, frontend, backend, and the integration glue in between — so you don't
+          need to coordinate three people to ship one solution.
+        </p>
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
+          <article
+            v-for="(service, index) in services"
+            :key="service.title"
+            class="reveal rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 transition hover:border-info/70"
+          >
+            <div class="flex items-center justify-between">
+              <span class="grid h-11 w-11 place-items-center rounded-xl border border-primary/10 text-info">
+                <Icon :name="service.icon" size="22" />
+              </span>
+              <span class="font-ibmMono text-sm text-primary/35">0{{ index + 1 }}</span>
+            </div>
+            <h3 class="mt-6 font-grotesk text-xl font-semibold">{{ service.title }}</h3>
+            <p class="mt-3 leading-7 text-primary/60">{{ service.summary }}</p>
+            <ul class="mt-5 grid gap-2.5">
+              <li
+                v-for="point in service.points"
+                :key="point"
+                class="flex items-center gap-3 text-sm text-primary/65"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-info"></span>
+                {{ point }}
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- WORK -->
+      <section id="Work" class="border-t border-primary/10 py-20">
+        <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+          <div class="lg:sticky lg:top-20 lg:self-start">
+            <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Selected outcomes</p>
+            <h2 class="mt-3 font-grotesk text-4xl font-bold tracking-tight">
+              Built for clients who need momentum.
+            </h2>
+            <p class="mt-4 max-w-md text-lg leading-8 text-primary/60">
+              I frame work around business movement: faster delivery, less manual
+              work, and products that are easy to trust.
+            </p>
+          </div>
+          <div class="grid gap-4">
+            <component
+              :is="item.href ? (item.href.startsWith('http') ? 'a' : 'NuxtLink') : 'article'"
+              v-for="(item, index) in caseStudies"
+              :key="item.title"
+              :href="item.href && item.href.startsWith('http') ? item.href : undefined"
+              :to="item.href && !item.href.startsWith('http') ? item.href : undefined"
+              :target="item.href && item.href.startsWith('http') ? '_blank' : undefined"
+              :rel="item.href && item.href.startsWith('http') ? 'noreferrer' : undefined"
+              class="reveal block rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 transition hover:border-info"
+              :class="[activeCaseStudy === index ? 'border-info' : '', item.href ? 'cursor-pointer' : '']"
+              @mouseenter="activeCaseStudy = index"
+            >
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <p class="font-ibmMono text-[11px] uppercase tracking-[0.12em] text-primary/45">{{ item.result }}</p>
+                  <h3 class="mt-2 font-grotesk text-xl font-semibold leading-snug">{{ item.title }}</h3>
+                </div>
+                <Icon v-if="item.href" name="mdi:arrow-top-right" class="shrink-0 text-info" size="22" />
+              </div>
+              <p class="mt-3 max-w-2xl leading-7 text-primary/60">{{ item.text }}</p>
+            </component>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCTS -->
+      <section id="Products" class="border-t border-primary/10 py-20">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Products I've shipped</p>
+        <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight">
+          I don't just take briefs — I ship my own products too.
+        </h2>
+        <div class="mt-10 grid gap-4 lg:grid-cols-2">
+          <article
+            v-for="product in products"
+            :key="product.title"
+            class="reveal rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 transition hover:border-info/70"
+          >
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <p class="font-ibmMono text-[11px] uppercase tracking-[0.14em] text-primary/45">{{ product.label }}</p>
+                <h3 class="mt-2 font-grotesk text-2xl font-semibold">{{ product.title }}</h3>
+              </div>
+              <Icon :name="product.icon" class="text-info" size="30" />
+            </div>
+            <p class="mt-4 leading-7 text-primary/60">{{ product.summary }}</p>
+            <div class="mt-5 grid gap-2.5">
+              <div
+                v-for="highlight in product.highlights"
+                :key="highlight"
+                class="flex items-center gap-3 text-sm text-primary/65"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-info"></span>
+                {{ highlight }}
+              </div>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-3">
               <a
-                :href="calBookingUrl"
+                :href="product.url"
                 target="_blank"
                 rel="noreferrer"
-                class="hero-action inline-flex items-center gap-2 bg-info px-5 py-3 font-ibmMono text-sm font-bold text-secondary transition hover:opacity-90"
+                class="inline-flex items-center gap-2 rounded-xl border border-info px-4 py-2.5 text-sm font-medium text-info transition hover:bg-info hover:text-secondary"
               >
-                Book a 30-min build call
-                <Icon name="mdi:calendar-arrow-right" size="18" />
+                View it live
+                <Icon name="mdi:arrow-top-right" size="16" />
               </a>
-              <a
-                href="mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry"
-                class="hero-action inline-flex items-center gap-2 border border-primary/15 px-5 py-3 font-ibmMono text-sm transition hover:border-info hover:text-info"
-              >
-                Or email me
-                <Icon name="mdi:email-outline" size="18" />
-              </a>
-              <button
-                class="hero-action inline-flex items-center gap-2 border border-primary/15 px-5 py-3 font-ibmMono text-sm transition hover:border-info hover:text-info"
-                @click="scrollToSection('Work')"
-              >
-                See outcomes
-                <Icon name="mdi:chart-line" size="18" />
-              </button>
             </div>
-
-            <div class="mt-10 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
-              <div
-                v-for="metric in metrics"
-                :key="metric.value"
-                class="hero-proof border border-primary/10 bg-secondary/70 p-4 backdrop-blur"
-              >
-                <p class="font-oswald text-3xl font-black text-info">
-                  {{ metric.value }}
-                </p>
-                <p class="mt-1 text-sm leading-5 text-primary/65">
-                  {{ metric.label }}
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="portfolio-reveal relative">
-            <div
-              class="border border-primary/10 bg-secondary/80 p-4 shadow-2xl backdrop-blur"
-            >
-              <div
-                class="flex items-center justify-between border-b border-primary/10 pb-3 font-ibmMono text-xs text-primary/55"
-              >
-                <span>solution-engineering.ts</span>
-                <span class="text-[#22c55e]">live</span>
-              </div>
-              <div class="grid gap-4 py-5">
-                <div class="grid grid-cols-[90px_1fr] gap-4">
-                  <span
-                    class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
-                    >Problem</span
-                  >
-                  <p class="text-sm leading-6 text-primary/74">
-                    Time lost to manual work, missing software, or an idea with
-                    no working product yet.
-                  </p>
-                </div>
-                <div class="grid grid-cols-[90px_1fr] gap-4">
-                  <span
-                    class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
-                    >Build</span
-                  >
-                  <p class="text-sm leading-6 text-primary/74">
-                    A custom web app, automation, AI workflow, or CRM build —
-                    frontend, backend, and AI layer, shipped by one engineer.
-                  </p>
-                </div>
-                <div class="grid grid-cols-[90px_1fr] gap-4">
-                  <span
-                    class="font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
-                    >Result</span
-                  >
-                  <p class="text-sm leading-6 text-primary/74">
-                    A working product you can understand, trust, and use —
-                    without technical friction.
-                  </p>
-                </div>
-              </div>
-              <div
-                class="grid grid-cols-3 gap-3 border-t border-primary/10 pt-4"
-              >
-                <div class="bg-[#22c55e]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#22c55e]">
-                    APPS
-                  </p>
-                  <p class="text-xs text-primary/55">web &amp; product</p>
-                </div>
-                <div class="bg-[#38bdf8]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#38bdf8]">
-                    AUTO
-                  </p>
-                  <p class="text-xs text-primary/55">less manual work</p>
-                </div>
-                <div class="bg-[#f59e0b]/10 p-3">
-                  <p class="font-oswald text-2xl font-black text-[#f59e0b]">
-                    AI
-                  </p>
-                  <p class="text-xs text-primary/55">applied systems</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="Proof" class="border-y border-primary/10 bg-primary/[0.025]">
-      <div class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14">
-        <div
-          class="portfolio-reveal grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-end"
-        >
-          <div>
-            <p
-              class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info"
-            >
-              Client proof
-            </p>
-            <h2
-              class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-            >
-              Freelance clients already trusted the work.
-            </h2>
-          </div>
-          <p class="text-lg leading-8 text-primary/70">
-            Clear communication, fast delivery, and code that survives real use
-            — the reviews speak for themselves.
-          </p>
-        </div>
-
+      <!-- PROOF -->
+      <section id="Proof" class="border-t border-primary/10 py-20">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Client proof</p>
+        <h2 class="mt-3 font-grotesk text-4xl font-bold tracking-tight">Clients already trust the work.</h2>
         <div class="mt-10 grid gap-4 lg:grid-cols-3">
           <article
             v-for="review in testimonials"
-            :key="review.client + review.type"
-            class="portfolio-reveal group border border-primary/10 bg-secondary p-5 transition hover:-translate-y-1 hover:border-info/70 hover:bg-info/5"
+            :key="review.client"
+            class="reveal rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 transition hover:border-info/70"
           >
-            <div class="flex items-start justify-between gap-4">
+            <Icon name="mdi:format-quote-open" class="text-info/70" size="26" />
+            <p class="mt-2 leading-7 text-primary/75">{{ review.quote }}</p>
+            <div class="mt-5 flex items-center gap-3">
+              <span class="grid h-9 w-9 place-items-center rounded-full bg-info/15 font-grotesk text-sm font-semibold uppercase text-info">{{ review.client.charAt(0) }}</span>
               <div>
-                <h3 class="text-xl font-bold">{{ review.client }}</h3>
-                <p
-                  class="mt-1 font-ibmMono text-xs uppercase tracking-[0.16em] text-primary/45"
-                >
-                  {{ review.country }}
-                </p>
+                <p class="text-sm font-medium">{{ review.client }}</p>
+                <p class="text-[12.5px] text-primary/50">{{ review.country }} · {{ review.type }}</p>
               </div>
-              <span
-                class="border border-info/40 px-2 py-1 font-ibmMono text-xs text-info"
-                >5-star</span
-              >
             </div>
-            <p class="mt-4 text-sm font-semibold text-info">
-              {{ review.type }}
-            </p>
-            <p class="mt-3 leading-7 text-primary/70">"{{ review.quote }}"</p>
           </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section
-      id="Products"
-      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
-    >
-      <div
-        class="portfolio-reveal grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end"
-      >
-        <div>
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-            SuiteCRM products
-          </p>
-          <h2
-            class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-          >
-            I also build published CRM plugins.
-          </h2>
-        </div>
-        <div class="border-l-2 border-info pl-5">
-          <p class="text-lg leading-8 text-primary/72">
-            If you use SuiteCRM, I can help you get these modules installed,
-            customized, and supported. Ask me directly for a discounted lifetime
-            access rate before purchasing.
-          </p>
-        </div>
-      </div>
-
-      <div class="mt-10 grid gap-5 lg:grid-cols-2">
-        <article
-          v-for="product in suiteCrmProducts"
-          :key="product.title"
-          class="portfolio-reveal group border border-primary/10 bg-primary/[0.03] p-6 transition hover:-translate-y-1 hover:border-info/70 hover:bg-info/5"
-        >
-          <div class="flex items-start justify-between gap-6">
+      <!-- CONTACT -->
+      <section id="Contact" class="py-20">
+        <div class="reveal rounded-3xl border border-info/40 bg-info/[0.06] p-8 sm:p-12">
+          <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Available for serious builds</p>
+          <div class="mt-4 grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">
             <div>
-              <p
-                class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45"
-              >
-                {{ product.label }}
+              <h2 class="font-grotesk text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
+                Working demo in two weeks. Or you don't pay.
+              </h2>
+              <p class="mt-5 max-w-xl text-lg leading-8 text-primary/65">
+                Send the problem — a manual process eating your time, a product idea
+                with no build yet, or a system that needs fixing. I'll tell you what
+                to fix, automate, or build first.
               </p>
-              <h3 class="mt-3 text-3xl font-bold leading-tight">
-                {{ product.title }}
-              </h3>
             </div>
-            <Icon :name="product.icon" class="text-info" size="36" />
-          </div>
-
-          <p class="mt-5 leading-7 text-primary/70">{{ product.summary }}</p>
-
-          <div class="mt-6 grid gap-3">
-            <div
-              v-for="highlight in product.highlights"
-              :key="highlight"
-              class="flex items-center gap-3 text-sm text-primary/70"
-            >
-              <span class="h-2 w-2 bg-info"></span>
-              {{ highlight }}
+            <div class="flex flex-wrap gap-3 lg:justify-end">
+              <a
+                v-for="link in contactLinks"
+                :key="link.label"
+                :href="link.href"
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-2 rounded-xl border border-primary/15 bg-secondary px-4 py-3 text-sm font-medium transition hover:border-info hover:text-info"
+              >
+                <Icon :name="link.icon" size="18" />
+                {{ link.label }}
+              </a>
             </div>
           </div>
-
-          <div class="mt-7 flex flex-wrap gap-3">
-            <a
-              :href="product.url"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center gap-2 border border-info px-4 py-3 font-ibmMono text-sm text-info transition hover:bg-info hover:text-secondary"
-            >
-              View on SuiteCRM Store
-              <Icon name="mdi:arrow-top-right" size="18" />
-            </a>
-            <a
-              href="mailto:shahab.developer.work@gmail.com?subject=SuiteCRM%20plugin%20lifetime%20discount"
-              class="inline-flex items-center gap-2 bg-info px-4 py-3 font-ibmMono text-sm font-bold text-secondary transition hover:opacity-90"
-            >
-              Ask for lifetime discount
-              <Icon name="mdi:tag-outline" size="18" />
-            </a>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section
-      id="Services"
-      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
-    >
-      <div class="portfolio-reveal max-w-3xl">
-        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-          What I can build
-        </p>
-        <h2
-          class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-        >
-          Services that move the business.
-        </h2>
-        <p class="mt-5 text-lg leading-8 text-primary/70">
-          I think through the problem, ship the interface, connect the backend,
-          and make the technical work legible to you.
-        </p>
-      </div>
-
-      <div class="mt-10 grid gap-5 lg:grid-cols-3">
-        <article
-          v-for="(service, index) in services"
-          :key="service.title"
-          class="portfolio-reveal group border border-primary/10 bg-primary/[0.03] p-6 transition duration-300 hover:-translate-y-1 hover:border-info/70"
-          :style="{ '--accent': service.accent }"
-        >
-          <div class="flex items-start justify-between gap-6">
-            <Icon :name="service.icon" class="text-[var(--accent)]" size="34" />
-            <span class="font-ibmMono text-sm text-primary/40"
-              >0{{ index + 1 }}</span
-            >
-          </div>
-          <h3 class="mt-8 text-2xl font-bold leading-tight">
-            {{ service.title }}
-          </h3>
-          <p class="mt-4 leading-7 text-primary/68">{{ service.summary }}</p>
-          <ul class="mt-6 grid gap-3">
-            <li
-              v-for="point in service.points"
-              :key="point"
-              class="flex items-center gap-3 text-sm text-primary/70"
-            >
-              <span class="h-2 w-2 bg-[var(--accent)]"></span>
-              {{ point }}
-            </li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section id="Work" class="border-y border-primary/10 bg-primary/[0.025]">
-      <div
-        class="mx-auto grid w-full max-w-[1280px] items-start gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:px-14"
-      >
-        <div class="portfolio-reveal lg:sticky lg:top-24 lg:self-start">
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-            Selected outcomes
-          </p>
-          <h2
-            class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-          >
-            Built for clients who need momentum.
-          </h2>
-          <p class="mt-5 text-lg leading-8 text-primary/70">
-            I frame work around business movement: faster delivery, smoother
-            operations, clearer products, and interfaces that make the offer
-            easier to trust.
-          </p>
         </div>
-
-        <div class="grid gap-4">
-          <component
-            :is="
-              item.href
-                ? item.href.startsWith('http')
-                  ? 'a'
-                  : 'NuxtLink'
-                : 'article'
-            "
-            v-for="(item, index) in caseStudies"
-            :key="item.title"
-            :href="
-              item.href && item.href.startsWith('http') ? item.href : undefined
-            "
-            :to="
-              item.href && !item.href.startsWith('http') ? item.href : undefined
-            "
-            :target="
-              item.href && item.href.startsWith('http') ? '_blank' : undefined
-            "
-            :rel="
-              item.href && item.href.startsWith('http')
-                ? 'noreferrer'
-                : undefined
-            "
-            class="portfolio-reveal block border border-primary/10 bg-secondary p-5 transition hover:border-info"
-            :class="[
-              activeCaseStudy === index ? 'border-info bg-info/5' : '',
-              item.href ? 'cursor-pointer' : '',
-            ]"
-            @mouseenter="activeCaseStudy = index"
-          >
-            <div
-              class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between"
-            >
-              <div>
-                <p
-                  class="font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/45"
-                >
-                  {{ item.result }}
-                </p>
-                <h3 class="mt-2 text-2xl font-bold">{{ item.title }}</h3>
-              </div>
-              <Icon
-                v-if="item.href"
-                name="mdi:arrow-top-right"
-                class="text-info"
-                size="24"
-              />
-            </div>
-            <p class="mt-4 max-w-2xl leading-7 text-primary/68">
-              {{ item.text }}
-            </p>
-          </component>
-        </div>
-      </div>
-    </section>
-
-    <section
-      id="Process"
-      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
-    >
-      <div
-        class="portfolio-reveal flex flex-col justify-between gap-6 lg:flex-row lg:items-end"
-      >
-        <div class="max-w-3xl">
-          <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-            The guarantee
-          </p>
-          <h2
-            class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-          >
-            Working demo in two weeks. Or you don't pay.
-          </h2>
-        </div>
-        <a
-          :href="calBookingUrl"
-          target="_blank"
-          rel="noreferrer"
-          class="inline-flex items-center gap-2 border border-info px-5 py-3 font-ibmMono text-sm text-info transition hover:bg-info hover:text-secondary"
-        >
-          Book a build discussion
-          <Icon name="mdi:calendar-arrow-right" size="18" />
-        </a>
-      </div>
-    </section>
-
-    <section
-      id="Contact"
-      class="mx-auto w-full max-w-[1280px] px-5 py-20 sm:px-8 lg:px-14"
-    >
-      <div
-        class="portfolio-reveal border border-info/50 bg-info/5 p-6 sm:p-8 lg:p-10"
-      >
-        <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
-          Available for serious builds
-        </p>
-        <div class="mt-4 grid gap-8 lg:grid-cols-[1fr_0.8fr] lg:items-end">
-          <div>
-            <h2
-              class="font-oswald text-5xl font-black uppercase leading-none sm:text-6xl"
-            >
-              Need software, automation, or AI work shipped properly?
-            </h2>
-            <p class="mt-5 max-w-2xl text-lg leading-8 text-primary/72">
-              Send the problem — a manual process eating your time, a product
-              idea with no build yet, or a CRM project. I'll tell you what to
-              fix, automate, or build first.
-            </p>
-          </div>
-          <div class="flex flex-wrap gap-3 lg:justify-end">
-            <a
-              v-for="link in contactLinks"
-              :key="link.label"
-              :href="link.href"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center gap-2 border border-primary/15 bg-secondary px-4 py-3 font-ibmMono text-sm transition hover:border-info hover:text-info"
-            >
-              <Icon :name="link.icon" size="18" />
-              {{ link.label }}
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 </template>

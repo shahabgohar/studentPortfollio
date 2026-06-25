@@ -78,7 +78,7 @@ useHead({
       <header class="grid gap-8 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <div class="max-w-3xl">
           <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Field notes</p>
-          <h1 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl lg:text-7xl">
+          <h1 class="mt-4 font-grotesk text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             AI, product, and software delivery
           </h1>
           <p class="mt-6 max-w-2xl text-lg leading-8 text-primary/70">
@@ -110,7 +110,7 @@ useHead({
 
           <div class="mt-5 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
             <div>
-              <h2 class="max-w-4xl text-3xl font-bold leading-tight sm:text-4xl">
+              <h2 class="max-w-4xl font-grotesk text-3xl font-semibold leading-tight sm:text-4xl">
                 {{ post.title }}
               </h2>
               <p class="mt-4 max-w-3xl text-base leading-7 text-primary/70">

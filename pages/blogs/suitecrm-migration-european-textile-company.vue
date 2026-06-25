@@ -211,7 +211,7 @@ const comparisonRows = [
             <span>{{ post.readingTime }}</span>
           </div>
 
-          <h1 class="mt-5 max-w-4xl font-oswald text-5xl font-black uppercase leading-none sm:text-6xl lg:text-7xl">
+          <h1 class="mt-5 max-w-4xl font-grotesk text-5xl font-bold leading-tight tracking-tight sm:text-6xl lg:text-7xl">
             {{ post.title }}
           </h1>
           <p class="mt-6 max-w-3xl text-xl leading-9 text-primary/70">
@@ -263,7 +263,7 @@ const comparisonRows = [
                 :key="outcome.label"
                 class="border border-primary/10 bg-primary/[0.03] p-5"
               >
-                <p class="font-oswald text-4xl font-black text-info">{{ outcome.value }}</p>
+                <p class="font-grotesk text-4xl font-bold text-info">{{ outcome.value }}</p>
                 <p class="mt-2 text-lg font-semibold">{{ outcome.label }}</p>
                 <p class="mt-2 text-sm leading-6 text-primary/60">{{ outcome.detail }}</p>
               </div>

@@ -52,11 +52,11 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
 
       <!-- Hero -->
       <header class="pt-10">
-        <p class="font-vt323 text-lg uppercase tracking-wide text-info">
+        <p class="font-ibmMono text-sm font-semibold uppercase tracking-[0.1em] text-info">
           {{ eyebrow }}
         </p>
         <h1
-          class="mt-3 font-oswald text-4xl font-black uppercase leading-tight sm:text-5xl lg:text-6xl"
+          class="mt-3 font-grotesk text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
         >
           {{ h1 }}
         </h1>
@@ -68,7 +68,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
             :href="callUrl"
             target="_blank"
             rel="noopener"
-            class="rounded-md bg-info px-5 py-3 font-semibold text-white transition hover:opacity-90"
+            class="rounded-md bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
           >
             Book a 30-min build call
           </a>
@@ -84,7 +84,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
       <!-- Body sections -->
       <section class="mt-14 space-y-12">
         <div v-for="(section, i) in sections" :key="i">
-          <h2 class="font-oswald text-2xl font-bold uppercase sm:text-3xl">
+          <h2 class="font-grotesk text-2xl font-semibold sm:text-3xl">
             {{ section.heading }}
           </h2>
           <p
@@ -116,7 +116,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
 
       <!-- FAQ -->
       <section v-if="faqs && faqs.length" class="mt-16">
-        <h2 class="font-oswald text-2xl font-bold uppercase sm:text-3xl">
+        <h2 class="font-grotesk text-2xl font-semibold sm:text-3xl">
           Frequently asked questions
         </h2>
         <div class="mt-6 space-y-6">
@@ -133,7 +133,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
 
       <!-- Related -->
       <section v-if="related && related.length" class="mt-14">
-        <h2 class="font-oswald text-xl font-bold uppercase">Related</h2>
+        <h2 class="font-grotesk text-xl font-semibold">Related</h2>
         <ul class="mt-4 flex flex-col gap-2 font-ibmMono text-sm">
           <li v-for="(r, ri) in related" :key="ri">
             <NuxtLink
@@ -151,8 +151,8 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
       <section
         class="mt-16 rounded-lg border border-primary/15 p-8 text-center"
       >
-        <h2 class="font-oswald text-2xl font-bold uppercase sm:text-3xl">
-          Tell me the CRM problem. I'll tell you what to build first.
+        <h2 class="font-grotesk text-2xl font-semibold sm:text-3xl">
+          Working demo in two weeks. Or you don't pay.
         </h2>
         <p class="mx-auto mt-3 max-w-xl text-primary/75">
           Send the SuiteCRM migration, plugin idea, integration, or broken
@@ -164,7 +164,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
             :href="callUrl"
             target="_blank"
             rel="noopener"
-            class="rounded-md bg-info px-5 py-3 font-semibold text-white transition hover:opacity-90"
+            class="rounded-md bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
           >
             Book a build discussion
           </a>

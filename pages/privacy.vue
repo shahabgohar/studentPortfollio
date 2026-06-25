@@ -42,7 +42,7 @@ const lastUpdated = "May 18, 2026";
         <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
           Privacy notice
         </p>
-        <h1 class="mt-4 font-oswald text-5xl font-black uppercase leading-none sm:text-6xl">
+        <h1 class="mt-4 font-grotesk text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
           How this site handles personal data.
         </h1>
         <p class="mt-5 text-sm text-primary/55">Last updated: {{ lastUpdated }}</p>

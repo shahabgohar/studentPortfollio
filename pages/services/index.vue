@@ -111,13 +111,13 @@ const mailto =
       </nav>
 
       <header class="pt-10">
-        <p class="font-vt323 text-lg uppercase tracking-wide text-info">
+        <p class="font-ibmMono text-sm font-semibold uppercase tracking-[0.1em] text-info">
           What I build
         </p>
         <h1
-          class="mt-3 font-oswald text-4xl font-black uppercase leading-tight sm:text-5xl lg:text-6xl"
+          class="mt-3 font-grotesk text-4xl font-bold leading-tight tracking-tight sm:text-5xl lg:text-6xl"
         >
-          SuiteCRM & AI engineering services
+          Software, AI &amp; CRM engineering services
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-primary/75">
           Hire one engineer to own the whole outcome — custom SuiteCRM,
@@ -134,7 +134,7 @@ const mailto =
           class="group rounded-lg border border-primary/15 p-6 transition hover:border-info"
         >
           <h2
-            class="font-oswald text-xl font-bold uppercase transition group-hover:text-info"
+            class="font-grotesk text-xl font-semibold transition group-hover:text-info"
           >
             {{ s.title }}
           </h2>
@@ -150,7 +150,7 @@ const mailto =
       <section
         class="mt-14 rounded-lg border border-primary/15 p-8 text-center"
       >
-        <h2 class="font-oswald text-2xl font-bold uppercase sm:text-3xl">
+        <h2 class="font-grotesk text-2xl font-semibold sm:text-3xl">
           Not sure which one you need?
         </h2>
         <p class="mx-auto mt-3 max-w-xl text-primary/75">
@@ -162,7 +162,7 @@ const mailto =
             href="https://cal.com/shahabgohar/build-discussion"
             target="_blank"
             rel="noopener"
-            class="rounded-md bg-info px-5 py-3 font-semibold text-white transition hover:opacity-90"
+            class="rounded-md bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
           >
             Book a build discussion
           </a>

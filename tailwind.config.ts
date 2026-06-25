@@ -5,9 +5,11 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 export default <Partial<Config>>{
     theme: {
       fontFamily: {
-        sans: ['Roboto Mono', 'monospace', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         ibmMono: ['IBM Plex Mono', 'monospace', 'system-ui', 'sans-serif'],
         oswald: ['Oswald', 'Impact', 'sans-serif'],
+        grotesk: ['Space Grotesk', 'system-ui', 'sans-serif'],
+        inter: ['Inter', 'system-ui', 'sans-serif'],
         vt323: ['VT323', 'monospace']
       },
       extend: {
@@ -32,7 +34,7 @@ export default <Partial<Config>>{
           'secondary': '#fff',
           'grey': '#D9D9D9',
           'silver': '#C2C2C2',
-          'info': '#565BCF',
+          'info': '#059669',
           '--primary': '#000',
           '--secondary': '#fff'
         }
@@ -43,7 +45,7 @@ export default <Partial<Config>>{
           'secondary': '#000',
           'grey': '#D9D9D9',
           'silver': '#C2C2C2',
-          'info': 'rgba(111,114,227,0.9)',
+          'info': '#34d399',
           '--primary': '#fff',
           '--secondary': '#000'
         }

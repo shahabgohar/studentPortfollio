@@ -75,6 +75,8 @@ export default defineNuxtConfig({
       'Roboto Mono': [400, 500, 700],
       'IBM Plex Mono': [400, 500],
       'Oswald': [400, 600, 700, 800, 900],
+      'Space Grotesk': [500, 600, 700],
+      'Inter': [400, 500, 600],
       'VT323': [400]
     },
   }
