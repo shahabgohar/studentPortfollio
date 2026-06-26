@@ -3,28 +3,21 @@ import { definePageMeta } from "#imports";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
-  computed,
-  inject,
   nextTick,
   onBeforeUnmount,
   onMounted,
   ref,
-  type Ref,
 } from "vue";
 import { useJsonLd } from "~/composeables/useJsonLd";
 import { useMetaTags } from "~/composeables/useMetaTags";
-import { INJECT_THEME_KEY, Theme } from "~/types";
 
 definePageMeta({});
 
 useMetaTags();
 useJsonLd();
 
-const theme = inject<Ref<Theme>>(INJECT_THEME_KEY);
 const showFloatBtnFlg = ref(false);
 const activeCaseStudy = ref(0);
-
-const isLightTheme = computed(() => theme?.value === Theme.LIGHT);
 
 const trust = [
   { value: "★★★★★", label: "5.0 average rating", stars: true },
@@ -155,11 +148,6 @@ const contactLinks = [
 
 const calBookingUrl = "https://cal.com/shahabgohar/build-discussion";
 
-function toggleTheme() {
-  if (!theme) return;
-  theme.value = theme.value === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
-}
-
 function scrollToSection(id: string) {
   document
     .getElementById(id)
@@ -240,18 +228,11 @@ onBeforeUnmount(() => {
           <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
         </div>
         <div class="flex items-center gap-2">
-          <button
-            class="grid h-10 w-10 place-items-center rounded-lg border border-primary/15 transition hover:border-info hover:text-info"
-            :aria-label="isLightTheme ? 'Switch to dark theme' : 'Switch to light theme'"
-            @click="toggleTheme"
-          >
-            <Icon :name="isLightTheme ? 'mdi:weather-night' : 'mdi:white-balance-sunny'" size="18" />
-          </button>
           <a
             :href="calBookingUrl"
             target="_blank"
             rel="noreferrer"
-            class="hidden rounded-lg border border-info px-4 py-2 font-medium text-info transition hover:bg-info hover:text-secondary sm:inline-flex"
+            class="rounded-lg border border-info px-4 py-2 font-medium text-info transition hover:bg-info hover:text-secondary"
           >
             Book a call
           </a>
