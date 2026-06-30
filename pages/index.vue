@@ -109,6 +109,12 @@ const products = [
 
 const caseStudies = [
   {
+    title: "AI lead-automation platform — WhatsApp → CRM",
+    result: "0 unintended writes against a live production CRM",
+    text: "Reads inbound WhatsApp chats and turns them into structured, deduplicated CRM deals. A provider-agnostic LLM engine extracts 13 fields per conversation, behind a human-in-the-loop dashboard and a fail-closed live/dry-run write gate.",
+    href: "/projects",
+  },
+  {
     title: "AI content pipeline — campaign data → expert-reviewed articles",
     result: "Agents + RAG running safely in production",
     text: "A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles — with human approval gates, safety auditing, and per-run cost ceilings.",
@@ -223,6 +229,7 @@ onBeforeUnmount(() => {
         <div class="hidden items-center gap-7 font-medium text-primary/65 md:flex">
           <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
           <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
+          <NuxtLink to="/projects" class="transition hover:text-info">Projects</NuxtLink>
           <button class="transition hover:text-info" @click="scrollToSection('Products')">Products</button>
           <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
           <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
@@ -386,6 +393,13 @@ onBeforeUnmount(() => {
               </div>
               <p class="mt-3 max-w-2xl leading-7 text-primary/60">{{ item.text }}</p>
             </component>
+            <NuxtLink
+              to="/projects"
+              class="inline-flex items-center gap-2 self-start font-medium text-info transition hover:gap-3"
+            >
+              View all projects
+              <Icon name="mdi:arrow-right" size="18" />
+            </NuxtLink>
           </div>
         </div>
       </section>

@@ -1,0 +1,92 @@
+export interface Project {
+  title: string
+  category: 'AI' | 'Full-stack' | 'CRM & automation'
+  tagline: string
+  result: string
+  description: string
+  tags: string[]
+  href?: string
+  featured?: boolean
+}
+
+export const projects: Project[] = [
+  {
+    title: 'AI Lead-Automation Platform',
+    category: 'AI',
+    tagline: 'WhatsApp → CRM, powered by LLM extraction',
+    result: '0 unintended writes against a live production CRM',
+    description:
+      'Reads inbound WhatsApp conversations and turns them into structured, deduplicated CRM deals for a private healthcare provider. A provider-agnostic LLM engine extracts 13 fields from each chat; a Vue 3 dashboard adds human-in-the-loop review, a "why the AI decided" inspector, and a fail-closed live/dry-run write gate.',
+    tags: ['FastAPI', 'Vue 3', 'LiteLLM', 'PostgreSQL', 'HubSpot'],
+    featured: true,
+  },
+  {
+    title: 'AI content pipeline',
+    category: 'AI',
+    tagline: 'Campaign data → expert-reviewed articles',
+    result: 'Agents + RAG running safely in production',
+    description:
+      'A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles — with human approval gates, safety auditing, and per-run cost ceilings.',
+    tags: ['FastAPI', 'LangChain', 'Vue 3'],
+    href: '/services/ai-development',
+  },
+  {
+    title: 'AI voice-agent campaign portal',
+    category: 'AI',
+    tagline: 'Manage AI calling agents at campaign scale',
+    result: 'Per-agent voices, scripts & noise profiles',
+    description:
+      'A management portal for AI calling campaigns: each campaign runs multiple servers with restart and configuration controls, plus AI voice agents with per-agent voice generation, call scripts, and noise profiles.',
+    tags: ['Vue', 'Voice AI', 'Campaign ops'],
+  },
+  {
+    title: 'Call-tracking & analytics platform',
+    category: 'Full-stack',
+    tagline: 'Real-time performance-marketing dashboards',
+    result: 'Live campaign & call-flow analytics',
+    description:
+      'A Vue 3 front end on a Python FastAPI backend for a performance-marketing call-tracking platform — real-time campaign and call-flow dashboards built for high-volume data.',
+    tags: ['Vue 3', 'FastAPI', 'Analytics'],
+  },
+  {
+    title: 'Enterprise CRM platform migration',
+    category: 'CRM & automation',
+    tagline: 'Brittle container → reproducible system',
+    result: 'Reproducible CRM in one command',
+    description:
+      'Migrated a brittle deployment into a versioned, reproducible platform on Docker Compose — SSO, auto-provisioned calendar sync, 6-language localization, and one-command operations.',
+    tags: ['SuiteCRM 8', 'Docker', 'SSO'],
+    href: '/blogs/suitecrm-migration-european-textile-company',
+  },
+  {
+    title: 'Marketing → CRM lead sync',
+    category: 'CRM & automation',
+    tagline: 'Marketing leads land in sales instantly',
+    result: 'White-labelled CRM resold by the client',
+    description:
+      'Automated, real-time lead and contact sync from Mautic into the CRM — no manual CSV imports, no missed follow-ups. The partner now resells a white-labelled CRM with the integration built in.',
+    tags: ['Mautic', 'Integration', 'CRM'],
+  },
+  {
+    title: 'Sales workflow automation',
+    category: 'CRM & automation',
+    tagline: 'Quote → order → invoice',
+    result: 'End-to-end sales flow automated',
+    description:
+      "Automated a US client's quote-to-invoice pipeline so the sales team converts quotes to orders to invoices without manual re-entry. Client review: 5.0.",
+    tags: ['CRM', 'Automation'],
+  },
+]
+
+export const publishedProducts = [
+  {
+    title: 'AI Dashlet Generator',
+    blurb: 'AI module that builds CRM dashboard widgets from plain-English prompts.',
+    url: 'https://store.suitecrm.com/addons/ai-dashlet-generator',
+  },
+  {
+    title: 'Business Card Reader',
+    blurb: 'Lead-capture tool: business cards → contacts via OCR and QR scanning.',
+    url: 'https://store.suitecrm.com/addons/business-card-reader',
+  },
+]
