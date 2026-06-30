@@ -59,6 +59,15 @@ export const projects: Project[] = [
     href: '/blogs/suitecrm-migration-european-textile-company',
   },
   {
+    title: 'White-labelled CRM product',
+    category: 'CRM & automation',
+    tagline: 'A re-themed CRM the client sells as their own',
+    result: 'Sellable, branded product with custom add-ons',
+    description:
+      'Heavily customized SuiteCRM 8 into a fully white-labelled CRM — a modern Angular UI, re-themed detail/edit and legacy views, plus custom add-on modules and features — delivered as a finished product the client now resells under their own brand.',
+    tags: ['SuiteCRM 8', 'Angular', 'White-label'],
+  },
+  {
     title: 'Marketing → CRM lead sync',
     category: 'CRM & automation',
     tagline: 'Marketing leads land in sales instantly',
