@@ -33,11 +33,41 @@ useHead({
         name: 'Projects — Shahab Gohar',
         url: `${siteUrl}/projects`,
         description,
-        hasPart: projects.map((p) => ({
-          '@type': 'CreativeWork',
-          name: p.title,
-          abstract: p.tagline,
-        })),
+        isPartOf: { '@type': 'WebSite', url: siteUrl, name: 'Shahab Gohar' },
+        about: [
+          'AI lead automation',
+          'LLM extraction',
+          'WhatsApp to CRM',
+          'AI voice agents',
+          'CRM automation',
+          'full-stack development',
+        ],
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: projects.map((p, i) => ({
+            '@type': 'ListItem',
+            position: i + 1,
+            item: {
+              '@type': 'CreativeWork',
+              name: p.title,
+              headline: p.tagline,
+              description: p.description,
+              keywords: p.tags.join(', '),
+              creator: { '@type': 'Person', name: 'Shahab Gohar', url: siteUrl },
+            },
+          })),
+        },
+      }),
+    },
+    {
+      type: 'application/ld+json',
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: 'Projects', item: `${siteUrl}/projects` },
+        ],
       }),
     },
   ],
@@ -65,11 +95,12 @@ useHead({
       <header class="py-16 lg:py-20">
         <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Projects</p>
         <h1 class="mt-3 max-w-3xl font-grotesk text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
-          Things I've designed, built, and shipped.
+          AI, full-stack &amp; automation projects.
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-primary/65">
-          A selection of end-to-end work across AI, full-stack product, and business automation —
-          each one taken from problem to a system real teams use in production.
+          Things I've designed, built, and shipped — end-to-end work across AI lead automation,
+          LLM extraction pipelines, AI voice agents, full-stack product, and CRM automation, each
+          taken from problem to a system real teams use in production.
         </p>
       </header>
 

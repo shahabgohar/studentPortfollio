@@ -10,6 +10,12 @@ const routes = [
     lastmod: '2026-06-15'
   },
   {
+    path: '/projects',
+    changefreq: 'monthly',
+    priority: '0.9',
+    lastmod: '2026-06-30'
+  },
+  {
     path: '/services',
     changefreq: 'monthly',
     priority: '0.9',
