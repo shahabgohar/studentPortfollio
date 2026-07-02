@@ -5,7 +5,7 @@ import {useJsonLd} from "~/composeables/useJsonLd";
 
 const post = blogPosts.find((item) => item.slug === 'suitecrm-migration-european-textile-company')!
 const siteUrl = 'https://shahabgohar.dev'
-const articleUrl = `${siteUrl}/blogs/${post.slug}`
+const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-suitecrm-migration.png`
 const seoTitle = 'SuiteCRM Migration Case Study for a European Textile Company'
 const seoDescription =
@@ -94,7 +94,7 @@ useHead({
             '@type': 'ListItem',
             position: 2,
             name: 'Blogs',
-            item: `${siteUrl}/blogs`
+            item: `${siteUrl}/blogs/`
           },
           {
             '@type': 'ListItem',

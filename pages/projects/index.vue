@@ -19,11 +19,11 @@ useHead({
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title },
     { property: 'og:description', content: description },
-    { property: 'og:url', content: `${siteUrl}/projects` },
+    { property: 'og:url', content: `${siteUrl}/projects/` },
     { property: 'og:image', content: `${siteUrl}/img/og-image.png` },
     { name: 'twitter:card', content: 'summary_large_image' },
   ],
-  link: [{ rel: 'canonical', href: `${siteUrl}/projects` }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/projects/` }],
   script: [
     {
       type: 'application/ld+json',
@@ -31,7 +31,7 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: 'Projects — Shahab Gohar',
-        url: `${siteUrl}/projects`,
+        url: `${siteUrl}/projects/`,
         description,
         isPartOf: { '@type': 'WebSite', url: siteUrl, name: 'Shahab Gohar' },
         about: [
@@ -66,7 +66,7 @@ useHead({
         '@type': 'BreadcrumbList',
         itemListElement: [
           { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-          { '@type': 'ListItem', position: 2, name: 'Projects', item: `${siteUrl}/projects` },
+          { '@type': 'ListItem', position: 2, name: 'Projects', item: `${siteUrl}/projects/` },
         ],
       }),
     },

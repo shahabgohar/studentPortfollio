@@ -5,7 +5,7 @@ import {useJsonLd} from "~/composeables/useJsonLd";
 
 const post = blogPosts.find((item) => item.slug === 'ai-engineering-revolution')!
 const siteUrl = 'https://shahabgohar.dev'
-const articleUrl = `${siteUrl}/blogs/${post.slug}`
+const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-image.png`
 const seoTitle = 'AI Engineering Revolution: Foundation Models, ROI, and Business Automation'
 const seoDescription =
@@ -89,7 +89,7 @@ useHead({
             '@type': 'ListItem',
             position: 2,
             name: 'Blogs',
-            item: `${siteUrl}/blogs`
+            item: `${siteUrl}/blogs/`
           },
           {
             '@type': 'ListItem',

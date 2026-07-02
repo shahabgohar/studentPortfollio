@@ -42,13 +42,13 @@ useHead({
     { property: 'og:type', content: 'website' },
     { property: 'og:title', content: title },
     { property: 'og:description', content: description },
-    { property: 'og:url', content: `${siteUrl}/services` },
+    { property: 'og:url', content: `${siteUrl}/services/` },
     { property: 'og:image', content: `${siteUrl}/img/og-image.png` },
     { name: 'twitter:card', content: 'summary_large_image' },
     { name: 'twitter:title', content: title },
     { name: 'twitter:description', content: description }
   ],
-  link: [{ rel: 'canonical', href: `${siteUrl}/services` }],
+  link: [{ rel: 'canonical', href: `${siteUrl}/services/` }],
   script: [
     {
       type: 'application/ld+json',
@@ -56,7 +56,7 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
         name: 'SuiteCRM & AI Engineering Services',
-        url: `${siteUrl}/services`,
+        url: `${siteUrl}/services/`,
         description,
         hasPart: services.map((s) => ({
           '@type': 'Service',
@@ -76,7 +76,7 @@ useHead({
             '@type': 'ListItem',
             position: 2,
             name: 'Services',
-            item: `${siteUrl}/services`
+            item: `${siteUrl}/services/`
           }
         ]
       })

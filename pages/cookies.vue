@@ -14,11 +14,11 @@ useHead({
     { name: "description", content: pageDescription },
     { property: "og:title", content: pageTitle },
     { property: "og:description", content: pageDescription },
-    { property: "og:url", content: `${siteUrl}/cookies` },
+    { property: "og:url", content: `${siteUrl}/cookies/` },
     { property: "og:type", content: "website" },
     { name: "robots", content: "index, follow" },
   ],
-  link: [{ rel: "canonical", href: `${siteUrl}/cookies` }],
+  link: [{ rel: "canonical", href: `${siteUrl}/cookies/` }],
 });
 
 const lastUpdated = "May 18, 2026";

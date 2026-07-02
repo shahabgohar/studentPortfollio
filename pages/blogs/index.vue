@@ -17,7 +17,7 @@ useHead({
     { name: 'description', content: pageDescription },
     { property: 'og:title', content: pageTitle },
     { property: 'og:description', content: pageDescription },
-    { property: 'og:url', content: `${siteUrl}/blogs` },
+    { property: 'og:url', content: `${siteUrl}/blogs/` },
     { property: 'og:type', content: 'website' },
     { property: 'og:image', content: `${siteUrl}/img/og-image.png` },
     { name: 'twitter:card', content: 'summary_large_image' },
@@ -26,7 +26,7 @@ useHead({
     { name: 'twitter:image', content: `${siteUrl}/img/og-image.png` }
   ],
   link: [
-    { rel: 'canonical', href: `${siteUrl}/blogs` }
+    { rel: 'canonical', href: `${siteUrl}/blogs/` }
   ],
   script: [
     {
@@ -36,7 +36,7 @@ useHead({
         '@type': 'Blog',
         name: pageTitle,
         description: pageDescription,
-        url: `${siteUrl}/blogs`,
+        url: `${siteUrl}/blogs/`,
         author: {
           '@type': 'Person',
           name: 'Shahab Gohar',
