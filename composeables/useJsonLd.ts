@@ -90,6 +90,46 @@ export const useJsonLd = () => {
       name: 'Shahab Gohar'
     },
     priceRange: '$$',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Engagement packages',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          name: 'Automation Sprint',
+          description:
+            'One painful workflow automated end to end in 2 weeks — CRM, email, WhatsApp, or spreadsheet integrations with a dry-run safety gate.',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 1900,
+            priceCurrency: 'USD'
+          }
+        },
+        {
+          '@type': 'Offer',
+          name: 'Custom Build',
+          description:
+            'A full product or applied AI system — web, mobile, or desktop — designed, built, and deployed by one engineer in 4–8 weeks.',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 6500,
+            priceCurrency: 'USD'
+          }
+        },
+        {
+          '@type': 'Offer',
+          name: 'CRM Ownership',
+          description:
+            'Monthly SuiteCRM / Mautic ownership — fixes, upgrades, monitoring, and one automation improvement shipped every month.',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            minPrice: 950,
+            priceCurrency: 'USD',
+            unitText: 'month'
+          }
+        }
+      ]
+    },
     areaServed: [
       { '@type': 'Place', name: 'Worldwide' },
       { '@type': 'Country', name: 'Spain' },

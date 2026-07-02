@@ -154,6 +154,126 @@ const contactLinks = [
 
 const calBookingUrl = "https://cal.com/shahabgohar/build-discussion";
 
+const buildSteps = [
+  {
+    badge: "Day 0",
+    title: "Book a 30-min call",
+    text: "Bring the manual process that eats your time — or the idea with no build yet. You leave with a plain-language plan of what to automate or build first.",
+    points: ["No pitch, no slides — a working session", "We look at your real workflow together"],
+  },
+  {
+    badge: "Days 1–2",
+    title: "Fixed scope, fixed price",
+    text: "You get a written scope with one price and one deadline. No hourly billing, no surprise invoices.",
+    points: ["Clear deliverable defined up front", "You approve before anything starts"],
+  },
+  {
+    badge: "Weeks 1–2",
+    title: "Build in safe dry-run",
+    text: "I build against your real data behind a dry-run gate — nothing writes to your live systems until you approve it. You watch it work before it goes live.",
+    points: ["Working demo inside 14 days — or you don't pay", "Human-in-the-loop approvals for AI steps"],
+  },
+  {
+    badge: "Go-live",
+    title: "Deploy, train, hand over",
+    text: "The system goes live, your team gets a walkthrough and docs, and I stay available after launch so nobody is left guessing.",
+    points: ["Documentation + handover video", "Post-launch support included"],
+  },
+];
+
+const packages = [
+  {
+    name: "Automation Sprint",
+    price: "from $1,900",
+    tagline: "One painful workflow, automated end to end.",
+    duration: "2 weeks",
+    popular: false,
+    features: [
+      "Workflow audit & mapping session",
+      "One automation built & integrated (CRM, email, WhatsApp, sheets)",
+      "Dry-run safety gate before any live writes",
+      "Docs + handover video",
+      "30 days post-launch support",
+    ],
+  },
+  {
+    name: "Custom Build",
+    price: "from $6,500",
+    tagline: "A full product or AI system — owned end to end by one engineer.",
+    duration: "4–8 weeks",
+    popular: true,
+    features: [
+      "Web, mobile, or desktop app — or applied AI workflow",
+      "Design → build → deploy, no team to coordinate",
+      "AI guardrails: human-in-the-loop, fail-closed writes",
+      "Integrations with your existing stack",
+      "60 days post-launch support",
+    ],
+  },
+  {
+    name: "CRM Ownership",
+    price: "from $950/mo",
+    tagline: "Your SuiteCRM / Mautic — kept fast, integrated, and improving.",
+    duration: "monthly, cancel anytime",
+    popular: false,
+    features: [
+      "Small fixes & tweaks handled continuously",
+      "One automation improvement shipped every month",
+      "Upgrades, monitoring & backups covered",
+      "Priority response on breakage",
+      "No lock-in — documentation stays yours",
+    ],
+  },
+];
+
+const roiStats = [
+  { value: "2 h/day", label: "typical manual copy-paste between inbox, sheets & CRM" },
+  { value: "$13,000+", label: "what that costs per year at $25/hour" },
+  { value: "< 2 months", label: "typical payback on an automation sprint" },
+];
+
+const faqs = [
+  {
+    q: "We already have a CRM and tools — do we have to switch?",
+    a: "No. I build on top of what you already run. Most projects are integrations and automations around your existing CRM, inbox, WhatsApp, and spreadsheets — not replacements. If your stack genuinely blocks you, I'll say so on the call and tell you the cheapest way out.",
+  },
+  {
+    q: "What does 'demo in 2 weeks or you don't pay' actually mean?",
+    a: "After the scoping call you get a written deliverable, one price, and a 14-day demo date. If I don't show you a working demo running against your real workflow by that date, you owe nothing. It's my risk, not yours.",
+  },
+  {
+    q: "How much of my team's time will this take?",
+    a: "About two hours total for a sprint: the 30-minute call, a short follow-up for access and questions, and a demo review. I handle the build, integration, testing, and documentation.",
+  },
+  {
+    q: "Is AI safe to run against our live business data?",
+    a: "Only if it's engineered that way — which is the point. My AI builds run behind dry-run gates and human-in-the-loop approvals, with fail-closed writes: one production system I built processed live WhatsApp leads into a CRM with zero unintended writes.",
+  },
+  {
+    q: "What does it cost?",
+    a: "Automation sprints start at $1,900, full custom builds at $6,500, and CRM ownership retainers at $950/month. Every project gets a fixed written quote before work starts — no hourly billing, no surprises.",
+  },
+];
+
+const openFaq = ref<number | null>(0);
+
+useHead({
+  script: [
+    {
+      type: "application/ld+json",
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqs.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }),
+    },
+  ],
+});
+
 function scrollToSection(id: string) {
   document
     .getElementById(id)
@@ -229,8 +349,8 @@ onBeforeUnmount(() => {
         <div class="hidden items-center gap-7 font-medium text-primary/65 md:flex">
           <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
           <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
+          <button class="transition hover:text-info" @click="scrollToSection('Pricing')">Pricing</button>
           <NuxtLink to="/projects" class="transition hover:text-info">Projects</NuxtLink>
-          <button class="transition hover:text-info" @click="scrollToSection('Products')">Products</button>
           <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
           <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
         </div>
@@ -258,12 +378,12 @@ onBeforeUnmount(() => {
           <h1
             class="mt-6 font-grotesk text-[2.7rem] font-bold leading-[1.05] tracking-tight sm:text-6xl"
           >
-            I solve real <span class="text-info">business problems</span> with software.
+            I automate your manual work — <span class="text-info">working demo in 2 weeks</span> or you don't pay.
           </h1>
           <p class="mt-6 max-w-xl text-lg leading-8 text-primary/65">
-            I'm Shahab — a solutions engineer. I design and build AI, web, mobile,
-            desktop, and backend systems that cut manual work and turn ideas into
-            products businesses actually use.
+            I'm Shahab — a solutions engineer. I build the AI workflows, CRM
+            automations, and web, mobile & backend systems that stop your team
+            copy-pasting between tools — shipped by one engineer, end to end.
           </p>
           <div class="mt-8 flex flex-wrap gap-3">
             <a
@@ -358,6 +478,42 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
+      <!-- PROCESS -->
+      <section id="Process" class="border-t border-primary/10 py-20">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">How it works</p>
+        <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight">
+          From "this is eating our time" to live system — in weeks, not quarters.
+        </h2>
+        <p class="mt-4 max-w-xl text-lg leading-8 text-primary/60">
+          A fixed process with a fixed price, built so you see it working before
+          it touches your live systems.
+        </p>
+        <div class="mt-10 grid gap-4 md:grid-cols-2">
+          <article
+            v-for="(step, index) in buildSteps"
+            :key="step.title"
+            class="reveal rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 transition hover:border-info/70"
+          >
+            <div class="flex items-center justify-between">
+              <span class="rounded-full bg-info px-3.5 py-1 font-ibmMono text-xs font-medium text-secondary">{{ step.badge }}</span>
+              <span class="font-ibmMono text-sm text-primary/35">0{{ index + 1 }}</span>
+            </div>
+            <h3 class="mt-5 font-grotesk text-xl font-semibold">{{ step.title }}</h3>
+            <p class="mt-3 leading-7 text-primary/60">{{ step.text }}</p>
+            <ul class="mt-4 grid gap-2.5">
+              <li
+                v-for="point in step.points"
+                :key="point"
+                class="flex items-center gap-3 text-sm text-primary/65"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-info"></span>
+                {{ point }}
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <!-- WORK -->
       <section id="Work" class="border-t border-primary/10 py-20">
         <div class="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
@@ -401,6 +557,70 @@ onBeforeUnmount(() => {
               <Icon name="mdi:arrow-right" size="18" />
             </NuxtLink>
           </div>
+        </div>
+      </section>
+
+      <!-- PRICING -->
+      <section id="Pricing" class="border-t border-primary/10 py-20">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Pricing</p>
+        <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight">
+          Three ways to work with me. All fixed-price.
+        </h2>
+        <p class="mt-4 max-w-xl text-lg leading-8 text-primary/60">
+          You know the price and the deadline before anything starts. Exact quote
+          after the first call — never hourly.
+        </p>
+        <div class="mt-10 grid gap-4 lg:grid-cols-3">
+          <article
+            v-for="pkg in packages"
+            :key="pkg.name"
+            class="reveal relative rounded-2xl border p-6 transition"
+            :class="pkg.popular ? 'border-info bg-info/[0.05]' : 'border-primary/10 bg-primary/[0.02] hover:border-info/70'"
+          >
+            <span
+              v-if="pkg.popular"
+              class="absolute -top-3 right-6 rounded-full bg-info px-3 py-1 text-xs font-semibold text-secondary"
+            >Most popular</span>
+            <h3 class="font-grotesk text-xl font-semibold">{{ pkg.name }}</h3>
+            <p class="mt-3 font-grotesk text-3xl font-bold tracking-tight text-info">{{ pkg.price }}</p>
+            <p class="mt-1 font-ibmMono text-[12px] uppercase tracking-[0.12em] text-primary/45">{{ pkg.duration }}</p>
+            <p class="mt-4 leading-7 text-primary/65">{{ pkg.tagline }}</p>
+            <ul class="mt-5 grid gap-2.5">
+              <li
+                v-for="feature in pkg.features"
+                :key="feature"
+                class="flex items-start gap-3 text-sm leading-6 text-primary/65"
+              >
+                <Icon name="mdi:check-circle-outline" class="mt-0.5 shrink-0 text-info" size="17" />
+                {{ feature }}
+              </li>
+            </ul>
+            <a
+              :href="calBookingUrl"
+              target="_blank"
+              rel="noreferrer"
+              class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition"
+              :class="pkg.popular ? 'bg-info text-secondary hover:opacity-90' : 'border border-info text-info hover:bg-info hover:text-secondary'"
+            >
+              Book a call
+              <Icon name="mdi:calendar-arrow-right" size="16" />
+            </a>
+          </article>
+        </div>
+
+        <!-- ROI -->
+        <div class="reveal mt-6 rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 sm:p-8">
+          <div class="grid gap-8 sm:grid-cols-3">
+            <div v-for="stat in roiStats" :key="stat.value" class="flex flex-col">
+              <span class="font-grotesk text-3xl font-bold tracking-tight text-info">{{ stat.value }}</span>
+              <span class="mt-2 text-sm leading-6 text-primary/55">{{ stat.label }}</span>
+            </div>
+          </div>
+          <p class="mt-6 border-t border-primary/10 pt-5 text-sm leading-6 text-primary/50">
+            Typical example for a small team. On the call we'll do this math with
+            your actual numbers — if the automation doesn't pay for itself, I'll
+            tell you not to build it.
+          </p>
         </div>
       </section>
 
@@ -472,8 +692,42 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
+      <!-- FAQ -->
+      <section id="FAQ" class="border-t border-primary/10 py-20">
+        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Questions</p>
+        <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight">
+          The things you're probably wondering.
+        </h2>
+        <div class="mt-10 grid gap-3">
+          <article
+            v-for="(faq, index) in faqs"
+            :key="faq.q"
+            class="reveal rounded-2xl border border-primary/10 bg-primary/[0.02] transition hover:border-info/50"
+          >
+            <button
+              class="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
+              :aria-expanded="openFaq === index"
+              @click="openFaq = openFaq === index ? null : index"
+            >
+              <span class="font-grotesk text-lg font-semibold leading-snug">{{ faq.q }}</span>
+              <Icon
+                :name="openFaq === index ? 'mdi:minus' : 'mdi:plus'"
+                class="shrink-0 text-info"
+                size="22"
+              />
+            </button>
+            <p
+              v-show="openFaq === index"
+              class="px-6 pb-6 leading-7 text-primary/65"
+            >
+              {{ faq.a }}
+            </p>
+          </article>
+        </div>
+      </section>
+
       <!-- CONTACT -->
-      <section id="Contact" class="py-20">
+      <section id="Contact" class="py-20 border-t border-primary/10">
         <div class="reveal rounded-3xl border border-info/40 bg-info/[0.06] p-8 sm:p-12">
           <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Available for serious builds</p>
           <div class="mt-4 grid gap-8 lg:grid-cols-[1fr_0.7fr] lg:items-end">

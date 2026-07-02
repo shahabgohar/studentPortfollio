@@ -6,7 +6,7 @@ export const useMetaTags = () => {
 
     const defaultTitle = 'AI Solution Engineer — Custom Software, Automation & AI | Shahab Gohar'
     const defaultDescription =
-      'Solution engineer building custom software, business automation & AI workflows for companies, founders & creators — turning manual work and ideas into products that ship. Deep SuiteCRM & Mautic expertise.'
+      'Solution engineer building custom software, business automation & AI workflows — working demo in 2 weeks or you don\'t pay. Fixed prices, deep SuiteCRM & Mautic expertise.'
     const defaultKeywords =
       'AI solution engineer, solution engineer, business automation, workflow automation, ' +
       'custom software development, AI automation, AI workflows, AI integration, ' +
