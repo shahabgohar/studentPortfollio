@@ -7,7 +7,7 @@ const routes = [
     path: '/',
     changefreq: 'weekly',
     priority: '1.0',
-    lastmod: '2026-06-15'
+    lastmod: '2026-07-03'
   },
   {
     path: '/projects',
@@ -93,7 +93,9 @@ const escapeXml = (value) =>
 
 const urlEntries = routes
   .map((route) => {
-    const loc = `${siteUrl}${route.path === '/' ? '/' : route.path}`
+    // Netlify serves static pages at trailing-slash URLs (301 from non-slash).
+    // Sitemap must list the final URLs, or Google reports "Redirect error".
+    const loc = `${siteUrl}${route.path === '/' ? '/' : `${route.path}/`}`
     const lines = [
       '  <url>',
       `    <loc>${escapeXml(loc)}</loc>`

@@ -21,7 +21,10 @@ export const useMetaTags = () => {
       ? `${route.meta.title} | Shahab Gohar — Software Engineer`
       : defaultTitle
 
-    const canonicalUrl = `${siteUrl}${route.path === '/' ? '' : route.path}`
+    // Match the URLs Netlify actually serves (trailing slash) so canonical,
+    // og:url, and sitemap all agree — mismatches cause GSC "Redirect error".
+    const normalizedPath = route.path.endsWith('/') ? route.path : `${route.path}/`
+    const canonicalUrl = `${siteUrl}${normalizedPath}`
 
     useHead({
         title: pageTitle,
