@@ -12,6 +12,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'suitecrm-quote-order-invoice-detection',
+    title: 'Building Quote to Order to Invoice Detection in SuiteCRM',
+    description:
+      'A practical SuiteCRM customization case study covering accepted quote conversion, order invoicing, line item snapshots, supplemental invoice detection, and credit note handling.',
+    category: 'SuiteCRM Automation',
+    date: 'June 4, 2026',
+    datePublished: '2026-06-04T00:00:00+05:00',
+    dateModified: '2026-06-04T00:00:00+05:00',
+    readingTime: '9 min read',
+    tags: ['SuiteCRM', 'CRM automation', 'PHP', 'Invoicing', 'Business workflow']
+  },
+  {
     slug: 'suitecrm-migration-european-textile-company',
     title: 'Case Study: Rebuilding SuiteCRM for a European Textile Company',
     description:
