@@ -7,6 +7,8 @@ export interface Project {
   tags: string[]
   href?: string
   featured?: boolean
+  /** When true, this project is stripped from the HTML for visitors in Pakistan (handled by the Netlify edge function `geo-hide`). */
+  hideInPK?: boolean
 }
 
 export const projects: Project[] = [
@@ -38,6 +40,16 @@ export const projects: Project[] = [
     description:
       'A management portal for AI calling campaigns: each campaign runs multiple servers with restart and configuration controls, plus AI voice agents with per-agent voice generation, call scripts, and noise profiles.',
     tags: ['Vue', 'Voice AI', 'Campaign ops'],
+  },
+  {
+    title: 'Real-time AI voice-agent platform',
+    category: 'AI',
+    tagline: 'Autonomous phone calls on FreeSWITCH + self-hosted GPU inference',
+    result: 'Thousands of live calls handled end to end, no human agent',
+    description:
+      'A production-grade, self-hosted conversational voicebot that autonomously handles thousands of live phone calls in real time. FreeSWITCH manages SIP/RTP and media via the ESL outbound-socket model, while a Python engine runs the business logic: continuous transcription, human-vs-voicemail and ringing detection, dynamic call flows, live call transfers, and disposition handling. The full AI stack is self-hosted for cost and latency control — NVIDIA Parakeet RNNT / Whisper for ASR, Silero for VAD and denoising, F5-TTS for synthesis, and Qwen served via vLLM (benchmarked against DeepSeek-R1, Gemma 3, Phi-4 and Qwen 2.5/3) — running across a fleet of Hetzner GPU servers with automated provisioning, rolling restarts, a watchdog, kernel/firewall tuning, and per-call latency metrics in ClickHouse. Integrated with a ViciDial predictive dialer and SuiteCRM.',
+    tags: ['FreeSWITCH', 'Python', 'vLLM', 'Whisper', 'F5-TTS', 'Hetzner GPU', 'ViciDial'],
+    hideInPK: true,
   },
   {
     title: 'Call-tracking & analytics platform',

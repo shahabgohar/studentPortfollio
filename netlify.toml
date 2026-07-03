@@ -5,3 +5,13 @@
 [build.environment]
   NITRO_PRESET = "static"
   NODE_VERSION = "20"
+
+# Geo-based content hiding at the edge. Strips project cards marked
+# hideInPK: true from the /projects HTML for visitors in Pakistan.
+[[edge_functions]]
+  function = "geo-hide"
+  path = "/projects"
+
+[[edge_functions]]
+  function = "geo-hide"
+  path = "/projects/"

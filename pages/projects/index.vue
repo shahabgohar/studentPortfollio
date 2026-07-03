@@ -113,6 +113,7 @@ useHead({
           :to="p.href && !p.href.startsWith('http') ? p.href : undefined"
           :target="p.href && p.href.startsWith('http') ? '_blank' : undefined"
           :rel="p.href && p.href.startsWith('http') ? 'noreferrer' : undefined"
+          :data-geo-hide="p.hideInPK ? 'PK' : undefined"
           class="flex flex-col rounded-2xl border border-primary/10 bg-primary/[0.02] p-6 transition hover:border-info/70"
           :class="[p.featured ? 'lg:col-span-2 border-info/40 bg-info/[0.04]' : '', p.href ? 'cursor-pointer' : '']"
         >
