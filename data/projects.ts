@@ -47,8 +47,8 @@ export const projects: Project[] = [
     tagline: 'Autonomous phone calls on FreeSWITCH + self-hosted GPU inference',
     result: 'Thousands of live calls handled end to end, no human agent',
     description:
-      'A production-grade, self-hosted conversational voicebot that autonomously handles thousands of live phone calls in real time. FreeSWITCH manages SIP/RTP and media via the ESL outbound-socket model, while a Python engine runs the business logic: continuous transcription, human-vs-voicemail and ringing detection, dynamic call flows, live call transfers, and disposition handling. The full AI stack is self-hosted for cost and latency control — NVIDIA Parakeet RNNT / Whisper for ASR, Silero for VAD and denoising, F5-TTS for synthesis, and Qwen served via vLLM (benchmarked against DeepSeek-R1, Gemma 3, Phi-4 and Qwen 2.5/3) — running across a fleet of Hetzner GPU servers with automated provisioning, rolling restarts, a watchdog, kernel/firewall tuning, and per-call latency metrics in ClickHouse. Integrated with a ViciDial predictive dialer and SuiteCRM.',
-    tags: ['FreeSWITCH', 'Python', 'vLLM', 'Whisper', 'F5-TTS', 'Hetzner GPU', 'ViciDial'],
+      'A self-hosted conversational voicebot that autonomously handles thousands of live phone calls in real time. FreeSWITCH handles SIP/RTP and media while a Python engine runs transcription, voicemail detection, dynamic call flows, and live transfers — on a self-hosted ASR/VAD/TTS/LLM stack (Whisper, F5-TTS, Qwen via vLLM) across a fleet of Hetzner GPU servers.',
+    tags: ['FreeSWITCH', 'Python', 'vLLM', 'F5-TTS', 'Hetzner GPU'],
     hideInPK: true,
   },
   {
