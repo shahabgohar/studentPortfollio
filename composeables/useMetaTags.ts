@@ -4,9 +4,9 @@ export const useMetaTags = () => {
 
     const route = useRoute()
 
-    const defaultTitle = 'AI Solution Engineer — Custom Software, Automation & AI | Shahab Gohar'
+    const defaultTitle = 'Shahab Gohar — AI Solution & Automation Engineer'
     const defaultDescription =
-      'Solution engineer building custom software, business automation & AI workflows — working demo in 2 weeks or you don\'t pay. Fixed prices, deep SuiteCRM & Mautic expertise.'
+      'Solution engineer building custom software, automation & AI workflows — working demo in 2 weeks or you don\'t pay. Fixed prices, SuiteCRM & Mautic expertise.'
     const defaultKeywords =
       'AI solution engineer, solution engineer, business automation, workflow automation, ' +
       'custom software development, AI automation, AI workflows, AI integration, ' +
@@ -18,7 +18,7 @@ export const useMetaTags = () => {
       'Shahab Gohar, software engineer, AI engineer, remote developer for hire'
 
     const pageTitle = route.meta.title
-      ? `${route.meta.title} | Shahab Gohar — Software Engineer`
+      ? `${route.meta.title} | Shahab Gohar`
       : defaultTitle
 
     // Match the URLs Netlify actually serves (trailing slash) so canonical,

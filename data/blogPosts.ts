@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'suitecrm-quote-order-invoice-detection',
     title: 'Building Quote to Order to Invoice Detection in SuiteCRM',
     description:
-      'A practical SuiteCRM customization case study covering accepted quote conversion, order invoicing, line item snapshots, supplemental invoice detection, and credit note handling.',
+      'A SuiteCRM case study: converting accepted quotes to orders, invoicing order deltas, and detecting supplemental invoices and credit notes.',
     category: 'SuiteCRM Automation',
     date: 'June 4, 2026',
     datePublished: '2026-06-04T00:00:00+05:00',
@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'suitecrm-migration-european-textile-company',
     title: 'Case Study: Rebuilding SuiteCRM for a European Textile Company',
     description:
-      'A practical SuiteCRM migration case study covering Docker, Google SSO, calendar sync, OAuth, multilingual CRM fields, permissions, and production-ready CRM infrastructure.',
+      'A SuiteCRM migration case study: Docker, Google SSO, calendar sync, OAuth, multilingual fields, and production-ready CRM infrastructure.',
     category: 'Case Study',
     date: 'May 17, 2026',
     datePublished: '2026-05-17T00:00:00+05:00',
@@ -37,9 +37,9 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'ai-engineering-revolution',
-    title: 'The AI Engineering Revolution: How Foundation Models Are Transforming Business',
+    title: 'The AI Engineering Revolution: Foundation Models Transforming Business',
     description:
-      'Learn how AI engineering, foundation models, and business automation create measurable ROI for companies, plus where to invest first and how to ship practical AI products.',
+      'How AI engineering, foundation models, and automation create measurable ROI — plus where to invest first and how to ship practical AI.',
     category: 'AI Engineering',
     date: 'May 15, 2026',
     datePublished: '2026-05-15T00:00:00+05:00',

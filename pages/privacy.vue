@@ -32,7 +32,7 @@ const lastUpdated = "May 18, 2026";
           <Icon name="mdi:arrow-left" size="18" />
           Portfolio
         </NuxtLink>
-        <NuxtLink to="/cookies" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
+        <NuxtLink to="/cookies/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
           Cookie notice
           <Icon name="mdi:cookie-outline" size="18" />
         </NuxtLink>
@@ -120,7 +120,7 @@ const lastUpdated = "May 18, 2026";
           </p>
           <p>
             More detail is available in the
-            <NuxtLink to="/cookies">cookie notice</NuxtLink>.
+            <NuxtLink to="/cookies/">cookie notice</NuxtLink>.
           </p>
         </section>
 

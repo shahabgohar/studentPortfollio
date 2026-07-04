@@ -27,10 +27,10 @@ const faqs = [
 ]
 
 useServiceSeo({
-  path: '/services/ai-development',
-  title: 'Custom AI Software Development | RAG, LLM Apps & AI Agents',
+  path: '/services/ai-development/',
+  title: 'Custom AI Software Development | RAG, LLM & Agents',
   description:
-    'Hire an AI engineer to build production AI software: RAG systems, LLM applications, AI agents and chatbots, and AI features for your app or CRM. Real systems that ship — not demos.',
+    'Hire an AI engineer to build production AI: RAG systems, LLM apps, AI agents and chatbots, and AI features for your app or CRM — systems that ship.',
   serviceName: 'Custom AI Software Development',
   serviceType: [
     'Custom AI Software Development',
@@ -81,9 +81,9 @@ const sections = [
     :sections="sections"
     :faqs="faqs"
     :related="[
-      { to: '/services/suitecrm-development', label: 'SuiteCRM development & customization' },
-      { to: '/services/mautic-suitecrm-integration', label: 'Mautic → SuiteCRM integration' },
-      { to: '/blogs/ai-engineering-revolution', label: 'Article: the AI engineering revolution' }
+      { to: '/services/suitecrm-development/', label: 'SuiteCRM development & customization' },
+      { to: '/services/mautic-suitecrm-integration/', label: 'Mautic → SuiteCRM integration' },
+      { to: '/blogs/ai-engineering-revolution/', label: 'Article: the AI engineering revolution' }
     ]"
   />
 </template>

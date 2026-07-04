@@ -7,16 +7,16 @@ const post = blogPosts.find((item) => item.slug === 'ai-engineering-revolution')
 const siteUrl = 'https://shahabgohar.dev'
 const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-image.png`
-const seoTitle = 'AI Engineering Revolution: Foundation Models, ROI, and Business Automation'
+const seoTitle = 'AI Engineering Revolution: Foundation Models & ROI'
 const seoDescription =
-  'A practical AI engineering guide for founders and CTOs: foundation models, AI ROI metrics, business automation opportunities, implementation risks, and where to invest first.'
+  'An AI engineering guide for founders and CTOs: foundation models, ROI metrics, automation opportunities, risks, and where to invest first.'
 
 definePageMeta({
   title: post.title
 })
 
 useHead({
-  title: `${seoTitle} | Shahab Gohar`,
+  title: seoTitle,
   meta: [
     { name: 'description', content: seoDescription },
     { name: 'author', content: 'Shahab Gohar' },
@@ -179,7 +179,7 @@ const metricCards = [
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-8 sm:px-10 lg:grid-cols-[220px_1fr] lg:px-16">
       <aside class="lg:sticky lg:top-8 lg:h-fit">
-        <NuxtLink to="/blogs" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
+        <NuxtLink to="/blogs/" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
           <Icon name="mdi:arrow-left" size="18" />
           All posts
         </NuxtLink>

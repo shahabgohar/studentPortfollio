@@ -23,10 +23,10 @@ const faqs = [
 ]
 
 useServiceSeo({
-  path: '/services/mautic-suitecrm-integration',
-  title: 'Mautic to SuiteCRM Integration | Automated Lead & Contact Sync',
+  path: '/services/mautic-suitecrm-integration/',
+  title: 'Mautic → SuiteCRM Integration | Lead & Contact Sync',
   description:
-    'Connect Mautic marketing automation with SuiteCRM. Real-time, automated lead and contact sync with de-duplication and field mapping — no manual CSV imports, no missed follow-ups.',
+    'Connect Mautic with SuiteCRM: real-time, automated lead and contact sync with de-duplication and field mapping — no manual CSV imports.',
   serviceName: 'Mautic to SuiteCRM Integration',
   serviceType: [
     'Mautic to SuiteCRM Integration',
@@ -73,9 +73,9 @@ const sections = [
     :sections="sections"
     :faqs="faqs"
     :related="[
-      { to: '/services/suitecrm-development', label: 'SuiteCRM development & customization' },
-      { to: '/services/salesforce-to-suitecrm-migration', label: 'Salesforce to SuiteCRM migration' },
-      { to: '/blogs/suitecrm-migration-european-textile-company', label: 'Case study: rebuilding SuiteCRM for a European company' }
+      { to: '/services/suitecrm-development/', label: 'SuiteCRM development & customization' },
+      { to: '/services/salesforce-to-suitecrm-migration/', label: 'Salesforce to SuiteCRM migration' },
+      { to: '/blogs/suitecrm-migration-european-textile-company/', label: 'Case study: rebuilding SuiteCRM for a European company' }
     ]"
   />
 </template>

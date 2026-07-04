@@ -66,10 +66,10 @@ onMounted(() => {
             enabled.
           </p>
           <div class="mt-3 flex flex-wrap gap-3 text-xs text-primary/60">
-            <NuxtLink to="/privacy" class="underline underline-offset-4 hover:text-info">
+            <NuxtLink to="/privacy/" class="underline underline-offset-4 hover:text-info">
               Privacy notice
             </NuxtLink>
-            <NuxtLink to="/cookies" class="underline underline-offset-4 hover:text-info">
+            <NuxtLink to="/cookies/" class="underline underline-offset-4 hover:text-info">
               Cookie notice
             </NuxtLink>
           </div>

@@ -42,7 +42,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
           Home
         </NuxtLink>
         <NuxtLink
-          to="/blogs"
+          to="/blogs/"
           class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
         >
           Blog

@@ -7,16 +7,16 @@ const post = blogPosts.find((item) => item.slug === 'suitecrm-migration-european
 const siteUrl = 'https://shahabgohar.dev'
 const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-suitecrm-migration.png`
-const seoTitle = 'SuiteCRM Migration Case Study for a European Textile Company'
+const seoTitle = 'SuiteCRM Migration Case Study | Textile Company'
 const seoDescription =
-  'An anonymized SuiteCRM case study: migrating a fragile Bitnami CRM into a reproducible Docker deployment with Google SSO, calendar sync, OAuth, and multilingual CRM fields.'
+  'An anonymized SuiteCRM case study: migrating a fragile Bitnami CRM to a reproducible Docker deployment with Google SSO, calendar sync, and OAuth.'
 
 definePageMeta({
   title: post.title
 })
 
 useHead({
-  title: `${seoTitle} | Shahab Gohar`,
+  title: seoTitle,
   meta: [
     { name: 'description', content: seoDescription },
     {
@@ -183,7 +183,7 @@ const comparisonRows = [
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-8 sm:px-10 lg:grid-cols-[220px_1fr] lg:px-16">
       <aside class="lg:sticky lg:top-8 lg:h-fit">
-        <NuxtLink to="/blogs" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
+        <NuxtLink to="/blogs/" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
           <Icon name="mdi:arrow-left" size="18" />
           All posts
         </NuxtLink>

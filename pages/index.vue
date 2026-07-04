@@ -112,19 +112,19 @@ const caseStudies = [
     title: "AI lead-automation platform — WhatsApp → CRM",
     result: "0 unintended writes against a live production CRM",
     text: "Reads inbound WhatsApp chats and turns them into structured, deduplicated CRM deals. A provider-agnostic LLM engine extracts 13 fields per conversation, behind a human-in-the-loop dashboard and a fail-closed live/dry-run write gate.",
-    href: "/projects",
+    href: "/projects/",
   },
   {
     title: "AI content pipeline — campaign data → expert-reviewed articles",
     result: "Agents + RAG running safely in production",
     text: "A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles — with human approval gates, safety auditing, and per-run cost ceilings.",
-    href: "/services/ai-development",
+    href: "/services/ai-development/",
   },
   {
     title: "Enterprise CRM platform — migration & modern UI",
     result: "From brittle container to reproducible system in 1 command",
     text: "Migrated a brittle deployment into a versioned, reproducible platform on Docker Compose — SSO, calendar sync, 6-language localization, and one-command operations.",
-    href: "/blogs/suitecrm-migration-european-textile-company",
+    href: "/blogs/suitecrm-migration-european-textile-company/",
   },
   {
     title: "Sales workflow automation — quote → order → invoice",
@@ -353,9 +353,9 @@ onBeforeUnmount(() => {
           <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
           <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
           <button class="transition hover:text-info" @click="scrollToSection('Pricing')">Pricing</button>
-          <NuxtLink to="/projects" class="transition hover:text-info">Projects</NuxtLink>
+          <NuxtLink to="/projects/" class="transition hover:text-info">Projects</NuxtLink>
           <button class="transition hover:text-info" @click="scrollToSection('Proof')">Proof</button>
-          <NuxtLink to="/blogs" class="transition hover:text-info">Blog</NuxtLink>
+          <NuxtLink to="/blogs/" class="transition hover:text-info">Blog</NuxtLink>
         </div>
         <div class="flex items-center gap-2">
           <a
@@ -381,7 +381,7 @@ onBeforeUnmount(() => {
           <h1
             class="mt-6 font-grotesk text-[2.7rem] font-bold leading-[1.05] tracking-tight sm:text-6xl"
           >
-            I automate your manual work — <span class="text-info">working demo in 2 weeks</span> or you don't pay.
+            I automate your work — <span class="text-info">working demo in 2 weeks</span> or you don't pay.
           </h1>
           <p class="mt-6 max-w-xl text-lg leading-8 text-primary/65">
             I'm Shahab — a solutions engineer. I build the AI workflows, CRM
@@ -485,7 +485,7 @@ onBeforeUnmount(() => {
       <section id="Process" class="border-t border-primary/10 py-20">
         <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">How it works</p>
         <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight">
-          From "this is eating our time" to live system — in weeks, not quarters.
+          From "this is eating our time" to a live system in weeks.
         </h2>
         <p class="mt-4 max-w-xl text-lg leading-8 text-primary/60">
           A fixed process with a fixed price, built so you see it working before
@@ -553,7 +553,7 @@ onBeforeUnmount(() => {
               <p class="mt-3 max-w-2xl leading-7 text-primary/60">{{ item.text }}</p>
             </component>
             <NuxtLink
-              to="/projects"
+              to="/projects/"
               class="inline-flex items-center gap-2 self-start font-medium text-info transition hover:gap-3"
             >
               View all projects

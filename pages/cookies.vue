@@ -47,7 +47,7 @@ const cookieRows = [
           <Icon name="mdi:arrow-left" size="18" />
           Portfolio
         </NuxtLink>
-        <NuxtLink to="/privacy" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
+        <NuxtLink to="/privacy/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
           Privacy notice
           <Icon name="mdi:file-document-outline" size="18" />
         </NuxtLink>

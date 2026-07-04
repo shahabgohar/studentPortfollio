@@ -5,7 +5,7 @@ import { projects, publishedProducts } from '~/data/projects'
 const siteUrl = 'https://shahabgohar.dev'
 const title = 'Projects | Shahab Gohar — AI, full-stack & automation'
 const description =
-  'Selected projects by Shahab Gohar: AI lead automation, LLM extraction pipelines, AI voice-agent platforms, real-time analytics, and CRM automation — built end to end.'
+  'Selected projects by Shahab Gohar: AI lead automation, LLM extraction, voice-agent platforms, real-time analytics, and CRM automation.'
 
 definePageMeta({ title: 'Projects' })
 

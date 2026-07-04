@@ -3,31 +3,31 @@ definePageMeta({ title: 'Services' })
 
 const siteUrl = 'https://shahabgohar.dev'
 const title =
-  'SuiteCRM & AI Engineering Services | Custom Modules, Integrations, Migration'
+  'SuiteCRM & AI Engineering Services | Shahab Gohar'
 const description =
   'SuiteCRM development, Mautic integration, Salesforce-to-SuiteCRM migration, and AI engineering for B2B teams. Hire one engineer to own the whole outcome.'
 
 const services = [
   {
-    to: '/services/ai-development',
+    to: '/services/ai-development/',
     title: 'Custom AI Software (RAG, LLM, Agents)',
     blurb:
       'Production AI software: RAG systems over your data, LLM applications, AI agents and chatbots, and AI features embedded into your app or CRM.'
   },
   {
-    to: '/services/suitecrm-development',
+    to: '/services/suitecrm-development/',
     title: 'SuiteCRM Developer & Customization',
     blurb:
       'Custom modules, plugins, workflows, and SuiteCRM 8 Angular customization shaped around how your team actually sells.'
   },
   {
-    to: '/services/mautic-suitecrm-integration',
+    to: '/services/mautic-suitecrm-integration/',
     title: 'Mautic → SuiteCRM Integration',
     blurb:
       'Automated, real-time lead and contact sync between Mautic and SuiteCRM — no manual CSV imports, no missed follow-ups.'
   },
   {
-    to: '/services/salesforce-to-suitecrm-migration',
+    to: '/services/salesforce-to-suitecrm-migration/',
     title: 'Salesforce → SuiteCRM Migration',
     blurb:
       'Move off Salesforce to open-source SuiteCRM without losing data or workflows — and drop the per-seat licensing bill.'
@@ -102,7 +102,7 @@ const mailto =
           Home
         </NuxtLink>
         <NuxtLink
-          to="/blogs"
+          to="/blogs/"
           class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
         >
           Blog

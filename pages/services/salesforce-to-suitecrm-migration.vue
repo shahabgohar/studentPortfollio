@@ -23,10 +23,10 @@ const faqs = [
 ]
 
 useServiceSeo({
-  path: '/services/salesforce-to-suitecrm-migration',
-  title: 'Salesforce to SuiteCRM Migration | Cut CRM Licensing Costs',
+  path: '/services/salesforce-to-suitecrm-migration/',
+  title: 'Salesforce → SuiteCRM Migration | Cut License Costs',
   description:
-    'Migrate from Salesforce to open-source SuiteCRM without losing data or workflows. Records, custom objects, and automations re-built natively — Salesforce-grade results without the Salesforce bill.',
+    'Migrate from Salesforce to open-source SuiteCRM without losing data or workflows — records, custom objects, and automations rebuilt natively.',
   serviceName: 'Salesforce to SuiteCRM Migration',
   serviceType: [
     'Salesforce to SuiteCRM Migration',
@@ -73,9 +73,9 @@ const sections = [
     :sections="sections"
     :faqs="faqs"
     :related="[
-      { to: '/services/suitecrm-development', label: 'SuiteCRM development & customization' },
-      { to: '/services/mautic-suitecrm-integration', label: 'Mautic → SuiteCRM integration' },
-      { to: '/blogs/suitecrm-migration-european-textile-company', label: 'Case study: rebuilding SuiteCRM for a European company' }
+      { to: '/services/suitecrm-development/', label: 'SuiteCRM development & customization' },
+      { to: '/services/mautic-suitecrm-integration/', label: 'Mautic → SuiteCRM integration' },
+      { to: '/blogs/suitecrm-migration-european-textile-company/', label: 'Case study: rebuilding SuiteCRM for a European company' }
     ]"
   />
 </template>

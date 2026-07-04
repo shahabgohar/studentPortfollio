@@ -27,11 +27,11 @@ const faqs = [
 ]
 
 useServiceSeo({
-  path: '/services/suitecrm-development',
+  path: '/services/suitecrm-development/',
   title:
-    'SuiteCRM Developer & Customization Services | Custom Modules & Plugins',
+    'SuiteCRM Developer & Customization | Modules & Plugins',
   description:
-    'Hire an experienced SuiteCRM developer for custom modules, plugins, workflows, SuiteCRM 8 Angular customization, and integrations. Salesforce-grade results without the Salesforce bill.',
+    'Hire an experienced SuiteCRM developer for custom modules, plugins, workflows, SuiteCRM 8 Angular work, and integrations — without the Salesforce bill.',
   serviceName: 'SuiteCRM Customization & Development',
   serviceType: [
     'SuiteCRM Customization & Development',
@@ -86,9 +86,9 @@ const sections = [
     :sections="sections"
     :faqs="faqs"
     :related="[
-      { to: '/services/mautic-suitecrm-integration', label: 'Mautic → SuiteCRM integration' },
-      { to: '/services/salesforce-to-suitecrm-migration', label: 'Salesforce to SuiteCRM migration' },
-      { to: '/blogs/suitecrm-migration-european-textile-company', label: 'Case study: rebuilding SuiteCRM for a European company' }
+      { to: '/services/mautic-suitecrm-integration/', label: 'Mautic → SuiteCRM integration' },
+      { to: '/services/salesforce-to-suitecrm-migration/', label: 'Salesforce to SuiteCRM migration' },
+      { to: '/blogs/suitecrm-migration-european-textile-company/', label: 'Case study: rebuilding SuiteCRM for a European company' }
     ]"
   />
 </template>

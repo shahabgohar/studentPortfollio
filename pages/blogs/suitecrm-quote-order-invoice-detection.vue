@@ -9,14 +9,14 @@ const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-suitecrm-migration.png`
 const seoTitle = 'SuiteCRM Quote to Order to Invoice Detection Case Study'
 const seoDescription =
-  'How I built a SuiteCRM workflow that converts accepted quotes into orders, creates invoices from order deltas, and detects when later changes require supplemental invoices or credit notes.'
+  'How I built a SuiteCRM workflow that converts accepted quotes to orders, invoices order deltas, and detects when changes need supplemental invoices.'
 
 definePageMeta({
   title: post.title
 })
 
 useHead({
-  title: `${seoTitle} | Shahab Gohar`,
+  title: seoTitle,
   meta: [
     { name: 'description', content: seoDescription },
     {
@@ -182,7 +182,7 @@ const detectionRows = [
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-8 sm:px-10 lg:grid-cols-[220px_1fr] lg:px-16">
       <aside class="lg:sticky lg:top-8 lg:h-fit">
-        <NuxtLink to="/blogs" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
+        <NuxtLink to="/blogs/" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
           <Icon name="mdi:arrow-left" size="18" />
           All posts
         </NuxtLink>

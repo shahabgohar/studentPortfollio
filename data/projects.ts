@@ -30,7 +30,7 @@ export const projects: Project[] = [
     description:
       'A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles — with human approval gates, safety auditing, and per-run cost ceilings.',
     tags: ['FastAPI', 'LangChain', 'Vue 3'],
-    href: '/services/ai-development',
+    href: '/services/ai-development/',
   },
   {
     title: 'AI voice-agent campaign portal',
@@ -68,7 +68,7 @@ export const projects: Project[] = [
     description:
       'Migrated a brittle deployment into a versioned, reproducible platform on Docker Compose — SSO, auto-provisioned calendar sync, 6-language localization, and one-command operations.',
     tags: ['SuiteCRM 8', 'Docker', 'SSO'],
-    href: '/blogs/suitecrm-migration-european-textile-company',
+    href: '/blogs/suitecrm-migration-european-textile-company/',
   },
   {
     title: 'White-labelled CRM product',
