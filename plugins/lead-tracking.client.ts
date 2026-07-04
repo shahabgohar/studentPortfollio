@@ -33,10 +33,20 @@ export default defineNuxtPlugin(() => {
       const method = classify(href)
       if (!method) return
 
+      // Pull the pricing tier (utm_content) off booking links so GA4 can tell
+      // which package the click came from: sprint-1900 / custom-6500 / crm-retainer.
+      let tier: string | undefined
+      try {
+        tier = new URL(href, window.location.origin).searchParams.get('utm_content') || undefined
+      } catch {
+        // malformed href — leave tier undefined
+      }
+
       try {
         gtag('event', 'generate_lead', {
           method,
           link_url: href,
+          ...(tier ? { tier } : {}),
           page_path:
             typeof window !== 'undefined' ? window.location.pathname : ''
         })

@@ -79,6 +79,12 @@ export default async (request: Request, context: Context): Promise<Response> => 
     .transform(response);
 };
 
-export const config: Config = {
-  path: ["/projects", "/projects/"],
-};
+// DISABLED: with this config commented out (and the netlify.toml blocks
+// commented too), Netlify never runs this function, so no geo-based hiding
+// happens and the project shows to everyone. Uncomment both to re-enable.
+// export const config: Config = {
+//   path: ["/projects", "/projects/"],
+// };
+export {}; // keep this file a module while `config` is disabled
+// Referenced to avoid an unused-import error while disabled:
+type _KeepConfigImport = Config;

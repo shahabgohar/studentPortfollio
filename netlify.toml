@@ -6,12 +6,14 @@
   NITRO_PRESET = "static"
   NODE_VERSION = "20"
 
-# Geo-based content hiding at the edge. Strips project cards marked
-# hideInPK: true from the /projects HTML for visitors in Pakistan.
-[[edge_functions]]
-  function = "geo-hide"
-  path = "/projects"
-
-[[edge_functions]]
-  function = "geo-hide"
-  path = "/projects/"
+# Geo-based content hiding at the edge — DISABLED.
+# Strips project cards marked hideInPK: true from the /projects HTML for
+# visitors in Pakistan. Re-enable by uncommenting the blocks below AND the
+# `export const config` block in netlify/edge-functions/geo-hide.ts.
+# [[edge_functions]]
+#   function = "geo-hide"
+#   path = "/projects"
+#
+# [[edge_functions]]
+#   function = "geo-hide"
+#   path = "/projects/"

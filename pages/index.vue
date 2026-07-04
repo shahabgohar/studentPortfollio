@@ -184,6 +184,7 @@ const buildSteps = [
 const packages = [
   {
     name: "Automation Sprint",
+    book: "sprint-1900",
     price: "from $1,900",
     tagline: "One painful workflow, automated end to end.",
     duration: "2 weeks",
@@ -198,6 +199,7 @@ const packages = [
   },
   {
     name: "Custom Build",
+    book: "custom-6500",
     price: "from $6,500",
     tagline: "A full product or AI system — owned end to end by one engineer.",
     duration: "4–8 weeks",
@@ -212,6 +214,7 @@ const packages = [
   },
   {
     name: "CRM Ownership",
+    book: "crm-retainer",
     price: "from $950/mo",
     tagline: "Your SuiteCRM / Mautic — kept fast, integrated, and improving.",
     duration: "monthly, cancel anytime",
@@ -596,7 +599,7 @@ onBeforeUnmount(() => {
               </li>
             </ul>
             <a
-              :href="calBookingUrl"
+              :href="`${calBookingUrl}?utm_source=portfolio&utm_medium=pricing&utm_campaign=book_a_call&utm_content=${pkg.book}`"
               target="_blank"
               rel="noreferrer"
               class="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition"
