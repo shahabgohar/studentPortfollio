@@ -66,8 +66,8 @@ export const projects: Project[] = [
     tagline: 'Design, schedule & broadcast to networked screens',
     result: 'Multi-tenant CMS driving Windows & Android players',
     description:
-      'A multi-tenant digital signage platform for designing multi-zone layouts, managing media, and scheduling content across a fleet of networked displays. Built the CodeIgniter/MySQL sync APIs and multi-tenant backend, a jQuery admin dashboard with a drag-and-drop layout editor and resumable uploads, and native Windows (.NET/WPF) and Android players that sync in real time over RabbitMQ.',
-    tags: ['PHP', 'CodeIgniter', 'MySQL', '.NET/WPF', 'RabbitMQ'],
+      'A multi-tenant digital signage platform for designing multi-zone layouts, managing media, and scheduling content across a fleet of networked displays. Built the CodeIgniter/MySQL sync APIs and multi-tenant backend, a jQuery admin dashboard with a drag-and-drop layout editor and resumable uploads, and native Windows (.NET/WPF) and Android (Java) players that sync in real time over RabbitMQ.',
+    tags: ['PHP', 'CodeIgniter', 'MySQL', '.NET/WPF', 'Java', 'RabbitMQ'],
   },
   {
     title: 'Enterprise CRM platform migration',
