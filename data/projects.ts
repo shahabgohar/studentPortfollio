@@ -68,6 +68,7 @@ export const projects: Project[] = [
     description:
       'A multi-tenant digital signage platform for designing multi-zone layouts, managing media, and scheduling content across a fleet of networked displays. Built the CodeIgniter/MySQL sync APIs and multi-tenant backend, a jQuery admin dashboard with a drag-and-drop layout editor and resumable uploads, and native Windows (.NET/WPF) and Android (Java) players that sync in real time with the CMS.',
     tags: ['PHP', 'CodeIgniter', 'MySQL', '.NET/WPF', 'Java'],
+    href: 'https://imaginesignage.com/',
   },
   {
     title: 'Enterprise CRM platform migration',
