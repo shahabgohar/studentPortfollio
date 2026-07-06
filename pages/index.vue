@@ -111,7 +111,7 @@ const caseStudies = [
   {
     title: "AI lead-automation platform — WhatsApp → CRM",
     result: "0 unintended writes against a live production CRM",
-    text: "Reads inbound WhatsApp chats and turns them into structured, deduplicated CRM deals. A provider-agnostic LLM engine extracts 13 fields per conversation, behind a human-in-the-loop dashboard and a fail-closed live/dry-run write gate.",
+    text: "Reads inbound WhatsApp chats and turns them into structured, deduplicated CRM deals — fully automated, no human in the loop. A provider-agnostic LLM engine extracts 13 fields per conversation, behind a fail-closed live/dry-run write gate.",
     href: "/projects/",
   },
   {
@@ -250,7 +250,7 @@ const faqs = [
   },
   {
     q: "Is AI safe to run against our live business data?",
-    a: "Only if it's engineered that way — which is the point. My AI builds run behind dry-run gates and human-in-the-loop approvals, with fail-closed writes: one production system I built processed live WhatsApp leads into a CRM with zero unintended writes.",
+    a: "Only if it's engineered that way — which is the point. My AI builds run behind dry-run gates and fail-closed writes, with human-in-the-loop approvals where the risk calls for it: one fully automated production system I built processed live WhatsApp leads into a CRM with zero unintended writes.",
   },
   {
     q: "What does it cost?",

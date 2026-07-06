@@ -18,7 +18,7 @@ export const projects: Project[] = [
     tagline: 'WhatsApp → CRM, powered by LLM extraction',
     result: '0 unintended writes against a live production CRM',
     description:
-      'Reads inbound WhatsApp conversations and turns them into structured, deduplicated CRM deals for a private healthcare provider. A provider-agnostic LLM engine extracts 13 fields from each chat; a Vue 3 dashboard adds human-in-the-loop review, a "why the AI decided" inspector, and a fail-closed live/dry-run write gate.',
+      'Reads inbound WhatsApp conversations and turns them into structured, deduplicated CRM deals for a private healthcare provider — fully automated, with no human in the loop. A provider-agnostic LLM engine extracts 13 fields from each chat; a Vue 3 dashboard adds a "why the AI decided" inspector and a fail-closed live/dry-run write gate.',
     tags: ['FastAPI', 'Vue 3', 'LiteLLM', 'PostgreSQL', 'HubSpot'],
     featured: true,
   },
