@@ -1,16 +1,26 @@
 // Netlify Edge Function: geo-hide
 // -----------------------------------------------------------------------------
 // Removes selected project cards from the /projects page for visitors located in
-// Pakistan, BEFORE the HTML leaves Netlify's edge. Netlify's Deno runtime has no
-// HTMLRewriter (that's a Cloudflare Workers API), so this does plain string/JSON
-// processing. It sets a temporary `x-geo-hide` debug header describing the path
-// taken, and fails open (returns the page unmodified) if anything goes wrong.
+// Pakistan, BEFORE the HTML leaves Netlify's edge. PK visitors never receive the
+// content — it isn't on screen and isn't in view-source. Everyone else sees it.
+//
+// Netlify's edge runtime (Deno) has no HTMLRewriter (a Cloudflare Workers API),
+// so this does plain string/JSON processing. The origin serves compressed HTML,
+// so after rewriting the (now decoded) body we must drop `content-encoding` and
+// `content-length` and let Netlify re-compress. Everything is wrapped so it fails
+// open — if anything goes wrong the original page is returned, never an error.
+//
+// Targeting: the Vue template stamps `data-geo-hide="PK"` on any project whose
+// data entry has `hideInPK: true` (see data/projects.ts + pages/projects/index.vue).
 // -----------------------------------------------------------------------------
 
 import type { Config, Context } from "https://edge.netlify.com";
 
+// Titles to strip from JSON-LD for PK visitors. Keep in sync with the
+// `hideInPK: true` entries in data/projects.ts.
 const HIDE_TITLES = ["Real-time AI voice-agent platform"];
 
+/** Remove any ItemList entries whose item.name matches a hidden title. */
 function scrubLdJson(raw: string): string {
   try {
     const data = JSON.parse(raw);
@@ -33,58 +43,39 @@ function scrubLdJson(raw: string): string {
 export default async (request: Request, context: Context): Promise<Response> => {
   const response = await context.next();
 
-  const country = context.geo?.country?.code ?? "none";
-  const ct = response.headers.get("content-type") ?? "";
-
-  // Not a Pakistan HTML request — pass through, but report why via debug header.
-  if (country !== "PK" || !ct.includes("text/html")) {
-    const h = new Headers(response.headers);
-    h.set("x-geo-hide", `skip country=${country} ct=${ct.split(";")[0]}`);
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers: h,
-    });
-  }
-
-  let html: string;
   try {
-    html = await response.text();
-  } catch (e) {
-    const h = new Headers(response.headers);
-    h.set("x-geo-hide", `text-error ${String(e).slice(0, 60)}`);
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers: h,
-    });
-  }
+    const country = context.geo?.country?.code;
+    if (country !== "PK") return response;
 
-  let note: string;
-  try {
-    const had = /data-geo-hide="PK"/.test(html);
+    const contentType = response.headers.get("content-type") ?? "";
+    if (!contentType.includes("text/html")) return response;
+
+    let html = await response.text();
+
+    // 1) Remove the visible project card(s) marked for PK.
     html = html.replace(
       /<(article|a)\b[^>]*\bdata-geo-hide="PK"[^>]*>[\s\S]*?<\/\1>/g,
       "",
     );
+
+    // 2) Strip the hidden project from JSON-LD structured data.
     html = html.replace(
       /(<script[^>]*type="application\/ld\+json"[^>]*>)([\s\S]*?)(<\/script>)/g,
       (_m, open, json, close) => open + scrubLdJson(json) + close,
     );
-    note = `hid country=${country} marker=${had}`;
-  } catch (e) {
-    note = `replace-error ${String(e).slice(0, 60)}`;
-  }
 
-  const headers = new Headers(response.headers);
-  headers.delete("content-length");
-  headers.delete("content-encoding"); // body is now decoded plain text
-  headers.set("x-geo-hide", note);
-  return new Response(html, {
-    status: response.status,
-    statusText: response.statusText,
-    headers,
-  });
+    const headers = new Headers(response.headers);
+    headers.delete("content-length"); // body length changed
+    headers.delete("content-encoding"); // body is now decoded plain text
+    return new Response(html, {
+      status: response.status,
+      statusText: response.statusText,
+      headers,
+    });
+  } catch {
+    // Fail open: never break the page if hiding fails for any reason.
+    return response;
+  }
 };
 
 export const config: Config = {
