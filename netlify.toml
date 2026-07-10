@@ -6,17 +6,16 @@
   NITRO_PRESET = "static"
   NODE_VERSION = "20"
 
-# Geo-based content hiding at the edge — DISABLED.
+# Geo-based content hiding at the edge — ENABLED.
 # Strips project cards marked hideInPK: true from the /projects HTML for
-# visitors in Pakistan. Re-enable by uncommenting the blocks below AND the
-# `export const config` block in netlify/edge-functions/geo-hide.ts.
-# [[edge_functions]]
-#   function = "geo-hide"
-#   path = "/projects"
-#
-# [[edge_functions]]
-#   function = "geo-hide"
-#   path = "/projects/"
+# visitors in Pakistan (see netlify/edge-functions/geo-hide.ts).
+[[edge_functions]]
+  function = "geo-hide"
+  path = "/projects"
+
+[[edge_functions]]
+  function = "geo-hide"
+  path = "/projects/"
 
 # Security headers applied to every response.
 # CSP is shipped Report-Only first so it cannot break the live site; once the
