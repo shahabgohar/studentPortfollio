@@ -45,10 +45,22 @@ export default async (request: Request, context: Context): Promise<Response> => 
 
   try {
     const country = context.geo?.country?.code;
-    if (country !== "PK") return response;
-
     const contentType = response.headers.get("content-type") ?? "";
-    if (!contentType.includes("text/html")) return response;
+    const isHtml = contentType.includes("text/html");
+
+    // This route is geo-conditional, so it must never be served from a shared
+    // CDN cache (that would leak one country's version to another). Mark every
+    // response uncacheable so the edge function runs per request.
+    if (country !== "PK" || !isHtml) {
+      const h = new Headers(response.headers);
+      h.set("Cache-Control", "no-store");
+      h.set("Netlify-CDN-Cache-Control", "no-store");
+      return new Response(response.body, {
+        status: response.status,
+        statusText: response.statusText,
+        headers: h,
+      });
+    }
 
     let html = await response.text();
 
@@ -67,6 +79,8 @@ export default async (request: Request, context: Context): Promise<Response> => 
     const headers = new Headers(response.headers);
     headers.delete("content-length"); // body length changed
     headers.delete("content-encoding"); // body is now decoded plain text
+    headers.set("Cache-Control", "no-store");
+    headers.set("Netlify-CDN-Cache-Control", "no-store");
     return new Response(html, {
       status: response.status,
       statusText: response.statusText,
