@@ -263,7 +263,7 @@ const metricCards = [
           </section>
 
           <section id="where-ai-wins">
-            <h2>Where foundation models create leverage</h2>
+            <h2>Where foundation models actually pay off</h2>
             <p>
               AI performs best when the task involves language, pattern recognition, summarization, transformation, or guided generation. A useful application might draft a proposal, classify a lead, summarize a dense document, turn support history into a response, or help a developer move faster through routine implementation.
             </p>

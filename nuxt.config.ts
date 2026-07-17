@@ -4,7 +4,7 @@ export default defineNuxtConfig({
 
   site: {
     url: 'https://shahabgohar.dev',
-    name: 'Shahab Gohar — Software Engineer & AI Solutions Architect',
+    name: 'Shahab Gohar, AI Automation Engineer',
   },
 
   components: [
@@ -66,18 +66,15 @@ export default defineNuxtConfig({
   },
 
   googleFonts: {
-    // Performance: swap display + only needed weights. Removes the invalid
-    // 'monospace' family and trims weights to cut render-blocking font requests,
-    // improving LCP / Core Web Vitals (a Google ranking factor).
+    // Three families only: display / body / mono. Legacy fonts (Oswald, VT323,
+    // Roboto Mono, Space Grotesk, Inter) were loaded for components no page
+    // renders anymore; dropping them cuts render-blocking font weight for LCP.
     display: 'swap',
     preload: true,
     families: {
-      'Roboto Mono': [400, 500, 700],
+      'Bricolage Grotesque': [600, 700, 800],
+      'Geist': [400, 500, 600],
       'IBM Plex Mono': [400, 500],
-      'Oswald': [400, 600, 700, 800, 900],
-      'Space Grotesk': [500, 600, 700],
-      'Inter': [400, 500, 600],
-      'VT323': [400]
     },
   }
 })

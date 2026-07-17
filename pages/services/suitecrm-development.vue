@@ -14,15 +14,15 @@ const faqs = [
   },
   {
     q: 'Is SuiteCRM a real alternative to Salesforce?',
-    a: 'For many B2B teams, yes. SuiteCRM is open source, self-hosted, and free of per-seat licensing, so you get custom modules, automation, and integrations without the recurring Salesforce bill. The trade-off is that it needs an experienced developer to customize and maintain — which is exactly the work I do.'
+    a: 'For many B2B teams, yes. SuiteCRM is open source, self-hosted, and free of per-seat licensing, so you get custom modules, automation, and integrations without the recurring Salesforce bill. The trade-off is that it needs an experienced developer to customize and maintain, which is exactly the work I do.'
   },
   {
     q: 'How do we start a SuiteCRM project?',
-    a: 'Book a 30-minute build call or email the brief. We define the highest-value workflow first, I build a working version with real data paths, then we harden it for production. You typically see a working demo within two weeks.'
+    a: 'Book a 30-minute build call or email the brief. We define the highest-value workflow first, I build a working version with real data paths, then we harden it for production. You typically see a working demo inside 14 days.'
   },
   {
     q: 'Do you offer ongoing SuiteCRM support and maintenance?',
-    a: 'Yes — upgrades, bug fixes, new modules, performance work, and integration maintenance can be handled on a retainer or per-project basis after the initial build.'
+    a: 'Yes, upgrades, bug fixes, new modules, performance work, and integration maintenance can be handled on a retainer or per-project basis after the initial build.'
   }
 ]
 
@@ -31,7 +31,7 @@ useServiceSeo({
   title:
     'SuiteCRM Developer & Customization | Modules & Plugins',
   description:
-    'Hire an experienced SuiteCRM developer for custom modules, plugins, workflows, SuiteCRM 8 Angular work, and integrations — without the Salesforce bill.',
+    'Hire an experienced SuiteCRM developer for custom modules, plugins, workflows, SuiteCRM 8 Angular work, and integrations, without the Salesforce bill.',
   serviceName: 'SuiteCRM Customization & Development',
   serviceType: [
     'SuiteCRM Customization & Development',
@@ -47,7 +47,7 @@ const sections = [
   {
     heading: 'SuiteCRM development that fits your process',
     paragraphs: [
-      'Most teams do not need more CRM features — they need the CRM to match how they actually sell, quote, and follow up. I build custom SuiteCRM modules, fields, relationships, logic hooks, and scheduler jobs so the system does the work your spreadsheets and manual steps do today.',
+      'Most teams do not need more CRM features; they need the CRM to match how they actually sell, quote, and follow up. I build custom SuiteCRM modules, fields, relationships, logic hooks, and scheduler jobs so the system does the work your spreadsheets and manual steps do today.',
       'I work across the full SuiteCRM stack: the SuiteCRM 8 Angular front end, the legacy 7.x views, PHP back-end logic, and the REST and v8 APIs used for integrations. That means one person can own the outcome instead of you coordinating a designer, a back-end developer, and an integrator.'
     ]
   },
@@ -66,13 +66,13 @@ const sections = [
     heading: 'Why open-source SuiteCRM instead of Salesforce',
     paragraphs: [
       'SuiteCRM is open source and self-hosted, so there is no per-seat licensing tax that grows with your team. You own the data and the deployment, and you can customize anything without waiting on a vendor roadmap.',
-      'The catch is that SuiteCRM rewards good engineering. Done carelessly it becomes brittle; done well it becomes a durable, version-controlled system that survives upgrades. That engineering discipline — Docker-based deployments, clean customizations, and tested upgrade paths — is the core of how I work.'
+      'The catch is that SuiteCRM rewards good engineering. Done carelessly it becomes brittle; done well it becomes a durable, version-controlled system that survives upgrades. That engineering discipline (Docker-based deployments, clean customizations, tested upgrade paths) is the core of how I work.'
     ]
   },
   {
     heading: 'Proof from real SuiteCRM work',
     paragraphs: [
-      'Recent SuiteCRM projects include migrating a European textile manufacturer to a reproducible SuiteCRM 8 Docker deployment with Google SSO and multilingual fields, automating a US client’s quote-to-order-to-invoice pipeline, and re-theming SuiteCRM 8 into a white-labelled product a partner now resells. Two productized SuiteCRM add-ons — an AI Dashlet Generator and a Business Card Reader — are published on the SuiteCRM Store.'
+      'Recent SuiteCRM projects include migrating a European textile manufacturer to a reproducible SuiteCRM 8 Docker deployment with Google SSO and multilingual fields, automating a US client’s quote-to-order-to-invoice pipeline, and re-theming SuiteCRM 8 into a white-labelled product a partner now resells. Two productized SuiteCRM add-ons (an AI Dashlet Generator and a Business Card Reader) are published on the SuiteCRM Store.'
     ]
   }
 ]
@@ -82,7 +82,7 @@ const sections = [
   <ServiceLanding
     eyebrow="SuiteCRM development"
     h1="SuiteCRM Developer & Customization Services"
-    lede="Custom SuiteCRM modules, plugins, workflows, and SuiteCRM 8 Angular customization — built by an engineer who has shipped real SuiteCRM products for B2B teams across the US, UK, and Europe."
+    lede="Custom SuiteCRM modules, plugins, workflows, and SuiteCRM 8 Angular customization, built by an engineer who has shipped real SuiteCRM products for B2B teams across the US, UK, and Europe."
     :sections="sections"
     :faqs="faqs"
     :related="[

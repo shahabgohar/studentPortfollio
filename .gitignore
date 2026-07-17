@@ -27,3 +27,6 @@ logs
 
 # Temp files
 new_prompt.txt
+
+# Claude Code local config
+.claude/

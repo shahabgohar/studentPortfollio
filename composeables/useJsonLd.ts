@@ -8,7 +8,7 @@ export const useJsonLd = () => {
     url: siteUrl,
     jobTitle: 'AI Solution Engineer & Full-Stack Developer',
     description:
-      'Solution engineer building custom software, business automation, and AI workflows for companies, founders, and creators — with deep SuiteCRM and Mautic expertise.',
+      'Solution engineer building custom software, business automation, and AI workflows for companies, founders, and creators, with deep SuiteCRM and Mautic expertise.',
     email: 'shahab.developer.work@gmail.com',
     sameAs: [
       'https://www.linkedin.com/in/shahabgohar/',
@@ -65,10 +65,10 @@ export const useJsonLd = () => {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Shahab Gohar — AI Solution Engineer & Full-Stack Developer',
+    name: 'Shahab Gohar, AI Automation Engineer & Full-Stack Developer',
     url: siteUrl,
     description:
-      'Solution engineering for companies, founders, and creators — custom software, business automation, AI workflows, and CRM builds by Shahab Gohar.',
+      'Solution engineering for companies, founders, and creators: custom software, business automation, AI workflows, and CRM builds by Shahab Gohar.',
     keywords:
       'AI solution engineer, business automation, custom software development, AI workflows, full-stack developer, SuiteCRM developer, Mautic integration, workflow automation, app developer for startups',
     author: {
@@ -81,10 +81,10 @@ export const useJsonLd = () => {
   const professionalServiceSchema = {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
-    name: 'Shahab Gohar — Solution Engineering, Automation & AI',
+    name: 'Shahab Gohar: Automation, AI & Custom Software',
     url: siteUrl,
     description:
-      'Solution engineering for companies, founders, and creators — custom software, business automation, AI workflows, integrations, and SuiteCRM/Mautic builds.',
+      'Solution engineering for companies, founders, and creators: custom software, business automation, AI workflows, integrations, and SuiteCRM/Mautic builds.',
     provider: {
       '@type': 'Person',
       name: 'Shahab Gohar'
@@ -98,7 +98,7 @@ export const useJsonLd = () => {
           '@type': 'Offer',
           name: 'Automation Sprint',
           description:
-            'One painful workflow automated end to end in 2 weeks — CRM, email, WhatsApp, or spreadsheet integrations with a dry-run safety gate.',
+            'One painful workflow automated end to end in 2 weeks: CRM, email, WhatsApp, or spreadsheet integrations with a dry-run safety gate.',
           priceSpecification: {
             '@type': 'PriceSpecification',
             minPrice: 1900,
@@ -109,7 +109,7 @@ export const useJsonLd = () => {
           '@type': 'Offer',
           name: 'Custom Build',
           description:
-            'A full product or applied AI system — web, mobile, or desktop — designed, built, and deployed by one engineer in 4–8 weeks.',
+            'A full product or applied AI system (web, mobile, or desktop) designed, built, and deployed by one engineer in 4-8 weeks.',
           priceSpecification: {
             '@type': 'PriceSpecification',
             minPrice: 6500,
@@ -120,7 +120,7 @@ export const useJsonLd = () => {
           '@type': 'Offer',
           name: 'CRM Ownership',
           description:
-            'Monthly SuiteCRM / Mautic ownership — fixes, upgrades, monitoring, and one automation improvement shipped every month.',
+            'Monthly SuiteCRM or Mautic ownership: fixes, upgrades, monitoring, and one automation improvement shipped every month.',
           priceSpecification: {
             '@type': 'PriceSpecification',
             minPrice: 950,
@@ -167,7 +167,7 @@ export const useJsonLd = () => {
     operatingSystem: 'SuiteCRM',
     url: 'https://store.suitecrm.com/addons/ai-dashlet-generator',
     description:
-      'SuiteCRM plugin that uses AI to generate custom dashlets on demand — accelerating reporting and dashboard customization for B2B teams.',
+      'SuiteCRM plugin that uses AI to generate custom dashlets on demand, cutting the manual work out of reporting and dashboard setup for B2B teams.',
     author: {
       '@type': 'Person',
       name: 'Shahab Gohar',
@@ -189,7 +189,7 @@ export const useJsonLd = () => {
     operatingSystem: 'SuiteCRM',
     url: 'https://store.suitecrm.com/addons/business-card-reader',
     description:
-      'SuiteCRM plugin that scans business cards and instantly creates Leads or Contacts — speeding up lead capture for B2B sales teams.',
+      'SuiteCRM plugin that scans business cards and instantly creates Leads or Contacts, speeding up lead capture for B2B sales teams.',
     author: {
       '@type': 'Person',
       name: 'Shahab Gohar',

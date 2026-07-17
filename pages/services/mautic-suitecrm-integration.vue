@@ -26,7 +26,7 @@ useServiceSeo({
   path: '/services/mautic-suitecrm-integration/',
   title: 'Mautic → SuiteCRM Integration | Lead & Contact Sync',
   description:
-    'Connect Mautic with SuiteCRM: real-time, automated lead and contact sync with de-duplication and field mapping — no manual CSV imports.',
+    'Connect Mautic with SuiteCRM: real-time, automated lead and contact sync with de-duplication and field mapping, no manual CSV imports.',
   serviceName: 'Mautic to SuiteCRM Integration',
   serviceType: [
     'Mautic to SuiteCRM Integration',
@@ -41,8 +41,8 @@ const sections = [
   {
     heading: 'Marketing and sales on one pipeline',
     paragraphs: [
-      'Mautic is excellent at capturing and nurturing leads; SuiteCRM is where sales actually works them. The gap between the two is where leads go cold — exports, manual imports, and stale lists. I close that gap with an automated, two-way sync so a lead captured in Mautic appears in SuiteCRM the moment it converts.',
-      'Because I build SuiteCRM customizations and Mautic integrations directly, the sync is shaped around your funnel — your field names, your stages, your de-duplication rules — not a generic connector’s defaults.'
+      'Mautic is excellent at capturing and nurturing leads; SuiteCRM is where sales actually works them. The gap between the two is where leads go cold: exports, manual imports, and stale lists. I close that gap with an automated, two-way sync so a lead captured in Mautic appears in SuiteCRM the moment it converts.',
+      'Because I build SuiteCRM customizations and Mautic integrations directly, the sync is shaped around your funnel (your field names, your stages, your de-duplication rules) rather than a generic connector’s defaults.'
     ]
   },
   {
@@ -59,7 +59,7 @@ const sections = [
   {
     heading: 'Built and proven in production',
     paragraphs: [
-      'I built an automated Mautic → SuiteCRM sync for a US SuiteCRM partner that pushes new leads and contacts from Mautic forms, campaigns, and landing pages straight into SuiteCRM. The partner now resells a white-labelled CRM with native Mautic integration to their downstream customers — with no manual list imports and no missed follow-ups.'
+      'I built an automated Mautic → SuiteCRM sync for a US SuiteCRM partner that pushes new leads and contacts from Mautic forms, campaigns, and landing pages straight into SuiteCRM. The partner now resells a white-labelled CRM with native Mautic integration to their downstream customers, with no manual list imports and no missed follow-ups.'
     ]
   }
 ]
@@ -69,7 +69,7 @@ const sections = [
   <ServiceLanding
     eyebrow="Mautic + SuiteCRM"
     h1="Mautic to SuiteCRM Integration"
-    lede="Automated, real-time lead and contact sync between Mautic marketing automation and SuiteCRM — de-duplicated, correctly field-mapped, and built around your funnel instead of a generic connector."
+    lede="Automated, real-time lead and contact sync between Mautic marketing automation and SuiteCRM, de-duplicated, correctly field-mapped, and built around your funnel instead of a generic connector."
     :sections="sections"
     :faqs="faqs"
     :related="[

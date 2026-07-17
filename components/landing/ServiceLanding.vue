@@ -70,7 +70,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
             rel="noopener"
             class="rounded-md bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
           >
-            Book a 30-min build call
+            Book a call
           </a>
           <a
             :href="mailto"
@@ -152,12 +152,12 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
         class="mt-16 rounded-lg border border-primary/15 p-8 text-center"
       >
         <h2 class="font-grotesk text-2xl font-semibold sm:text-3xl">
-          Working demo in two weeks. Or you don't pay.
+          Working demo in 14 days. Or you don't pay.
         </h2>
         <p class="mx-auto mt-3 max-w-xl text-primary/75">
           Send the SuiteCRM migration, plugin idea, integration, or broken
-          workflow. You'll get a clear build path and a working demo in two
-          weeks — or you don't pay.
+          workflow. You'll get a clear build path and a working demo in 14
+          days, or you don't pay.
         </p>
         <div class="mt-6 flex flex-wrap justify-center gap-4 font-ibmMono text-sm">
           <a
@@ -166,7 +166,7 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
             rel="noopener"
             class="rounded-md bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
           >
-            Book a build discussion
+            Book a call
           </a>
           <a
             :href="mailto"
@@ -177,5 +177,6 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
         </div>
       </section>
     </article>
+    <SiteFooter />
   </main>
 </template>

@@ -18,7 +18,7 @@ export const projects: Project[] = [
     tagline: 'WhatsApp → CRM, powered by LLM extraction',
     result: '0 unintended writes against a live production CRM',
     description:
-      'Reads inbound WhatsApp conversations and turns them into structured, deduplicated CRM deals for a private healthcare provider — fully automated, with no human in the loop. A provider-agnostic LLM engine extracts 13 fields from each chat; a Vue 3 dashboard adds a "why the AI decided" inspector and a fail-closed live/dry-run write gate.',
+      'Reads inbound WhatsApp conversations and turns them into structured, deduplicated CRM deals for a private healthcare provider: fully automated, with no human in the loop. A provider-agnostic LLM engine extracts 13 fields from each chat; a Vue 3 dashboard adds a "why the AI decided" inspector and a fail-closed live/dry-run write gate.',
     tags: ['FastAPI', 'Vue 3', 'LiteLLM', 'PostgreSQL', 'HubSpot'],
     featured: true,
   },
@@ -28,7 +28,7 @@ export const projects: Project[] = [
     tagline: 'Campaign data → expert-reviewed articles',
     result: 'Agents + RAG running safely in production',
     description:
-      'A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles — with human approval gates, safety auditing, and per-run cost ceilings.',
+      'A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into expert-reviewed, SEO-optimized articles, with human approval gates, safety auditing, and per-run cost ceilings.',
     tags: ['FastAPI', 'LangChain', 'Vue 3'],
     href: '/services/ai-development/',
   },
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     tagline: 'Autonomous phone calls on FreeSWITCH + self-hosted GPU inference',
     result: 'Thousands of live calls handled end to end, no human agent',
     description:
-      'A self-hosted conversational voicebot that autonomously handles thousands of live phone calls in real time. FreeSWITCH handles SIP/RTP and media while a Python engine runs transcription, voicemail detection, dynamic call flows, and live transfers — on a self-hosted ASR/VAD/TTS/LLM stack (Whisper, F5-TTS, Qwen via vLLM) across a fleet of Hetzner GPU servers.',
+      'A self-hosted conversational voicebot that autonomously handles thousands of live phone calls in real time. FreeSWITCH handles SIP/RTP and media while a Python engine runs transcription, voicemail detection, dynamic call flows, and live transfers on a self-hosted ASR/VAD/TTS/LLM stack (Whisper, F5-TTS, Qwen via vLLM) across a fleet of Hetzner GPU servers.',
     tags: ['FreeSWITCH', 'Python', 'vLLM', 'F5-TTS', 'Hetzner GPU'],
     hideInPK: true,
   },
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     tagline: 'Real-time performance-marketing dashboards',
     result: 'Live campaign & call-flow analytics',
     description:
-      'A Vue 3 front end on a Python FastAPI backend for a performance-marketing call-tracking platform — real-time campaign and call-flow dashboards built for high-volume data.',
+      'A Vue 3 front end on a Python FastAPI backend for a performance-marketing call-tracking platform: real-time campaign and call-flow dashboards built for high-volume data.',
     tags: ['Vue 3', 'FastAPI', 'Analytics'],
   },
   {
@@ -76,7 +76,7 @@ export const projects: Project[] = [
     tagline: 'Brittle container → reproducible system',
     result: 'Reproducible CRM in one command',
     description:
-      'Migrated a brittle deployment into a versioned, reproducible platform on Docker Compose — SSO, auto-provisioned calendar sync, 6-language localization, and one-command operations.',
+      'Migrated a brittle deployment into a versioned, reproducible platform on Docker Compose: SSO, auto-provisioned calendar sync, 6-language localization, and one-command operations.',
     tags: ['SuiteCRM 8', 'Docker', 'SSO'],
     href: '/blogs/suitecrm-migration-european-textile-company/',
   },
@@ -86,7 +86,7 @@ export const projects: Project[] = [
     tagline: 'A re-themed CRM the client sells as their own',
     result: 'Sellable, branded product with custom add-ons',
     description:
-      'Heavily customized SuiteCRM 8 into a fully white-labelled CRM — a modern Angular UI, re-themed detail/edit and legacy views, plus custom add-on modules and features — delivered as a finished product the client now resells under their own brand.',
+      'Heavily customized SuiteCRM 8 into a fully white-labelled CRM: a modern Angular UI, re-themed detail/edit and legacy views, and custom add-on modules, delivered as a finished product the client now resells under their own brand.',
     tags: ['SuiteCRM 8', 'Angular', 'White-label'],
   },
   {
@@ -95,7 +95,7 @@ export const projects: Project[] = [
     tagline: 'Marketing leads land in sales instantly',
     result: 'White-labelled CRM resold by the client',
     description:
-      'Automated, real-time lead and contact sync from Mautic into the CRM — no manual CSV imports, no missed follow-ups. The partner now resells a white-labelled CRM with the integration built in.',
+      'Automated, real-time lead and contact sync from Mautic into the CRM: no manual CSV imports, no missed follow-ups. The partner now resells a white-labelled CRM with the integration built in.',
     tags: ['Mautic', 'Integration', 'CRM'],
   },
   {

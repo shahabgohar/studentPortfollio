@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // Post-booking confirmation page. Cal.com redirects here after a successful
 // booking ("Redirect on booking" in the event type's Advanced settings).
-// Used as the conversion page for ad campaigns — keep it out of search.
+// Used as the conversion page for ad campaigns, keep it out of search.
 const calBookingUrl = "https://cal.com/shahabgohar/build-discussion";
 
 useHead({
@@ -32,7 +32,7 @@ onMounted(() => {
       <p class="mt-4 text-lg leading-8 text-primary/65">
         You'll get a calendar invite with the video link by email. To make the
         30 minutes count, have in mind the one manual process that eats the most
-        of your team's time — we'll start there.
+        of your team's time. We'll start there.
       </p>
       <div class="mt-8 flex flex-wrap justify-center gap-3">
         <NuxtLink

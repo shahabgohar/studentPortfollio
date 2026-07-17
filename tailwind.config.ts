@@ -1,26 +1,22 @@
 
 import type { Config } from 'tailwindcss'
-import defaultTheme from 'tailwindcss/defaultTheme'
 
 export default <Partial<Config>>{
     theme: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        ibmMono: ['IBM Plex Mono', 'monospace', 'system-ui', 'sans-serif'],
-        oswald: ['Oswald', 'Impact', 'sans-serif'],
-        grotesk: ['Space Grotesk', 'system-ui', 'sans-serif'],
-        inter: ['Inter', 'system-ui', 'sans-serif'],
-        vt323: ['VT323', 'monospace']
+        // Brand type stack: Bricolage Grotesque (display) / Geist (body) / IBM Plex Mono (meta).
+        // The legacy alias names (grotesk, inter) are kept so existing templates
+        // pick up the new stack without touching every file.
+        sans: ['Geist', 'system-ui', 'sans-serif'],
+        inter: ['Geist', 'system-ui', 'sans-serif'],
+        grotesk: ['Bricolage Grotesque', 'system-ui', 'sans-serif'],
+        ibmMono: ['IBM Plex Mono', 'ui-monospace', 'monospace']
       },
       extend: {
         lineHeight: {
           '11': '5.437rem',
         },
-        colors: {
-          // 'grey': '#D9D9D9',
-          // 'silver': '#C2C2C2',
-          // 'blue': '#565BCF'
-        }
+        colors: {}
       }
   },
   daisyui: {
@@ -29,25 +25,26 @@ export default <Partial<Config>>{
     themes: [
       {
         myLight: {
-
-          'primary': '#000',
-          'secondary': '#fff',
+          // Off-black on off-white: pure #000/#fff kill depth.
+          'primary': '#101411',
+          'secondary': '#F7F8F6',
           'grey': '#D9D9D9',
           'silver': '#C2C2C2',
-          'info': '#059669',
-          '--primary': '#000',
-          '--secondary': '#fff'
+          // emerald-700: passes WCAG AA for small text on the light surface
+          'info': '#047857',
+          '--primary': '#101411',
+          '--secondary': '#F7F8F6'
         }
       },
       {
         myDark: {
-          'primary': '#fff',
-          'secondary': '#000',
+          'primary': '#EDF1EE',
+          'secondary': '#0B0E0C',
           'grey': '#D9D9D9',
           'silver': '#C2C2C2',
-          'info': '#34d399',
-          '--primary': '#fff',
-          '--secondary': '#000'
+          'info': '#34D399',
+          '--primary': '#EDF1EE',
+          '--secondary': '#0B0E0C'
         }
       }
     ]

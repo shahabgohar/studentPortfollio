@@ -24,13 +24,13 @@ const services = [
     to: '/services/mautic-suitecrm-integration/',
     title: 'Mautic → SuiteCRM Integration',
     blurb:
-      'Automated, real-time lead and contact sync between Mautic and SuiteCRM — no manual CSV imports, no missed follow-ups.'
+      'Automated, real-time lead and contact sync between Mautic and SuiteCRM: no manual CSV imports, no missed follow-ups.'
   },
   {
     to: '/services/salesforce-to-suitecrm-migration/',
     title: 'Salesforce → SuiteCRM Migration',
     blurb:
-      'Move off Salesforce to open-source SuiteCRM without losing data or workflows — and drop the per-seat licensing bill.'
+      'Move off Salesforce to open-source SuiteCRM without losing data or workflows, and drop the per-seat licensing bill.'
   }
 ]
 
@@ -120,7 +120,7 @@ const mailto =
           Software, AI &amp; CRM engineering services
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-primary/75">
-          Hire one engineer to own the whole outcome — custom SuiteCRM,
+          Hire one engineer to own the whole outcome: custom SuiteCRM,
           marketing automation integration, CRM migration, and the AI layer on
           top. Salesforce-grade results without the Salesforce bill.
         </p>
@@ -175,5 +175,6 @@ const mailto =
         </div>
       </section>
     </article>
+    <SiteFooter />
   </main>
 </template>

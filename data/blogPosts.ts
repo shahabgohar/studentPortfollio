@@ -39,7 +39,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'ai-engineering-revolution',
     title: 'The AI Engineering Revolution: Foundation Models Transforming Business',
     description:
-      'How AI engineering, foundation models, and automation create measurable ROI — plus where to invest first and how to ship practical AI.',
+      'How AI engineering, foundation models, and automation create measurable ROI, plus where to invest first and how to ship practical AI.',
     category: 'AI Engineering',
     date: 'May 15, 2026',
     datePublished: '2026-05-15T00:00:00+05:00',

@@ -138,5 +138,6 @@ useHead({
         </article>
       </section>
     </section>
+    <SiteFooter />
   </main>
 </template>

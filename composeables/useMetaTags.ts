@@ -4,9 +4,9 @@ export const useMetaTags = () => {
 
     const route = useRoute()
 
-    const defaultTitle = 'Shahab Gohar — AI Solution & Automation Engineer'
+    const defaultTitle = 'AI Automation Engineer & Custom Software | Shahab Gohar'
     const defaultDescription =
-      'Solution engineer building custom software, automation & AI workflows — working demo in 2 weeks or you don\'t pay. Fixed prices, SuiteCRM & Mautic expertise.'
+      'I build AI automation, CRM integrations, and custom software. Working demo in 14 days or you don\'t pay. Fixed prices, with SuiteCRM and Mautic expertise.'
     const defaultKeywords =
       'AI solution engineer, solution engineer, business automation, workflow automation, ' +
       'custom software development, AI automation, AI workflows, AI integration, ' +
@@ -41,7 +41,7 @@ export const useMetaTags = () => {
 
             // Open Graph (Facebook, LinkedIn, WhatsApp, etc.)
             { property: 'og:type', content: 'website' },
-            { property: 'og:site_name', content: 'Shahab Gohar — Portfolio' },
+            { property: 'og:site_name', content: 'Shahab Gohar' },
             { property: 'og:title', content: pageTitle },
             { property: 'og:description', content: defaultDescription },
             { property: 'og:url', content: canonicalUrl },
@@ -50,18 +50,18 @@ export const useMetaTags = () => {
             { property: 'og:image:type', content: 'image/png' },
             { property: 'og:image:width', content: '1200' },
             { property: 'og:image:height', content: '630' },
-            { property: 'og:image:alt', content: 'Shahab Gohar — Software Engineer & AI Solutions Architect' },
+            { property: 'og:image:alt', content: 'Shahab Gohar, AI Automation Engineer' },
 
             // Twitter Card
             { name: 'twitter:card', content: 'summary_large_image' },
             { name: 'twitter:title', content: pageTitle },
             { name: 'twitter:description', content: defaultDescription },
             { name: 'twitter:image', content: `${siteUrl}/img/og-image.png` },
-            { name: 'twitter:image:alt', content: 'Shahab Gohar — Software Engineer & AI Solutions Architect' },
+            { name: 'twitter:image:alt', content: 'Shahab Gohar, AI Automation Engineer' },
 
             // Theme
-            { name: 'theme-color', content: '#020208' },
-            { name: 'msapplication-TileColor', content: '#020208' },
+            { name: 'theme-color', content: '#0B0E0C' },
+            { name: 'msapplication-TileColor', content: '#0B0E0C' },
         ],
         link: [
             // Canonical

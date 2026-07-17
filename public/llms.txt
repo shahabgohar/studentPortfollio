@@ -1,0 +1,21 @@
+# Shahab Gohar, AI Automation Engineer
+
+> Personal services site of Shahab Gohar: AI automation, CRM integration (SuiteCRM, Mautic), and custom software for small and mid-size businesses. Every project starts with a fixed written quote and a working demo in 14 days, or the client doesn't pay.
+
+## Pages
+
+- [Home](https://shahabgohar.dev/): services, process, pricing, and client reviews
+- [Services](https://shahabgohar.dev/services/): all service lines in one place
+- [AI development](https://shahabgohar.dev/services/ai-development/): RAG systems, LLM apps, AI agents, and AI features for existing products
+- [SuiteCRM development](https://shahabgohar.dev/services/suitecrm-development/): custom modules, plugins, workflows, and SuiteCRM 8 Angular work
+- [Mautic and SuiteCRM integration](https://shahabgohar.dev/services/mautic-suitecrm-integration/): automated, de-duplicated lead sync
+- [Salesforce to SuiteCRM migration](https://shahabgohar.dev/services/salesforce-to-suitecrm-migration/): records, custom objects, and automations rebuilt natively
+- [Projects](https://shahabgohar.dev/projects/): case studies with measured results
+- [Blog](https://shahabgohar.dev/blogs/): SuiteCRM and AI engineering write-ups
+
+## Facts
+
+- Pricing: automation sprints from $1,900; custom builds from $6,500; CRM ownership retainers from $950/month
+- Track record: 5.0 average rating across 35+ five-star client reviews, clients in 10 countries
+- Products: AI Dashlet Generator and Business Card Reader, both published on the SuiteCRM Store
+- Contact: shahab.developer.work@gmail.com

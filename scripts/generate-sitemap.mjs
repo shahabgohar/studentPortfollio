@@ -7,49 +7,49 @@ const routes = [
     path: '/',
     changefreq: 'weekly',
     priority: '1.0',
-    lastmod: '2026-07-03'
+    lastmod: '2026-07-18'
   },
   {
     path: '/projects',
     changefreq: 'monthly',
     priority: '0.9',
-    lastmod: '2026-06-30'
+    lastmod: '2026-07-18'
   },
   {
     path: '/services',
     changefreq: 'monthly',
     priority: '0.9',
-    lastmod: '2026-06-15'
+    lastmod: '2026-07-18'
   },
   {
     path: '/services/ai-development',
     changefreq: 'monthly',
     priority: '0.9',
-    lastmod: '2026-06-15'
+    lastmod: '2026-07-18'
   },
   {
     path: '/services/suitecrm-development',
     changefreq: 'monthly',
     priority: '0.9',
-    lastmod: '2026-06-15'
+    lastmod: '2026-07-18'
   },
   {
     path: '/services/mautic-suitecrm-integration',
     changefreq: 'monthly',
     priority: '0.8',
-    lastmod: '2026-06-15'
+    lastmod: '2026-07-18'
   },
   {
     path: '/services/salesforce-to-suitecrm-migration',
     changefreq: 'monthly',
     priority: '0.8',
-    lastmod: '2026-06-15'
+    lastmod: '2026-07-18'
   },
   {
     path: '/blogs',
     changefreq: 'weekly',
     priority: '0.8',
-    lastmod: '2026-06-04'
+    lastmod: '2026-07-18'
   },
   {
     path: '/privacy',
@@ -67,7 +67,7 @@ const routes = [
     path: '/blogs/ai-engineering-revolution',
     changefreq: 'monthly',
     priority: '0.7',
-    lastmod: '2026-05-15'
+    lastmod: '2026-07-18'
   },
   {
     path: '/blogs/suitecrm-migration-european-textile-company',
@@ -79,7 +79,7 @@ const routes = [
     path: '/blogs/suitecrm-quote-order-invoice-detection',
     changefreq: 'monthly',
     priority: '0.7',
-    lastmod: '2026-06-04'
+    lastmod: '2026-07-18'
   }
 ]
 

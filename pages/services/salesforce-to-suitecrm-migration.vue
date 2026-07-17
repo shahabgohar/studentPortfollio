@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: 'Will I lose my data or customizations in the migration?',
-    a: 'No — that is the whole point of doing it carefully. Accounts, contacts, leads, opportunities, activities, and attachments are mapped and migrated with validation, and Salesforce automations and custom objects are re-implemented as SuiteCRM modules, workflows, and logic hooks.'
+    a: 'No, that is the whole point of doing it carefully. Accounts, contacts, leads, opportunities, activities, and attachments are mapped and migrated with validation, and Salesforce automations and custom objects are re-implemented as SuiteCRM modules, workflows, and logic hooks.'
   },
   {
     q: 'How long does a Salesforce to SuiteCRM migration take?',
@@ -26,7 +26,7 @@ useServiceSeo({
   path: '/services/salesforce-to-suitecrm-migration/',
   title: 'Salesforce → SuiteCRM Migration | Cut License Costs',
   description:
-    'Migrate from Salesforce to open-source SuiteCRM without losing data or workflows — records, custom objects, and automations rebuilt natively.',
+    'Migrate from Salesforce to open-source SuiteCRM without losing data or workflows, records, custom objects, and automations rebuilt natively.',
   serviceName: 'Salesforce to SuiteCRM Migration',
   serviceType: [
     'Salesforce to SuiteCRM Migration',
@@ -41,8 +41,8 @@ const sections = [
   {
     heading: 'Keep the workflow, drop the licensing bill',
     paragraphs: [
-      'Migrating from Salesforce to SuiteCRM is not about settling for less — it is about owning your CRM. SuiteCRM is open source and self-hosted, so you keep custom modules, automation, reporting, and integrations while removing the per-seat license cost that grows every time you hire.',
-      'A migration done well preserves everything that matters: your records, your relationships, and the business rules your team relies on. The difference is in the engineering — clean data mapping, validation, and re-implementing automations natively rather than bolting on fragile workarounds.'
+      'Migrating from Salesforce to SuiteCRM is not settling for less; it is taking ownership of your CRM. SuiteCRM is open source and self-hosted, so you keep custom modules, automation, reporting, and integrations while removing the per-seat license cost that grows every time you hire.',
+      'A migration done well preserves everything that matters: your records, your relationships, and the business rules your team relies on. The difference is in the engineering: clean data mapping, validation, and re-implementing automations natively rather than bolting on fragile workarounds.'
     ]
   },
   {
@@ -59,7 +59,7 @@ const sections = [
   {
     heading: 'Reproducible, upgrade-safe deployments',
     paragraphs: [
-      'I deploy SuiteCRM on versioned, Docker-based infrastructure so the system is reproducible, easy to debug, and safe to upgrade — the same approach I used to rebuild a European manufacturer’s SuiteCRM into a clean SuiteCRM 8 deployment with Google SSO, calendar sync, and multilingual fields. Your migrated CRM is something you can maintain with confidence, not a black box.'
+      'I deploy SuiteCRM on versioned, Docker-based infrastructure so the system is reproducible, easy to debug, and safe to upgrade, the same approach I used to rebuild a European manufacturer’s SuiteCRM into a clean SuiteCRM 8 deployment with Google SSO, calendar sync, and multilingual fields. Your migrated CRM is something you can maintain with confidence, not a black box.'
     ]
   }
 ]
@@ -69,7 +69,7 @@ const sections = [
   <ServiceLanding
     eyebrow="Salesforce → SuiteCRM"
     h1="Salesforce to SuiteCRM Migration"
-    lede="Move off Salesforce to open-source SuiteCRM without losing data or workflows. Records, custom objects, and automations re-built natively — Salesforce-grade results without the recurring Salesforce bill."
+    lede="Move off Salesforce to open-source SuiteCRM without losing data or workflows. Records, custom objects, and automations re-built natively. Salesforce-grade results without the recurring Salesforce bill."
     :sections="sections"
     :faqs="faqs"
     :related="[

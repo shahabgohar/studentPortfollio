@@ -3,7 +3,7 @@ import { definePageMeta } from '#imports'
 import { projects, publishedProducts } from '~/data/projects'
 
 const siteUrl = 'https://shahabgohar.dev'
-const title = 'Projects | Shahab Gohar — AI, full-stack & automation'
+const title = 'AI, Full-Stack & Automation Projects | Shahab Gohar'
 const description =
   'Selected projects by Shahab Gohar: AI lead automation, LLM extraction, voice-agent platforms, real-time analytics, and CRM automation.'
 
@@ -30,7 +30,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: 'Projects — Shahab Gohar',
+        name: 'Projects by Shahab Gohar',
         url: `${siteUrl}/projects/`,
         description,
         isPartOf: { '@type': 'WebSite', url: siteUrl, name: 'Shahab Gohar' },
@@ -98,7 +98,7 @@ useHead({
           AI, full-stack &amp; automation projects.
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-primary/65">
-          Things I've designed, built, and shipped — end-to-end work across AI lead automation,
+          Things I've designed, built, and shipped: end-to-end work across AI lead automation,
           LLM extraction pipelines, AI voice agents, full-stack product, and CRM automation, each
           taken from problem to a system real teams use in production.
         </p>
@@ -170,8 +170,8 @@ useHead({
             Have something like this to build?
           </h2>
           <p class="mx-auto mt-4 max-w-xl text-lg leading-8 text-primary/65">
-            Send the problem and I'll tell you what to build, automate, or fix first — working demo
-            in two weeks, or you don't pay.
+            Send the problem and I'll tell you what to build, automate, or fix first.
+            Working demo in 14 days, or you don't pay.
           </p>
           <a
             :href="calUrl"
@@ -179,11 +179,12 @@ useHead({
             rel="noreferrer"
             class="mt-6 inline-flex items-center gap-2 rounded-xl bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90"
           >
-            Book a 30-min build call
+            Book a call
             <Icon name="mdi:calendar-arrow-right" size="18" />
           </a>
         </div>
       </section>
     </div>
+    <SiteFooter />
   </main>
 </template>
