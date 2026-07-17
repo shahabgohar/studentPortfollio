@@ -361,6 +361,23 @@ const comparisonRows = [
             </p>
           </section>
 
+          <aside class="not-prose mt-12 border border-primary/15 bg-primary/[0.03] p-6 sm:p-8">
+            <p class="font-ibmMono text-xs uppercase tracking-[0.22em] text-info">Free checklist</p>
+            <h2 class="mt-4 text-3xl font-bold leading-tight">Still doing any of this by hand?</h2>
+            <p class="mt-4 text-base leading-7 text-primary/70">
+              The automation audit lists 12 manual processes with what each one
+              costs per year and the build that removes it. Ten minutes to
+              score your own stack.
+            </p>
+            <NuxtLink
+              to="/automation-audit/"
+              class="mt-6 inline-flex items-center gap-2 border border-info px-5 py-3 font-ibmMono text-sm text-info transition hover:bg-info hover:text-secondary"
+            >
+              Get the checklist
+              <Icon name="mdi:arrow-right" size="18" />
+            </NuxtLink>
+          </aside>
+
           <section class="not-prose mt-12 border border-info/50 bg-info/5 p-6 sm:p-8">
             <p class="font-ibmMono text-xs uppercase tracking-[0.22em] text-info">Work with me</p>
             <h2 class="mt-4 text-3xl font-bold leading-tight">Need a CRM migration that can survive production?</h2>

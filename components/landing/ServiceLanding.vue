@@ -114,6 +114,9 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
         </div>
       </section>
 
+      <!-- Lead magnet opt-in -->
+      <LeadMagnetOptin class="mt-16" />
+
       <!-- FAQ -->
       <section v-if="faqs && faqs.length" class="mt-16">
         <h2 class="font-grotesk text-2xl font-semibold sm:text-3xl">

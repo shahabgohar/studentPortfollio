@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Form definitions</title>
+  </head>
+  <body>
+    <!--
+      Static form definitions for Netlify Forms build-time detection.
+      The Vue pages submit via fetch POST to /__forms.html with matching
+      field names. Keep field names in sync with LeadMagnetOptin.vue.
+    -->
+    <form
+      name="automation-audit"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      action="/automation-audit/thanks/"
+      hidden
+    >
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <select name="crm">
+        <option>SuiteCRM</option>
+        <option>Salesforce</option>
+        <option>HubSpot</option>
+        <option>Something else</option>
+        <option>No CRM yet</option>
+      </select>
+      <input type="text" name="source" />
+      <input type="text" name="bot-field" />
+    </form>
+  </body>
+</html>

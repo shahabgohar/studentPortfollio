@@ -48,6 +48,14 @@ export default defineNuxtConfig({
     '@/assets/main.css'
   ],
 
+  nitro: {
+    prerender: {
+      // Redirect targets no internal link points at (cal.com booking and the
+      // opt-in form land here) still need static HTML in the generate output.
+      routes: ['/thanks', '/automation-audit', '/automation-audit/thanks'],
+    },
+  },
+
   gtag: {
     initMode: 'manual',
     id: process.env?.GOOGLE_ANALYTICS_ID || 'G-KQCTM71LNQ',

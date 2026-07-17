@@ -5,6 +5,7 @@ const explore = [
   { label: 'Services', to: '/services/' },
   { label: 'Projects', to: '/projects/' },
   { label: 'Blog', to: '/blogs/' },
+  { label: 'Automation audit', to: '/automation-audit/' },
 ]
 
 const serviceLinks = [

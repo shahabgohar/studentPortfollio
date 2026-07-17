@@ -46,6 +46,12 @@ const routes = [
     lastmod: '2026-07-18'
   },
   {
+    path: '/automation-audit',
+    changefreq: 'monthly',
+    priority: '0.8',
+    lastmod: '2026-07-18'
+  },
+  {
     path: '/blogs',
     changefreq: 'weekly',
     priority: '0.8',
