@@ -155,14 +155,6 @@ useHead({
               '@type': 'Answer',
               text: 'Yes, once you move past simple workflows. Retrieval-augmented generation (RAG) is how you make a model answer from a client’s own documents and data instead of its training memory, which removes most hallucinations. It is one of the top skills hiring managers ask for in 2026, alongside AI agents and evaluation. You do not need it on day one, but you will need it fast.'
             }
-          },
-          {
-            '@type': 'Question',
-            name: 'Can you get into AI automation without a degree?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Yes. Automation and AI integration roles value demonstrable skill over formal education. A portfolio of real working automations, ideally solving a business problem end to end, beats a degree with no builds. Ship a few projects, document what they do and what they saved, and that proof is what gets you hired or booked.'
-            }
           }
         ]
       })
@@ -363,7 +355,7 @@ const sections = [
               Honest timeline: if you already write Python and understand APIs, three to five months of steady building gets you to paid work. From a standing start, closer to eight to twelve, especially part-time. That's roughly where most 2026 AI-engineering roadmaps land, and it matches what I see in people who actually make the jump.
             </p>
             <p>
-              Don't try to learn this list top to bottom like a syllabus; you'll drown. Start in the middle, with the business and the data, because that's where the value and the least competition are. Then build one real automation end to end, something with an ugly input and a result someone cares about, and let it force you to pick up the next skill only when you hit its edge. You'll need a database the first time your automation double-processes something. You'll need error handling the first time it dies silently. You'll reach for AI the first time a rule can't parse a human sentence. Skills learned because a real build demanded them stick; skills learned from a course you're halfway through evaporate. Pick the build, and let it pull you up the stack.
+              Don't try to learn this list top to bottom like a syllabus; you'll drown. Start in the middle, with the business and the data, because that's where the value and the least competition are. Then build one real automation end to end, something with an ugly input and a result someone cares about, and let it force you to pick up the next skill only when you hit its edge. You'll need a database the first time your automation double-processes something. You'll need error handling the first time it dies silently. You'll reach for AI the first time a rule can't parse a human sentence. Skills learned because a real build demanded them stick; skills learned from a course you're halfway through evaporate.
             </p>
           </section>
 
@@ -388,10 +380,6 @@ const sections = [
             <h3>Do you need RAG and vector databases?</h3>
             <p>
               Once you pass simple workflows, yes. RAG is how you make a model answer from a client's own data instead of its imagination, and it removes most hallucinations. It's one of the top-requested AI skills in 2026. Not day one, but soon after.
-            </p>
-            <h3>Can you get into AI automation without a degree?</h3>
-            <p>
-              Yes. These roles reward demonstrable skill over credentials. A handful of real, working automations that solved a business problem beats a degree with nothing shipped. Build, document what each one saved, and let the proof do the talking.
             </p>
           </section>
 
