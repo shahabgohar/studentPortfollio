@@ -70,6 +70,12 @@ const routes = [
     lastmod: '2026-05-18'
   },
   {
+    path: '/blogs/how-to-get-into-ai-automation',
+    changefreq: 'monthly',
+    priority: '0.7',
+    lastmod: '2026-07-19'
+  },
+  {
     path: '/blogs/ai-engineering-revolution',
     changefreq: 'monthly',
     priority: '0.7',

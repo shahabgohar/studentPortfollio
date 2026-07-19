@@ -12,6 +12,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'how-to-get-into-ai-automation',
+    title: 'What You Actually Need to Get Into AI Automation',
+    description:
+      'The real skill stack behind AI automation: no-code tools, programming, SQL, system design, security, prompt engineering, LLM observability, and RAG, plus the order to learn them in.',
+    category: 'AI Automation',
+    date: 'July 19, 2026',
+    datePublished: '2026-07-19T00:00:00+05:00',
+    dateModified: '2026-07-19T00:00:00+05:00',
+    readingTime: '13 min read',
+    tags: ['AI automation', 'n8n', 'RAG', 'Prompt engineering', 'SQL', 'Getting started']
+  },
+  {
     slug: 'suitecrm-quote-order-invoice-detection',
     title: 'Building Quote to Order to Invoice Detection in SuiteCRM',
     description:

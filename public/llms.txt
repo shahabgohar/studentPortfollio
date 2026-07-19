@@ -12,6 +12,7 @@
 - [Salesforce to SuiteCRM migration](https://shahabgohar.dev/services/salesforce-to-suitecrm-migration/): records, custom objects, and automations rebuilt natively
 - [Projects](https://shahabgohar.dev/projects/): case studies with measured results
 - [Blog](https://shahabgohar.dev/blogs/): SuiteCRM and AI engineering write-ups
+- [How to get into AI automation](https://shahabgohar.dev/blogs/how-to-get-into-ai-automation/): the full skill stack behind AI automation, from no-code tools and SQL to system design, RAG, and LLM observability, and the order to learn it
 - [Automation audit checklist](https://shahabgohar.dev/automation-audit/): 12 manual processes with yearly costs and the build that removes each
 
 ## Facts
