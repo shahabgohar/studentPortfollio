@@ -56,7 +56,7 @@ useHead({
         dateModified: post.dateModified,
         articleSection: post.category,
         keywords: post.tags.join(', '),
-        wordCount: 2650,
+        wordCount: 2450,
         timeRequired: 'PT13M',
         inLanguage: 'en-US',
         author: {
@@ -166,7 +166,6 @@ useJsonLd()
 const sections = [
   { id: 'short-answer', label: 'The short answer' },
   { id: 'tools', label: 'The tools' },
-  { id: 'programming', label: 'Programming' },
   { id: 'business', label: 'Read the business' },
   { id: 'data', label: 'Data analysis' },
   { id: 'systems', label: 'System design' },
@@ -221,7 +220,7 @@ const sections = [
         <div class="prose-content max-w-3xl py-10">
           <section id="short-answer">
             <p class="lead">
-              Getting into AI automation takes five things, and only one of them is a tool. You program a little, you learn to read a business well enough to know what's worth automating, you analyse its data to find where the time leaks out, you design a system that can be watched and trusted, and you learn where a language model actually belongs. The no-code platform everyone obsesses over, n8n or Make or Zapier, is the entry ticket, not the skill.
+              Getting into AI automation takes four things, and only one of them is a tool. You learn to read a business well enough to know what's worth automating, you analyse its data to find where the time leaks out, you design a system that can be watched and trusted, and you learn where a language model actually belongs. The no-code platform everyone obsesses over, n8n or Make or Zapier, is the entry ticket, not the skill.
             </p>
             <p>
               That's the honest version, and it's why most people stall. They learn the tool, build a demo that works once, and never get near the parts a business will pay for. This is a map of the whole stack, written by someone who builds these systems for a living: what each layer is, why it matters, and where a beginner should actually start.
@@ -266,17 +265,6 @@ const sections = [
             </div>
             <p>
               My advice: learn on Make because the visual canvas quietly teaches you how data moves, then grow into n8n when you want to self-host and stop paying per task. Try Zapier for an afternoon so you understand what everyone means when they say "a Zap," then leave it. Whichever you pick, the platform is not the thing you're actually learning. Everything below is.
-            </p>
-          </section>
-
-          <section id="programming">
-            <h2>Programming you can't skip</h2>
-            <p>
-              You can start with zero code. You cannot get paid well and stay there. The gap between someone who runs templates and someone a company trusts with its data is almost always a bit of programming, because real automations always hit a step the no-code nodes can't do: a weird data transform, an API with no ready-made connector, a calculation that has to be exact.
-            </p>
-            <h3>How much code do you actually need?</h3>
-            <p>
-              Less than a computer science degree, more than none. Learn Python first; it's the language of automation, scripting, data work, and every AI SDK worth using. Get comfortable with JavaScript too, because it's what runs inside Make and n8n code nodes when you need custom logic mid-flow. Understand REST APIs and JSON deeply, because that's how every service on earth talks to every other service, and once webhooks and JSON stop looking scary, you can connect anything to anything. That's the literacy. You're not building the next database engine; you're writing the glue that the visual tools can't.
             </p>
           </section>
 
