@@ -56,7 +56,7 @@ useHead({
         dateModified: post.dateModified,
         articleSection: post.category,
         keywords: post.tags.join(', '),
-        wordCount: 2450,
+        wordCount: 2400,
         timeRequired: 'PT13M',
         inLanguage: 'en-US',
         author: {
@@ -116,14 +116,6 @@ useHead({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
         mainEntity: [
-          {
-            '@type': 'Question',
-            name: 'Do you need to know how to code to get into AI automation?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Not to start. No-code tools like n8n, Make, and Zapier let you build real AI-powered workflows without writing code. But the jobs that pay well expect at least basic Python or JavaScript, because the moment a task needs custom logic, data transformation, or an API the tool does not support, you write it yourself. Start no-code, then add code the moment you hit its limits.'
-            }
-          },
           {
             '@type': 'Question',
             name: 'What should I learn first for AI automation?',
@@ -349,10 +341,6 @@ const sections = [
 
           <section id="faq">
             <h2>Frequently asked questions</h2>
-            <h3>Do you need to know how to code to get into AI automation?</h3>
-            <p>
-              Not to start. No-code tools like n8n, Make, and Zapier let you build genuinely useful AI workflows without writing a line. But the work that pays well expects at least basic Python or JavaScript, because real automations always hit a step the tool can't handle. Begin no-code, add code the moment you feel its edges.
-            </p>
             <h3>What should I learn first for AI automation?</h3>
             <p>
               Learn to read a business process and its data before any tool. Then pick one platform (Make is the best balance for beginners), learn webhooks and JSON, add basic Python and SQL, and only then move to the AI layer. Business understanding first, tools second, AI last.
