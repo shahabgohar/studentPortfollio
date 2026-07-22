@@ -41,6 +41,7 @@ export const projects: Project[] = [
       'A management portal for AI calling campaigns: each campaign runs multiple servers with restart and configuration controls, plus AI voice agents with per-agent voice generation, call scripts, and noise profiles.',
     tags: ['Vue', 'Voice AI', 'Campaign ops'],
   },
+  /* Hidden from the site — uncomment this block to restore.
   {
     title: 'Real-time AI voice-agent platform',
     category: 'AI',
@@ -51,6 +52,7 @@ export const projects: Project[] = [
     tags: ['FreeSWITCH', 'Python', 'vLLM', 'F5-TTS', 'Hetzner GPU'],
     hideInPK: true,
   },
+  */
   {
     title: 'Call-tracking & analytics platform',
     category: 'Full-stack',
