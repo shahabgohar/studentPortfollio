@@ -12,6 +12,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'move-mysql-innodb-table-to-another-disk',
+    title: 'MySQL Disk Full: Moving a 136 GB InnoDB Table to Another Disk',
+    description:
+      'A production war story: the root disk hit 94% with hours to spare before an army of voice agents went live. How I moved a 136 GB InnoDB table to a spare volume with zero data loss, using MySQL 8.0 innodb_directories, not a symlink.',
+    category: 'Database Ops',
+    date: 'July 24, 2026',
+    datePublished: '2026-07-24T00:00:00+05:00',
+    dateModified: '2026-07-24T00:00:00+05:00',
+    readingTime: '11 min read',
+    tags: ['MySQL', 'InnoDB', 'Database ops', 'DevOps', 'Production incident']
+  },
+  {
     slug: 'how-to-get-into-ai-automation',
     title: 'What You Actually Need to Get Into AI Automation',
     description:
