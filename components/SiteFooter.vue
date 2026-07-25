@@ -16,7 +16,7 @@ const serviceLinks = [
 ]
 
 const social = [
-  { label: 'GitHub', href: 'https://github.com/engineershahabgohar', icon: 'ph:github-logo' },
+  { label: 'GitHub', href: 'https://github.com/shahabgohar', icon: 'ph:github-logo' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shahabgohar/', icon: 'ph:linkedin-logo' },
   { label: 'Email', href: 'mailto:shahab.developer.work@gmail.com', icon: 'ph:envelope-simple' },
 ]

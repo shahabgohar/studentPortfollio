@@ -4,6 +4,7 @@ export const useJsonLd = () => {
   const personSchema = {
     '@context': 'https://schema.org',
     '@type': 'Person',
+    '@id': `${siteUrl}/#person`,
     name: 'Shahab Gohar',
     url: siteUrl,
     jobTitle: 'AI Solution Engineer & Full-Stack Developer',
@@ -12,7 +13,8 @@ export const useJsonLd = () => {
     email: 'shahab.developer.work@gmail.com',
     sameAs: [
       'https://www.linkedin.com/in/shahabgohar/',
-      'https://github.com/engineershahabgohar'
+      'https://github.com/shahabgohar',
+      'https://dev.to/shahab_gohar_21c3bd70019a'
     ],
     knowsAbout: [
       'Solution Engineering',
@@ -73,6 +75,7 @@ export const useJsonLd = () => {
       'AI solution engineer, business automation, custom software development, AI workflows, full-stack developer, SuiteCRM developer, Mautic integration, workflow automation, app developer for startups',
     author: {
       '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
       name: 'Shahab Gohar'
     },
     inLanguage: 'en-US'
@@ -87,6 +90,7 @@ export const useJsonLd = () => {
       'Solution engineering for companies, founders, and creators: custom software, business automation, AI workflows, integrations, and SuiteCRM/Mautic builds.',
     provider: {
       '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
       name: 'Shahab Gohar'
     },
     priceRange: '$$',
@@ -170,6 +174,7 @@ export const useJsonLd = () => {
       'SuiteCRM plugin that uses AI to generate custom dashlets on demand, cutting the manual work out of reporting and dashboard setup for B2B teams.',
     author: {
       '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
       name: 'Shahab Gohar',
       url: siteUrl
     },
@@ -192,6 +197,7 @@ export const useJsonLd = () => {
       'SuiteCRM plugin that scans business cards and instantly creates Leads or Contacts, speeding up lead capture for B2B sales teams.',
     author: {
       '@type': 'Person',
+      '@id': `${siteUrl}/#person`,
       name: 'Shahab Gohar',
       url: siteUrl
     },
