@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { definePageMeta } from '#imports'
+import { resolveComponent } from 'vue'
 import { projects, publishedProducts } from '~/data/projects'
+
+// Resolve NuxtLink so <component :is> renders a crawlable <a href> at SSR time.
+// The string "NuxtLink" does not resolve during prerender and leaks a literal
+// <NuxtLink> element with no href.
+const NuxtLinkComp = resolveComponent('NuxtLink')
 
 const siteUrl = 'https://shahabgohar.dev'
 const title = 'AI, Full-Stack & Automation Projects | Shahab Gohar'
@@ -106,7 +112,7 @@ useHead({
 
       <section class="grid gap-4 pb-8 lg:grid-cols-2">
         <component
-          :is="p.href ? (p.href.startsWith('http') ? 'a' : 'NuxtLink') : 'article'"
+          :is="p.href ? (p.href.startsWith('http') ? 'a' : NuxtLinkComp) : 'article'"
           v-for="p in projects"
           :key="p.title"
           :href="p.href && p.href.startsWith('http') ? p.href : undefined"

@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, resolveComponent } from "vue";
 import { useJsonLd } from "~/composeables/useJsonLd";
 import { useMetaTags } from "~/composeables/useMetaTags";
 
 useMetaTags();
 useJsonLd();
+
+// Resolve NuxtLink to a real component so <component :is> renders a crawlable
+// <a href> during prerender. Passing the string "NuxtLink" does not resolve at
+// SSR time and leaks a literal <NuxtLink> element with no href.
+const NuxtLinkComp = resolveComponent("NuxtLink");
 
 const showFloatBtnFlg = ref(false);
 
@@ -91,7 +96,7 @@ const caseStudies = [
     result: "Quote to invoice, zero re-entry",
     title: "Sales workflow automation for a US client",
     text: "Automated the quote, order, and invoice pipeline so the sales team stopped re-typing the same data three times. The client review came back 5.0.",
-    href: "",
+    href: "/blogs/suitecrm-quote-order-invoice-detection/",
   },
 ];
 
@@ -439,6 +444,12 @@ onBeforeUnmount(() => {
           AI, frontend, backend, and the glue between them, so you don't
           coordinate three people to ship one system.
         </p>
+        <p class="mt-4 max-w-xl leading-8 text-primary/60">
+          The deepest specialty is CRM:
+          <NuxtLink to="/services/suitecrm-development/" class="font-medium text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM development</NuxtLink>,
+          <NuxtLink to="/services/mautic-suitecrm-integration/" class="font-medium text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Mautic and SuiteCRM integration</NuxtLink>,
+          and <NuxtLink to="/services/salesforce-to-suitecrm-migration/" class="font-medium text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Salesforce-to-SuiteCRM migration</NuxtLink>.
+        </p>
         <div class="mt-12 grid gap-4 lg:grid-cols-[1.45fr_1fr]">
           <article
             class="reveal flex flex-col justify-between rounded-2xl border border-info/30 bg-gradient-to-br from-info/[0.12] via-info/[0.04] to-transparent p-8 lg:row-span-2 lg:p-10"
@@ -509,7 +520,7 @@ onBeforeUnmount(() => {
         </h2>
         <div class="mt-10 divide-y divide-primary/10 border-y border-primary/10">
           <component
-            :is="item.href ? (item.href.startsWith('http') ? 'a' : 'NuxtLink') : 'article'"
+            :is="item.href ? (item.href.startsWith('http') ? 'a' : NuxtLinkComp) : 'article'"
             v-for="item in caseStudies"
             :key="item.title"
             :href="item.href && item.href.startsWith('http') ? item.href : undefined"

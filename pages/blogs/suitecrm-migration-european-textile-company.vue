@@ -382,7 +382,7 @@ const comparisonRows = [
             <p class="font-ibmMono text-xs uppercase tracking-[0.22em] text-info">Work with me</p>
             <h2 class="mt-4 text-3xl font-bold leading-tight">Need a CRM migration that can survive production?</h2>
             <p class="mt-4 text-base leading-7 text-primary/70">
-              I build and rescue full-stack systems with PHP, Vue, Nuxt, Docker, automation, OAuth, and business workflow integrations. If your CRM or internal platform is too important to keep patching blindly, I can help turn it into a maintainable product.
+              I build and rescue full-stack systems with PHP, Vue, Nuxt, Docker, automation, OAuth, and business workflow integrations. If your CRM or internal platform is too important to keep patching blindly, I can help turn it into a maintainable product. It is the core of my <NuxtLink to="/services/suitecrm-development/" class="text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM development</NuxtLink> and <NuxtLink to="/services/salesforce-to-suitecrm-migration/" class="text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Salesforce-to-SuiteCRM migration</NuxtLink> work.
             </p>
             <div class="mt-6 flex flex-wrap gap-3">
               <a
