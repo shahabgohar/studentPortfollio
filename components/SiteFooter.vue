@@ -5,7 +5,6 @@ const explore = [
   { label: 'Services', to: '/services/' },
   { label: 'Projects', to: '/projects/' },
   { label: 'Blog', to: '/blogs/' },
-  { label: 'Automation audit', to: '/automation-audit/' },
 ]
 
 const serviceLinks = [
@@ -17,7 +16,6 @@ const serviceLinks = [
 
 const social = [
   { label: 'GitHub', href: 'https://github.com/shahabgohar', icon: 'ph:github-logo' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/shahabgohar/', icon: 'ph:linkedin-logo' },
   { label: 'Email', href: 'mailto:shahab.developer.work@gmail.com', icon: 'ph:envelope-simple' },
 ]
 </script>

@@ -215,11 +215,6 @@ const contactLinks = [
     icon: "ph:envelope-simple",
   },
   {
-    label: "LinkedIn",
-    href: "https://www.linkedin.com/in/shahabgohar/",
-    icon: "ph:linkedin-logo",
-  },
-  {
     label: "Skype",
     href: "https://join.skype.com/invite/ve8oN0kKdvXQ",
     icon: "ph:skype-logo",
