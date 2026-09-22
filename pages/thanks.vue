@@ -62,8 +62,8 @@ onMounted(() => {
           >
           <div>
             <p class="text-sm font-medium">michaelh622, Germany</p>
-            <p class="text-[12.5px] text-primary/50">
-              One of 35+ five-star reviews, 5.0 average
+            <p class="text-[12.5px] text-primary/65">
+              One of 36 client reviews, 5.0 average
             </p>
           </div>
         </figcaption>

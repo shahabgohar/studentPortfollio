@@ -30,26 +30,6 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
 <template>
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto w-full max-w-[920px] px-6 py-8 sm:px-10 lg:px-16">
-      <!-- Top nav -->
-      <nav
-        class="flex items-center justify-between border-b border-primary/10 pb-5 font-ibmMono text-sm"
-      >
-        <NuxtLink
-          to="/"
-          class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
-        >
-          <Icon name="mdi:arrow-left" size="18" />
-          Home
-        </NuxtLink>
-        <NuxtLink
-          to="/blogs/"
-          class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
-        >
-          Blog
-          <Icon name="mdi:arrow-top-right-bold-box-outline" size="18" />
-        </NuxtLink>
-      </nav>
-
       <!-- Hero -->
       <header class="pt-10">
         <p class="font-ibmMono text-sm font-semibold uppercase tracking-[0.1em] text-info">
@@ -180,6 +160,5 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
         </div>
       </section>
     </article>
-    <SiteFooter />
   </main>
 </template>

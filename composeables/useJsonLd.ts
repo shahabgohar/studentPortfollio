@@ -8,11 +8,12 @@ export const useJsonLd = () => {
     name: 'Shahab Gohar',
     url: siteUrl,
     jobTitle: 'AI Solution Engineer & Full-Stack Developer',
+    image: `${siteUrl}/img/shahab-gohar-480.jpg`,
     description:
       'Solution engineer building custom software, business automation, and AI workflows for companies, founders, and creators, with deep SuiteCRM and Mautic expertise.',
     email: 'shahab.developer.work@gmail.com',
     sameAs: [
-      'https://www.linkedin.com/in/shahabgohar/',
+      'https://www.linkedin.com/in/shahabgohardev/',
       'https://github.com/shahabgohar',
       'https://dev.to/shahab_gohar_21c3bd70019a'
     ],
@@ -67,7 +68,7 @@ export const useJsonLd = () => {
   const websiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    name: 'Shahab Gohar, AI Automation Engineer & Full-Stack Developer',
+    name: 'Shahab Gohar, AI Engineer & Full-Stack Developer',
     url: siteUrl,
     description:
       'Solution engineering for companies, founders, and creators: custom software, business automation, AI workflows, and CRM builds by Shahab Gohar.',

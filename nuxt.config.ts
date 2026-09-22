@@ -1,10 +1,16 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+
+// Runs before first paint so a saved dark-mode choice never flashes light.
+// Light is the brand default; nothing here follows the OS preference.
+const themeBootScript =
+  "(function(){try{var t=localStorage.getItem('shahab-theme');if(t==='myDark'||t==='myLight'){document.documentElement.setAttribute('data-theme',t)}}catch(e){}})()"
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
 
   site: {
     url: 'https://shahabgohar.dev',
-    name: 'Shahab Gohar, AI Automation Engineer',
+    name: 'Shahab Gohar, AI Engineer',
   },
 
   components: [
@@ -14,16 +20,20 @@ export default defineNuxtConfig({
     }
   ],
 
+  // Icons and fonts are local on purpose (components/Icon.vue, public/fonts):
+  // no icon API calls at runtime and no third-party font CSS.
   modules: [
     '@nuxtjs/tailwindcss',
-    'nuxt-icon',
-    '@nuxtjs/google-fonts',
     'nuxt-gtag'
   ],
 
+  tailwindcss: {
+    cssPath: '~/assets/css/tailwind.css',
+  },
+
   app: {
     head: {
-      htmlAttrs: { lang: 'en' },
+      htmlAttrs: { lang: 'en', 'data-theme': 'myLight' },
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       meta: [
@@ -34,19 +44,32 @@ export default defineNuxtConfig({
         { name: 'geo.placename', content: 'Pakistan' },
       ],
       link: [
-        { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-touch-icon.png?v=0.0.3' },
-        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png?v=0.0.3' },
-        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png?v=0.0.3' },
-        { rel: 'manifest', href: '/favicon/site.webmanifest?v=0.0.3' },
-        { rel: 'mask-icon', color: '#565BCF', href: '/favicon/safari-pinned-tab.svg?v=0.0.3' },
-        { rel: 'shortcut icon', href: '/favicon/favicon.ico?v=0.0.3' }
-      ]
+        // The single display/body font, fetched in parallel with the HTML so
+        // the poster headline paints in its real face.
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/archivo-var.v1.woff2', crossorigin: 'anonymous' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-touch-icon.png?v=0.0.4' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png?v=0.0.4' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png?v=0.0.4' },
+        { rel: 'manifest', href: '/favicon/site.webmanifest?v=0.0.4' },
+        { rel: 'mask-icon', color: '#FF4F12', href: '/favicon/safari-pinned-tab.svg?v=0.0.4' },
+        { rel: 'shortcut icon', href: '/favicon/favicon.ico?v=0.0.4' }
+      ],
+      script: [
+        { innerHTML: themeBootScript, tagPosition: 'head' },
+      ],
     }
   },
 
-  css: [
-    '@/assets/main.css'
-  ],
+  experimental: {
+    // Nothing on this site fetches data, so per-route _payload.json files are
+    // empty. Inlining them drops a request from every page load and prefetch.
+    payloadExtraction: false,
+    // Do NOT turn on `viewTransition` here. Most routes are prerendered under
+    // both /path and /path/ (same index.html), so on load the client router
+    // replaces /path with /path/. Nuxt treats that as a page change and starts
+    // a view transition that never finishes: measured 4 s of frozen rendering
+    // on every affected page load, plus two uncaught errors.
+  },
 
   nitro: {
     prerender: {
@@ -72,17 +95,4 @@ export default defineNuxtConfig({
       anonymize_ip: true
     }
   },
-
-  googleFonts: {
-    // Three families only: display / body / mono. Legacy fonts (Oswald, VT323,
-    // Roboto Mono, Space Grotesk, Inter) were loaded for components no page
-    // renders anymore; dropping them cuts render-blocking font weight for LCP.
-    display: 'swap',
-    preload: true,
-    families: {
-      'Bricolage Grotesque': [600, 700, 800],
-      'Geist': [400, 500, 600],
-      'IBM Plex Mono': [400, 500],
-    },
-  }
 })

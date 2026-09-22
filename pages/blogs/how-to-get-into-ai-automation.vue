@@ -172,14 +172,14 @@ const sections = [
 <template>
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto grid w-full max-w-[1180px] gap-10 px-6 py-8 sm:px-10 lg:grid-cols-[220px_1fr] lg:px-16">
-      <aside class="lg:sticky lg:top-8 lg:h-fit">
+      <aside class="lg:sticky lg:top-24 lg:h-fit">
         <NuxtLink to="/blogs/" class="inline-flex items-center gap-2 font-ibmMono text-sm text-primary/65 transition hover:text-info">
           <Icon name="mdi:arrow-left" size="18" />
           All posts
         </NuxtLink>
 
         <nav class="mt-10 hidden border-l border-primary/10 pl-5 lg:block">
-          <p class="font-ibmMono text-xs uppercase tracking-[0.22em] text-primary/45">Navigate</p>
+          <p class="font-ibmMono text-xs uppercase tracking-[0.22em] text-primary/65">Navigate</p>
           <a
             v-for="section in sections"
             :key="section.id"
@@ -193,7 +193,7 @@ const sections = [
 
       <div>
         <header class="border-b border-primary/10 pb-10">
-          <div class="flex flex-wrap items-center gap-3 font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/55">
+          <div class="flex flex-wrap items-center gap-3 font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/65">
             <span>{{ post.category }}</span>
             <span class="h-1 w-1 rounded-full bg-info"></span>
             <span>{{ post.date }}</span>

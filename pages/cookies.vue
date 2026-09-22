@@ -42,16 +42,12 @@ const cookieRows = [
 <template>
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto w-full max-w-[900px] px-6 py-8 sm:px-10 lg:px-16">
-      <nav class="flex items-center justify-between border-b border-primary/10 pb-5 font-ibmMono text-sm">
-        <NuxtLink to="/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
-          <Icon name="mdi:arrow-left" size="18" />
-          Portfolio
-        </NuxtLink>
+      <p class="flex justify-end font-ibmMono text-sm">
         <NuxtLink to="/privacy/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
           Privacy notice
           <Icon name="mdi:file-document-outline" size="18" />
         </NuxtLink>
-      </nav>
+      </p>
 
       <header class="border-b border-primary/10 py-12">
         <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
@@ -60,7 +56,7 @@ const cookieRows = [
         <h1 class="mt-4 font-grotesk text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
           Cookies are optional unless they are needed.
         </h1>
-        <p class="mt-5 text-sm text-primary/55">Last updated: {{ lastUpdated }}</p>
+        <p class="mt-5 text-sm text-primary/65">Last updated: {{ lastUpdated }}</p>
       </header>
 
       <div class="prose-content py-10">
@@ -117,9 +113,9 @@ const cookieRows = [
         <section>
           <h2>Changing your choice</h2>
           <p>
-            Use the Privacy settings button at the bottom-left of the site to
-            reopen the banner. You can also clear this site's browser data from
-            your browser settings.
+            Use the Privacy settings link in the footer of any page to reopen
+            the banner. You can also clear this site's browser data from your
+            browser settings.
           </p>
         </section>
       </div>

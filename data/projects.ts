@@ -2,7 +2,8 @@ export interface Project {
   title: string
   category: 'AI' | 'Full-stack' | 'CRM & automation'
   tagline: string
-  result: string
+  /** Optional: only state an outcome the owner has actually given. */
+  result?: string
   description: string
   tags: string[]
   href?: string
@@ -40,6 +41,24 @@ export const projects: Project[] = [
     description:
       'A management portal for AI calling campaigns: each campaign runs multiple servers with restart and configuration controls, plus AI voice agents with per-agent voice generation, call scripts, and noise profiles.',
     tags: ['Vue', 'Voice AI', 'Campaign ops'],
+  },
+  // The next two are described only as far as the owner has described them
+  // (2026-09-22). Add a result line once he supplies a number.
+  {
+    title: 'Customer-facing WhatsApp chatbot',
+    category: 'AI',
+    tagline: 'Talks to customers directly on WhatsApp',
+    description:
+      'A chatbot that handles customer conversations directly on WhatsApp.',
+    tags: ['WhatsApp', 'Chatbot'],
+  },
+  {
+    title: 'Voice agent with intent-based call routing',
+    category: 'AI',
+    tagline: 'Script-based call flows, chosen by detected intent',
+    description:
+      'A voice agent that detects what the caller wants and routes the conversation through the matching script-based flow. Built and running end to end as a local build; production deployment is set up per client, on servers sized to their call volume.',
+    tags: ['Voice AI', 'Intent detection'],
   },
   /* Hidden from the site — uncomment this block to restore.
   {

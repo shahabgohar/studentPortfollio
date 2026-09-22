@@ -92,7 +92,7 @@ const onSubmit = async () => {
               required
               autocomplete="name"
               placeholder="Your name"
-              class="w-full rounded-xl border border-primary/20 bg-secondary px-4 py-3 text-sm text-primary placeholder:text-primary/40 focus:border-info focus:outline-none"
+              class="w-full rounded-xl border border-primary/20 bg-secondary px-4 py-3 text-sm text-primary placeholder:text-primary/60 focus:border-info focus:outline-none"
             />
           </label>
           <label class="block">
@@ -104,7 +104,7 @@ const onSubmit = async () => {
               required
               autocomplete="email"
               placeholder="Work email"
-              class="w-full rounded-xl border border-primary/20 bg-secondary px-4 py-3 text-sm text-primary placeholder:text-primary/40 focus:border-info focus:outline-none"
+              class="w-full rounded-xl border border-primary/20 bg-secondary px-4 py-3 text-sm text-primary placeholder:text-primary/60 focus:border-info focus:outline-none"
             />
           </label>
         </div>
@@ -115,7 +115,7 @@ const onSubmit = async () => {
             name="crm"
             required
             class="w-full rounded-xl border border-primary/20 bg-secondary px-4 py-3 text-sm focus:border-info focus:outline-none"
-            :class="crm === '' ? 'text-primary/40' : 'text-primary'"
+            :class="crm === '' ? 'text-primary/65' : 'text-primary'"
           >
             <option value="" disabled>Which CRM do you run?</option>
             <option v-for="o in crmOptions" :key="o" :value="o">{{ o }}</option>
@@ -131,7 +131,7 @@ const onSubmit = async () => {
         >
           {{ status === "sending" ? "Sending..." : "Get the checklist" }}
         </button>
-        <p v-if="status === 'error'" class="mt-3 text-sm leading-6 text-red-400">
+        <p v-if="status === 'error'" class="mt-3 text-sm leading-6 text-info">
           That didn't send. Email me at
           <a
             href="mailto:shahab.developer.work@gmail.com?subject=Checklist"
@@ -140,7 +140,7 @@ const onSubmit = async () => {
           >
           and I'll reply with the checklist.
         </p>
-        <p v-else class="mt-3 text-[12.5px] leading-5 text-primary/45">
+        <p v-else class="mt-3 text-[12.5px] leading-5 text-primary/65">
           Instant access. At most one follow-up email from me, no newsletter.
         </p>
       </form>

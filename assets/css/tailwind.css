@@ -1,0 +1,370 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------ *
+ *  Design system: "paper, ink, safety orange"
+ *
+ *  An engineering-datasheet look: cool aluminium-grey paper, black ink, one
+ *  safety-orange signal colour, hairline rules, condensed poster headlines.
+ *  Everything themes through the CSS variables below; Tailwind's
+ *  primary / secondary / info tokens point at them (tailwind.config.ts).
+ * ------------------------------------------------------------------ */
+
+@layer base {
+  /* One variable file covers every weight (400-900) and width (62-125).
+     Files are versioned (.v1) because netlify.toml caches /fonts/* as immutable:
+     bump the suffix whenever a font is re-subset. */
+  @font-face {
+    font-family: 'Archivo';
+    src: url('/fonts/archivo-var.v1.woff2') format('woff2');
+    font-weight: 400 900;
+    font-stretch: 62% 125%;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Martian Mono';
+    src: url('/fonts/martian-mono-var.v1.woff2') format('woff2');
+    font-weight: 400 700;
+    font-stretch: 75% 112.5%;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* Metric-matched fallbacks so the swap to Archivo does not reflow text. */
+  @font-face {
+    font-family: 'Archivo Fallback';
+    src: local('Arial'), local('Helvetica Neue'), local('Roboto');
+    size-adjust: 99%;
+    ascent-override: 89%;
+    descent-override: 21%;
+    line-gap-override: 0%;
+  }
+
+  @font-face {
+    font-family: 'Archivo Display Fallback';
+    src: local('Impact');
+    size-adjust: 94%;
+  }
+
+  :root {
+    /* Cool aluminium grey, not cream: closer to a hardware datasheet, and well
+       clear of the cream-and-serif look every AI-made site now ships with. */
+    --c-ink: 10 10 10;
+    --c-paper: 232 233 233;
+    --c-raised: 247 247 246;
+    --c-well: 217 218 218;
+    /* signal: burnt safety orange, 4.9:1 on paper so it is legal as small text */
+    --c-signal: 184 54 6;
+    /* hot: the pure safety orange, for fills and stamps (always with --c-on-hot text) */
+    --c-hot: 255 79 18;
+    --c-on-hot: 10 10 10;
+    --c-go: 20 110 66;
+
+    /* Blog/privacy scoped styles still read DaisyUI's old accent variable. */
+    --fallback-in: rgb(var(--c-signal));
+
+    color-scheme: light;
+  }
+
+  [data-theme='myDark'] {
+    --c-ink: 236 236 234;
+    --c-paper: 12 12 12;
+    --c-raised: 24 24 24;
+    --c-well: 4 4 4;
+    --c-signal: 255 110 56;
+    --c-hot: 255 79 18;
+    --c-on-hot: 10 10 10;
+    --c-go: 80 214 138;
+
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: rgb(var(--c-paper));
+    color: rgb(var(--c-ink));
+    font-family: theme('fontFamily.sans');
+    font-feature-settings: 'kern';
+  }
+
+  ::selection {
+    background: rgb(var(--c-hot));
+    color: rgb(var(--c-on-hot));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-signal));
+    outline-offset: 3px;
+  }
+
+  /* Sticky header clearance for in-page anchors. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  /* Legacy heading + mono aliases used across inner pages pick up the new
+     voice: condensed for headlines, slightly narrowed mono for annotations. */
+  .font-grotesk {
+    font-stretch: 78%;
+    letter-spacing: -0.012em;
+  }
+
+  .font-ibmMono {
+    font-stretch: 87.5%;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: theme('fontFamily.ibmMono');
+    font-stretch: 80%;
+  }
+}
+
+@layer components {
+  /* Poster headline: extra-condensed black caps, set tight. */
+  .display {
+    font-family: theme('fontFamily.grotesk');
+    font-stretch: 62%;
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.008em;
+    text-transform: uppercase;
+  }
+
+  /* Expanded micro caps: section numbers, eyebrows, nav. */
+  .label {
+    font-family: theme('fontFamily.sans');
+    font-stretch: 125%;
+    font-weight: 600;
+    font-size: 0.75rem;
+    line-height: 1.25;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* Monospace annotation. */
+  .mono {
+    font-family: theme('fontFamily.ibmMono');
+    font-stretch: 87.5%;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.01em;
+  }
+
+  /* Ink text stamped on a safety-orange block. An inline-block with a short
+     line-height, so the orange hugs the cap height instead of filling the
+     font's full ascent (which would bleed into the line above at 0.88 leading). */
+  .stamp {
+    display: inline-block;
+    background-color: rgb(var(--c-hot));
+    color: rgb(var(--c-on-hot));
+    line-height: 0.8;
+    padding: 0.085em 0.13em 0.035em;
+  }
+
+  /* Hazard tape: the write-gate motif. */
+  .hazard {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(var(--c-hot)) 0 9px,
+      rgb(var(--c-on-hot)) 9px 18px
+    );
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    padding: 0.95rem 1.4rem;
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1.5px solid rgb(var(--c-ink));
+    border-radius: 2px;
+    transition:
+      background-color 160ms ease,
+      color 160ms ease,
+      border-color 160ms ease,
+      transform 160ms ease;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-hot {
+    background-color: rgb(var(--c-hot));
+    border-color: rgb(var(--c-on-hot));
+    color: rgb(var(--c-on-hot));
+    box-shadow: 4px 4px 0 rgb(var(--c-ink));
+  }
+
+  .btn-hot:hover {
+    background-color: rgb(var(--c-ink));
+    border-color: rgb(var(--c-ink));
+    color: rgb(var(--c-paper));
+    box-shadow: 4px 4px 0 rgb(var(--c-hot));
+  }
+
+  .btn-ink {
+    background-color: rgb(var(--c-ink));
+    color: rgb(var(--c-paper));
+  }
+
+  .btn-ink:hover {
+    background-color: rgb(var(--c-hot));
+    border-color: rgb(var(--c-on-hot));
+    color: rgb(var(--c-on-hot));
+  }
+
+  .btn-line {
+    background-color: transparent;
+    color: rgb(var(--c-ink));
+  }
+
+  .btn-line:hover {
+    background-color: rgb(var(--c-ink));
+    color: rgb(var(--c-paper));
+  }
+
+  /* Underlined text link with an arrow that nudges on hover. */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.3em;
+    text-decoration-color: rgb(var(--c-ink) / 0.35);
+    transition:
+      gap 160ms ease,
+      text-decoration-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .link-arrow:hover {
+    gap: 0.8rem;
+    color: rgb(var(--c-signal));
+    text-decoration-color: rgb(var(--c-signal));
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Archivo width axis. */
+  .wd-62 {
+    font-stretch: 62%;
+  }
+  .wd-75 {
+    font-stretch: 75%;
+  }
+  .wd-88 {
+    font-stretch: 88%;
+  }
+  .wd-100 {
+    font-stretch: 100%;
+  }
+  .wd-112 {
+    font-stretch: 112%;
+  }
+  .wd-125 {
+    font-stretch: 125%;
+  }
+
+  .rule {
+    border-color: rgb(var(--c-ink) / 0.16);
+  }
+
+  /* Theme-scoped visibility. CSS-only so the prerendered markup is identical
+     in both themes and hydration never has to patch it. */
+  [data-theme='myDark'] .only-light {
+    display: none;
+  }
+
+  html:not([data-theme='myDark']) .only-dark {
+    display: none;
+  }
+
+  .rule-strong {
+    border-color: rgb(var(--c-ink));
+  }
+}
+
+/* ------------------------------------------------------------------ *
+ *  Motion. No animation library: CSS only.
+ *  Reveals are scroll-driven where supported and simply absent elsewhere,
+ *  so content is never hidden behind JavaScript or an unsupported feature.
+ * ------------------------------------------------------------------ */
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 38%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

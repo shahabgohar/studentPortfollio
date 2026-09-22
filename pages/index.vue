@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { nextTick, onBeforeUnmount, onMounted, ref, resolveComponent } from "vue";
+import { onBeforeUnmount, onMounted, ref, resolveComponent } from "vue";
 import { useJsonLd } from "~/composeables/useJsonLd";
 import { useMetaTags } from "~/composeables/useMetaTags";
 
@@ -15,59 +13,86 @@ const NuxtLinkComp = resolveComponent("NuxtLink");
 
 const showFloatBtnFlg = ref(false);
 
-const metrics = [
-  { value: "5.0", label: "average client rating" },
-  { value: "35+", label: "five-star reviews" },
-  { value: "10", label: "countries served" },
-  { value: "6+", label: "years shipping software" },
+// The track record as a key-specifications table. Every value and note here
+// restates something the site already said; do not add new claims.
+const specs = [
+  { param: "Client rating", value: "5.0", unit: "/ 5.0", cond: "Average across 36 client reviews" },
+  { param: "Time to a working demo", value: "14", unit: "days", cond: "Running against your real workflow, or you don't pay" },
+  { param: "Unintended writes", value: "0", unit: "", cond: "Live WhatsApp-to-CRM system, in production" },
+  { param: "Countries served", value: "10", unit: "", cond: "Including the US, the UK, and Germany" },
+  { param: "Shipping software", value: "5+", unit: "years", cond: "" },
+  { param: "Pricing model", value: "Fixed", unit: "", cond: "One written quote before work starts. Never hourly" },
 ];
 
+// Every line below restates something the owner said or the site already
+// claims. Sources: consulting + SuiteCRM/Mautic SMS campaigns, WooCommerce
+// plugins and native Android are the owner's own words (2026-09-21); approval
+// gates, safety auditing and cost ceilings are from his resume; the Store
+// add-ons were built at Esper Solutions and are published under that name.
 const services = [
   {
-    title: "AI development",
-    icon: "ph:brain",
-    featured: true,
+    kind: "Build",
+    title: "AI engineering",
+    to: "/services/ai-development/",
     summary:
       "Assistants, RAG pipelines, and agent workflows that run behind real guardrails: approval gates, dry-run writes, and cost ceilings.",
     proof: "Latest build: WhatsApp leads into a live CRM with 0 unintended writes.",
     stack: "LangChain, FastAPI, OpenAI, Claude",
   },
   {
-    title: "Web, mobile & desktop apps",
-    icon: "ph:devices",
-    featured: false,
+    kind: "Harden",
+    title: "AI prototypes made production-ready",
     summary:
-      "Vue and Nuxt frontends, hybrid mobile, and desktop apps. Built end to end without a handoff chain.",
-    stack: "Vue, Nuxt, React, Quasar",
+      "A demo that works on a laptop is not a system. I add what is missing: testing against your real data, an approval gate before any live write, safety auditing, and per-run cost ceilings.",
+    stack: "Python, FastAPI, LangChain, PostgreSQL",
   },
   {
-    title: "Backend & automation",
-    icon: "ph:plugs-connected",
-    featured: false,
+    kind: "Advise",
+    title: "Open-source stack consulting",
     summary:
-      "APIs, integrations, and internal tools that remove repetitive manual work from your team's week.",
-    stack: "Laravel, Python, Node",
+      "Which tool should run this part of your business? I help you choose the open-source stack, then set it up and extend it.",
+    proof: "Example: SuiteCRM with Mautic for a client's SMS campaigns.",
+    stack: "SuiteCRM, Mautic, WooCommerce",
+  },
+  {
+    kind: "Build",
+    title: "Plugins & custom development",
+    summary:
+      "WooCommerce plugins, SuiteCRM add-ons, and custom modules for when the off-the-shelf tool stops short.",
+    proof: "Two add-ons I built at Esper Solutions are live on the SuiteCRM Store.",
+    stack: "WooCommerce, SuiteCRM, PHP",
+  },
+  {
+    kind: "Build",
+    title: "Apps, backends & automation",
+    summary:
+      "Vue and Nuxt frontends, hybrid and native Android apps, desktop apps, and the APIs, integrations, and internal tools behind them. Built end to end without a handoff chain.",
+    stack: "Vue, Nuxt, React, Quasar, Laravel, Python, Node, Android (Java)",
   },
 ];
 
 const buildSteps = [
   {
     badge: "Day 0",
+    swatch: "bg-primary",
     title: "Book a 30-minute call",
     text: "Bring the manual process that eats your time, or the idea with no build yet. You leave with a plain-language plan for what to automate or build first.",
   },
   {
     badge: "Days 1-2",
+    swatch: "bg-primary/40",
     title: "Fixed scope, fixed price",
     text: "You get a written scope with one price and one deadline. No hourly billing, and nothing starts until you approve it.",
   },
   {
     badge: "Days 3-14",
+    swatch: "hazard",
     title: "Build behind a dry-run gate",
     text: "I build against your real data with live writes disabled until you approve them. You watch the system work before it can touch anything that matters.",
   },
   {
     badge: "Go-live",
+    swatch: "bg-go",
     title: "Deploy, train, hand over",
     text: "Your team gets a walkthrough, documentation, and a handover video. I stay reachable after launch so nobody is left guessing.",
   },
@@ -104,7 +129,7 @@ const packages = [
   {
     name: "Automation Sprint",
     book: "sprint-1900",
-    price: "from $1,900",
+    price: "$1,900",
     tagline: "One painful workflow, automated end to end.",
     duration: "2 weeks",
     popular: false,
@@ -119,7 +144,7 @@ const packages = [
   {
     name: "Custom Build",
     book: "custom-6500",
-    price: "from $6,500",
+    price: "$6,500",
     tagline: "A full product or AI system, owned end to end by one engineer.",
     duration: "4-8 weeks",
     popular: true,
@@ -134,7 +159,8 @@ const packages = [
   {
     name: "CRM Ownership",
     book: "crm-retainer",
-    price: "from $950/mo",
+    price: "$950",
+    per: "/mo",
     tagline: "Your SuiteCRM or Mautic, kept fast, integrated, and improving.",
     duration: "monthly, cancel anytime",
     popular: false,
@@ -148,18 +174,13 @@ const packages = [
   },
 ];
 
-const roiStats = [
-  { value: "2 h/day", label: "typical manual copy-paste between inbox, sheets, and CRM" },
-  { value: "$13,000+", label: "what that costs per year at $25 an hour" },
-  { value: "< 2 months", label: "typical payback on an automation sprint" },
-];
-
 const products = [
   {
     title: "AI Dashlet Generator",
     label: "SuiteCRM add-on",
     url: "https://store.suitecrm.com/addons/ai-dashlet-generator",
     video: "/img/products/ai-dashlet-generator.mp4",
+    poster: "/img/products/ai-dashlet-generator-poster.jpg",
     width: 1080,
     height: 512,
     portrait: false,
@@ -172,6 +193,7 @@ const products = [
     label: "SuiteCRM add-on",
     url: "https://store.suitecrm.com/addons/business-card-reader",
     video: "/img/products/business-card-reader.mp4",
+    poster: "/img/products/business-card-reader-poster.jpg",
     width: 400,
     height: 880,
     portrait: true,
@@ -181,43 +203,45 @@ const products = [
   },
 ];
 
+// Two written references from former/current employers (quoted verbatim from
+// the signed letters, dated as stated) and one client review. Do not edit the
+// quotes; the letters are the source of truth and referees may be contacted.
 const testimonials = [
   {
+    client: "Motoki Aoki",
+    detail: "CEO, Motocle Inc., Fukuoka, Japan",
+    source: "Written reference, June 2023. Full-stack developer at Motocle, 2021 to 2023.",
+    quote:
+      "His approach to work was characterized by a strong sense of self-management, quick comprehension of requirements, and a work ethic that often reduced the need for extensive communication.",
+  },
+  {
+    client: "Abdul Moeed Khalid",
+    detail: "CEO, EsperTech Solutions",
+    source: "Written reference. Full Stack Engineer at EsperTech since 2024.",
+    quote:
+      "His innovative thinking and problem-solving capabilities were instrumental in overcoming technical challenges and achieving project milestones.",
+  },
+  {
     client: "michaelh622",
-    country: "Germany",
-    type: "CRM & automation",
-    featured: true,
+    detail: "Client, Germany. CRM & automation",
+    source: "One of 36 client reviews, 5.0 average.",
     quote:
       "Proactive, communicative, and deeply committed to the best result. A true star who will fight for your success.",
   },
-  {
-    client: "kininvestments",
-    country: "United States",
-    type: "Sales automation",
-    featured: false,
-    quote:
-      "Customized a full quote-to-order-to-invoice flow with change detection and hosting fixes.",
-  },
-  {
-    client: "devin_lester",
-    country: "United Kingdom",
-    type: "Full-stack build",
-    featured: false,
-    quote:
-      "Clean code, strong problem-solving, no bugs, and work that went beyond expectations.",
-  },
 ];
 
+const linkedInUrl = "https://www.linkedin.com/in/shahabgohardev/";
+
 const contactLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/shahabgohardev/",
+    icon: "ph:linkedin-logo",
+  },
   {
     label: "Email",
     href: "mailto:shahab.developer.work@gmail.com?subject=Project%20Inquiry",
     icon: "ph:envelope-simple",
-  },
-  {
-    label: "Skype",
-    href: "https://join.skype.com/invite/ve8oN0kKdvXQ",
-    icon: "ph:skype-logo",
   },
 ];
 
@@ -263,52 +287,16 @@ useHead({
   ],
 });
 
-function scrollToSection(id: string) {
-  document
-    .getElementById(id)
-    ?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-let gsapCtx: gsap.Context | null = null;
-
-function setupAnimations(reduceMotion: boolean) {
-  gsapCtx = gsap.context(() => {
-    // Visibility toggle for the back-to-top button (not an animation, so it
-    // runs regardless of the reduced-motion preference).
-    ScrollTrigger.create({
-      start: 0,
-      end: "max",
-      onUpdate: (self) => {
-        showFloatBtnFlg.value = self.scroll() > 640;
-      },
-    });
-
-    if (reduceMotion) {
-      document
-        .querySelectorAll<HTMLVideoElement>("[data-product-video]")
-        .forEach((v) => v.pause());
-      return;
-    }
-
-    gsap
-      .timeline({ defaults: { ease: "power3.out", duration: 0.7 } })
-      .from("[data-hero-item]", { y: 26, opacity: 0, stagger: 0.09 });
-
-    gsap.utils.toArray<HTMLElement>(".reveal").forEach((el) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 26,
-        duration: 0.7,
-        ease: "power3.out",
-        scrollTrigger: { trigger: el, start: "top 88%" },
-      });
-    });
-  });
-}
+// The back-to-top button shows between the hero and the closing CTA (where it
+// would otherwise sit on top of the footer wordmark). An IntersectionObserver
+// does this without a scroll listener or a library.
+const hero = ref<HTMLElement | null>(null);
+const closing = ref<HTMLElement | null>(null);
+let heroObserver: IntersectionObserver | null = null;
 
 onMounted(() => {
   if (localStorage.getItem("shahab-analytics-consent") === "granted") {
@@ -318,393 +306,459 @@ onMounted(() => {
       screen_name: "Home",
     });
   }
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  nextTick(() => setupAnimations(reduceMotion));
+
+  const visible = new Map<Element, boolean>();
+  heroObserver = new IntersectionObserver((entries) => {
+    for (const entry of entries) visible.set(entry.target, entry.isIntersecting);
+    showFloatBtnFlg.value = ![...visible.values()].some(Boolean);
+  });
+  // The footer is rendered by app.vue, outside this page's template.
+  for (const el of [hero.value, closing.value, document.querySelector("footer")]) {
+    if (el) {
+      visible.set(el, el === hero.value);
+      heroObserver.observe(el);
+    }
+  }
 });
 
-onBeforeUnmount(() => {
-  gsapCtx?.revert();
-});
+onBeforeUnmount(() => heroObserver?.disconnect());
 </script>
 
 <template>
-  <main class="min-h-[100dvh] bg-secondary font-inter text-primary">
+  <div class="min-h-[100dvh] bg-secondary font-inter text-primary">
+
     <button
       v-if="showFloatBtnFlg"
-      class="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center rounded-xl border border-primary/15 bg-secondary text-primary shadow-lg transition hover:border-info hover:text-info active:scale-[0.97]"
+      class="fixed bottom-5 right-5 z-50 grid h-11 w-11 place-items-center border border-primary bg-secondary text-primary shadow-[4px_4px_0_rgb(var(--c-ink))] transition-colors hover:bg-hot hover:text-[rgb(var(--c-on-hot))]"
       aria-label="Scroll to top"
       @click="scrollToTop"
     >
       <Icon name="ph:arrow-up" size="20" />
     </button>
 
-    <!-- NAV -->
-    <nav
-      class="sticky top-0 z-40 border-b border-primary/10 bg-secondary/85 backdrop-blur-md"
-    >
-      <div
-        class="mx-auto flex w-full max-w-[1120px] items-center justify-between px-6 py-4 text-sm sm:px-8"
-      >
-        <button
-          class="font-grotesk text-lg font-bold tracking-tight"
-          aria-label="Back to top"
-          @click="scrollToTop"
-        >
-          Shahab<span class="text-info">.</span>dev
-        </button>
-        <div class="hidden items-center gap-7 font-medium text-primary/65 md:flex">
-          <button class="transition hover:text-info" @click="scrollToSection('Services')">Services</button>
-          <button class="transition hover:text-info" @click="scrollToSection('Work')">Work</button>
-          <button class="transition hover:text-info" @click="scrollToSection('Pricing')">Pricing</button>
-          <NuxtLink to="/projects/" class="transition hover:text-info">Projects</NuxtLink>
-          <NuxtLink to="/blogs/" class="transition hover:text-info">Blog</NuxtLink>
-        </div>
-        <a
-          :href="calBookingUrl"
-          target="_blank"
-          rel="noreferrer"
-          class="rounded-xl border border-info px-4 py-2 font-medium text-info transition hover:bg-info hover:text-secondary active:scale-[0.98]"
-        >
-          Book a call
-        </a>
-      </div>
-    </nav>
+    <main>
+      <!-- HERO : poster headline + a working model of the offer -->
+      <section ref="hero" class="border-b border-primary">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <div class="flex items-center justify-between gap-4 border-b border-primary/15 py-3">
+            <p class="label flex items-center gap-2.5 whitespace-nowrap">
+              <span class="relative flex h-2 w-2" aria-hidden="true">
+                <span class="status-ping absolute inline-flex h-full w-full rounded-full bg-go"></span>
+                <span class="relative inline-flex h-2 w-2 rounded-full bg-go"></span>
+              </span>
+              Open for new builds
+            </p>
+            <p class="label hidden whitespace-nowrap text-primary/70 lg:block">
+              Fixed price <span class="mx-1.5 text-info" aria-hidden="true">/</span> Fixed deadline
+              <span class="mx-1.5 text-info" aria-hidden="true">/</span> Fail-closed by design
+            </p>
+          </div>
 
-    <!-- HERO -->
-    <header
-      class="relative overflow-hidden bg-[radial-gradient(70%_90%_at_20%_0%,rgba(52,211,153,0.09),transparent_60%)]"
-    >
-      <div class="mx-auto w-full max-w-[1120px] px-6 pb-16 pt-16 sm:px-8 lg:pb-24 lg:pt-24">
-        <div data-hero-item>
-          <span
-            class="inline-flex items-center gap-2 rounded-full border border-primary/15 bg-primary/[0.04] px-3.5 py-1.5 text-[13px] font-medium text-info"
-          >
-            <span class="h-2 w-2 rounded-full bg-info" aria-hidden="true"></span>
-            Open for new builds
-          </span>
-        </div>
-        <h1
-          data-hero-item
-          class="text-balance mt-7 max-w-5xl font-grotesk text-[2.6rem] font-bold leading-[1.06] tracking-tight sm:text-5xl lg:text-6xl"
-        >
-          AI automation. Working demo in 14 days,
-          <span class="text-info">or you don't pay.</span>
-        </h1>
-        <p data-hero-item class="mt-7 max-w-xl text-lg leading-8 text-primary/65">
-          I'm Shahab. I build the AI workflows, CRM automations, and custom
-          apps that end your team's copy-paste work.
-        </p>
-        <div data-hero-item class="mt-9 flex flex-wrap gap-3">
-          <a
-            :href="calBookingUrl"
-            target="_blank"
-            rel="noreferrer"
-            class="inline-flex items-center gap-2 rounded-xl bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90 active:scale-[0.98]"
-          >
-            Book a call
-            <Icon name="ph:arrow-right" size="18" />
-          </a>
-          <button
-            class="inline-flex items-center gap-2 rounded-xl border border-primary/15 px-5 py-3 font-medium transition hover:border-info hover:text-info active:scale-[0.98]"
-            @click="scrollToSection('Work')"
-          >
-            See the work
-          </button>
-        </div>
-      </div>
-    </header>
+          <h1 class="display hero-title pt-7 sm:pt-10">
+            <!-- The trailing spaces matter: the lines are display:block spans, so
+                 without them the heading's text reads "automation.Working". -->
+            <span class="block">Production AI <br class="sm:hidden" />engineering.{{ " " }}</span>
+            <span class="block">Working demo <br class="sm:hidden" />in 14 days,{{ " " }}</span>
+            <span class="mt-[0.09em] block"><span class="stamp hero-stamp">or you <br class="sm:hidden" />don't pay.</span></span>
+          </h1>
 
-    <!-- METRICS BAND -->
-    <section
-      aria-label="Track record"
-      class="border-y border-primary/10"
-    >
-      <div
-        class="mx-auto grid w-full max-w-[1120px] grid-cols-2 gap-x-8 gap-y-8 px-6 py-10 sm:px-8 lg:grid-cols-4"
-      >
-        <div v-for="m in metrics" :key="m.label" class="flex flex-col">
-          <span class="tabular font-grotesk text-3xl font-bold tracking-tight sm:text-4xl">{{ m.value }}</span>
-          <span class="mt-1.5 text-[13px] leading-5 text-primary/55">{{ m.label }}</span>
-        </div>
-      </div>
-    </section>
-
-    <div class="mx-auto w-full max-w-[1120px] px-6 sm:px-8">
-      <!-- SERVICES : asymmetric bento -->
-      <section id="Services" class="py-24">
-        <h2 class="max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          One engineer. The whole build.
-        </h2>
-        <p class="mt-5 max-w-xl text-lg leading-8 text-primary/60">
-          AI, frontend, backend, and the glue between them, so you don't
-          coordinate three people to ship one system.
-        </p>
-        <p class="mt-4 max-w-xl leading-8 text-primary/60">
-          The deepest specialty is CRM:
-          <NuxtLink to="/services/suitecrm-development/" class="font-medium text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM development</NuxtLink>,
-          <NuxtLink to="/services/mautic-suitecrm-integration/" class="font-medium text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Mautic and SuiteCRM integration</NuxtLink>,
-          and <NuxtLink to="/services/salesforce-to-suitecrm-migration/" class="font-medium text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Salesforce-to-SuiteCRM migration</NuxtLink>.
-        </p>
-        <div class="mt-12 grid gap-4 lg:grid-cols-[1.45fr_1fr]">
-          <article
-            class="reveal flex flex-col justify-between rounded-2xl border border-info/30 bg-gradient-to-br from-info/[0.12] via-info/[0.04] to-transparent p-8 lg:row-span-2 lg:p-10"
+          <div
+            class="grid grid-cols-1 gap-12 pb-14 pt-9 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-14 lg:pb-20 lg:pt-12"
           >
             <div>
-              <span class="grid h-12 w-12 place-items-center rounded-xl border border-info/40 bg-secondary/60 text-info">
-                <Icon :name="services[0].icon" size="26" />
-              </span>
-              <h3 class="mt-7 font-grotesk text-3xl font-semibold">{{ services[0].title }}</h3>
-              <p class="mt-4 max-w-md text-lg leading-8 text-primary/70">{{ services[0].summary }}</p>
+              <!-- A real person, stated plainly: Western buyers look you up before replying. -->
+              <div class="flex items-center gap-4">
+                <picture>
+                  <source srcset="/img/shahab-gohar-160.webp" type="image/webp" />
+                  <img
+                    src="/img/shahab-gohar-160.jpg"
+                    width="80"
+                    height="80"
+                    alt="Shahab Gohar"
+                    decoding="async"
+                    class="h-20 w-20 border border-primary object-cover"
+                  />
+                </picture>
+                <div>
+                  <p class="wd-88 text-lg font-bold leading-6">Shahab Gohar</p>
+                  <p class="mono mt-1 text-primary/70">AI engineer, 5+ years. Based in Pakistan (UTC+5).</p>
+                  <a
+                    :href="linkedInUrl"
+                    target="_blank"
+                    rel="noreferrer"
+                    class="mono mt-1.5 inline-flex items-center gap-1.5 text-info underline decoration-info/40 underline-offset-4 hover:decoration-info"
+                  >
+                    <Icon name="ph:linkedin-logo" size="14" />
+                    LinkedIn profile
+                  </a>
+                </div>
+              </div>
+              <p class="mt-6 max-w-md text-xl leading-8 text-primary/80">
+                I'm Shahab. I build AI systems that hold up in production: agents,
+                RAG, and CRM automation, plus the software around them.
+              </p>
+              <div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-5">
+                <a :href="calBookingUrl" target="_blank" rel="noreferrer" class="btn btn-hot">
+                  Book a call
+                </a>
+                <a href="#Work" class="link-arrow">
+                  See the work
+                  <Icon name="ph:arrow-down" size="16" />
+                </a>
+              </div>
+              <p class="mono mt-9 flex flex-wrap items-center gap-x-3 gap-y-2 text-primary/70">
+                <span class="flex gap-0.5 text-info" aria-hidden="true">
+                  <Icon v-for="n in 5" :key="n" name="ph:star-fill" size="14" />
+                </span>
+                5.0 from 36 client reviews
+              </p>
+              <p class="mono mt-3 text-primary/70">
+                Live overlap every weekday: US Eastern mornings, UK and EU afternoons.
+              </p>
+
+              <div class="mt-10 hidden border border-primary/25 lg:block">
+                <div class="hazard h-1.5" aria-hidden="true"></div>
+                <div class="p-5">
+                  <p class="label text-primary/80">The guarantee, in full</p>
+                  <p class="mt-3 text-[0.9375rem] leading-[1.6] text-primary/80">
+                    You get a written scope, one price, and a demo date 14 days
+                    out. No working demo on your real workflow by that date?
+                    You owe nothing. The risk sits with me, not you.
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="mt-10">
-              <p class="text-sm leading-6 text-primary/60">{{ services[0].proof }}</p>
-              <p class="mt-4 border-t border-primary/10 pt-4 font-ibmMono text-[13px] text-primary/50">
-                {{ services[0].stack }}
+
+            <div>
+              <DryRunDemo />
+              <p class="mono mt-5 max-w-xl text-primary/65">
+                Try it. Simulated run with sample data. On real builds, live
+                writes stay disabled until you approve them.
               </p>
             </div>
-          </article>
-          <article
-            v-for="service in services.slice(1)"
-            :key="service.title"
-            class="reveal rounded-2xl border border-primary/10 bg-primary/[0.02] p-7 transition hover:border-info/60"
-          >
-            <div class="flex items-center gap-4">
-              <span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-primary/10 text-info">
-                <Icon :name="service.icon" size="22" />
-              </span>
-              <h3 class="font-grotesk text-xl font-semibold">{{ service.title }}</h3>
-            </div>
-            <p class="mt-4 leading-7 text-primary/60">{{ service.summary }}</p>
-            <p class="mt-5 border-t border-primary/10 pt-4 font-ibmMono text-[13px] text-primary/50">
-              {{ service.stack }}
-            </p>
-          </article>
+          </div>
         </div>
       </section>
 
-      <!-- PROCESS : timeline -->
-      <section id="Process" class="border-t border-primary/10 py-24">
-        <h2 class="max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          Two weeks from first call to working demo.
-        </h2>
-        <p class="mt-5 max-w-xl text-lg leading-8 text-primary/60">
-          A fixed process with a fixed price, built so you see it working
-          before it touches your live systems.
-        </p>
-        <ol class="relative mt-14 space-y-12 border-l border-primary/15 pl-9 sm:pl-12">
-          <li v-for="step in buildSteps" :key="step.title" class="reveal relative">
-            <span
-              class="absolute -left-[47px] top-0.5 grid h-6 w-6 place-items-center rounded-full border border-info/60 bg-secondary sm:-left-[59px]"
-              aria-hidden="true"
-            >
-              <span class="h-2 w-2 rounded-full bg-info"></span>
-            </span>
-            <p class="font-ibmMono text-xs font-medium uppercase tracking-[0.14em] text-info">
-              {{ step.badge }}
+      <!-- SPECS : the track record as a datasheet table -->
+      <section aria-labelledby="specs-title" class="border-b border-primary">
+        <div class="mx-auto grid w-full max-w-page gap-x-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,9fr)]">
+          <div class="pt-10 lg:py-12">
+            <h2 id="specs-title" class="label text-primary/70">Key specifications</h2>
+            <p class="mt-3 hidden max-w-[22ch] text-sm leading-6 text-primary/70 lg:block">
+              What each number refers to.
             </p>
-            <h3 class="mt-2.5 font-grotesk text-2xl font-semibold">{{ step.title }}</h3>
-            <p class="mt-3 max-w-2xl leading-7 text-primary/60">{{ step.text }}</p>
-          </li>
-        </ol>
+          </div>
+          <dl class="pb-4 pt-5 lg:py-7">
+            <div
+              v-for="(spec, i) in specs"
+              :key="spec.param"
+              class="spec-row grid items-baseline gap-x-6 py-4 lg:py-[1.125rem]"
+              :class="i > 0 ? 'border-t border-primary/15' : ''"
+            >
+              <dt class="spec-param wd-88 text-lg font-bold leading-6">{{ spec.param }}</dt>
+              <dd v-if="spec.cond" class="spec-cond text-[0.9375rem] leading-6 text-primary/70">{{ spec.cond }}</dd>
+              <dd class="spec-value flex items-baseline justify-end gap-2 whitespace-nowrap text-right">
+                <span class="display tabular text-[clamp(2.5rem,4.6vw,3.75rem)] leading-[0.8]">{{ spec.value }}</span>
+                <span v-if="spec.unit" class="mono text-primary/70">{{ spec.unit }}</span>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- SERVICES : index rows -->
+      <section id="Services" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="Services" title="One engineer. The whole build.">
+            <p>
+              AI, frontend, backend, and the glue between them, so you don't
+              coordinate three people to ship one system.
+            </p>
+            <p class="mt-4">
+              One vertical I know especially well is CRM:
+              <NuxtLink to="/services/suitecrm-development/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM development</NuxtLink>,
+              <NuxtLink to="/services/mautic-suitecrm-integration/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Mautic and SuiteCRM integration</NuxtLink>,
+              and <NuxtLink to="/services/salesforce-to-suitecrm-migration/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Salesforce-to-SuiteCRM migration</NuxtLink>.
+            </p>
+          </SectionHead>
+
+          <ol class="-mx-5 mt-14 border-t border-primary sm:-mx-8">
+            <li v-for="service in services" :key="service.title" class="reveal border-b border-primary/20">
+              <component
+                :is="service.to ? NuxtLinkComp : 'div'"
+                :to="service.to"
+                class="group grid gap-x-10 gap-y-4 px-5 py-8 transition-colors sm:px-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,5.4fr)_minmax(0,3.6fr)] lg:py-10"
+                :class="service.to ? 'hover:bg-primary hover:text-secondary' : ''"
+              >
+                <p class="label pt-1.5 text-primary/70 group-hover:text-inherit">
+                  {{ service.kind }}
+                </p>
+                <div>
+                  <h3 class="wd-75 text-[clamp(1.85rem,3.2vw,2.75rem)] font-extrabold leading-[1.02] tracking-tight">
+                    {{ service.title }}
+                  </h3>
+                  <p class="mt-4 max-w-xl leading-7 text-primary/75 group-hover:text-inherit">{{ service.summary }}</p>
+                  <p v-if="service.proof" class="mt-3 max-w-xl text-sm leading-6 text-primary/70 group-hover:text-inherit">
+                    {{ service.proof }}
+                  </p>
+                </div>
+                <div class="flex items-start justify-between gap-6 lg:flex-col lg:items-end">
+                  <p class="mono text-primary/70 group-hover:text-inherit lg:text-right">{{ service.stack }}</p>
+                  <span
+                    v-if="service.to"
+                    class="grid h-11 w-11 shrink-0 place-items-center border border-current transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  >
+                    <Icon name="ph:arrow-up-right" size="20" />
+                  </span>
+                </div>
+              </component>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- PROCESS : a 14-day ruler -->
+      <section id="Process" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="Process" title="Two weeks from first call to working demo.">
+            <p>
+              A fixed process with a fixed price, built so you see it working
+              before it touches your live systems.
+            </p>
+          </SectionHead>
+
+          <div class="mt-14 hidden md:block" aria-hidden="true">
+            <div class="flex h-4 border border-primary">
+              <span class="bg-primary" style="flex: 1"></span>
+              <span class="bg-primary/40" style="flex: 2"></span>
+              <span class="hazard" style="flex: 12"></span>
+            </div>
+            <div class="mono tabular mt-2 grid grid-cols-[repeat(15,minmax(0,1fr))] text-primary/65">
+              <span v-for="d in 15" :key="d" class="border-l border-primary/30 pl-1.5">{{ d - 1 }}</span>
+            </div>
+          </div>
+
+          <ol class="mt-10 grid border-t border-primary md:mt-8 md:grid-cols-2 lg:grid-cols-4">
+            <li
+              v-for="(step, i) in buildSteps"
+              :key="step.title"
+              class="reveal border-b border-primary/20 py-8 md:px-7 md:first:pl-0 lg:border-b-0 lg:py-9"
+              :class="[i > 0 ? 'lg:border-l lg:border-primary/20' : '', i % 2 === 1 ? 'md:border-l md:border-primary/20' : 'md:pl-0 lg:pl-7', i === 0 ? 'lg:!pl-0' : '']"
+            >
+              <p class="label flex items-center gap-3 text-primary/80">
+                <span class="h-3 w-6 border border-primary" :class="step.swatch" aria-hidden="true"></span>
+                {{ step.badge }}
+              </p>
+              <h3 class="wd-75 mt-5 text-[1.75rem] font-extrabold leading-[1.05] tracking-tight">{{ step.title }}</h3>
+              <p class="mt-4 leading-7 text-primary/75">{{ step.text }}</p>
+            </li>
+          </ol>
+        </div>
       </section>
 
       <!-- WORK : editorial rows -->
-      <section id="Work" class="border-t border-primary/10 py-24">
-        <h2 class="max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          Recent builds, measured by what they changed.
-        </h2>
-        <div class="mt-10 divide-y divide-primary/10 border-y border-primary/10">
-          <component
-            :is="item.href ? (item.href.startsWith('http') ? 'a' : NuxtLinkComp) : 'article'"
-            v-for="item in caseStudies"
-            :key="item.title"
-            :href="item.href && item.href.startsWith('http') ? item.href : undefined"
-            :to="item.href && !item.href.startsWith('http') ? item.href : undefined"
-            class="group grid gap-3 py-9 sm:grid-cols-[0.8fr_1.2fr] sm:gap-10"
-            :class="item.href ? 'cursor-pointer' : ''"
-          >
-            <p class="font-ibmMono text-sm leading-6 text-info">{{ item.result }}</p>
-            <div>
-              <div class="flex items-start justify-between gap-4">
-                <h3
-                  class="font-grotesk text-2xl font-semibold leading-snug transition"
-                  :class="item.href ? 'group-hover:text-info' : ''"
+      <section id="Work" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="Work" title="Recent builds, measured by what they changed." />
+
+          <div class="-mx-5 mt-14 border-t border-primary sm:-mx-8">
+            <component
+              :is="item.href ? (item.href.startsWith('http') ? 'a' : NuxtLinkComp) : 'article'"
+              v-for="item in caseStudies"
+              :key="item.title"
+              :href="item.href && item.href.startsWith('http') ? item.href : undefined"
+              :to="item.href && !item.href.startsWith('http') ? item.href : undefined"
+              class="reveal group grid gap-x-10 gap-y-4 border-b border-primary/20 px-5 py-9 transition-colors hover:bg-primary hover:text-secondary sm:px-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,9fr)] lg:py-11"
+            >
+              <p class="display text-[1.65rem] leading-[0.95] text-info transition-colors group-hover:text-hot lg:max-w-[14ch] lg:text-[2rem]">
+                {{ item.result }}
+              </p>
+              <div class="grid gap-6 sm:grid-cols-[minmax(0,1fr)_auto]">
+                <div>
+                  <h3 class="wd-75 text-[clamp(1.6rem,2.7vw,2.25rem)] font-extrabold leading-[1.05] tracking-tight">
+                    {{ item.title }}
+                  </h3>
+                  <p class="mt-4 max-w-2xl leading-7 text-primary/75 group-hover:text-inherit">{{ item.text }}</p>
+                </div>
+                <span
+                  class="hidden h-11 w-11 shrink-0 place-items-center border border-current transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:grid"
                 >
-                  {{ item.title }}
-                </h3>
-                <Icon
-                  v-if="item.href"
-                  name="ph:arrow-up-right"
-                  class="mt-1 shrink-0 text-primary/40 transition group-hover:translate-x-0.5 group-hover:text-info"
-                  size="22"
-                />
+                  <Icon name="ph:arrow-up-right" size="20" />
+                </span>
               </div>
-              <p class="mt-3 max-w-2xl leading-7 text-primary/60">{{ item.text }}</p>
-            </div>
-          </component>
-        </div>
-        <NuxtLink
-          to="/projects/"
-          class="mt-8 inline-flex items-center gap-2 font-medium text-info transition hover:gap-3"
-        >
-          View all projects
-          <Icon name="ph:arrow-right" size="18" />
-        </NuxtLink>
-      </section>
-
-      <!-- PRICING -->
-      <section id="Pricing" class="border-t border-primary/10 py-24">
-        <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Pricing</p>
-        <h2 class="mt-3 max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          Three ways to work with me. All fixed price.
-        </h2>
-        <p class="mt-5 max-w-xl text-lg leading-8 text-primary/60">
-          You know the price and the deadline before anything starts. Exact
-          quote after the first call, never hourly.
-        </p>
-        <div class="mt-12 grid gap-4 lg:grid-cols-3">
-          <article
-            v-for="pkg in packages"
-            :key="pkg.name"
-            class="reveal relative flex flex-col rounded-2xl border p-7 transition"
-            :class="pkg.popular ? 'border-info bg-info/[0.05]' : 'border-primary/10 bg-primary/[0.02] hover:border-info/60'"
-          >
-            <span
-              v-if="pkg.popular"
-              class="absolute -top-3 right-6 rounded-full bg-info px-3 py-1 text-xs font-semibold text-secondary"
-            >Most popular</span>
-            <h3 class="font-grotesk text-xl font-semibold">{{ pkg.name }}</h3>
-            <p class="mt-3 font-grotesk text-3xl font-bold tracking-tight text-info">{{ pkg.price }}</p>
-            <p class="mt-1 font-ibmMono text-[12px] uppercase tracking-[0.12em] text-primary/45">{{ pkg.duration }}</p>
-            <p class="mt-4 min-h-[3.5rem] leading-7 text-primary/65">{{ pkg.tagline }}</p>
-            <ul class="mt-5 grid gap-2.5">
-              <li
-                v-for="feature in pkg.features"
-                :key="feature"
-                class="flex items-start gap-3 text-sm leading-6 text-primary/65"
-              >
-                <Icon name="ph:check-circle" class="mt-0.5 shrink-0 text-info" size="17" />
-                {{ feature }}
-              </li>
-            </ul>
-            <div class="flex-1 pt-7" aria-hidden="true"></div>
-            <a
-              :href="`${calBookingUrl}?utm_source=portfolio&utm_medium=pricing&utm_campaign=book_a_call&utm_content=${pkg.book}`"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold transition active:scale-[0.98]"
-              :class="pkg.popular ? 'bg-info text-secondary hover:opacity-90' : 'border border-info text-info hover:bg-info hover:text-secondary'"
-            >
-              Book a call
-            </a>
-          </article>
-        </div>
-
-        <!-- ROI strip -->
-        <div class="reveal mt-14 border-t border-primary/10 pt-10">
-          <div class="grid gap-8 sm:grid-cols-3">
-            <div v-for="stat in roiStats" :key="stat.value" class="flex flex-col">
-              <span class="tabular font-grotesk text-3xl font-bold tracking-tight text-info sm:text-4xl">{{ stat.value }}</span>
-              <span class="mt-2 max-w-[26ch] text-sm leading-6 text-primary/55">{{ stat.label }}</span>
-            </div>
+            </component>
           </div>
-          <p class="mt-8 max-w-2xl text-sm leading-6 text-primary/50">
-            Typical example for a small team. On the call we'll do this math
-            with your actual numbers. If the automation doesn't pay for
-            itself, I'll tell you not to build it.
-          </p>
+
+          <NuxtLink to="/projects/" class="link-arrow mt-10">
+            View all projects
+            <Icon name="ph:arrow-right" size="18" />
+          </NuxtLink>
         </div>
       </section>
 
-      <!-- PRODUCTS : real footage -->
-      <section id="Products" class="border-t border-primary/10 py-24">
-        <h2 class="max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          Add-ons I build and sell on the SuiteCRM Store.
-        </h2>
-        <p class="mt-5 max-w-xl text-lg leading-8 text-primary/60">
-          Not client work. My own products, live on a public marketplace and
-          maintained in the open.
-        </p>
-        <div class="mt-12 grid gap-14">
-          <article
-            v-for="(product, index) in products"
-            :key="product.title"
-            class="reveal grid items-center gap-8 lg:grid-cols-2 lg:gap-12"
-          >
-            <div
-              class="flex items-center justify-center overflow-hidden rounded-2xl border border-primary/10 bg-primary/[0.03]"
-              :class="[index % 2 === 1 ? 'lg:order-2' : '', product.portrait ? 'py-6' : '']"
+      <!-- PRICING : one ruled table + the math -->
+      <section id="Pricing" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="Pricing" title="Three ways to work with me. All fixed price.">
+            <p>
+              You know the price and the deadline before anything starts. Exact
+              quote after the first call, never hourly.
+            </p>
+          </SectionHead>
+
+          <div class="mt-14 grid border border-primary lg:grid-cols-3">
+            <article
+              v-for="(pkg, i) in packages"
+              :key="pkg.name"
+              class="reveal relative flex flex-col p-7 sm:p-9"
+              :class="[
+                pkg.popular ? 'bg-primary text-secondary' : '',
+                i > 0 ? 'border-t border-primary lg:border-l lg:border-t-0' : '',
+              ]"
             >
-              <video
-                :width="product.width"
-                :height="product.height"
-                :aria-label="product.alt"
-                autoplay
-                muted
-                loop
-                playsinline
-                preload="metadata"
-                data-product-video
-                :class="product.portrait ? 'h-[420px] w-auto rounded-xl' : 'w-full'"
+              <div class="flex min-h-[1.75rem] items-start justify-between gap-4">
+                <h3 class="label pt-1.5" :class="pkg.popular ? 'text-secondary/75' : 'text-primary/75'">{{ pkg.name }}</h3>
+                <span v-if="pkg.popular" class="label stamp !px-2 !py-1">Most popular</span>
+              </div>
+              <p class="mt-7 flex items-baseline gap-2">
+                <span class="label" :class="pkg.popular ? 'text-secondary/65' : 'text-primary/65'">from</span>
+                <span class="display tabular text-[clamp(3.5rem,6vw,4.75rem)]">{{ pkg.price }}</span>
+                <span v-if="pkg.per" class="wd-75 text-2xl font-bold">{{ pkg.per }}</span>
+              </p>
+              <p class="mono mt-3 uppercase" :class="pkg.popular ? 'text-secondary/70' : 'text-primary/70'">
+                {{ pkg.duration }}
+              </p>
+              <p class="mt-6 min-h-[3.5rem] text-lg leading-7">{{ pkg.tagline }}</p>
+              <ul
+                class="mt-6 grid gap-3 border-t pt-6"
+                :class="pkg.popular ? 'border-secondary/25' : 'border-primary/20'"
               >
-                <source :src="product.video" type="video/mp4" />
-              </video>
-            </div>
-            <div :class="index % 2 === 1 ? 'lg:order-1' : ''">
-              <p class="font-ibmMono text-[12px] uppercase tracking-[0.14em] text-primary/45">{{ product.label }}</p>
-              <h3 class="mt-3 font-grotesk text-2xl font-semibold sm:text-3xl">{{ product.title }}</h3>
-              <p class="mt-4 max-w-md text-lg leading-8 text-primary/60">{{ product.summary }}</p>
+                <li
+                  v-for="feature in pkg.features"
+                  :key="feature"
+                  class="flex items-start gap-3 text-[0.9375rem] leading-6"
+                  :class="pkg.popular ? 'text-secondary/85' : 'text-primary/80'"
+                >
+                  <Icon name="ph:check" class="mt-1 text-info" :class="pkg.popular ? '!text-hot' : ''" size="15" />
+                  {{ feature }}
+                </li>
+              </ul>
+              <div class="flex-1 pt-9" aria-hidden="true"></div>
               <a
-                :href="product.url"
+                :href="`${calBookingUrl}?utm_source=portfolio&utm_medium=pricing&utm_campaign=book_a_call&utm_content=${pkg.book}`"
                 target="_blank"
                 rel="noreferrer"
-                class="mt-6 inline-flex items-center gap-2 rounded-xl border border-info px-4 py-2.5 text-sm font-medium text-info transition hover:bg-info hover:text-secondary active:scale-[0.98]"
+                class="btn w-full"
+                :class="pkg.popular ? 'btn-hot !shadow-none' : 'btn-line'"
               >
-                View on the Store
-                <Icon name="ph:arrow-up-right" size="16" />
+                Book a call
               </a>
+            </article>
+          </div>
+
+          <!-- ROI : do the math with your own numbers -->
+          <div class="reveal mt-20 grid gap-8 lg:grid-cols-[minmax(0,3fr)_minmax(0,9fr)] lg:gap-10">
+            <div>
+              <p class="label text-primary/70">Do the math</p>
+              <h3 class="wd-75 mt-4 text-[1.9rem] font-extrabold leading-[1.05] tracking-tight">
+                What is the copy-paste costing you?
+              </h3>
+              <p class="mt-4 text-sm leading-6 text-primary/70">
+                Typical example for a small team. On the call we'll do this math
+                with your actual numbers. If the automation doesn't pay for
+                itself, I'll tell you not to build it.
+              </p>
             </div>
-          </article>
+            <RoiCalculator />
+          </div>
         </div>
       </section>
 
-      <!-- TESTIMONIALS : asymmetric -->
-      <section id="Proof" class="border-t border-primary/10 py-24">
-        <h2 class="max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          What clients say.
-        </h2>
-        <p class="mt-5 max-w-xl text-lg leading-8 text-primary/60">
-          Pulled from 35+ five-star reviews across ten countries.
-        </p>
-        <div class="mt-12 grid gap-4 lg:grid-cols-[1.35fr_1fr]">
-          <figure
-            class="reveal flex flex-col justify-between rounded-2xl border border-primary/10 bg-primary/[0.02] p-8 lg:p-10"
-          >
-            <blockquote class="font-grotesk text-2xl font-medium leading-snug sm:text-3xl">
-              &ldquo;{{ testimonials[0].quote }}&rdquo;
-            </blockquote>
-            <figcaption class="mt-8 flex items-center gap-3">
-              <span class="grid h-10 w-10 place-items-center rounded-xl bg-info/15 font-grotesk text-sm font-semibold uppercase text-info">{{ testimonials[0].client.charAt(0) }}</span>
-              <div>
-                <p class="text-sm font-medium">{{ testimonials[0].client }}</p>
-                <p class="text-[12.5px] text-primary/50">{{ testimonials[0].country }}, {{ testimonials[0].type }}</p>
+      <!-- PRODUCTS : real footage, loaded on approach -->
+      <section id="Products" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="Products" title="Add-ons I built, live on the SuiteCRM Store.">
+            <p>
+              I built these at Esper Solutions. They are published on the official
+              SuiteCRM Store under that name.
+            </p>
+          </SectionHead>
+
+          <div class="mt-14 grid gap-px border border-primary bg-primary lg:grid-cols-[1.75fr_1fr]">
+            <article
+              v-for="product in products"
+              :key="product.title"
+              class="reveal flex flex-col bg-secondary"
+            >
+              <div
+                class="flex flex-1 items-center justify-center border-b border-primary bg-well"
+                :class="product.portrait ? 'px-6 py-7' : 'p-4 sm:p-7'"
+              >
+                <DemoVideo
+                  :src="product.video"
+                  :poster="product.poster"
+                  :width="product.width"
+                  :height="product.height"
+                  :label="product.alt"
+                  class="border border-primary"
+                  :class="product.portrait ? 'h-[23rem]' : 'w-full'"
+                />
               </div>
-            </figcaption>
-          </figure>
-          <div class="grid gap-4">
+              <div class="p-7 sm:p-9">
+                <p class="label text-primary/70">{{ product.label }}</p>
+                <h3 class="wd-75 mt-3 text-[2rem] font-extrabold leading-[1.05] tracking-tight">{{ product.title }}</h3>
+                <p class="mt-4 max-w-md leading-7 text-primary/75">{{ product.summary }}</p>
+                <a :href="product.url" target="_blank" rel="noreferrer" class="link-arrow mt-6">
+                  View on the Store
+                  <Icon name="ph:arrow-up-right" size="16" />
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROOF : one loud quote, two quiet ones -->
+      <section id="Proof" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="Proof" title="What employers and clients say.">
+            <p>Two written references from the companies I have worked for, and one of 36 client reviews with a 5.0 average.</p>
+          </SectionHead>
+
+          <div class="mt-14 grid gap-px border border-primary bg-primary lg:grid-cols-[1.5fr_1fr]">
+            <figure class="reveal flex flex-col justify-between bg-secondary p-7 sm:p-11 lg:row-span-2">
+              <blockquote
+                class="wd-75 text-balance text-[clamp(1.6rem,3vw,2.5rem)] font-bold leading-[1.1] tracking-tight"
+              >
+                <span class="display mb-2 block text-[5rem] leading-[0.6] text-hot" aria-hidden="true">&ldquo;</span>
+                {{ testimonials[0].quote }}
+              </blockquote>
+              <figcaption class="mt-10 flex items-center gap-4">
+                <span class="display grid h-12 w-12 place-items-center bg-primary text-xl text-secondary">
+                  {{ testimonials[0].client.charAt(0) }}
+                </span>
+                <div>
+                  <p class="font-semibold">{{ testimonials[0].client }}</p>
+                  <p class="text-sm text-primary/80">{{ testimonials[0].detail }}</p>
+                  <p class="mono mt-1 text-primary/70">{{ testimonials[0].source }}</p>
+                </div>
+              </figcaption>
+            </figure>
             <figure
               v-for="review in testimonials.slice(1)"
               :key="review.client"
-              class="reveal flex flex-col justify-between rounded-2xl border border-primary/10 bg-primary/[0.02] p-7"
+              class="reveal flex flex-col justify-between bg-secondary p-7 sm:p-9"
             >
-              <blockquote class="leading-7 text-primary/75">
-                &ldquo;{{ review.quote }}&rdquo;
-              </blockquote>
-              <figcaption class="mt-5 flex items-center gap-3">
-                <span class="grid h-9 w-9 place-items-center rounded-xl bg-info/15 font-grotesk text-sm font-semibold uppercase text-info">{{ review.client.charAt(0) }}</span>
+              <blockquote class="text-lg leading-8 text-primary/85">&ldquo;{{ review.quote }}&rdquo;</blockquote>
+              <figcaption class="mt-7 flex items-center gap-4">
+                <span class="display grid h-10 w-10 place-items-center border border-primary text-lg">
+                  {{ review.client.charAt(0) }}
+                </span>
                 <div>
-                  <p class="text-sm font-medium">{{ review.client }}</p>
-                  <p class="text-[12.5px] text-primary/50">{{ review.country }}, {{ review.type }}</p>
+                  <p class="font-semibold">{{ review.client }}</p>
+                  <p class="text-sm text-primary/80">{{ review.detail }}</p>
+                  <p class="mono mt-1 text-primary/70">{{ review.source }}</p>
                 </div>
               </figcaption>
             </figure>
@@ -712,58 +766,160 @@ onBeforeUnmount(() => {
         </div>
       </section>
 
-      <!-- FAQ : all answers visible -->
-      <section id="FAQ" class="border-t border-primary/10 py-24">
-        <h2 class="max-w-2xl font-grotesk text-4xl font-bold tracking-tight sm:text-5xl">
-          Common questions.
-        </h2>
-        <dl class="mt-12 grid gap-x-14 gap-y-11 lg:grid-cols-2">
-          <div v-for="faq in faqs" :key="faq.q" class="reveal">
-            <dt class="font-grotesk text-lg font-semibold leading-snug">{{ faq.q }}</dt>
-            <dd class="mt-3 leading-7 text-primary/60">{{ faq.a }}</dd>
-          </div>
-        </dl>
+      <!-- FAQ : every answer visible -->
+      <section id="FAQ" class="border-b border-primary py-20 lg:py-28">
+        <div class="mx-auto w-full max-w-page px-5 sm:px-8">
+          <SectionHead kicker="FAQ" title="Common questions." />
+
+          <dl class="mt-14 border-t border-primary">
+            <div
+              v-for="faq in faqs"
+              :key="faq.q"
+              class="reveal grid gap-x-10 gap-y-4 border-b border-primary/20 py-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:py-10"
+            >
+              <dt class="wd-75 text-[1.6rem] font-extrabold leading-[1.1] tracking-tight">{{ faq.q }}</dt>
+              <dd class="leading-7 text-primary/75">{{ faq.a }}</dd>
+            </div>
+          </dl>
+        </div>
       </section>
 
-      <!-- CTA -->
-      <section id="Contact" class="border-t border-primary/10 py-24">
-        <div
-          class="reveal relative overflow-hidden rounded-3xl border border-info/25 bg-[radial-gradient(80%_130%_at_15%_0%,rgba(52,211,153,0.13),transparent_60%)] p-8 sm:p-14"
-        >
-          <h2 class="text-balance max-w-2xl font-grotesk text-4xl font-bold leading-tight tracking-tight sm:text-5xl">
-            Bring me the workflow that eats your day.
+      <!-- CTA : inverted poster block behind hazard tape -->
+      <section id="Contact" ref="closing" class="bg-primary text-secondary">
+        <div class="hazard h-3" aria-hidden="true"></div>
+        <div class="mx-auto w-full max-w-page px-5 py-20 sm:px-8 lg:py-28">
+          <p class="label text-secondary/70">Start here</p>
+          <h2 class="display text-balance mt-7 max-w-[15ch] text-[clamp(3rem,9vw,8rem)]">
+            Bring me the workflow that <span class="stamp">eats your day.</span>
           </h2>
-          <p class="mt-6 max-w-xl text-lg leading-8 text-primary/65">
-            Send a manual process that costs hours, a half-broken system, or
-            an idea with no build yet. You'll get a straight answer on what
-            to build first.
-          </p>
-          <div class="mt-9 flex flex-wrap items-center gap-3">
-            <a
-              :href="calBookingUrl"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center gap-2 rounded-xl bg-info px-5 py-3 font-semibold text-secondary transition hover:opacity-90 active:scale-[0.98]"
-            >
-              Book a call
-              <Icon name="ph:arrow-right" size="18" />
-            </a>
-            <a
-              v-for="link in contactLinks"
-              :key="link.label"
-              :href="link.href"
-              target="_blank"
-              rel="noreferrer"
-              class="inline-flex items-center gap-2 rounded-xl border border-primary/15 px-4 py-3 text-sm font-medium transition hover:border-info hover:text-info active:scale-[0.98]"
-            >
-              <Icon :name="link.icon" size="18" />
-              {{ link.label }}
-            </a>
+          <div class="mt-10 grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
+            <div>
+              <div class="flex items-start gap-6">
+                <picture class="hidden shrink-0 sm:block">
+                  <source srcset="/img/shahab-gohar-480.webp" type="image/webp" />
+                  <img
+                    src="/img/shahab-gohar-480.jpg"
+                    width="160"
+                    height="160"
+                    alt="Shahab Gohar"
+                    loading="lazy"
+                    decoding="async"
+                    class="h-32 w-32 border border-secondary/40 object-cover"
+                  />
+                </picture>
+                <p class="max-w-xl text-xl leading-8 text-secondary/80">
+                  Send a manual process that costs hours, a half-broken system, or
+                  an idea with no build yet. You'll get a straight answer on what
+                  to build first.
+                </p>
+              </div>
+              <div class="mt-8 flex flex-wrap items-center gap-4">
+                <a :href="calBookingUrl" target="_blank" rel="noreferrer" class="btn btn-hot !shadow-[4px_4px_0_rgb(var(--c-paper))]">
+                  Book a call
+                </a>
+                <a
+                  v-for="link in contactLinks"
+                  :key="link.label"
+                  :href="link.href"
+                  target="_blank"
+                  rel="noreferrer"
+                  class="btn border-secondary/40 text-secondary hover:border-secondary hover:bg-secondary hover:text-primary"
+                >
+                  <Icon :name="link.icon" size="17" />
+                  {{ link.label }}
+                </a>
+              </div>
+            </div>
+            <ContactForm />
           </div>
         </div>
       </section>
-    </div>
+    </main>
 
-    <SiteFooter />
-  </main>
+  </div>
 </template>
+
+<style scoped>
+/* Spec rows: parameter + condition stack on phones, sit side by side on desktop,
+   with the value always pinned to the right edge like a datasheet column. */
+.spec-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'param value'
+    'cond value';
+}
+
+.spec-param {
+  grid-area: param;
+}
+
+.spec-cond {
+  grid-area: cond;
+}
+
+.spec-value {
+  grid-area: value;
+  align-self: center;
+}
+
+@media (min-width: 768px) {
+  .spec-row {
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr) minmax(7rem, auto);
+    grid-template-areas: 'param cond value';
+  }
+}
+
+/* Sized so the longest line ("WORKING DEMO IN 14 DAYS,") spans the content
+   width: five stacked lines on phones, three on wider screens. */
+.hero-title {
+  font-size: 14.4vw;
+}
+
+@media (min-width: 640px) {
+  .hero-title {
+    /* the vh term keeps the demo in view on short laptop screens */
+    /* sized to the longest line, "PRODUCTION AI ENGINEERING." (10.95em wide) */
+    font-size: min(8.15vw, 6.7rem, 15.5vh);
+  }
+}
+
+/* The orange block wipes in behind text that is already painted, so the
+   headline (the LCP element) is never hidden waiting for an animation. */
+@media (prefers-reduced-motion: no-preference) {
+  .hero-stamp {
+    animation: stamp-in 700ms cubic-bezier(0.65, 0, 0.2, 1) 250ms backwards;
+  }
+
+  .status-ping {
+    animation: status-ping 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}
+
+@keyframes stamp-in {
+  from {
+    background-size: 0% 100%;
+  }
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+.hero-stamp {
+  background-color: transparent;
+  background-image: linear-gradient(rgb(var(--c-hot)), rgb(var(--c-hot)));
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+@keyframes status-ping {
+  0% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+  70%,
+  100% {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+</style>

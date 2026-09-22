@@ -88,16 +88,7 @@ const roiStats = [
 <template>
   <main class="min-h-screen bg-secondary font-inter text-primary print:bg-white">
     <article class="mx-auto w-full max-w-[920px] px-6 py-8 sm:px-10 lg:px-16">
-      <nav
-        class="flex items-center justify-between border-b border-primary/10 pb-5 font-ibmMono text-sm print:hidden"
-      >
-        <NuxtLink
-          to="/"
-          class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
-        >
-          <Icon name="mdi:arrow-left" size="18" />
-          Home
-        </NuxtLink>
+      <p class="flex justify-end font-ibmMono text-sm print:hidden">
         <button
           type="button"
           class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
@@ -106,7 +97,7 @@ const roiStats = [
           <Icon name="mdi:printer-outline" size="18" />
           Print or save as PDF
         </button>
-      </nav>
+      </p>
 
       <header class="pt-10">
         <p
@@ -139,7 +130,7 @@ const roiStats = [
             <h2 class="font-grotesk text-xl font-semibold leading-snug">
               {{ item.title }}
             </h2>
-            <p class="mt-2 font-ibmMono text-[13px] text-primary/55">
+            <p class="mt-2 font-ibmMono text-[13px] text-primary/65">
               {{ item.cost }}
             </p>
             <p class="mt-3 leading-7 text-primary/75">{{ item.fix }}</p>
@@ -190,7 +181,6 @@ const roiStats = [
       </section>
     </article>
     <div class="print:hidden">
-      <SiteFooter />
     </div>
   </main>
 </template>

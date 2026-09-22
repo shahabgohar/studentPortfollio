@@ -38,7 +38,7 @@ const clusters = [
 
 const proof = [
   { value: "5.0", label: "average client rating" },
-  { value: "35+", label: "five-star reviews" },
+  { value: "36", label: "client reviews" },
   { value: "10", label: "countries served" },
 ];
 </script>
@@ -46,25 +46,6 @@ const proof = [
 <template>
   <main class="min-h-screen bg-secondary font-inter text-primary">
     <article class="mx-auto w-full max-w-[1120px] px-6 py-8 sm:px-10 lg:px-16">
-      <nav
-        class="flex items-center justify-between border-b border-primary/10 pb-5 font-ibmMono text-sm"
-      >
-        <NuxtLink
-          to="/"
-          class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
-        >
-          <Icon name="mdi:arrow-left" size="18" />
-          Home
-        </NuxtLink>
-        <NuxtLink
-          to="/services/"
-          class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
-        >
-          Services
-          <Icon name="mdi:arrow-top-right-bold-box-outline" size="18" />
-        </NuxtLink>
-      </nav>
-
       <div class="grid gap-12 pt-12 lg:grid-cols-[1.15fr_1fr] lg:items-start">
         <header>
           <p
@@ -89,7 +70,7 @@ const proof = [
               <dd class="font-grotesk text-2xl font-bold text-info">
                 {{ stat.value }}
               </dd>
-              <dd class="mt-1 text-[12.5px] text-primary/50">
+              <dd class="mt-1 text-[12.5px] text-primary/65">
                 {{ stat.label }}
               </dd>
             </div>
@@ -130,6 +111,5 @@ const proof = [
         </p>
       </section>
     </article>
-    <SiteFooter />
   </main>
 </template>

@@ -27,16 +27,12 @@ const lastUpdated = "May 18, 2026";
 <template>
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto w-full max-w-[900px] px-6 py-8 sm:px-10 lg:px-16">
-      <nav class="flex items-center justify-between border-b border-primary/10 pb-5 font-ibmMono text-sm">
-        <NuxtLink to="/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
-          <Icon name="mdi:arrow-left" size="18" />
-          Portfolio
-        </NuxtLink>
+      <p class="flex justify-end font-ibmMono text-sm">
         <NuxtLink to="/cookies/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
           Cookie notice
           <Icon name="mdi:cookie-outline" size="18" />
         </NuxtLink>
-      </nav>
+      </p>
 
       <header class="border-b border-primary/10 py-12">
         <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
@@ -45,7 +41,7 @@ const lastUpdated = "May 18, 2026";
         <h1 class="mt-4 font-grotesk text-5xl font-bold leading-tight tracking-tight sm:text-6xl">
           How this site handles personal data.
         </h1>
-        <p class="mt-5 text-sm text-primary/55">Last updated: {{ lastUpdated }}</p>
+        <p class="mt-5 text-sm text-primary/65">Last updated: {{ lastUpdated }}</p>
       </header>
 
       <div class="prose-content py-10">
@@ -116,7 +112,7 @@ const lastUpdated = "May 18, 2026";
             Google Analytics is configured to load manually only after you
             accept analytics cookies. Advertising storage and personalization
             are disabled. You can reopen the banner using the Privacy settings
-            button and change your choice.
+            link in the footer and change your choice.
           </p>
           <p>
             More detail is available in the

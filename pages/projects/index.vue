@@ -83,21 +83,6 @@ useHead({
 <template>
   <main class="min-h-screen bg-secondary font-inter text-primary">
     <div class="mx-auto w-full max-w-[1120px] px-6 sm:px-8">
-      <nav class="flex items-center justify-between border-b border-primary/10 py-5 text-sm">
-        <NuxtLink to="/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
-          <Icon name="mdi:arrow-left" size="18" />
-          Home
-        </NuxtLink>
-        <a
-          :href="calUrl"
-          target="_blank"
-          rel="noreferrer"
-          class="rounded-lg border border-info px-4 py-2 font-medium text-info transition hover:bg-info hover:text-secondary"
-        >
-          Book a call
-        </a>
-      </nav>
-
       <header class="py-16 lg:py-20">
         <p class="text-[13px] font-semibold uppercase tracking-[0.1em] text-info">Projects</p>
         <h1 class="mt-3 max-w-3xl font-grotesk text-4xl font-bold leading-tight tracking-tight sm:text-6xl">
@@ -127,13 +112,13 @@ useHead({
             <span class="rounded-full border border-info/40 px-3 py-1 font-ibmMono text-[11px] uppercase tracking-[0.1em] text-info">
               {{ p.category }}
             </span>
-            <span v-if="p.featured" class="font-ibmMono text-[11px] uppercase tracking-[0.1em] text-primary/45">Flagship</span>
+            <span v-if="p.featured" class="font-ibmMono text-[11px] uppercase tracking-[0.1em] text-primary/65">Flagship</span>
             <Icon v-if="p.href" name="mdi:arrow-top-right" class="ml-auto text-info" size="20" />
           </div>
           <h2 class="mt-4 font-grotesk text-2xl font-semibold leading-snug">{{ p.title }}</h2>
-          <p class="mt-1 font-ibmMono text-[12.5px] text-primary/50">{{ p.tagline }}</p>
+          <p class="mt-1 font-ibmMono text-[12.5px] text-primary/65">{{ p.tagline }}</p>
           <p class="mt-4 leading-7 text-primary/65">{{ p.description }}</p>
-          <p class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-info">
+          <p v-if="p.result" class="mt-4 inline-flex items-center gap-2 text-sm font-medium text-info">
             <Icon name="mdi:check-circle-outline" size="16" />
             {{ p.result }}
           </p>
@@ -191,6 +176,5 @@ useHead({
         </div>
       </section>
     </div>
-    <SiteFooter />
   </main>
 </template>

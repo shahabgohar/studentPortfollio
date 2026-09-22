@@ -9,7 +9,8 @@
     <!--
       Static form definitions for Netlify Forms build-time detection.
       The Vue pages submit via fetch POST to /__forms.html with matching
-      field names. Keep field names in sync with LeadMagnetOptin.vue.
+      field names. Keep field names in sync with LeadMagnetOptin.vue and
+      ContactForm.vue.
     -->
     <form
       name="automation-audit"
@@ -27,6 +28,21 @@
         <option>Something else</option>
         <option>No CRM yet</option>
       </select>
+      <input type="text" name="source" />
+      <input type="text" name="bot-field" />
+    </form>
+
+    <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="company" />
+      <select name="budget">
+        <option>Under $2,000</option>
+        <option>$2,000 to $7,000</option>
+        <option>$7,000 or more</option>
+        <option>Not sure yet</option>
+      </select>
+      <textarea name="message"></textarea>
       <input type="text" name="source" />
       <input type="text" name="bot-field" />
     </form>

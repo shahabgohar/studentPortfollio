@@ -1,12 +1,12 @@
 export const useMetaTags = () => {
     const siteUrl = 'https://shahabgohar.dev'
-    const faviconVersion = '0.0.3'
+    const faviconVersion = '0.0.4'
 
     const route = useRoute()
 
-    const defaultTitle = 'AI Automation Engineer & Custom Software | Shahab Gohar'
+    const defaultTitle = 'AI Engineer: Agents, RAG & CRM Automation | Shahab Gohar'
     const defaultDescription =
-      'I build AI automation, CRM integrations, and custom software. Working demo in 14 days or you don\'t pay. Fixed prices, with SuiteCRM and Mautic expertise.'
+      'Production AI engineering: AI agents, RAG, and CRM automation that run safely on live business systems. Working demo in 14 days or you don\'t pay.'
     const defaultKeywords =
       'AI solution engineer, solution engineer, business automation, workflow automation, ' +
       'custom software development, AI automation, AI workflows, AI integration, ' +
@@ -50,18 +50,17 @@ export const useMetaTags = () => {
             { property: 'og:image:type', content: 'image/png' },
             { property: 'og:image:width', content: '1200' },
             { property: 'og:image:height', content: '630' },
-            { property: 'og:image:alt', content: 'Shahab Gohar, AI Automation Engineer' },
+            { property: 'og:image:alt', content: 'Shahab Gohar, Production AI Engineer' },
 
             // Twitter Card
             { name: 'twitter:card', content: 'summary_large_image' },
             { name: 'twitter:title', content: pageTitle },
             { name: 'twitter:description', content: defaultDescription },
             { name: 'twitter:image', content: `${siteUrl}/img/og-image.png` },
-            { name: 'twitter:image:alt', content: 'Shahab Gohar, AI Automation Engineer' },
+            { name: 'twitter:image:alt', content: 'Shahab Gohar, Production AI Engineer' },
 
-            // Theme
-            { name: 'theme-color', content: '#0B0E0C' },
-            { name: 'msapplication-TileColor', content: '#0B0E0C' },
+            // Theme (theme-color itself is set in app.vue so it tracks light/dark)
+            { name: 'msapplication-TileColor', content: '#FF4F12' },
         ],
         link: [
             // Canonical
@@ -90,7 +89,7 @@ export const useMetaTags = () => {
             },
             {
                 rel: 'mask-icon',
-                color: '#5bbad5',
+                color: '#FF4F12',
                 href: `/favicon/safari-pinned-tab.svg?v=${faviconVersion}`
             },
             {

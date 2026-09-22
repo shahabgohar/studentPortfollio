@@ -64,17 +64,6 @@ useHead({
 <template>
   <main class="min-h-screen bg-secondary text-primary">
     <section class="mx-auto flex w-full max-w-[1180px] flex-col px-6 py-8 sm:px-10 lg:px-16">
-      <nav class="flex items-center justify-between border-b border-primary/10 pb-5 font-ibmMono text-sm">
-        <NuxtLink to="/" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
-          <Icon name="mdi:arrow-left" size="18" />
-          Portfolio
-        </NuxtLink>
-        <a href="mailto:shahab.developer.work@gmail.com" class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info">
-          Hire Shahab
-          <Icon name="mdi:arrow-top-right" size="18" />
-        </a>
-      </nav>
-
       <header class="grid gap-8 py-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
         <div class="max-w-3xl">
           <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">Field notes</p>
@@ -100,7 +89,7 @@ useHead({
           :key="post.slug"
           class="group border border-primary/10 bg-primary/[0.03] p-6 transition hover:-translate-y-1 hover:border-info/70 hover:bg-info/5 sm:p-8"
         >
-          <div class="flex flex-wrap items-center gap-3 font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/55">
+          <div class="flex flex-wrap items-center gap-3 font-ibmMono text-xs uppercase tracking-[0.18em] text-primary/65">
             <span>{{ post.category }}</span>
             <span class="h-1 w-1 rounded-full bg-info"></span>
             <span>{{ post.date }}</span>
@@ -138,6 +127,5 @@ useHead({
         </article>
       </section>
     </section>
-    <SiteFooter />
   </main>
 </template>
