@@ -16,7 +16,10 @@ useHead({
     { property: "og:description", content: pageDescription },
     { property: "og:url", content: `${siteUrl}/legal/` },
     { property: "og:type", content: "website" },
-    { name: "robots", content: "index, follow" },
+    // Kept out of search results on purpose: this page carries a home address.
+    // It stays linked from the footer, which is all an Impressum needs.
+    { name: "robots", content: "noindex, follow" },
+    { name: "googlebot", content: "noindex, follow" },
   ],
   link: [{ rel: "canonical", href: `${siteUrl}/legal/` }],
 });

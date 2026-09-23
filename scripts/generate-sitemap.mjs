@@ -70,12 +70,6 @@ const routes = [
     lastmod: '2026-05-18'
   },
   {
-    path: '/legal',
-    changefreq: 'yearly',
-    priority: '0.3',
-    lastmod: '2026-09-22'
-  },
-  {
     path: '/blogs/move-mysql-innodb-table-to-another-disk',
     changefreq: 'monthly',
     priority: '0.7',
