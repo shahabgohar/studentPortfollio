@@ -12,6 +12,7 @@
 - [Salesforce to SuiteCRM migration](https://shahabgohar.dev/services/salesforce-to-suitecrm-migration/): records, custom objects, and automations rebuilt natively
 - [Projects](https://shahabgohar.dev/projects/): case studies with measured results
 - [Blog](https://shahabgohar.dev/blogs/): SuiteCRM and AI engineering write-ups
+- [The AI wrote the fix. I answered for it.](https://shahabgohar.dev/blogs/software-engineering-is-not-dead/): an AI-built fix for dropped calls on production voice bots passed every test but covered new bots only, so a script edit dropped 33 calls; what that shows about scoping, testing and accountability when building with AI coding tools, and why software engineering isn't dead
 - [How to get into AI automation](https://shahabgohar.dev/blogs/how-to-get-into-ai-automation/): the full skill stack behind AI automation, from no-code tools and SQL to system design, RAG, and LLM observability, and the order to learn it
 - [Google SSO in SuiteCRM 8](https://shahabgohar.dev/blogs/suitecrm-google-sso/): when SuiteCRM 8's built-in SAML sign-in is enough, and what a custom Google sign-in build adds: two sessions in one login, Gmail and Calendar access in one consent, automatic calendar sync, and the proxy detail that breaks OAuth
 - [Move a MySQL InnoDB table to another disk](https://shahabgohar.dev/blogs/move-mysql-innodb-table-to-another-disk/): a production war story plus the supported MySQL 8.0 innodb_directories method for relocating a large tablespace off a full disk with zero data loss

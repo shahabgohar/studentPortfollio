@@ -12,6 +12,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'software-engineering-is-not-dead',
+    title: 'The AI Wrote the Fix. I Answered for It.',
+    description:
+      'An AI-built fix for dropped calls on production voice bots passed every test, and 33 calls dropped the following night anyway. What the AI missed, what I missed, and why the person who answers for it is the reason software engineering isn’t dead.',
+    category: 'AI Engineering',
+    date: 'September 23, 2026',
+    datePublished: '2026-09-23T00:00:00+05:00',
+    dateModified: '2026-09-23T00:00:00+05:00',
+    readingTime: '7 min read',
+    tags: ['Claude Code', 'AI coding', 'Software engineering', 'Production incident', 'Voice agents']
+  },
+  {
     slug: 'suitecrm-google-sso',
     title: 'Google SSO in SuiteCRM 8, and What It Really Takes',
     description:

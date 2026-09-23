@@ -104,6 +104,12 @@ const routes = [
     changefreq: 'monthly',
     priority: '0.7',
     lastmod: '2026-09-23'
+  },
+  {
+    path: '/blogs/software-engineering-is-not-dead',
+    changefreq: 'monthly',
+    priority: '0.7',
+    lastmod: '2026-09-23'
   }
 ]
 
