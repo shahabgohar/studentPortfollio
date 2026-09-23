@@ -20,7 +20,7 @@ export const blogPosts: BlogPost[] = [
     date: 'September 23, 2026',
     datePublished: '2026-09-23T00:00:00+05:00',
     dateModified: '2026-09-23T00:00:00+05:00',
-    readingTime: '7 min read',
+    readingTime: '8 min read',
     tags: ['Claude Code', 'AI coding', 'Software engineering', 'Production incident', 'Voice agents']
   },
   {
