@@ -284,6 +284,11 @@ const comparisonRows = [
             <p>
               The reverse proxy also needed attention. The CRM was behind TLS termination, while the container saw plain HTTP. Without explicit trusted proxy configuration, Symfony generated HTTP callback URLs and Google rejected them. Configuring trusted proxies and forwarded headers made OAuth redirect URLs match the public HTTPS address.
             </p>
+            <p>
+              I wrote the sign-in up separately in
+              <NuxtLink to="/blogs/suitecrm-google-sso/" class="text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Google SSO in SuiteCRM 8, and what it really takes</NuxtLink>:
+              when you do not need a custom build at all, and what this one involved.
+            </p>
           </section>
 
           <section id="calendar-sync">

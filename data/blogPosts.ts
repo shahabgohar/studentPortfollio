@@ -12,6 +12,18 @@ export type BlogPost = {
 
 export const blogPosts: BlogPost[] = [
   {
+    slug: 'suitecrm-google-sso',
+    title: 'Google SSO in SuiteCRM 8, and What It Really Takes',
+    description:
+      'Google sign-in for SuiteCRM 8: when the built-in SAML sign-in is enough, and what a custom build adds when the same login must also bring in Gmail and Google Calendar.',
+    category: 'SuiteCRM Engineering',
+    date: 'September 23, 2026',
+    datePublished: '2026-09-23T00:00:00+05:00',
+    dateModified: '2026-09-23T00:00:00+05:00',
+    readingTime: '7 min read',
+    tags: ['SuiteCRM', 'Single sign-on', 'Google OAuth', 'Authentication', 'Google Calendar']
+  },
+  {
     slug: 'move-mysql-innodb-table-to-another-disk',
     title: 'MySQL Disk Full: Moving a 136 GB InnoDB Table to Another Disk',
     description:
