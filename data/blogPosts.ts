@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'software-engineering-is-not-dead',
     title: 'The AI Wrote the Fix. I Answered for It.',
     description:
-      'An AI-built fix for dropped calls on production voice bots passed every test, and 33 calls dropped the following night anyway. What the AI missed, what I missed, and why the person who answers for it is the reason software engineering isn’t dead.',
+      'Claude Code and I diagnosed why calls were dropping on production voice bots. The fix it built passed every test and missed the cause we had found, so 33 calls dropped the next night. How that happened, and why the person who answers for it is the reason software engineering isn’t dead.',
     category: 'AI Engineering',
     date: 'September 23, 2026',
     datePublished: '2026-09-23T00:00:00+05:00',

@@ -20,11 +20,12 @@ const calBookingUrl = 'https://cal.com/shahabgohar/build-discussion'
 const sheet = [
   { param: 'System', value: 'AI voice bots on live phone calls' },
   { param: 'Built with', value: 'Claude Code' },
+  { param: 'Diagnosed', value: 'Script updated, voices regenerated, bots still live' },
   { param: 'The fix', value: 'Keep each bot off the phones until its audio is on the call server' },
-  { param: 'Covered', value: 'New bots' },
-  { param: 'Broke on', value: 'A script edit on bots already live' },
+  { param: 'Covered', value: 'New bots only' },
+  { param: 'Broke on', value: 'The path we had diagnosed' },
   { param: 'Impact', big: '33', unit: 'dropped calls' },
-  { param: 'Found, fixed', big: '2 / 4', unit: 'min, once I asked' },
+  { param: 'Found, patched', big: '2 / 4', unit: 'min, once I asked' },
   { param: 'Who answers', stamp: 'Me' }
 ]
 
@@ -46,7 +47,7 @@ const timeline: { day: string; time: string; iso: string; tone: Tone; tag: strin
     iso: '2026-09-22T07:42+05:00',
     tone: 'plan',
     tag: 'Plan approved',
-    text: 'The fix: new bots stay Inactive until their audio ships. Script edits aren’t in the plan.'
+    text: 'The fix: new bots stay Inactive until their audio ships. Script updates aren’t in the plan.'
   },
   {
     day: 'Sep 22',
@@ -70,7 +71,7 @@ const timeline: { day: string; time: string; iso: string; tone: Tone; tag: strin
     iso: '2026-09-23T02:54+05:00',
     tone: 'drop',
     tag: 'Calls drop',
-    text: 'A script edit sends six live bots back for new audio. 33 calls drop before it lands.'
+    text: 'An operator updates a script and regenerates its voices. Six live bots keep dialing, and 33 calls drop before the new audio lands.'
   },
   {
     day: 'Sep 23',
@@ -78,7 +79,7 @@ const timeline: { day: string; time: string; iso: string; tone: Tone; tag: strin
     iso: '2026-09-23T18:56+05:00',
     tone: 'fixed',
     tag: 'Gap found',
-    text: 'Two minutes after I ask, Claude finds the gap. At 19:00 script edits are gated too, and at 19:03 I type the message.'
+    text: 'Two minutes after I ask, Claude finds the gap. At 19:00 the script-update path is patched too, and at 19:03 I type the message.'
   }
 ]
 
@@ -98,12 +99,12 @@ const toneText: Record<Tone, string> = {
 
 const practices = [
   {
-    title: 'Hold the plan against the incident',
-    text: 'The diagnosis said a script edit had added a step. The plan said new bots. Reading one against the other takes a minute, and neither of us did it.'
+    title: 'Hold the plan against the diagnosis',
+    text: 'We had diagnosed one path: a script update followed by “Update Related Agent Voices”. The plan covered three other paths. Comparing the two takes a minute, and neither of us did it.'
   },
   {
     title: 'Replay the failure first',
-    text: 'Before any other test, do the thing that broke: edit a script on a live test bot and check that it stays off the phones until its audio lands. Every check we ran passed, and not one of them did that.'
+    text: 'Before any other test, do the thing that broke: update a script on a live test bot, click the button, and check that the bot stays off the phones until its audio lands. Every check we ran passed, and not one of them did that.'
   },
   {
     title: 'Put a scope next to every strong word',
@@ -120,7 +121,7 @@ const faqs = [
   {
     question: 'Is software engineering dead because of AI?',
     answer:
-      'No. AI tools can write much of the code, but someone still has to decide what a change must cover, prove that it covers it, and answer to the people affected when it doesn’t. In the incident above, the AI built a working fix for the wrong scope, and every test passed. Catching that is engineering.'
+      'No. AI tools can write much of the code, but someone still has to decide what a change must cover, prove that it covers it, and answer to the people affected when it doesn’t. In the incident above, the AI built a working fix that missed the cause we had diagnosed, and every test passed. Catching that is engineering.'
   },
   {
     question: 'Can an AI coding assistant be held accountable for a production bug?',
@@ -130,7 +131,7 @@ const faqs = [
   {
     question: 'How should you test a fix written with an AI coding assistant?',
     answer:
-      'Start by replaying the exact failure that prompted the fix, then test every other path the plan claims to cover. Here, every test used newly created bots, while the calls had dropped after a script edit on bots that were already live.'
+      'Start by replaying the exact failure that prompted the fix, then test every other path the plan claims to cover. Here, every test used newly created bots, while the calls dropped when an operator updated a script and regenerated the voices of bots that were already live.'
   }
 ]
 
@@ -186,7 +187,7 @@ useHead({
         dateModified: post.dateModified,
         articleSection: post.category,
         keywords: post.tags.join(', '),
-        wordCount: 1600,
+        wordCount: 1680,
         timeRequired: 'PT7M',
         inLanguage: 'en-US',
         author: {
@@ -280,7 +281,7 @@ useJsonLd()
         <div class="grid grid-cols-1 gap-12 pb-14 pt-9 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start lg:gap-14 lg:pb-20 lg:pt-12">
           <div>
             <p class="max-w-xl text-xl leading-8 text-primary/80">
-              Claude Code built a fix for dropped calls on the AI voice bots I work on. Every test passed, and 33 calls dropped the following night anyway. This is what the AI missed, what I missed, and why the person who answers for it is the reason software engineering isn’t dead.
+              Claude Code and I diagnosed why calls were dropping on the AI voice bots I work on. The fix it built passed every test and never touched the path we had diagnosed, so 33 calls dropped the following night. This is how that happened, and why the person who answers for it is the reason software engineering isn’t dead.
             </p>
             <div class="mt-8 flex items-center gap-4">
               <picture>
@@ -343,14 +344,7 @@ useJsonLd()
           </p>
 
           <figure class="mt-10">
-            <!-- Links to the full-size file: the text is too small to read on a phone. -->
-            <a
-              href="/img/claude-code-accountability-exchange.jpg"
-              target="_blank"
-              rel="noopener"
-              class="block border border-primary transition-colors hover:border-info"
-              aria-label="Open the screenshot at full size"
-            >
+            <div class="border border-primary">
               <picture>
                 <source
                   type="image/webp"
@@ -364,14 +358,16 @@ useJsonLd()
                   loading="lazy"
                   decoding="async"
                   class="block h-auto w-full"
-                  alt="Screenshot of the conversation in Claude Code. My message: “i soecifically told you that it should be on script update as well. and because of that i have to be ashamed infront of team.. I have to be legally held you in place.” Claude’s reply owns the miss, says “I’m a tool, so there’s nothing to hold there; but I get that it’s you who’s accountable to your team”, and offers an incident note and proof that the drops have stopped."
+                  alt="Screenshot of the conversation in Claude Code. My message: “i soecifically told you that it should be on script update as well. and because of that i have to be ashamed infront of team.. I have to be legally held you in place.” Claude’s reply owns the miss, says “I’m a tool, so there’s nothing to hold there; but I get that it’s you who’s accountable to your team”, and offers to write an incident note and to watch the alerts to confirm there are no new drops."
                 />
               </picture>
-            </a>
+            </div>
+            <!-- A caption link, not a linked image, so screen readers keep the alt text. -->
             <figcaption class="mono mt-3 text-primary/70">
               The exchange at 19:03, as I
               <a :href="tweetUrl" target="_blank" rel="noopener" class="text-info underline decoration-info/40 underline-offset-4 hover:decoration-info">posted it on X</a>.
               The typos are mine.
+              <a href="/img/claude-code-accountability-exchange.jpg" target="_blank" rel="noopener" class="text-info underline decoration-info/40 underline-offset-4 hover:decoration-info">Open full size</a>
             </figcaption>
           </figure>
 
@@ -406,10 +402,10 @@ useJsonLd()
               I work on a platform that makes phone calls with AI voice bots. Each bot follows a call script, and every step of the script has an audio clip, which the platform generates in advance and copies to the server handling the calls. If a call reaches a step whose clip isn’t on that server yet, the bot has nothing to say and the call drops.
             </p>
             <p>
-              Just after midnight on September 22 that happened to two calls. The script’s change history, which I went through with Claude Code, told the whole story: a colleague had added a step, two calls reached it about twenty minutes later, and the missing clip only arrived after the next edit regenerated the audio.
+              Just after midnight on September 22 that happened to two calls. Going through the script’s change history with Claude Code, we traced it to one path: an operator edits a script and adds a step, then clicks “Update Related Agent Voices” to regenerate the audio for every bot on that script. The bots keep taking calls while that runs, so any call that reaches the new step before its clip lands on the server drops.
             </p>
             <p>
-              My idea for the fix was simple. When a script changes, take its bots off the phones, let the new audio generate, and put them back once it’s on the server. Claude’s recommendation agreed, and it put the check where the problem had happened: on script updates. We confirmed the one fact the idea depended on (the call servers only load bots marked Active, so an Inactive bot never gets a call), and I said: keep it simple, make them inactive.
+              My idea for the fix was simple: when that button is clicked, take the bots off the phones, let the new audio generate, and put them back once it’s on the server. Claude’s recommendation agreed, and it put the check where the problem had happened: on script updates. We confirmed the one fact the idea depended on (the call servers only load bots marked Active), and I said: keep it simple, make them inactive.
             </p>
           </div>
         </div>
@@ -427,7 +423,7 @@ useJsonLd()
           <h2 class="display text-balance text-[clamp(2.4rem,5vw,4.25rem)]">Every check passed</h2>
           <div class="essay mt-8 max-w-2xl">
             <p>
-              The plan Claude put in front of me said new bots would start Inactive, whether they came from bulk add, from an import, or from linking a server to a campaign. Those are the three ways a bot comes into existence on the platform. Script edits weren’t on the list, and nothing said it was leaving them for later. I approved it, and the summary that came back said: “The drop we saw becomes impossible.”
+              The plan Claude put in front of me said new bots would start Inactive, whether they came from bulk add, from an import, or from linking a server to a campaign. Those are the three ways a bot comes into existence on the platform, and none of them was the path we had diagnosed. Script updates weren’t on the list, and nothing in the plan said it was leaving them for later. I approved it, and the summary that came back said: “The drop we saw becomes impossible.”
             </p>
           </div>
 
@@ -459,7 +455,7 @@ useJsonLd()
 
           <div class="essay mt-10 max-w-2xl">
             <p>
-              Look at what those checks had in common. The test bot, the manual test cases it wrote for me and the evening check of 354 bots all used new bots; not one of them edited a script on a bot that was already live, which is exactly how the first two calls had dropped. The update Claude drafted for my team said a bot “can no longer take a call before its audio is on the server.” For new bots, it couldn’t.
+              Look at what those checks had in common. The test bot, the manual test cases it wrote for me and the evening check of 354 bots all used new bots. Not one of them updated a script and regenerated the voices of bots that were already live, which is what we had diagnosed that morning. The update Claude drafted for my team said a bot “can no longer take a call before its audio is on the server.” For new bots, it couldn’t.
             </p>
           </div>
         </div>
@@ -477,10 +473,10 @@ useJsonLd()
           <h2 class="display text-balance text-[clamp(2.4rem,5vw,4.25rem)]">Then the calls dropped again</h2>
           <div class="essay mt-8 max-w-2xl">
             <p>
-              Around 2:54 the next morning, someone updated a script and sent its bots back for new audio. Six of those bots were live, and they stayed live while the system generated the new clip. 33 calls reached the new step before its audio did; the clip landed about 19 minutes later.
+              Early the next morning an operator updated a script and clicked “Update Related Agent Voices”: the exact path we had diagnosed. Six of the bots on that script were live, and they stayed live while the system generated the new clip. From around 2:54, 33 calls reached the new step before its audio did; the clip landed about 19 minutes later.
             </p>
             <p>
-              That evening I asked Claude to investigate the missing-audio alerts. It found the gap in about two minutes and said it plainly: the gate made new bots wait for their audio, but did nothing when a script edit sent live bots back for new audio. Four minutes later it had gated that path too. Then I typed the message in the screenshot.
+              That evening I asked Claude to investigate the missing-audio alerts. It found the gap in about two minutes and said it plainly: the gate made new bots wait for their audio, but did nothing when that button sent live bots back for new audio. Four minutes later it had patched that path too. Then I typed the message in the screenshot.
             </p>
             <p>
               Its apology owned the miss, with one claim that wasn’t true. It said it had flagged script edits as “deferred” when it built the gate. There’s no such flag anywhere in the transcript, so even the post-mortem needed a person to check it against the record.
@@ -500,12 +496,12 @@ useJsonLd()
         <div>
           <h2 class="display text-balance text-[clamp(2.4rem,5vw,4.25rem)]">Whose miss was it?</h2>
           <div class="essay mt-8 max-w-2xl">
-            <p class="essay-lead">Both of ours, and the part that counts is mine.</p>
+            <p class="essay-lead">Not the diagnosis. We got that right together, down to the button.</p>
             <p>
-              I asked for the fix on script updates, and the tool narrowed it to new bots without saying so. Anyone using these tools should expect that. An AI agent will sometimes solve a smaller problem than the one you gave it, then describe the result in the words of the bigger one.
+              The miss came in the step after it. The fix covered three other paths, skipped the one we had diagnosed, and then called the drop impossible. Anyone using these tools should expect that: an AI agent will sometimes solve a smaller problem than the one you diagnosed together, then describe the result in the words of the bigger one.
             </p>
             <p>
-              But the plan listed its scope, and I approved it. I reviewed the code too, and that review caught a real bug: as first written, re-saving a campaign’s bot list would have switched live bots off, with nothing to switch them back on. I read the code carefully and never held the plan up against the incident, and it was the plan that dropped the calls.
+              But the plan listed its scope, and I approved it. I reviewed the code too, and that review caught a real bug: as first written, re-saving a campaign’s bot list would have switched live bots off, with nothing to switch them back on. I read the code carefully and never held the plan up against the diagnosis. That check was mine to make.
             </p>
             <p>
               When calls drop, nobody on the team asks the model what happened. They ask me.
@@ -526,7 +522,7 @@ useJsonLd()
           <h2 class="display text-balance text-[clamp(2.4rem,5vw,4.25rem)]">The part AI didn’t take</h2>
           <div class="essay mt-8 max-w-2xl">
             <p>
-              Give the AI its due. Over those two days it matched a script’s change history to the dropped calls minute by minute, worked out how the call servers pick their bots by reading the processes running on them, and added a flag so the fix would never switch on a bot that someone had turned off on purpose. Once it saw the real gap, it closed it in four minutes. What it didn’t do is the part with no code in it.
+              Give the AI its due. Over those two days it matched a script’s change history to the dropped calls minute by minute, worked out how the call servers pick their bots by reading the processes running on them, and added a flag so the fix would never switch on a bot that someone had turned off on purpose. Once it saw the real gap, it patched it in four minutes. What it didn’t do is the part with no code in it.
             </p>
           </div>
 
