@@ -15,7 +15,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'suitecrm-google-sso',
     title: 'Google SSO in SuiteCRM 8, and What It Really Takes',
     description:
-      'Google sign-in for SuiteCRM 8: when the built-in SAML sign-in is enough, and what a custom build adds when the same login must also bring in Gmail and Google Calendar.',
+      'Google sign-in for SuiteCRM 8: when the built-in SAML sign-in is enough, and what a custom build adds when the same login must also grant access to Gmail and Google Calendar.',
     category: 'SuiteCRM Engineering',
     date: 'September 23, 2026',
     datePublished: '2026-09-23T00:00:00+05:00',

@@ -9,7 +9,7 @@ const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-suitecrm-google-sso.png`
 const seoTitle = 'SuiteCRM Google SSO: What It Really Takes in SuiteCRM 8'
 const seoDescription =
-  'Google sign-in for SuiteCRM 8: when the built-in SAML sign-in is enough, and what a custom build adds, from two sessions to automatic Gmail and Calendar setup.'
+  'Google sign-in for SuiteCRM 8: when built-in SAML is enough, and what a custom build adds, from two sessions to Gmail access and automatic calendar sync.'
 
 // The FAQ answers are shared by the visible section and the FAQPage schema,
 // so the two can never drift apart.
@@ -17,12 +17,12 @@ const faqs = [
   {
     question: 'Does SuiteCRM support Google single sign-on?',
     answer:
-      'Yes. SuiteCRM 8 includes SAML sign-in, which Google Workspace can act as the identity provider for, and the SuiteCRM Store lists Google login add-ons. If the same sign-in should also connect each person’s Gmail and Google Calendar and set up calendar sync, that is where a custom integration like the one described here comes in.'
+      'Yes. SuiteCRM 8 includes SAML sign-in, which Google Workspace can act as the identity provider for, and the SuiteCRM Store lists Google login add-ons. If the same sign-in should also grant access to each person’s Gmail and Google Calendar and set up calendar sync, that is where a custom integration like the one described here comes in.'
   },
   {
     question: 'Do I need custom development for Google sign-in on SuiteCRM?',
     answer:
-      'Not always. For sign-in alone, start with SuiteCRM 8’s built-in SAML sign-in or an add-on that supports your SuiteCRM version. Custom development makes sense when sign-in should also connect Gmail and Google Calendar and set every user up automatically.'
+      'Not always. For sign-in alone, start with SuiteCRM 8’s built-in SAML sign-in or an add-on that supports your SuiteCRM version. Custom development makes sense when sign-in should also grant access to Gmail and Google Calendar and set up each user’s calendar sync automatically.'
   },
   {
     question: 'Will users’ calendars sync on their own?',
@@ -226,14 +226,14 @@ const comparisonRows = [
             Google SSO in SuiteCRM 8, and what it really takes
           </h1>
           <p class="mt-6 max-w-3xl text-xl leading-9 text-primary/70">
-            Plain "sign in with Google" for SuiteCRM 8 can often be set up without custom code. It becomes an engineering job when the same sign-in also has to bring each person's Gmail and Google Calendar into the CRM. Here is what that involves, from a production build for a European textile company.
+            Plain "sign in with Google" for SuiteCRM 8 can often be set up without custom code. It becomes an engineering job when the same sign-in also has to give the CRM access to each person's Gmail and Google Calendar. Here is what that involves, from a production build for a European textile company.
           </p>
         </header>
 
         <div class="prose-content max-w-3xl py-10">
           <section id="overview">
             <p class="lead">
-              A client asked for three things inside SuiteCRM: sign in with Google, their email, and their calendar. The first one on its own is a common request with more than one ready-made answer. All three together, working from a single sign-in, is where the real work was.
+              A client asked for three things inside SuiteCRM: sign in with Google, their email, and their calendar. The first one on its own is a common request with more than one ready-made answer. Making that one sign-in also grant access to their email and calendar, and set up calendar sync for everyone, is where the real work was.
             </p>
             <p>
               This is a companion to my
@@ -337,8 +337,8 @@ const comparisonRows = [
           <section id="evaluating">
             <h2>If you are evaluating SuiteCRM SSO</h2>
             <ul>
-              <li><strong>Decide what you actually need.</strong> For sign-in only, look at SuiteCRM 8's built-in SAML sign-in or a Store add-on that supports your version. If sign-in should also set up email and calendar for every user automatically, that is where a custom build like this one comes in, unless an add-on covers it for your version.</li>
-              <li><strong>The value is real.</strong> Company Google login, accounts created on first sign-in, company domain only, and email and calendar ready without anyone configuring them.</li>
+              <li><strong>Decide what you actually need.</strong> For sign-in only, look at SuiteCRM 8's built-in SAML sign-in or a Store add-on that supports your version. If sign-in should also grant Gmail and Calendar access and set up calendar sync for every user automatically, that is where a custom build like this one comes in, unless an add-on covers it for your version.</li>
+              <li><strong>The value is real.</strong> Company Google login, accounts created on first sign-in, company domain only, Gmail and Calendar access granted in the same step, and calendar sync that nobody has to configure.</li>
               <li><strong>The risk is in the invisible parts.</strong> The second session, where the tokens live, the proxy signal. None of them show up in a quick demo, and all of them decide whether it holds up in production.</li>
               <li><strong>Plan for upgrades.</strong> Anything that hooks into SuiteCRM's own screens, like the added sign-in button, needs a check after each upgrade. Keep the custom pieces few and in known places so that check is quick.</li>
             </ul>
