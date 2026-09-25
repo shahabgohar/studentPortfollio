@@ -91,6 +91,18 @@ export const projects: Project[] = [
     tags: ['PHP', 'CodeIgniter', 'MySQL', '.NET/WPF', 'Java'],
     href: 'https://imaginesignage.com/',
   },
+  // Checked against the live system on 2026-09-25: 103 invoices created
+  // automatically (31 Aug to 24 Sep 2026), 13 practitioners, 1,512 tests. It is
+  // built for Ireland and the UK but live in Ireland only, so don't claim two countries.
+  {
+    title: 'Payment reconciliation & Xero invoicing',
+    category: 'CRM & automation',
+    tagline: 'Calendar bookings → Stripe payments → Xero invoices',
+    result: '100+ Xero invoices created automatically in the first month',
+    description:
+      "The billing backbone for a private therapy clinic with 13 practitioners. It mirrors each practitioner's Google Calendar, matches bookings to their Stripe payments (instalments included), writes the monthly settlement sheet, and raises the Xero invoices with practitioner and service tracking. No invoice is created twice for the same payment, and anything ambiguous waits in a review dashboard with a tamper-evident audit trail.",
+    tags: ['Stripe', 'Xero', 'Google Calendar', 'FastAPI', 'Vue 3'],
+  },
   {
     title: 'Enterprise CRM platform migration',
     category: 'CRM & automation',

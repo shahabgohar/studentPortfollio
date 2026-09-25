@@ -106,6 +106,12 @@ const caseStudies = [
     href: "/projects/",
   },
   {
+    result: "100+ Xero invoices in the first month",
+    title: "Bookings matched to payments, then invoiced in Xero",
+    text: "Mirrors 13 practitioners' Google Calendars, matches bookings to their Stripe payments, writes the clinic's monthly settlement sheet and raises the Xero invoices. Ambiguous cases wait in a review dashboard, and no invoice is created twice for the same payment.",
+    href: "/projects/",
+  },
+  {
     result: "Agents and RAG live in production",
     title: "Campaign data into expert-reviewed articles",
     text: "A full-stack AI pipeline (FastAPI, Vue 3, PostgreSQL, LangChain) that turns campaign data into reviewed, SEO-ready articles with human approval gates and per-run cost ceilings.",
