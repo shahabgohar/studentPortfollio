@@ -108,7 +108,7 @@ const caseStudies = [
   {
     result: "100+ Xero invoices in the first month",
     title: "Bookings matched to payments, then invoiced in Xero",
-    text: "Mirrors 13 practitioners' Google Calendars, matches bookings to their Stripe payments, writes the clinic's monthly settlement sheet and raises the Xero invoices. Ambiguous cases wait in a review dashboard, and no invoice is created twice for the same payment.",
+    text: "Mirrors each practitioner's Google Calendar, matches every booking to its Stripe payment across multiple accounts and currencies, produces the clinic's monthly settlement record and auto-generates the Xero invoices. It runs unattended in production, with a human-in-the-loop dashboard for the ambiguous cases.",
     href: "/projects/",
   },
   {

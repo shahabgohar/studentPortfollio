@@ -91,16 +91,17 @@ export const projects: Project[] = [
     tags: ['PHP', 'CodeIgniter', 'MySQL', '.NET/WPF', 'Java'],
     href: 'https://imaginesignage.com/',
   },
-  // Checked against the live system on 2026-09-25: 103 invoices created
-  // automatically (31 Aug to 24 Sep 2026), 13 practitioners, 1,512 tests. It is
-  // built for Ireland and the UK but live in Ireland only, so don't claim two countries.
+  // Description is the owner's own wording (2026-09-25). The system is built for
+  // Ireland and the UK (EUR/GBP, one Stripe account per region) and more
+  // practitioners get added over time, so don't pin it to a practitioner count.
+  // "100+ invoices" was checked against the live system: 103 between 31 Aug and 24 Sep 2026.
   {
-    title: 'Payment reconciliation & Xero invoicing',
+    title: 'Payment reconciliation & invoicing automation',
     category: 'CRM & automation',
     tagline: 'Calendar bookings → Stripe payments → Xero invoices',
     result: '100+ Xero invoices created automatically in the first month',
     description:
-      "The billing backbone for a private therapy clinic with 13 practitioners. It mirrors each practitioner's Google Calendar, matches bookings to their Stripe payments (instalments included), writes the monthly settlement sheet, and raises the Xero invoices with practitioner and service tracking. No invoice is created twice for the same payment, and anything ambiguous waits in a review dashboard with a tamper-evident audit trail.",
+      "Designed and built the billing backbone for a multi-practitioner therapy clinic operating across two countries. The system mirrors each practitioner's Google Calendar, matches every booking to its Stripe payment across multiple accounts and currencies, produces the clinic's monthly settlement record, and auto-generates the corresponding Xero invoices, replacing a manual, spreadsheet-by-hand process. It runs unattended in production against live financial data, with a human-in-the-loop dashboard for the ambiguous cases and safeguards that make double-invoicing impossible.",
     tags: ['Stripe', 'Xero', 'Google Calendar', 'FastAPI', 'Vue 3'],
   },
   {
