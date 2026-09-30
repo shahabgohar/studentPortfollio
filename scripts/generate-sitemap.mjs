@@ -91,7 +91,7 @@ const routes = [
     path: '/blogs/suitecrm-migration-european-textile-company',
     changefreq: 'monthly',
     priority: '0.7',
-    lastmod: '2026-05-17'
+    lastmod: '2026-10-01'
   },
   {
     path: '/blogs/suitecrm-quote-order-invoice-detection',

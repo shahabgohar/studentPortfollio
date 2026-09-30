@@ -73,15 +73,15 @@ export const blogPosts: BlogPost[] = [
   },
   {
     slug: 'suitecrm-migration-european-textile-company',
-    title: 'Case Study: Rebuilding SuiteCRM for a European Textile Company',
+    title: "SuiteCRM Migration: Rebuilding a European Textile Company's CRM",
     description:
-      'A SuiteCRM migration case study: Docker, Google SSO, calendar sync, OAuth, multilingual fields, and production-ready CRM infrastructure.',
+      'A SuiteCRM migration case study: Docker, Google SSO, calendar sync, OAuth, multilingual fields, and production-ready CRM infrastructure, plus a SuiteCRM 7 to 8 checklist.',
     category: 'Case Study',
     date: 'May 17, 2026',
     datePublished: '2026-05-17T00:00:00+05:00',
-    dateModified: '2026-05-17T00:00:00+05:00',
-    readingTime: '10 min read',
-    tags: ['SuiteCRM migration', 'Docker', 'Google OAuth', 'CRM modernization', 'PHP']
+    dateModified: '2026-10-01T00:00:00+05:00',
+    readingTime: '8 min read',
+    tags: ['SuiteCRM migration', 'SuiteCRM 7 to 8', 'Docker', 'Google OAuth', 'CRM modernization', 'PHP']
   },
   {
     slug: 'ai-engineering-revolution',

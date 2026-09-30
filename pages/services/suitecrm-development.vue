@@ -88,7 +88,7 @@ const sections = [
     :related="[
       { to: '/services/mautic-suitecrm-integration/', label: 'Mautic → SuiteCRM integration' },
       { to: '/services/salesforce-to-suitecrm-migration/', label: 'Salesforce to SuiteCRM migration' },
-      { to: '/blogs/suitecrm-migration-european-textile-company/', label: 'Case study: rebuilding SuiteCRM for a European company' }
+      { to: '/blogs/suitecrm-migration-european-textile-company/', label: 'SuiteCRM migration case study, with a 7 to 8 checklist' }
     ]"
   />
 </template>

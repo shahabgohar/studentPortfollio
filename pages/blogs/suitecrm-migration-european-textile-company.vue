@@ -7,9 +7,25 @@ const post = blogPosts.find((item) => item.slug === 'suitecrm-migration-european
 const siteUrl = 'https://shahabgohar.dev'
 const articleUrl = `${siteUrl}/blogs/${post.slug}/`
 const articleImage = `${siteUrl}/img/og-suitecrm-migration.png`
-const seoTitle = 'SuiteCRM Migration Case Study | Textile Company'
+const seoTitle = 'SuiteCRM Migration: A Case Study and 7 to 8 Checklist'
 const seoDescription =
-  'An anonymized SuiteCRM case study: migrating a fragile Bitnami CRM to a reproducible Docker deployment with Google SSO, calendar sync, and OAuth.'
+  'A SuiteCRM migration case study: a fragile Bitnami CRM moved to reproducible Docker with Google SSO and calendar sync, plus a SuiteCRM 7 to 8 checklist.'
+
+// One list drives the visible "Quick answers" and the FAQPage schema, so they cannot drift.
+const faqs = [
+  {
+    q: 'Why not keep using the pre-built SuiteCRM image?',
+    a: 'The pre-built image was fine for a quick start, but it hid too much once the system needed custom Google OAuth, calendar sync, CRM fields, debugging, and reliable upgrades. A custom Docker setup gave the client control and repeatability.'
+  },
+  {
+    q: 'What made this migration difficult?',
+    a: 'The hard parts were not only installing SuiteCRM. The real complexity was preserving Google integrations, making authentication work across Symfony and legacy SuiteCRM, handling proxy-aware OAuth URLs, keeping Docker volume permissions stable, and making custom fields survive upgrades.'
+  },
+  {
+    q: 'Can you migrate SuiteCRM 7 to SuiteCRM 8?',
+    a: "Yes, I've done SuiteCRM 7 to 8 migrations. The official path requires the latest 7.14.x first, then moves your SuiteCRM 7 code and data into SuiteCRM 8 as its legacy layer. Most of the work is checking the server, the add-ons and the customizations, and rehearsing the migration on a copy before production."
+  }
+]
 
 definePageMeta({
   title: post.title
@@ -22,7 +38,7 @@ useHead({
     {
       name: 'keywords',
       content:
-        'SuiteCRM migration case study, SuiteCRM Docker, SuiteCRM Google SSO, SuiteCRM Google Calendar sync, CRM modernization, Docker CRM deployment, PHP CRM developer, European textile CRM'
+        'SuiteCRM migration case study, SuiteCRM 7 to 8 migration, SuiteCRM 8 upgrade, SuiteCRM Docker, SuiteCRM Google SSO, SuiteCRM Google Calendar sync, CRM modernization, Docker CRM deployment, PHP CRM developer, European textile CRM'
     },
     { name: 'author', content: 'Shahab Gohar' },
     { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
@@ -61,8 +77,8 @@ useHead({
         dateModified: post.dateModified,
         articleSection: post.category,
         keywords: post.tags.join(', '),
-        wordCount: 1850,
-        timeRequired: 'PT10M',
+        wordCount: 1780,
+        timeRequired: 'PT8M',
         inLanguage: 'en-US',
         author: {
           '@type': 'Person',
@@ -110,24 +126,11 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'FAQPage',
-        mainEntity: [
-          {
-            '@type': 'Question',
-            name: 'Why migrate SuiteCRM from a pre-built image to a custom Docker setup?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'A custom Docker setup makes SuiteCRM reproducible, version-controlled, easier to debug, safer to upgrade, and less dependent on undocumented container state.'
-            }
-          },
-          {
-            '@type': 'Question',
-            name: 'Can SuiteCRM support Google SSO and calendar sync?',
-            acceptedAnswer: {
-              '@type': 'Answer',
-              text: 'Yes. SuiteCRM 8 can support Google OAuth, Google SSO, and calendar synchronization when authentication, token storage, scheduler jobs, and proxy configuration are implemented carefully.'
-            }
-          }
-        ]
+        mainEntity: faqs.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a }
+        }))
       })
     }
   ]
@@ -143,6 +146,7 @@ const sections = [
   { id: 'custom-crm', label: 'Custom CRM' },
   { id: 'results', label: 'Results' },
   { id: 'lessons', label: 'Lessons' },
+  { id: 'suitecrm-7-to-8', label: 'SuiteCRM 7 to 8' },
   { id: 'faq', label: 'FAQ' }
 ]
 
@@ -354,16 +358,36 @@ const comparisonRows = [
             </ul>
           </section>
 
+          <section id="suitecrm-7-to-8">
+            <h2>Migrating SuiteCRM 7 to 8: what to check first</h2>
+            <p>
+              The migration above was about infrastructure: getting SuiteCRM out of a pre-built image. Many SuiteCRM migrations are a different job, upgrading from SuiteCRM 7 to SuiteCRM 8. I've done those as well, and they need a different set of checks.
+            </p>
+            <p>
+              SuiteCRM 8 is not a routine point release. It adds a new Angular interface and a Symfony back end, and your SuiteCRM 7 application keeps running inside it as the legacy layer. That is why the official process is a migration rather than an upgrade, and why it needs planning:
+            </p>
+            <ul>
+              <li><strong>Get to the latest 7.14.x first.</strong> The official migration only supports the latest 7.14.x release. Starting from an older 7.x fails or leaves an unstable system.</li>
+              <li><strong>Check the server before the code.</strong> SuiteCRM 8.10 needs PHP 8.2, 8.3 or 8.4, and MySQL 8.0 or 8.4 or MariaDB 10.6, 10.11, 11.4 or 11.8. Any custom code has to run on that PHP version too.</li>
+              <li><strong>Audit add-ons and customizations.</strong> Your SuiteCRM 7 code and data carry over, but the migration can remove non-core files from the legacy folder, and every add-on needs checking for SuiteCRM 8 support.</li>
+              <li><strong>Decide what happens to your layouts.</strong> The final migration step can keep, merge or override your customized view definitions. The default keeps them; override deletes your customization files.</li>
+              <li><strong>Rebuild custom JavaScript as SuiteCRM 8 field logic.</strong> Where SuiteCRM 7 relied on custom JavaScript in its views, I re-implement those rules as native SuiteCRM 8 field actions, so they keep working in the new interface.</li>
+              <li><strong>Rehearse on a copy.</strong> Back up the files and the database, run the whole migration on a staging copy, test it, and only then touch production.</li>
+            </ul>
+            <p>
+              The official steps are in the
+              <a href="https://docs.suitecrm.com/8.x/admin/migration/running-the-migration/" target="_blank" rel="noopener" class="text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM 8 migration guide</a>.
+              If you want a SuiteCRM 7 to 8 migration planned and rehearsed on a copy of your system before it goes near production, that is part of my
+              <NuxtLink to="/services/suitecrm-development/" class="text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM development</NuxtLink> work.
+            </p>
+          </section>
+
           <section id="faq">
             <h2>Quick answers</h2>
-            <h3>Why not keep using the pre-built SuiteCRM image?</h3>
-            <p>
-              The pre-built image was fine for a quick start, but it hid too much once the system needed custom Google OAuth, calendar sync, CRM fields, debugging, and reliable upgrades. A custom Docker setup gave the client control and repeatability.
-            </p>
-            <h3>What made this migration difficult?</h3>
-            <p>
-              The hard parts were not only installing SuiteCRM. The real complexity was preserving Google integrations, making authentication work across Symfony and legacy SuiteCRM, handling proxy-aware OAuth URLs, keeping Docker volume permissions stable, and making custom fields survive upgrades.
-            </p>
+            <template v-for="f in faqs" :key="f.q">
+              <h3>{{ f.q }}</h3>
+              <p>{{ f.a }}</p>
+            </template>
           </section>
 
           <aside class="not-prose mt-12 border border-primary/15 bg-primary/[0.03] p-6 sm:p-8">
