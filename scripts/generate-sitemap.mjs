@@ -7,7 +7,7 @@ const routes = [
     path: '/',
     changefreq: 'weekly',
     priority: '1.0',
-    lastmod: '2026-09-25'
+    lastmod: '2026-10-06'
   },
   {
     path: '/projects',
@@ -19,7 +19,7 @@ const routes = [
     path: '/services',
     changefreq: 'monthly',
     priority: '0.9',
-    lastmod: '2026-07-18'
+    lastmod: '2026-10-06'
   },
   {
     path: '/services/ai-development',
@@ -32,6 +32,12 @@ const routes = [
     changefreq: 'monthly',
     priority: '0.9',
     lastmod: '2026-07-18'
+  },
+  {
+    path: '/services/odoo-development',
+    changefreq: 'monthly',
+    priority: '0.8',
+    lastmod: '2026-10-06'
   },
   {
     path: '/services/mautic-suitecrm-integration',

@@ -29,6 +29,7 @@ const specs = [
 // plugins and native Android are the owner's own words (2026-09-21); approval
 // gates, safety auditing and cost ceilings are from his resume; the Store
 // add-ons were built at Esper Solutions and are published under that name.
+// Odoo modules were added at his request (2026-10-06); he builds on Odoo 19.
 const services = [
   {
     kind: "Build",
@@ -58,9 +59,9 @@ const services = [
     kind: "Build",
     title: "Plugins & custom development",
     summary:
-      "WooCommerce plugins, SuiteCRM add-ons, and custom modules for when the off-the-shelf tool stops short.",
+      "WooCommerce plugins, SuiteCRM add-ons, Odoo modules, and other custom extensions for when the off-the-shelf tool stops short.",
     proof: "Two add-ons I built at Esper Solutions are live on the SuiteCRM Store.",
-    stack: "WooCommerce, SuiteCRM, PHP",
+    stack: "WooCommerce, SuiteCRM, Odoo, PHP, Python",
   },
   {
     kind: "Build",
@@ -486,6 +487,8 @@ onBeforeUnmount(() => heroObserver?.disconnect());
               <NuxtLink to="/services/suitecrm-development/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">SuiteCRM development</NuxtLink>,
               <NuxtLink to="/services/mautic-suitecrm-integration/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Mautic and SuiteCRM integration</NuxtLink>,
               and <NuxtLink to="/services/salesforce-to-suitecrm-migration/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">Salesforce-to-SuiteCRM migration</NuxtLink>.
+              I also build
+              <NuxtLink to="/services/odoo-development/" class="font-semibold text-info underline decoration-info/40 underline-offset-4 transition hover:decoration-info">custom Odoo modules and integrations</NuxtLink>.
             </p>
           </SectionHead>
 

@@ -3,9 +3,9 @@ definePageMeta({ title: 'Services' })
 
 const siteUrl = 'https://shahabgohar.dev'
 const title =
-  'SuiteCRM & AI Engineering Services | Shahab Gohar'
+  'SuiteCRM, Odoo & AI Engineering Services | Shahab Gohar'
 const description =
-  'SuiteCRM development, Mautic integration, Salesforce-to-SuiteCRM migration, and AI engineering for B2B teams. Hire one engineer to own the whole outcome.'
+  'SuiteCRM and Odoo development, Mautic integration, Salesforce-to-SuiteCRM migration, and AI engineering for B2B teams. One engineer owns the whole outcome.'
 
 const services = [
   {
@@ -19,6 +19,12 @@ const services = [
     title: 'SuiteCRM Developer & Customization',
     blurb:
       'Custom modules, plugins, workflows, and SuiteCRM 8 Angular customization shaped around how your team actually sells.'
+  },
+  {
+    to: '/services/odoo-development/',
+    title: 'Odoo Development & Customization',
+    blurb:
+      'Custom Odoo modules, inherited views, and integrations that extend Odoo instead of patching its code.'
   },
   {
     to: '/services/mautic-suitecrm-integration/',
@@ -55,7 +61,7 @@ useHead({
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        name: 'SuiteCRM & AI Engineering Services',
+        name: 'SuiteCRM, Odoo & AI Engineering Services',
         url: `${siteUrl}/services/`,
         description,
         hasPart: services.map((s) => ({
@@ -101,7 +107,7 @@ const mailto =
           Software, AI &amp; CRM engineering services
         </h1>
         <p class="mt-6 max-w-2xl text-lg leading-8 text-primary/75">
-          Hire one engineer to own the whole outcome: custom SuiteCRM,
+          Hire one engineer to own the whole outcome: custom SuiteCRM and Odoo,
           marketing automation integration, CRM migration, and the AI layer on
           top. Salesforce-grade results without the Salesforce bill.
         </p>

@@ -14,6 +14,7 @@ const status = ref<"idle" | "sending" | "error">("idle");
 
 const crmOptions = [
   "SuiteCRM",
+  "Odoo",
   "Salesforce",
   "HubSpot",
   "Something else",

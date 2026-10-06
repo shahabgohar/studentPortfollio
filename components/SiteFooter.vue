@@ -10,6 +10,7 @@ const explore = [
 const serviceLinks = [
   { label: 'AI development', to: '/services/ai-development/' },
   { label: 'SuiteCRM development', to: '/services/suitecrm-development/' },
+  { label: 'Odoo development', to: '/services/odoo-development/' },
   { label: 'Mautic and SuiteCRM integration', to: '/services/mautic-suitecrm-integration/' },
   { label: 'Salesforce to SuiteCRM migration', to: '/services/salesforce-to-suitecrm-migration/' },
 ]

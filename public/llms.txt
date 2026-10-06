@@ -1,6 +1,6 @@
 # Shahab Gohar, AI Engineer
 
-> Personal services site of Shahab Gohar: AI automation, CRM integration (SuiteCRM, Mautic), and custom software for small and mid-size businesses. Every project starts with a fixed written quote and a working demo in 14 days, or the client doesn't pay.
+> Personal services site of Shahab Gohar: AI automation, CRM integration (SuiteCRM, Mautic, Odoo), and custom software for small and mid-size businesses. Every project starts with a fixed written quote and a working demo in 14 days, or the client doesn't pay.
 
 ## Pages
 
@@ -8,6 +8,7 @@
 - [Services](https://shahabgohar.dev/services/): all service lines in one place
 - [AI development](https://shahabgohar.dev/services/ai-development/): RAG systems, LLM apps, AI agents, and AI features for existing products
 - [SuiteCRM development](https://shahabgohar.dev/services/suitecrm-development/): custom modules, plugins, workflows, and SuiteCRM 8 Angular work
+- [Odoo development](https://shahabgohar.dev/services/odoo-development/): custom Odoo 19 modules, inherited views, and integrations that extend Odoo instead of patching its code
 - [Mautic and SuiteCRM integration](https://shahabgohar.dev/services/mautic-suitecrm-integration/): automated, de-duplicated lead sync
 - [Salesforce to SuiteCRM migration](https://shahabgohar.dev/services/salesforce-to-suitecrm-migration/): records, custom objects, and automations rebuilt natively
 - [Projects](https://shahabgohar.dev/projects/): case studies with measured results

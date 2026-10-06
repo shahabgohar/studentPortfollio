@@ -20,6 +20,8 @@ defineProps<{
   sections: ContentSection[]
   faqs?: FaqItem[]
   related?: RelatedLink[]
+  /** Closing CTA paragraph; defaults to the SuiteCRM wording. */
+  cta?: string
 }>()
 
 const mailto =
@@ -138,9 +140,12 @@ const callUrl = 'https://cal.com/shahabgohar/build-discussion'
           Working demo in 14 days. Or you don't pay.
         </h2>
         <p class="mx-auto mt-3 max-w-xl text-primary/75">
-          Send the SuiteCRM migration, plugin idea, integration, or broken
-          workflow. You'll get a clear build path and a working demo in 14
-          days, or you don't pay.
+          <template v-if="cta">{{ cta }}</template>
+          <template v-else>
+            Send the SuiteCRM migration, plugin idea, integration, or broken
+            workflow. You'll get a clear build path and a working demo in 14
+            days, or you don't pay.
+          </template>
         </p>
         <div class="mt-6 flex flex-wrap justify-center gap-4 font-ibmMono text-sm">
           <a

@@ -30,6 +30,8 @@ export const useJsonLd = () => {
       'SuiteCRM plugin development',
       'Mautic',
       'Mautic to SuiteCRM integration',
+      'Odoo',
+      'Odoo module development',
       'Salesforce alternatives',
       'Open-source CRM',
       'B2B sales automation',
@@ -61,7 +63,7 @@ export const useJsonLd = () => {
       name: 'AI Solution Engineer & Full-Stack Developer',
       occupationalCategory: '15-1252.00',
       skills:
-        'Solution engineering, business automation, AI workflows, custom software, Vue.js, Nuxt.js, Laravel, Python, JavaScript, TypeScript, API Design, SuiteCRM, Mautic'
+        'Solution engineering, business automation, AI workflows, custom software, Vue.js, Nuxt.js, Laravel, Python, JavaScript, TypeScript, API Design, SuiteCRM, Mautic, Odoo'
     }
   }
 
