@@ -7,13 +7,13 @@ const routes = [
     path: '/',
     changefreq: 'weekly',
     priority: '1.0',
-    lastmod: '2026-10-06'
+    lastmod: '2026-10-15'
   },
   {
     path: '/projects',
     changefreq: 'monthly',
     priority: '0.9',
-    lastmod: '2026-09-25'
+    lastmod: '2026-10-15'
   },
   {
     path: '/services',

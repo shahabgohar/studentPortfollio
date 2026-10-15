@@ -106,6 +106,14 @@ const caseStudies = [
     text: "Reads inbound WhatsApp chats and turns them into structured, deduplicated CRM deals. A provider-agnostic LLM engine extracts 13 fields per conversation behind a fail-closed write gate.",
     href: "/projects/",
   },
+  // Restates the "Real-time AI voice-agent platform" card in data/projects.ts
+  // (the owner's own copy); he chose to show the stack here on 2026-10-15.
+  {
+    result: "Thousands of live calls, no human agent",
+    title: "AI voice agents on self-hosted GPUs",
+    text: "Voice bots on FreeSWITCH that handle live phone calls in real time, with Whisper, F5-TTS and Qwen (vLLM) running on self-hosted GPU servers: transcription, voicemail detection, dynamic call flows and live transfers.",
+    href: "/projects/",
+  },
   {
     result: "100+ Xero invoices in the first month",
     title: "Bookings matched to payments, then invoiced in Xero",

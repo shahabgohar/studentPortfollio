@@ -60,7 +60,9 @@ export const projects: Project[] = [
       'A voice agent that detects what the caller wants and routes the conversation through the matching script-based flow. Built and running end to end as a local build; production deployment is set up per client, on servers sized to their call volume.',
     tags: ['Voice AI', 'Intent detection'],
   },
-  /* Hidden from the site — uncomment this block to restore.
+  // Restored 2026-10-15 at the owner's request, exactly as written in July. It
+  // stays geo-hidden on /projects (hideInPK), but the homepage Work row that
+  // restates it is shown to every visitor; he chose that knowingly.
   {
     title: 'Real-time AI voice-agent platform',
     category: 'AI',
@@ -71,7 +73,6 @@ export const projects: Project[] = [
     tags: ['FreeSWITCH', 'Python', 'vLLM', 'F5-TTS', 'Hetzner GPU'],
     hideInPK: true,
   },
-  */
   {
     title: 'Call-tracking & analytics platform',
     category: 'Full-stack',
