@@ -31,6 +31,16 @@ const lastUpdated = "October 18, 2026";
 <template>
   <main class="min-h-screen bg-secondary text-primary">
     <article class="mx-auto w-full max-w-[900px] px-6 py-8 sm:px-10 lg:px-16">
+      <p class="flex justify-end font-ibmMono text-sm">
+        <NuxtLink
+          to="/reel-auto-scroller/"
+          class="inline-flex items-center gap-2 text-primary/75 transition hover:text-info"
+        >
+          Support
+          <Icon name="ph:arrow-right" size="16" />
+        </NuxtLink>
+      </p>
+
       <header class="border-b border-primary/10 py-12">
         <p class="font-ibmMono text-sm uppercase tracking-[0.24em] text-info">
           Reel Auto-Scroller
